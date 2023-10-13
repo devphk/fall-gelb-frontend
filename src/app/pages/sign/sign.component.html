@@ -6,30 +6,33 @@
          fxLayout="row"
          fxLayoutAlign="start center">
          <h1>
-             Phoinike
+             Phoinike Logistics
          </h1>
     </div>
 
     <div fxLayout="row"
          fxLayoutAlign="space-evenly center"
          fxLayoutGap="40px"
-         class="w-100">
+         fxLayout.lt-md="column"
+         class="w-100"
+         [@fadeIn]>
 
         <div fxFlex="calc(40%)"
              fxLayout="column"
-             fxLayoutAlign="center center">
-
-             <h2 class="w-50">
-                 Phoinike
+             fxLayoutAlign="center center"
+             fxHide.lt-md="true">
+             <h2 class="w-50 fs-40">
+                 Bienvenido
              </h2>
-             <p class="w-50">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+             <p class="w-50 fs-20 lh-1-5">
+                Phoinike te moviliza. Hacemos el trabajo pesado!
              </p>
         </div>
 
         <div fxFlex="calc(60% - 40px)"
              fxLayout="column"
              fxLayoutAlign="center center">
+
             <mat-card class="mat-elevation-z0">
                 <h1>Entrar</h1>
         
@@ -75,9 +78,13 @@
 
     <div class="sign-in-footer w-100"
          fxLayout="row"
-         fxLayoutAlign="start center">
-         <h1>
-             Phoinike
-         </h1>
+         fxLayoutAlign="space-between center">
+         <span>
+            Copyright © {{year}} phoinike logistics, C.A.
+         </span>
+
+         <span>
+            V0.0.0
+         </span>
     </div>
 </div>

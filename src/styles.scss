@@ -100,8 +100,26 @@ $phk-theme: mat.define-light-theme((
 ));
 @include mat.all-component-themes($phk-theme);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  // font-family: Roboto, "Helvetica Neue", sans-serif; 
+  font-family: 'Raleway', sans-serif;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: 'Raleway', sans-serif !important;
+}
 
 :root {
   --primary-color: #ff0000; // Define el color rojo como el color primario
@@ -121,6 +139,30 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .w-50 {
   width: 50% !important;
+}
+
+// Global font-sizes
+
+.fs-40 {
+  font-size: 40px !important;
+}
+
+.fs-30 {
+  font-size: 30px !important;
+}
+
+.fs-20 {
+  font-size: 20px !important;
+}
+
+// Line-height styles
+
+.lh-1-2 {
+  line-height: 1.2;
+}
+
+.lh-1-5 {
+  line-height: 1.5;
 }
 
 // Global Margins
