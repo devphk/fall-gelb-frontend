@@ -110,3 +110,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .h-100vh {
   height: calc(100vh) !important;
 }
+
+.w-100 {
+  width: 100% !important;
+}
+
+.w-80 {
+  width: 80% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+// Global Margins
+
+.m-40 {
+  margin: 40px;
+}
+
+// Padding
+
+.p-10 {
+  padding: 10px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}

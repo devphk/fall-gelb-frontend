@@ -1,0 +1,24 @@
+
+// Sign in styles
+
+.sign-in {
+
+  height: 100%;
+  background-color: #2a2a2a;
+
+  mat-card {
+    padding: 15px !important;
+    width: 400px;
+
+    @media screen and (max-width: 667px) {
+        width: 300px;
+    }
+  }
+
+}
+
+// Footer styles
+
+.sign-in-footer {
+  padding: 5px 20px;
+}

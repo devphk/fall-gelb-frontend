@@ -1,0 +1,25 @@
+<mat-form-field [color]="ngControl.invalid 
+                         && ngControl.touched ? 'warn' : 'primary'" [appearance]="appearance"
+                [hideRequiredMarker]="!requiredMarker" 
+                class="phk-input-field">
+    <mat-label>
+        {{label}}
+    </mat-label>
+    <input (blur)="onTouch()" 
+           [readonly]="readOnly" 
+           [disabled]="disabled" 
+           [formControl]="inputControl"
+           [maxLength]="maxLength" 
+           [minLength]="minLength" 
+           [type]="type" 
+           [mask]="mask" 
+           [required]="required"
+           matInput />
+    <div matSuffix>
+        <ng-content select="[suffix]">
+        </ng-content>
+    </div>
+    <div *ngIf="ngControl.touched">
+        <ng-content select="[error]"></ng-content>
+    </div>
+</mat-form-field>

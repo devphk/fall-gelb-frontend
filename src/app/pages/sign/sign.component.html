@@ -1,13 +1,83 @@
-<mat-drawer-container class="example-container" 
-                      [hasBackdrop]="true">
-    <mat-drawer #drawer 
-                [mode]="'over'">
-                I'm a drawer
-    </mat-drawer>
-    <mat-drawer-content>
-        <!-- <router-outlet></router-outlet> -->
-        <button type="button" mat-button (click)="drawer.toggle()">
-            Toggle sidenav
-          </button>
-    </mat-drawer-content>
-</mat-drawer-container>
+<div class="sign-in" 
+     fxLayout="column" 
+     fxLayoutAlign="space-between center">
+
+    <div class="sign-in-header w-100 p-20"
+         fxLayout="row"
+         fxLayoutAlign="start center">
+         <h1>
+             Phoinike
+         </h1>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-evenly center"
+         fxLayoutGap="40px"
+         class="w-100">
+
+        <div fxFlex="calc(40%)"
+             fxLayout="column"
+             fxLayoutAlign="center center">
+
+             <h2 class="w-50">
+                 Phoinike
+             </h2>
+             <p class="w-50">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+             </p>
+        </div>
+
+        <div fxFlex="calc(60% - 40px)"
+             fxLayout="column"
+             fxLayoutAlign="center center">
+            <mat-card class="mat-elevation-z0">
+                <h1>Entrar</h1>
+        
+                <form [formGroup]="signInFormGroup" 
+                        fxLayout="column"
+                        fxLayoutAlign="center start">
+        
+                <app-phk-input formControlName="username" 
+                                label="Usuario"
+                                class="w-100"></app-phk-input>
+        
+                <app-phk-input [type]="hidePassword ? 'password' : 'text'"
+                                formControlName="password"
+                                label="Contraseña"
+                                class="w-100">
+                    <mat-icon (click)="hidePassword = !hidePassword" class="pointer" suffix>
+                    {{hidePassword ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                    <mat-error error *ngIf="signInFormGroup.get('password')!.errors?.['invalid']">
+                    Ususario o contraseña incorrectos
+                    </mat-error>
+                </app-phk-input>
+        
+                <button (click)="submit()"
+                        *ngIf="!openSpinner"
+                        class="w-100"
+                        color="primary"
+                        mat-raised-button>
+                    Entrar
+                </button>
+        
+                <span class="w-100" 
+                        fxLayoutAlign="center center">
+                    <mat-spinner *ngIf="openSpinner"
+                                [diameter]="30"></mat-spinner>
+                </span>
+                </form>
+        
+            </mat-card>
+        </div>
+
+    </div>
+
+    <div class="sign-in-footer w-100"
+         fxLayout="row"
+         fxLayoutAlign="start center">
+         <h1>
+             Phoinike
+         </h1>
+    </div>
+</div>
