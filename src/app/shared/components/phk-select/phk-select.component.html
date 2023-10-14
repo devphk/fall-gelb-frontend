@@ -1,0 +1,40 @@
+
+<div>
+  <mat-form-field [appearance]="appearance"
+                  [color]="ngControl.invalid && ngControl.touched ? 'warn' : 'primary'"
+                  [hideRequiredMarker]="!requiredMarker">
+    <mat-label>{{label}}</mat-label>
+    <mat-select (blur)="onTouch()"
+                (selectionChange)="onSelect($event)"
+                *ngIf="!multiple"
+                [disabled]="disabled"
+                [value]="value"
+                [required]="required">
+      <mat-option *ngFor="let option of options"
+                  [disabled]="option.disabled" 
+                  [value]="option.value">
+        {{ option.viewValue }}
+      </mat-option>  
+    </mat-select>
+    <mat-select (blur)="onTouch()" 
+                (selectionChange)="onSelect($event)"
+                *ngIf="multiple"
+                [disabled]="disabled"
+                [value]="value"
+                [required]="required"
+                multiple>
+      <mat-option *ngFor="let option of options"
+                  [disabled]="option.disabled" [value]="option.value">
+        {{ option.viewValue }}
+      </mat-option>
+  
+    </mat-select>
+    <div matSuffix>
+      <ng-content select="[suffix]">
+      </ng-content>
+    </div>
+    <div *ngIf="ngControl.touched">
+      <ng-content select="[error]"></ng-content>
+    </div>
+  </mat-form-field>
+</div>

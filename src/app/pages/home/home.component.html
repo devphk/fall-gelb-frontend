@@ -1,9 +1,8 @@
 
 
-<mat-drawer-container class="example-container" 
-                      [hasBackdrop]="true">
+<mat-drawer-container [hasBackdrop]="true">
     <mat-drawer #drawer 
-                [mode]="'over'">
+                [mode]="'side'">
                 <div fxLayout="column">
                     <button *ngFor="let link of links" 
                             mat-flat-button
