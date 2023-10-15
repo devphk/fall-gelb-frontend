@@ -1,0 +1,32 @@
+<mat-form-field [color]="ngControl.invalid 
+                         && ngControl.touched ? 'warn' : 'primary'"
+                [appearance]="appearance"
+                [hideRequiredMarker]="!requiredMarker">
+  <mat-label>{{ label }}</mat-label>
+  <textarea (blur)="onTouch()"
+            autocomplete="new-password"
+            name="someUnusualName"
+            [disabled]="disabled"
+            [readonly]="readOnly"
+            [formControl]="inputControl"
+            [maxLength]="maxLength"
+            [minLength]="minLength"
+            [type]="type"
+            [required]="required"
+            [rows]="rows"
+            class="template-input"
+            matInput>
+  </textarea>
+
+  <mat-hint class="mt-8px" 
+            *ngIf="showHint">{{hintMessage}}</mat-hint>
+
+  <div matSuffix>
+    <ng-content select="[suffix]"> </ng-content>
+  </div>
+  <div
+    *ngIf="ngControl.invalid && ngControl.touched"
+    class="template-input-error">
+    <ng-content select="[error]"></ng-content>
+  </div>
+</mat-form-field>

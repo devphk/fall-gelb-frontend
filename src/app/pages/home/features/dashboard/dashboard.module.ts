@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { PhkSlideToggleModule } from 'src/app/shared/components/phk-slide-toggle/phk-slide-toggle.module';
 import { PhkDatePickerModule } from 'src/app/shared/components/phk-date-picker/phk-date-picker.module';
+import { PhkTextAreaModule } from 'src/app/shared/components/phk-text-area/phk-text-area.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     PhkSlideToggleModule,
     ReactiveFormsModule,
-    PhkDatePickerModule
+    PhkDatePickerModule,
+    PhkTextAreaModule
   ]
 })
 export class DashboardModule { }

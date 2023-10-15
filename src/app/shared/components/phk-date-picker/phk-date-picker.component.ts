@@ -86,8 +86,6 @@ export class PhkDatePickerComponent
   }
 
   writeValue(value: any): void {
-    console.log("value 2", value);
-
     this.dateChange.emit(value);
     this.inputControl.setValue(value);
   }
