@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalService } from 'src/app/core/services';
 import { PhkInputComponent } from 'src/app/shared/components/phk-input/phk-input.component';
 import { TestComponent } from 'src/app/shared/components/test/test.component';
+import { NewCustomerComponent } from '../entities/components/new-customer/new-customer.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,9 +30,9 @@ export class DashboardComponent implements OnInit {
   showModal() {
 
     const dialogRef = this.modalService.openDialog(
-      TestComponent,
+      NewCustomerComponent,
       'Título del Diálogo',
-      '500px',
+      '800px',
       '300px'
     );
 
