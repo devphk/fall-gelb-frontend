@@ -1,28 +1,18 @@
 
-<button (click)="showForm()">
-    showForm()
-</button>
 
-<button (click)="showModal()">
-  showModal()
-</button>
+<div class="p-20">
+  Componente Date Picker de muestra, <strong>OJO:</strong> Los componentes reusables input, select,
+  text-area o componentes que usen formControlName deben tener asociado un 
+  formControlName, sino fallarán  
+  
+  <form [formGroup]="form">
+      <app-phk-date-picker formControlName="control"></app-phk-date-picker>
+  </form>
+  
+  Ejemplo de mostrar dialog
+  <button (click)="showModal()"
+          mat-raised-button>
+    Mostrar Modal
+  </button>
+</div>
 
-<form [formGroup]="form"
-      class="w-100">
-    <!-- <app-phk-slide-toggle formControlName="toggle"></app-phk-slide-toggle> -->
-
-    <app-phk-date-picker formControlName="control"></app-phk-date-picker>
-    <!-- <app-phk-text-area formControlName="control"
-                       [label]="'text area'"></app-phk-text-area> -->
-    <!-- <app-phk-input formControlName="control"
-                       [label]="'input'"></app-phk-input> -->
-
-      <!-- <app-phk-select formControlName="control">
-
-        <mat-option>
-          Hola
-        </mat-option>
-      </app-phk-select> -->
-
-
-</form>

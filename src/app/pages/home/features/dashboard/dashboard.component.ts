@@ -27,14 +27,6 @@ export class DashboardComponent implements OnInit {
   }
 
   showModal() {
-    // this.modalService.open({
-    //   component: PhkInputComponent,
-    //   title: 'Administration'
-    // },
-    // { 
-    //   minWidth: 40, 
-    //   maxWidth: 55 
-    // });
 
     const dialogRef = this.modalService.openDialog(
       TestComponent,
@@ -45,11 +37,8 @@ export class DashboardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('El diálogo ha sido cerrado');
-      // Aquí puedes realizar acciones después de que el diálogo se haya cerrado.
     });
 
   }
-
-  
 
 }
