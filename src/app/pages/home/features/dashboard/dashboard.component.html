@@ -1,1 +1,11 @@
-<p>Dashboard</p>
+
+<button (click)="showForm()">
+    showForm()
+</button>
+
+<form [formGroup]="form">
+    <!-- <app-phk-slide-toggle formControlName="toggle"></app-phk-slide-toggle> -->
+
+    <app-phk-date-picker formControlName="control"></app-phk-date-picker>
+
+</form>

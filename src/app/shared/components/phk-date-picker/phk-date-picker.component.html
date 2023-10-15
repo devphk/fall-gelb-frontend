@@ -1,0 +1,33 @@
+<mat-form-field
+  [color]="ngControl.invalid && ngControl.touched ? 'warn' : 'primary'"
+  [appearance]="appearance"
+  [hideRequiredMarker]="!requiredMarker"
+  class="template-input-field">
+  <mat-label class="template-input-label">{{ label }}</mat-label>
+  <input
+    (blur)="onTouch()"
+    autocomplete="new-password"
+    name="someUnusualName"
+    [disabled]="disabled"
+    [readonly]="readOnly"
+    [formControl]="inputControl"
+    [matDatepicker]="simplePicker"
+    [max]="max"
+    [min]="min"
+    [required]="required"
+    (dateChange)="dateChange.emit(inputControl.value)"
+    class="template-input"
+    matInput />
+  <div matSuffix>
+    <ng-content select="[suffix]"> </ng-content>
+  </div>
+  <mat-datepicker-toggle
+    [disabled]="disabled || readOnly"
+    matSuffix
+    [for]="simplePicker"></mat-datepicker-toggle>
+  <mat-datepicker #simplePicker [startView]="startView"></mat-datepicker>
+
+  <div *ngIf="ngControl.touched" class="template-input-error">
+    <ng-content select="[error]"></ng-content>
+  </div>
+</mat-form-field>

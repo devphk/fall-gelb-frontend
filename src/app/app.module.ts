@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,11 @@ import { SessionGuard } from './core/guards/guards/session.guard';
     NgxMaskModule.forRoot()
   ],
   providers: [
-    SessionGuard
+    SessionGuard,
+    { 
+      provide: MAT_DATE_LOCALE, 
+      useValue: 'en-US' 
+    },
   ],
   bootstrap: [AppComponent]
 })
