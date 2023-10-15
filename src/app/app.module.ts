@@ -6,24 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { CoreModule } from './core/core.module';
+import { TestComponent } from './shared/components/test/test.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CoreModule
   ],
   providers: [
-    SessionGuard,
-    { 
-      provide: MAT_DATE_LOCALE, 
-      useValue: 'en-US' 
-    },
+    SessionGuard
   ],
   bootstrap: [AppComponent]
 })
