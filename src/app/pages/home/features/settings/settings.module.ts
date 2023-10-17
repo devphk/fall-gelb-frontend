@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { BankComponent } from './bank/bank.component';
 import { FormBankComponent } from './bank/form-bank/form-bank.component';
+import { CurrencyComponent } from './currency/currency.component';
+import { FormCurrencyComponent } from './currency/form-currency/form-currency.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,8 @@ const routes: Routes = [
     FormUserComponent,
     BankComponent,
     FormBankComponent,
+    CurrencyComponent,
+    FormCurrencyComponent,
   ],
   imports: [
     CommonModule,
