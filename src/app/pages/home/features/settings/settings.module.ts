@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
+import { BankComponent } from './bank/bank.component';
+import { FormBankComponent } from './bank/form-bank/form-bank.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SettingsComponent, UserComponent, FormUserComponent],
+  declarations: [
+    SettingsComponent,
+    UserComponent,
+    FormUserComponent,
+    BankComponent,
+    FormBankComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

@@ -7,8 +7,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form-user.component.scss'],
 })
 export class FormUserComponent implements OnInit {
-  hide = true;
-
   userForm: FormGroup = this.formBuild.group({
     name: this.formBuild.control(''),
     email: this.formBuild.control(''),
