@@ -16,6 +16,9 @@ import { BankComponent } from './bank/bank.component';
 import { FormBankComponent } from './bank/form-bank/form-bank.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { FormCurrencyComponent } from './currency/form-currency/form-currency.component';
+import { BankAccountComponent } from './bank-account/bank-account.component';
+import { FormBankAccountComponent } from './bank-account/form-bank-account/form-bank-account.component';
+import { PhkSlideToggleModule } from 'src/app/shared/components/phk-slide-toggle/phk-slide-toggle.module';
 
 const routes: Routes = [
   {
@@ -33,12 +36,15 @@ const routes: Routes = [
     FormBankComponent,
     CurrencyComponent,
     FormCurrencyComponent,
+    BankAccountComponent,
+    FormBankAccountComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     PhkInputModule,
     PhkSelectModule,
+    PhkSlideToggleModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,

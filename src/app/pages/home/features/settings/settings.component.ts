@@ -1,3 +1,4 @@
+import { FormBankAccountComponent } from './bank-account/form-bank-account/form-bank-account.component';
 import { FormBankComponent } from './bank/form-bank/form-bank.component';
 import { ModalService } from './../../../../core/services/modal.service';
 import { Component, OnInit } from '@angular/core';
@@ -44,6 +45,19 @@ export class SettingsComponent implements OnInit {
     const dialogRef = this.modalService.openDialog(
       FormCurrencyComponent,
       'Registro de banco',
+      '80%',
+      '90%'
+    );
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('El diálogo ha sido cerrado');
+    });
+  }
+
+  showFormBankAccount() {
+    const dialogRef = this.modalService.openDialog(
+      FormBankAccountComponent,
+      'Registro de Cuenta Bancaria',
       '80%',
       '90%'
     );

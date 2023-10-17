@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="bankAccountForm">
+      <app-phk-select label="Banco" formControlName="bank">
+        <mat-option>Option 1</mat-option>
+        <mat-option>Option 2</mat-option>
+      </app-phk-select>
+      <app-phk-input
+        label="Número de cuenta"
+        formControlName="numberAccount"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-select label="Moneda" formControlName="currency">
+        <mat-option>Option 1</mat-option>
+        <mat-option>Option 2</mat-option>
+      </app-phk-select>
+      <app-phk-input
+        label="Prioridad"
+        formControlName="priority"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-slide-toggle
+        label="¿Quiere que sea visible?"
+        formControlName="isVisible"
+      >
+      </app-phk-slide-toggle>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Registrar</button>
+  </mat-card-actions>
+</mat-card>
