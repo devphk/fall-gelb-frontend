@@ -4,6 +4,7 @@ import { ModalService } from 'src/app/core/services';
 import { PhkInputComponent } from 'src/app/shared/components/phk-input/phk-input.component';
 import { TestComponent } from 'src/app/shared/components/test/test.component';
 import { NewCustomerComponent } from '../entities/components/new-customer/new-customer.component';
+import { EntitiesComponent } from '../entities/entities.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
   showModal() {
 
     const dialogRef = this.modalService.openDialog(
-      NewCustomerComponent,
+      EntitiesComponent,
       'Título del Diálogo',
       '800px',
       '300px'

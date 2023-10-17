@@ -1,0 +1,85 @@
+<div>   
+    <form [formGroup]="driverForm">
+        <div mat-dialog-content fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column"
+        fxLayout.md="column">
+            <br>
+            <div fxFlex="auto"
+                 fxFlex.sm="10"
+                 fxFlex.md="36"
+                 fxFlex.xl="47">
+                <p>Nombre*</p>
+                <app-phk-input label="Nombre" formControlName="name" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="auto"
+                 fxFlex.sm="10"
+                 fxFlex.md="36"
+                 fxFlex.xl="47">
+                <p>Documento*</p>
+                <app-phk-input label="Documento de Identidad" formControlName="doc" [required]="true"></app-phk-input>
+            </div>
+            
+            <div fxFlex="auto"
+                 fxFlex.sm="10"
+                 fxFlex.md="36"
+                 fxFlex.xl="47">
+                <p>Teléfono</p>
+                <app-phk-input label="Teléfono" formControlName="phone"></app-phk-input>
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p>Correo</p><br>
+                <app-phk-input label="Dirección de Correo" formControlName="email"></app-phk-input>
+            </div>
+            
+            <div fxFlex="50"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p>Nombre de Usuario*</p><br>
+                <app-phk-input label="Nombre de Usuario" formControlName="username" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p>Contraseña*</p><br>
+                <app-phk-input label="Contraseña" formControlName="password" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p>Confirmar contraseña*</p><br>
+                <app-phk-input label="Confirmar contraseña" formControlName="confirmpassword" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.xs="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"
+                 fxFlex.lg="100"
+                 fxFlex.xl="100">
+                <button class="w-100" mat-flat-button color="primary">Enviar</button>
+            </div>
+
+            <!-- <div fxFlex="50"
+                 fxFlex.xs="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"
+                 fxFlex.lg="100"
+                 fxFlex.xl="100">
+                <button class="w-100" mat-flat-button>Cancelar</button>
+            </div> -->
+        </div>
+    </form>
+</div>

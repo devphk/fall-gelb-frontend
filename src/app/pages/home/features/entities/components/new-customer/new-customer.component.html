@@ -1,1 +1,115 @@
-<p>new-customers works!</p>
+<div>   
+    <form [formGroup]="customerForm">
+        <div mat-dialog-content fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column"
+        fxLayout.md="column">
+            <br>
+            <div fxFlex="calc(50% - 35%)"
+            fxFlex.sm="10"
+            fxFlex.md="36"
+            fxFlex.xl="47">
+            <p class="fw-600">Nombre*</p>
+                <app-phk-input label="Nombre" formControlName="name" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="auto"
+                 fxFlex.sm="10"
+                 fxFlex.md="36"
+                 fxFlex.xl="47">
+                <p class="fw-600">Teléfono</p>
+                <app-phk-input label="Teléfono" formControlName="phone"></app-phk-input>
+            </div>
+            
+            <div fxFlex="auto"
+                 fxFlex.sm="10"
+                 fxFlex.md="36"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                 <p class="fw-600">Rif*</p>
+                <app-phk-input label="RIF" formControlName="rif" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="50"
+            fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p class="fw-600">¿Se encuentra activo?</p>
+                <app-phk-slide-toggle formControlName="active"></app-phk-slide-toggle>
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p class="fw-600">¿Enviar recordatorios?</p>
+                <app-phk-slide-toggle formControlName="reminder"></app-phk-slide-toggle>
+            </div>
+
+            <div fxFlex="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="100">
+                <br><p class="fw-600">Dirección Fiscal*</p>
+                <app-phk-text-area label="Ingrese la Dirección Fiscal" formControlName="address" [required]="true"></app-phk-text-area> 
+            </div>
+            
+            <div fxFlex="100"
+                 fxFlex.sm="30"
+                 fxFlex.md="10"
+                 fxFlex.lg="40"
+                 fxFlex.xl="47">
+                <p class="fw-600">Rif en PDF</p>
+                <app-phk-input formControlName="rifPDF"></app-phk-input>
+            </div>
+            
+            <div fxFlex="auto"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"> 
+                <p class="fw-600">Contribuyente Especial*</p>
+                <app-phk-select label="Seleccione..." [required]="true" formControlName="taxpayer">
+                    <mat-option>SI</mat-option>
+                    <mat-option>NO</mat-option>
+                </app-phk-select>            
+            </div>
+
+            <div fxFlex="auto"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"> 
+                <p class="fw-600">Facturador*</p>
+                <app-phk-select label="Seleccione..." [required]="true" formControlName="biller">
+                    <mat-option>SDN</mat-option>
+                    <mat-option>PHOINIKEL</mat-option>
+                </app-phk-select>            
+            </div>
+            
+            <div fxFlex="auto"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"> 
+                <p class="fw-600">Tiempo para Solicitar Anticipos</p>
+                <app-phk-select label="Seleccione..." formControlName="advance">
+                    <mat-option label >5 dias antes</mat-option>
+                    <mat-option>10 dias antes</mat-option>
+                    <mat-option>Al Momento De La Llegada De La Mercancia</mat-option>
+                </app-phk-select>            
+            </div>
+
+            <div fxFlex="50"
+                 fxFlex.xs="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"
+                 fxFlex.lg="100"
+                 fxFlex.xl="100">
+                <button class="w-100" mat-flat-button color="primary">Enviar</button>
+            </div>
+
+            <!-- <div fxFlex="50"
+                 fxFlex.xs="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"
+                 fxFlex.lg="100"
+                 fxFlex.xl="100">
+                <button class="w-100" mat-flat-button>Cancelar</button>
+            </div> -->
+        </div>
+    </form>
+</div>
