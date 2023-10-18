@@ -8,6 +8,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
 import { TestComponent } from './shared/components/test/test.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TestComponent } from './shared/components/test/test.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
   providers: [
     SessionGuard
