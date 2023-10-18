@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PhkTableComponent } from './phk-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   imports: [
     CommonModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxSkeletonLoaderModule
   ],
   exports: [
     PhkTableComponent

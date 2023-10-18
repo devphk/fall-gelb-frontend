@@ -3,11 +3,13 @@ import { Component, EventEmitter, Input, OnInit, DoCheck, Output, ViewChild, Cha
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { fadeAnimation } from '../../animations';
 
 @Component({
   selector: 'app-phk-table',
   templateUrl: './phk-table.component.html',
-  styleUrls: ['./phk-table.component.scss']
+  styleUrls: ['./phk-table.component.scss'],
+  animations: [fadeAnimation]
 })
 export class PhkTableComponent implements OnInit,
                                           DoCheck {
@@ -20,6 +22,7 @@ export class PhkTableComponent implements OnInit,
   @Input() columnsToDisplay: string[] = [];
   @Input() columnsTags: string[] = [];
   @Input() data: any[] = [];
+  @Input() skeletonRowNumber: number = 12;
 
   // Two binding of items selected
   
@@ -29,6 +32,7 @@ export class PhkTableComponent implements OnInit,
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
   backupData: any[] = [];
+  showSkeleton: boolean = true;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
@@ -51,11 +55,20 @@ export class PhkTableComponent implements OnInit,
 
   setData() {
 
-    this.dataSource = new MatTableDataSource<any>(this.data);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.backupData = this.data.slice();
-    // this.dataSource.filterPredicate = this.createFilter();
+    this.showSkeleton = true;
+    let randomSeconds = Math.random()*2000;
+
+    setTimeout(() => {
+      
+      this.dataSource = new MatTableDataSource<any>(this.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.backupData = this.data.slice();
+      // this.dataSource.filterPredicate = this.createFilter();
+  
+      this.showSkeleton = false;
+
+    }, randomSeconds);
 
   }
 
