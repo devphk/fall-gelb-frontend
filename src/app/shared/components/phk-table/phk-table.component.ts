@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, DoCheck, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,65 +9,52 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './phk-table.component.html',
   styleUrls: ['./phk-table.component.scss']
 })
-export class PhkTableComponent implements OnInit {
+export class PhkTableComponent implements OnInit,
+                                          DoCheck {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  // Table inputs
+
+  @Input() columnsToDisplay: string[] = [];
+  @Input() columnsTags: string[] = [];
+  @Input() data: any[] = [];
+
+  // Two binding of items selected
+  
+  @Input() itemsSelected: any[] = [];
+  @Output() itemsSelectedChange = new EventEmitter<any[]>();
+    
   dataSource = new MatTableDataSource<any>();
-  columnsToDisplay: string[] = [
-    "Usuario",
-    "Rol",
-    "Correo",
-    "Teléfono"
-  ];
-
-  columnsTags: string[] = [
-    "userName",
-    "role",
-    "email",
-    "phone"
-  ];
-
-  data: any[] = [
-    {
-      userName: "Agreda",
-      role: "Administrador",
-      email: "jagreda@gmail.com",
-      phone: "04127527692"
-    },
-    {
-      userName: "Gabriel",
-      role: "Administrador",
-      email: "gdavila@gmail.com",
-      phone: "04127527692"
-    },
-    {
-      userName: "Gianfranco",
-      role: "Administrador",
-      email: "abinassar@gmail.com",
-      phone: "04127527692"
-    }
-  ];
-
   selection = new SelectionModel<any>(true, []);
-  itemsSelected: any[] = [];
+  backupData: any[] = [];
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
     this.columnsTags.unshift("select");
     this.columnsToDisplay.unshift("select");
 
-    this.getData();
+    this.setData();
   }
 
-  getData() {
+  ngDoCheck(): void {
+    
+    if (this.backupData.length !== this.data.length) {
+      this.changeDetectorRef.detectChanges();
+      this.setData();
+    }
+
+  }
+
+  setData() {
 
     this.dataSource = new MatTableDataSource<any>(this.data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.backupData = this.data.slice();
     // this.dataSource.filterPredicate = this.createFilter();
 
   }
@@ -86,8 +73,6 @@ export class PhkTableComponent implements OnInit {
         this.itemsSelected.push(item);
       });
     }
-
-    console.log("elements selected ", this.itemsSelected)
 
   }
 

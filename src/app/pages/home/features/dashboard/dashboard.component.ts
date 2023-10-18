@@ -14,7 +14,44 @@ export class DashboardComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     control: this.fb.control("")
-  })
+  });
+
+  tableColumnsToDisplay: string[] = [
+    "Usuario",
+    "Rol",
+    "Correo",
+    "Teléfono"
+  ];
+
+  tableColumnsTags: string[] = [
+    "userName",
+    "role",
+    "email",
+    "phone"
+  ]
+
+  tableData: any[] = [
+    {
+      userName: "Agreda",
+      role: "Administrador",
+      email: "jagreda@gmail.com",
+      phone: "04127527692"
+    },
+    {
+      userName: "Gabriel",
+      role: "Administrador",
+      email: "gdavila@gmail.com",
+      phone: "04127527692"
+    },
+    {
+      userName: "Gianfranco",
+      role: "Administrador",
+      email: "abinassar@gmail.com",
+      phone: "04127527692"
+    }
+  ];
+
+  itemsSelected: any[] = [];
 
   constructor(private fb: FormBuilder,
               private modalService: ModalService) { }
@@ -22,9 +59,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showItems() {
+    console.log("items ", this.itemsSelected)
+  }
+
   showForm() {
     console.log("this.form: ", this.form)
     console.log("value: ", this.form.get('control')!.value)
+  }
+
+  deleteItem() {
+    this.tableData.shift();
+    console.log("data ", this.tableData)
   }
 
   showModal() {
