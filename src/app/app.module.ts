@@ -8,22 +8,23 @@ import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
 import { TestComponent } from './shared/components/test/test.component';
+import { PhkDatePickerModule } from './shared/components/phk-date-picker/phk-date-picker.module';
+import { PhkSelectModule } from './shared/components/phk-select/phk-select.module';
+import { PhkInputModule } from './shared/components/phk-input/phk-input.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TestComponent
-  ],
+  declarations: [AppComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
-    CoreModule
+    CoreModule,
+    PhkDatePickerModule,
+    PhkSelectModule,
+    PhkInputModule,
   ],
-  providers: [
-    SessionGuard
-  ],
-  bootstrap: [AppComponent]
+  providers: [SessionGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

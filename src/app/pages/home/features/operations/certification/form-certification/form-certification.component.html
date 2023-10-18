@@ -1,0 +1,36 @@
+<form [formGroup]="certificationForm">
+  <app-phk-select label="Cliente*" [required]="true" formControlName="client">
+    <mat-option>Option 1</mat-option>
+    <mat-option>Option 2</mat-option>
+  </app-phk-select>
+
+  <app-phk-select
+    label="Expediente*"
+    [required]="true"
+    formControlName="record"
+  >
+    <mat-option>Option 1</mat-option>
+    <mat-option>Option 2</mat-option>
+  </app-phk-select>
+
+  <app-phk-input
+    label="OC*"
+    [required]="true"
+    formControlName="purchaseOrder"
+  ></app-phk-input>
+  <app-phk-date-picker
+    label="Fecha del Anticipo*"
+    formControlName="advancePaymentDate"
+    [required]="true"
+  ></app-phk-date-picker>
+  <app-phk-input
+    label="Monto del Anticipo*"
+    [required]="true"
+    formControlName="advancePayment"
+  ></app-phk-input>
+  <app-phk-input
+    label="Número del Anticipo*"
+    [required]="true"
+    formControlName="advancePaymentNumber"
+  ></app-phk-input>
+</form>
