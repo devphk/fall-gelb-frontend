@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -30,12 +31,27 @@ export class PhkTableComponent implements OnInit {
 
   data: any[] = [
     {
+      userName: "Agreda",
+      role: "Administrador",
+      email: "jagreda@gmail.com",
+      phone: "04127527692"
+    },
+    {
+      userName: "Gabriel",
+      role: "Administrador",
+      email: "gdavila@gmail.com",
+      phone: "04127527692"
+    },
+    {
       userName: "Gianfranco",
       role: "Administrador",
       email: "abinassar@gmail.com",
       phone: "04127527692"
     }
   ];
+
+  selection = new SelectionModel<any>(true, []);
+  itemsSelected: any[] = [];
 
   constructor() { }
 
@@ -56,4 +72,46 @@ export class PhkTableComponent implements OnInit {
 
   }
 
+  // Selection logic
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+    this.itemsSelected.splice(0);
+
+    if (this.selection.selected.length > 0) {
+      this.dataSource.data.forEach((item) => {
+        this.itemsSelected.push(item);
+      });
+    }
+
+    console.log("elements selected ", this.itemsSelected)
+
+  }
+
+  updateCheckedList(event: any, element: any) {
+    console.log("event ", event)
+    console.log("Element selected ", element)
+    if (event.checked) {
+      this.itemsSelected.push(element);
+    } else {
+      let i = 0;
+      this.itemsSelected.forEach((item: any) => {
+        if (item.UserName === element.UserName) {
+          this.itemsSelected.splice(i, 1);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
 }
