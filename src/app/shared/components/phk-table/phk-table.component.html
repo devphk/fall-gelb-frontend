@@ -6,7 +6,7 @@
          #table 
          [dataSource]="dataSource"
          [@fadeIn]
-         class="w-100">
+         class="w-100 mat-elevation-z1">
   
       <div *ngFor="let column of columnsToDisplay; let columnIndex=index">
   
@@ -40,12 +40,16 @@
               <th mat-header-cell 
                   *matHeaderCellDef>
                 <div>
-                  <span mat-sort-header>{{ column }}</span>
+                  <span mat-sort-header>
+                    {{ column }}
+                  </span>
                 </div>
               </th>
       
               <td mat-cell *matCellDef="let element, let rowIndex = index">
-                {{element[columnsTags[columnIndex]]}}
+                <span>
+                  {{element[columnsTags[columnIndex]]}}
+                </span>
               </td>
   
             </div>
