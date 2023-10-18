@@ -16,24 +16,34 @@ export class PhkTableComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   columnsToDisplay: string[] = [
     "Usuario",
-    "Rol"
+    "Rol",
+    "Correo",
+    "Teléfono"
   ];
 
   columnsTags: string[] = [
     "userName",
-    "role"
+    "role",
+    "email",
+    "phone"
   ];
 
   data: any[] = [
     {
       userName: "Gianfranco",
-      role: "Administrador"
+      role: "Administrador",
+      email: "abinassar@gmail.com",
+      phone: "04127527692"
     }
   ];
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.columnsTags.unshift("select");
+    this.columnsToDisplay.unshift("select");
+
     this.getData();
   }
 
