@@ -11,12 +11,13 @@ export class PhkSidenavComponent implements OnInit {
 
   @Input() menuItems: any[] = [
     { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' } 
+    { path: '/entities', title: 'Entidades',  icon:'person', class: '' },
+    { path: '/operations', title: 'Operaciones',  icon:'content_paste', class: '' },
+    { path: '/statistics', title: 'Estadíticas',  icon:'library_books', class: '' },
+    { path: '/administration', title: 'Administración',  icon:'bubble_chart', class: '' },
+    { path: '/settings', title: 'Configuración',  icon:'location_on', class: '' },
+    { path: '/commercial', title: 'Comercial',  icon:'notifications', class: '' },
+    { path: '/comptroller', title: 'Contraloría',  icon:'notifications', class: '' } 
   ];
 
 
@@ -42,6 +43,11 @@ export class PhkSidenavComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+  }
+
+  navigate(path: string) {
+    console.log("path ", path)
+    this.router.navigate(['home', path.substring(1)]);
   }
 
   sidebarOpen() {

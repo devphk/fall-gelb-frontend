@@ -10,7 +10,8 @@
          fxLayout="row"
          fxLayoutAlign="start center"
          fxLayoutGap="15px"
-         [ngClass]="{'active': isActive(menuItem.path)}"> 
+         [ngClass]="{'active': isActive(menuItem.path)}"
+         (click)="navigate(menuItem.path)"> 
             <i class="material-icons">{{menuItem.icon}}</i>
             <p>
                 {{menuItem.title}}
