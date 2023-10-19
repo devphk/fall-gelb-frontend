@@ -133,4 +133,10 @@ export class PhkSidenavComponent implements OnInit {
     // }
     // return 'Dashboard';
   }
+
+  isActive(path: string): boolean {
+    return this.router.isActive("home" + path, true);
+  }
+  
+
 }

@@ -2,24 +2,19 @@
 
 .sidenav-container {
     width: 200px;
-}
-
-.active>a {
-  background-color: #f44336 !important;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4) !important;
+    padding: 10px;
 }
 
 .nav-item {
     display: inline-block;
     width: 100%;
     margin: auto;
-    padding: 20px 10px 20px 20px;
+    padding: 15px 10px 15px 15px;
+    border-radius: 5px;
     cursor: pointer;
-
     i {
         margin-right: 5px;
     }
-
     transition: all 150ms ease-in;;
 }
 
@@ -31,4 +26,13 @@
 
 p {
     margin: 0px !important;
+}
+
+.active {
+    background-color: #00518f !important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4) !important;
+    
+    p, i {
+        color: #eee;
+    }
 }

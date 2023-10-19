@@ -2,13 +2,15 @@
 
 <div class="sidenav-container"
      fxLayout="column"
-     fxLayoutAlign="center center">
+     fxLayoutAlign="center center"
+     fxLayoutGap="10px">
     <div *ngFor="let menuItem of menuItems" 
          class="nav-item"
          [routerLink]="[menuItem.path]"
          fxLayout="row"
          fxLayoutAlign="start center"
-         fxLayoutGap="15px"> 
+         fxLayoutGap="15px"
+         [ngClass]="{'active': isActive(menuItem.path)}"> 
             <i class="material-icons">{{menuItem.icon}}</i>
             <p>
                 {{menuItem.title}}
