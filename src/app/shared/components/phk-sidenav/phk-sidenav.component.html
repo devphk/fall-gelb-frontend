@@ -1,0 +1,17 @@
+
+
+<div class="sidenav-container"
+     fxLayout="column"
+     fxLayoutAlign="center center">
+    <div *ngFor="let menuItem of menuItems" 
+         class="nav-item"
+         [routerLink]="[menuItem.path]"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="15px"> 
+            <i class="material-icons">{{menuItem.icon}}</i>
+            <p>
+                {{menuItem.title}}
+            </p>
+    </div>
+</div>

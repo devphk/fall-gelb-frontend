@@ -3,11 +3,14 @@
 <mat-drawer-container [hasBackdrop]="true">
     <mat-drawer #drawer 
                 [mode]="'side'">
-                <div fxLayout="column">
+                <!-- <div fxLayout="column">
                     <button *ngFor="let link of links" 
                             mat-flat-button
                             [routerLink]="link.linkUrl">{{link.linkTitle}}</button>
-                </div>
+                </div> -->
+
+        <app-phk-sidenav></app-phk-sidenav>
+    
     </mat-drawer>
     <mat-drawer-content class="h-100vh">
         
