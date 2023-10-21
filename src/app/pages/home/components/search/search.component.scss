@@ -11,6 +11,16 @@
     input {
         cursor: pointer;
     }
+
+    .mat-mini-fab {
+        box-shadow: none;
+        background-color: transparent !important;
+        transition: all 0.2s;
+    }
+
+    .mat-mini-fab:hover {
+        background-color: rgba(232,234,237,.08) !important;
+    }
 }
 
 // Global styles
@@ -55,8 +65,6 @@ h1 {
     display: flex;
     align-items: center;
     box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
-    // ,
-        // -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
     border: 2px #949494 solid;
 }
 
