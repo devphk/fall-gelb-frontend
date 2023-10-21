@@ -10,13 +10,38 @@
 
         <button mat-mini-fab 
                 aria-label="Example icon button with a home icon"
-                [matMenuTriggerFor]="menu">
+                cdkOverlayOrigin 
+                #trigger="cdkOverlayOrigin"
+                (click)="isOpen = !isOpen">
             <mat-icon>apps</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>Item 1</button>
-            <button mat-menu-item>Item 2</button>
-        </mat-menu>
+        <ng-template cdkConnectedOverlay
+                     [cdkConnectedOverlayOrigin]="trigger"
+                     [cdkConnectedOverlayOpen]="isOpen">
+
+            <div class="apps-container"
+                 fxLayout="row wrap">
+
+                <div *ngFor="let app of appList; let i=index">
+    
+                    <div fxLayout="column"
+                         fxLayoutAlign="center center"
+                         class="app">
+    
+                         <img src="../../../../../assets/images/google.png" 
+                              width="35px">
+    
+                         <h4>
+                            Chrome
+                         </h4>
+    
+                    </div>
+    
+                </div>
+                
+            </div>
+
+        </ng-template>
 
         <ngx-avatar src="assets/images/jobs.png"
                     size="40"></ngx-avatar>

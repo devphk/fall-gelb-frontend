@@ -32,6 +32,21 @@
     background-position: center center;
 }
 
+.apps-container {
+    padding: 20px;
+    width: 320px;
+    background-color: #222222;
+    border: 8px solid #353535;
+    border-radius: 10px;
+
+    h4 {
+        color: #fafafa;
+        font-weight: 600;
+        margin: 0;
+    }
+
+}
+
 // Search header
 
 .search-header {
@@ -96,4 +111,16 @@ input {
 
 span {
     color: #fafafa;
+}
+
+// Apps design
+
+.app {
+    padding: 15px;
+    cursor: pointer;
+}
+
+.app:hover {
+    background-color: rgba(232,234,237,.08) !important;
+    border-radius: 15px;
 }

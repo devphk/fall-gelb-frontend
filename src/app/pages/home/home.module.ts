@@ -10,10 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { AppsComponent } from './components/apps/apps.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
-    SearchComponent
+    SearchComponent,
+    AppsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { MatMenuModule } from '@angular/material/menu';
     HttpClientModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    OverlayModule
   ]
 })
 export class HomeModule { }

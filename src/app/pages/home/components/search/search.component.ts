@@ -8,14 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   inputActive: boolean = false;
+  isOpen = false;
+
+  appList: any[] = [
+    {
+      appName: 'Truck',
+      appLogo: ''
+    },
+    {
+      appName: 'Customs',
+      appLogo: ''
+    },
+    {
+      appName: 'Express',
+      appLogo: ''
+    }
+  ]
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  // activateInput() {
-  //   this.activateInput = true;
-  // }
 
 }
