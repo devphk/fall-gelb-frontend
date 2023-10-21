@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AgentsComponent } from './views/agents/agents.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SettingsComponent
+    SettingsComponent,
+    AgentsComponent
   ],
   imports: [
     CommonModule,
