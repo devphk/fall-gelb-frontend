@@ -177,6 +177,14 @@ span {
 
 // Global Margins
 
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-35 {
+  margin-bottom: 35px !important;
+}
+
 .m-40 {
   margin: 40px;
 }
@@ -186,6 +194,10 @@ span {
 }
 
 // Padding
+
+.p-0 {
+  padding: 0px !important;
+}
 
 .p-10 {
   padding: 10px !important;
@@ -197,4 +209,10 @@ span {
 
 .p-50 {
   padding: 50px !important;
+}
+
+// Text styles
+
+.text-center {
+  text-align: center;
 }

@@ -1,0 +1,53 @@
+
+<div fxLayout="column"
+     fxLayoutAlign="space-between center"
+     class="search-container">
+
+    <div fxLayout="row"
+         fxLayoutAlign="end center"
+         fxLayoutGap="10px"
+         class="search-header">
+
+        <button mat-mini-fab 
+                aria-label="Example icon button with a home icon">
+            <mat-icon>apps</mat-icon>
+        </button>
+
+        <ngx-avatar src="assets/images/jobs.png"
+                    size="40"></ngx-avatar>
+
+    </div>
+
+    <div>
+
+        <h1 class="search-title text-center mb-35">
+            Phoinike
+        </h1>
+
+        <div class="search-input"
+             [ngClass]="{'active': inputActive,
+                         'p-0': inputActive}"
+             (click)="inputActive = true">
+            <div id="searchBox">
+                <mat-icon class="mat-25">search</mat-icon>
+                <input type="text" 
+                       placeholder="Busca en Phoinike" />
+                <mat-icon class="mat-18">mic</mat-icon>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center"
+         class="search-footer">
+
+        <span>
+            Copyright © 2023 Phoinike Logistics, C.A.
+        </span>
+
+        <span>
+            V0.0.0
+        </span>
+
+    </div>
+</div>

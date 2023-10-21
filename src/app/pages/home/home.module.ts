@@ -1,32 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { HomeService } from './home.service';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { SearchComponent } from './components';
 import { MatIconModule } from '@angular/material/icon';
+
+// Import your AvatarModule
+import { AvatarModule } from 'ngx-avatar';
+import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PhkSidenavModule } from 'src/app/shared/components/phk-sidenav/phk-sidenav.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    SearchComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatToolbarModule,
     MatIconModule,
+    AvatarModule,
+    HttpClientModule,
     FlexLayoutModule,
-    PhkSidenavModule
-  ],
-  providers: [
-    HomeService
+    MatButtonModule
   ]
 })
 export class HomeModule { }

@@ -1,0 +1,91 @@
+
+// Root styles
+
+:host ::ng-deep {
+    .mat-icon {
+        color: #949494;
+    }
+
+    .mat-icon,
+    .search-input,
+    input {
+        cursor: pointer;
+    }
+}
+
+// Global styles
+
+.search-container {
+    height: 100vh;
+    background-color: #212226;
+    background-size: cover;
+    background-position: center center;
+}
+
+// Search header
+
+.search-header {
+    height: 80px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+// Search content
+
+.search-title {
+    font-weight: bold;
+    font-size: 5em;
+}
+
+// Search input styles
+
+h1 {
+    color: #fafafa;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchBox {
+    border-radius: 55px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
+    // ,
+        // -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    border: 2px #949494 solid;
+}
+
+input {
+    font-size: 15px;
+    width: 0px;
+    border: 0;
+    background: transparent;
+    outline: none;
+    transition: 1s;
+}
+
+.active input {
+    width: 350px;
+    padding: 0px 20px;
+}
+
+.active .mic-icon {
+    width: 30px;
+}
+
+// Footer styles
+
+.search-footer {
+    height: 55px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+span {
+    color: #fafafa;
+}

@@ -1,1 +1,0 @@
-export * from './terrestrials.component';
