@@ -1,27 +1,17 @@
-<div class="p-20">
-  Componente Date Picker de muestra, <strong>OJO:</strong> Los componentes reusables input, select,
-  text-area o componentes que usen formControlName deben tener asociado un
-  formControlName, sino fallarán
 
-  <form [formGroup]="form">
-    <app-phk-date-picker formControlName="control"></app-phk-date-picker>
-  </form>
+<button (click)="showItems()">
+  itemsSelected
+</button>
 
-  Ejemplo de mostrar dialog
-  <button (click)="showModal()" mat-raised-button>
-    Mostrar Modal
-  </button>
-</div>
+<button (click)="addItem()">
+  add
+</button>
 
-<!-- 
-  <button (click)="showItems()">
-    show items 
-  </button>
-  
-  <button (click)="deleteItem()">
-    delete item
-  </button> -->
-  
+<button (click)="deleteItem()">
+  delete
+</button>
+
+
 <div class="p-50">
   <h1>
     Tabla phoinike

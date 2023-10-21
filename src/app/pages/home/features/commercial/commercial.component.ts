@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { defaultTableColumnsTags, defaultTableColumnsToDisplay, defaultTableData } from 'src/app/shared/models/table';
 
 @Component({
   selector: 'app-commercial',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./commercial.component.scss']
 })
 export class CommercialComponent implements OnInit {
+
+  tableColumnsToDisplay: string[] = defaultTableColumnsToDisplay;
+  tableColumnsTags: string[] = defaultTableColumnsTags;
+  tableData: any[] = defaultTableData;
+  itemsSelected: any[] = [];
 
   constructor() { }
 

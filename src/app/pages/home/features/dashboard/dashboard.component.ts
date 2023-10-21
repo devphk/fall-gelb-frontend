@@ -4,6 +4,7 @@ import { ModalService } from 'src/app/core/services';
 import { PhkInputComponent } from 'src/app/shared/components/phk-input/phk-input.component';
 import { TestComponent } from 'src/app/shared/components/test/test.component';
 import { NewCustomerComponent } from '../entities/components/new-customer/new-customer.component';
+import { defaultTableColumnsTags, defaultTableColumnsToDisplay, defaultTableData } from 'src/app/shared/models/table';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,41 +17,9 @@ export class DashboardComponent implements OnInit {
     control: this.fb.control("")
   });
 
-  tableColumnsToDisplay: string[] = [
-    "Usuario",
-    "Rol",
-    "Correo",
-    "Teléfono"
-  ];
-
-  tableColumnsTags: string[] = [
-    "userName",
-    "role",
-    "email",
-    "phone"
-  ]
-
-  tableData: any[] = [
-    {
-      userName: "Agreda",
-      role: "Administrador",
-      email: "jagreda@gmail.com",
-      phone: "04127527692"
-    },
-    {
-      userName: "Gabriel",
-      role: "Administrador",
-      email: "gdavila@gmail.com",
-      phone: "04127527692"
-    },
-    {
-      userName: "Gianfranco",
-      role: "Administrador",
-      email: "abinassar@gmail.com",
-      phone: "04127527692"
-    }
-  ];
-
+  tableColumnsToDisplay: string[] = defaultTableColumnsToDisplay;
+  tableColumnsTags: string[] = defaultTableColumnsTags;
+  tableData: any[] = defaultTableData;
   itemsSelected: any[] = [];
 
   constructor(private fb: FormBuilder,
@@ -66,6 +35,16 @@ export class DashboardComponent implements OnInit {
   showForm() {
     console.log("this.form: ", this.form)
     console.log("value: ", this.form.get('control')!.value)
+  }
+
+  addItem() {
+    let item = {
+      userName: "Parra",
+      role: "Administrador",
+      email: "jparra@gmail.com",
+      phone: "04127527692"
+    }
+    this.tableData.push();
   }
 
   deleteItem() {
