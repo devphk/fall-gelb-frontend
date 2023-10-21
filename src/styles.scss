@@ -123,14 +123,6 @@ span {
   font-family: 'Raleway', sans-serif !important;
 }
 
-.fw-600 {
-  font-weight: 600 !important;
-}
-
-.fw-800 {
-  font-weight: 800 !important;
-}
-
 :root {
   --primary-color: #ff0000; // Define el color rojo como el color primario
 }
@@ -165,6 +157,14 @@ span {
   font-size: 20px !important;
 }
 
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
 // Line-height styles
 
 .lh-1-2 {
@@ -179,6 +179,10 @@ span {
 
 .m-40 {
   margin: 40px;
+}
+
+.mt-m20 {
+  margin-top: -20px !important;
 }
 
 // Padding

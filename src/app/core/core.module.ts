@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalService, ToastService } from './services';
+import { DialogService, ToastService } from './services';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
@@ -12,7 +12,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
   ],
   providers: [
-    ModalService,
+    DialogService,
     ToastService,
     MatDialog
   ]

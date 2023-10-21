@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from '@core/services';
 import { defaultTableColumnsToDisplay } from '@shared/models/table';
+import { NewProviderComponent } from '../components';
 
 @Component({
   selector: 'app-providers',
@@ -38,12 +40,23 @@ export class ProvidersComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.tableData.push(this.tableData[0]);
     this.tableData.push(this.tableData[0]);
     this.tableData.push(this.tableData[0]);
+  }
+
+  newProvider() {
+    this.dialogService
+        .openDialog(NewProviderComponent,
+                    "Nuevo Proveedor",
+                    "800px",
+                    "460px").afterClosed()
+                            .subscribe((data) => {
+                              console.log("Data ", data)
+                            });
   }
 
 }

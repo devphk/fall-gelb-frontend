@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     SessionGuard

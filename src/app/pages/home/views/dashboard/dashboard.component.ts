@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ModalService } from 'src/app/core/services';
-import { PhkInputComponent } from 'src/app/shared/components/phk-input/phk-input.component';
 import { defaultTableColumnsTags, defaultTableColumnsToDisplay, defaultTableData } from 'src/app/shared/models/table';
 
 @Component({
@@ -20,8 +18,7 @@ export class DashboardComponent implements OnInit {
   tableData: any[] = defaultTableData;
   itemsSelected: any[] = [];
 
-  constructor(private fb: FormBuilder,
-              private modalService: ModalService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }

@@ -15,6 +15,11 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntitiesComponent } from './entities.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NewProviderComponent } from './views/components/new-provider/new-provider.component';
+import { PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
+import { MatOptionModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TerrestrialsComponent,
     DriversComponent,
     EntitiesComponent,
-    ProvidersComponent
+    ProvidersComponent,
+    NewProviderComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +42,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatTooltipModule
+    MatTooltipModule,
+    PhkInputModule,
+    PhkSelectModule,
+    MatOptionModule,
+    PhkTextAreaModule,
+    PhkSlideToggleModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
   ]
 })
 export class EntitiesModule { }

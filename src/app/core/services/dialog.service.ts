@@ -9,7 +9,7 @@ import { PhkDialogComponent } from 'src/app/shared/components/phk-dialog/phk-dia
 @Injectable({
   providedIn: 'root',
 })
-export class ModalService {
+export class DialogService {
 
   constructor(private dialog: MatDialog) {}
 
