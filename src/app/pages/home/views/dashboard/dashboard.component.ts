@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalService } from 'src/app/core/services';
 import { PhkInputComponent } from 'src/app/shared/components/phk-input/phk-input.component';
-import { TestComponent } from 'src/app/shared/components/test/test.component';
-import { NewCustomerComponent } from '../entities/components/new-customer/new-customer.component';
 import { defaultTableColumnsTags, defaultTableColumnsToDisplay, defaultTableData } from 'src/app/shared/models/table';
 
 @Component({
@@ -54,16 +52,16 @@ export class DashboardComponent implements OnInit {
 
   showModal() {
 
-    const dialogRef = this.modalService.openDialog(
-      NewCustomerComponent,
-      'Título del Diálogo',
-      '800px',
-      '300px'
-    );
+    // const dialogRef = this.modalService.openDialog(
+    //   NewCustomerComponent,
+    //   'Título del Diálogo',
+    //   '800px',
+    //   '300px'
+    // );
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo ha sido cerrado');
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('El diálogo ha sido cerrado');
+    // });
 
   }
 

@@ -7,12 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
-import { TestComponent } from './shared/components/test/test.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,11 @@
     "outDir": "./out-tsc/spec",
     "types": [
       "jasmine"
-    ]
+    ],
+    "paths": {
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"]
+    }
   },
   "files": [
     "src/test.ts",
@@ -14,9 +18,5 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ],
-  "paths": {
-    "@shared/*": ["src/app/shared/*"],
-    "@core/*": ["src/app/core/*"]
-  }
+  ]
 }

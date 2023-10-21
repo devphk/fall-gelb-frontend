@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
@@ -10,35 +10,35 @@ const routes: Routes = [
         children: [
             {
                 path: 'dashboard', 
-                loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule) 
+                loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule) 
             },
             {
                 path: 'entities', 
-                loadChildren: () => import('./features/entities/entities.module').then(m => m.EntitiesModule) 
+                loadChildren: () => import('./views/entities/entities.module').then(m => m.EntitiesModule) 
             },
             {
                 path: 'operations', 
-                loadChildren: () => import('./features/operations/operations.module').then(m => m.OperationsModule) 
+                loadChildren: () => import('./views/operations/operations.module').then(m => m.OperationsModule) 
             },
             {
                 path: 'statistics', 
-                loadChildren: () => import('./features/statistics/statistics.module').then(m => m.StatisticsModule) 
+                loadChildren: () => import('./views/statistics/statistics.module').then(m => m.StatisticsModule) 
             },
             {
                 path: 'administration', 
-                loadChildren: () => import('./features/administration/administration.module').then(m => m.AdministrationModule) 
+                loadChildren: () => import('./views/administration/administration.module').then(m => m.AdministrationModule) 
             },
             {
                 path: 'settings', 
-                loadChildren: () => import('./features/settings/settings.module').then(m => m.SettingsModule) 
+                loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule) 
             },
             {
                 path: 'commercial', 
-                loadChildren: () => import('./features/commercial/commercial.module').then(m => m.CommercialModule) 
+                loadChildren: () => import('./views/commercial/commercial.module').then(m => m.CommercialModule) 
             },
             {
                 path: 'comptroller', 
-                loadChildren: () => import('./features/comptroller/comptroller.module').then(m => m.ComptrollerModule) 
+                loadChildren: () => import('./views/comptroller/comptroller.module').then(m => m.ComptrollerModule) 
             },
             {
                 path: '',
