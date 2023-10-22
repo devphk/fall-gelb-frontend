@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppsComponent } from './components/apps/apps.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
+import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-popup/phk-user-account-popup.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-lis
     MatButtonModule,
     MatMenuModule,
     OverlayModule,
-    PhkAppsListModule
+    PhkAppsListModule,
+    PhkUserAccountPopupModule
   ]
 })
 export class HomeModule { }

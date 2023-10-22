@@ -10,7 +10,8 @@ import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
 export class SearchComponent implements OnInit {
 
   inputActive: boolean = false;
-  isOpen = false;
+  appsOverlayOpened = false;
+  userAccountOverlayOpened = false;
 
   appsList: any[] = [
     {

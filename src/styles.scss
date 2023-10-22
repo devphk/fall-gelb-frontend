@@ -143,6 +143,12 @@ span {
   width: 50% !important;
 }
 
+// Pointer styles
+
+.pointer {
+  cursor: pointer !important;
+}
+
 // Global font-sizes
 
 .fs-40 {
@@ -176,6 +182,10 @@ span {
 }
 
 // Global Margins
+
+.m-0 {
+  margin: 0px !important;
+}
 
 .mb-10 {
   margin-bottom: 10px !important;
@@ -215,4 +225,10 @@ span {
 
 .text-center {
   text-align: center;
+}
+
+// Color styles
+
+.white {
+  color: white;
 }
