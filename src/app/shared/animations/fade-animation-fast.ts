@@ -6,14 +6,14 @@ import {
     trigger,
 } from '@angular/animations';
 
-export const fadeAnimation = [
-    trigger('fadeIn', [
+export const fadeFastAnimation = [
+    trigger('fadeInFast', [
         state(
             'void',
             style({
                 opacity: 0,
             })
         ),
-        transition('void <=> *', animate(500)),
+        transition('void <=> *', animate(100)),
     ])
 ];

@@ -20,7 +20,8 @@
                      [cdkConnectedOverlayOpen]="isOpen">
 
             <div class="apps-container"
-                 fxLayout="row wrap">
+                 fxLayout="row wrap"
+                 [@fadeInFast]>
 
                 <div *ngFor="let app of appList; let i=index">
     
