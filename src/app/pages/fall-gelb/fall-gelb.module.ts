@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { PhkSidenavModule } from 'src/app/shared/components/phk-sidenav/phk-sidenav.module';
 import { FallGelbComponent } from './fall-gelb.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FallGelbComponent } from './fall-gelb.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    PhkSidenavModule
+    PhkSidenavModule,
+    FlexLayoutModule
   ],
   providers: [
     FallGelbService

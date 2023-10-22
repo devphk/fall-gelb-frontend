@@ -50,14 +50,29 @@
                         ¿Haz olvidado tu contraseña?
                     </span>
                 </button>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center"
+                     class="w-100">
+
+                     <button (click)="submit()"
+                             *ngIf="!openSpinner"
+                             color="primary"
+                             class="fs-08"
+                             mat-button>
+                         Crear cuenta
+                     </button>
+
+                     <button (click)="submit()"
+                             *ngIf="!openSpinner"
+                             color="primary"
+                             class="fs-08"
+                             mat-raised-button>
+                         Entrar
+                     </button>
+
+                </div>
         
-                <button (click)="submit()"
-                        *ngIf="!openSpinner"
-                        class="w-100"
-                        color="primary"
-                        mat-raised-button>
-                    Entrar
-                </button>
         
                 <span class="w-100" 
                         fxLayoutAlign="center center">

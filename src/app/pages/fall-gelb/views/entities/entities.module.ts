@@ -19,6 +19,7 @@ import { PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModul
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     PhkTextAreaModule,
     PhkSlideToggleModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FlexLayoutModule
   ]
 })
 export class EntitiesModule { }
