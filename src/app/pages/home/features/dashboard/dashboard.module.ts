@@ -7,25 +7,25 @@ import { PhkDatePickerModule } from 'src/app/shared/components/phk-date-picker/p
 import { ModalService } from 'src/app/core/services';
 import { MatButtonModule } from '@angular/material/button';
 import { PhkTableModule } from 'src/app/shared/components/phk-table/phk-table.module';
+import { PhkSearcherResultAuxiliaryModule } from 'src/app/shared/components/phk-searcher-result-auxiliary/phk-searcher-result-auxiliary.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-  }
+    component: DashboardComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     PhkDatePickerModule,
     MatButtonModule,
-    PhkTableModule
-  ]
+    PhkTableModule,
+    PhkSearcherResultAuxiliaryModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

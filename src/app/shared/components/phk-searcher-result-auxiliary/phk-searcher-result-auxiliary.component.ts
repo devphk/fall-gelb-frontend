@@ -1,0 +1,15 @@
+import { Component, Input, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-phk-searcher-result-auxiliary',
+  templateUrl: './phk-searcher-result-auxiliary.component.html',
+  styleUrls: ['./phk-searcher-result-auxiliary.component.scss'],
+})
+export class PhkSearcherResultAuxiliaryComponent implements OnInit {
+  constructor() {}
+  @Input() InfoResult: any[] = [];
+
+  ngOnInit(): void {
+    this.InfoResult.map;
+  }
+}

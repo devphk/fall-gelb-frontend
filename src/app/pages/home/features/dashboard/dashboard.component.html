@@ -1,17 +1,15 @@
-<div class="p-20">
-  Componente Date Picker de muestra, <strong>OJO:</strong> Los componentes reusables input, select,
-  text-area o componentes que usen formControlName deben tener asociado un
-  formControlName, sino fallarán
+<!-- <div class="p-20">
+  Componente Date Picker de muestra, <strong>OJO:</strong> Los componentes
+  reusables input, select, text-area o componentes que usen formControlName
+  deben tener asociado un formControlName, sino fallarán
 
   <form [formGroup]="form">
     <app-phk-date-picker formControlName="control"></app-phk-date-picker>
   </form>
 
   Ejemplo de mostrar dialog
-  <button (click)="showModal()" mat-raised-button>
-    Mostrar Modal
-  </button>
-</div>
+  <button (click)="showModal()" mat-raised-button>Mostrar Modal</button>
+</div> -->
 
 <!-- 
   <button (click)="showItems()">
@@ -21,15 +19,25 @@
   <button (click)="deleteItem()">
     delete item
   </button> -->
-  
+<!-- 
 <div class="p-50">
-  <h1>
-    Tabla phoinike
-  </h1>
+  <h1>Tabla phoinike</h1>
 
-  <app-phk-table [columnsTags]="tableColumnsTags"
-                 [columnsToDisplay]="tableColumnsToDisplay"
-                 [data]="tableData"
-                 [(itemsSelected)]="itemsSelected"></app-phk-table>
+  <app-phk-table
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+    [(itemsSelected)]="itemsSelected"
+  ></app-phk-table>
+</div> -->
 
-</div>
+<app-phk-searcher-result-auxiliary
+  [InfoResult]="[
+    {
+      text: 'One',
+      color: 'lightblue',
+      img: 'https://material.angular.io/assets/img/examples/shiba2.jpg'
+    }
+  ]"
+>
+</app-phk-searcher-result-auxiliary>

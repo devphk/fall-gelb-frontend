@@ -1,3 +1,4 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,20 +11,16 @@ import { CoreModule } from './core/core.module';
 import { TestComponent } from './shared/components/test/test.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TestComponent
-  ],
+  declarations: [AppComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
-    CoreModule
+    CoreModule,
+    MatGridListModule,
   ],
-  providers: [
-    SessionGuard
-  ],
-  bootstrap: [AppComponent]
+  providers: [SessionGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
