@@ -19,28 +19,7 @@
                      [cdkConnectedOverlayOrigin]="trigger"
                      [cdkConnectedOverlayOpen]="isOpen">
 
-            <div class="apps-container"
-                 fxLayout="row wrap"
-                 [@fadeInFast]>
-
-                <div *ngFor="let app of appList; let i=index">
-    
-                    <div fxLayout="column"
-                         fxLayoutAlign="center center"
-                         class="app">
-    
-                         <img src="../../../../../assets/images/google.png" 
-                              width="35px">
-    
-                         <h4>
-                            Chrome
-                         </h4>
-    
-                    </div>
-    
-                </div>
-                
-            </div>
+            <app-phk-apps-list [appsList]="appsList"></app-phk-apps-list>
 
         </ng-template>
 

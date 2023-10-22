@@ -1,3 +1,4 @@
+export * from './phk-apps-list';
 export * from './phk-date-picker';
 export * from './phk-dialog';
 export * from './phk-input';

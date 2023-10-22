@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { AppsComponent } from './components/apps/apps.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     FlexLayoutModule,
     MatButtonModule,
     MatMenuModule,
-    OverlayModule
+    OverlayModule,
+    PhkAppsListModule
   ]
 })
 export class HomeModule { }

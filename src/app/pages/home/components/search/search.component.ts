@@ -12,20 +12,20 @@ export class SearchComponent implements OnInit {
   inputActive: boolean = false;
   isOpen = false;
 
-  appList: any[] = [
+  appsList: any[] = [
     {
       appName: 'Truck',
-      appLogo: ''
+      appLogo: '../../../../../assets/images/google.png',
     },
     {
       appName: 'Customs',
-      appLogo: ''
+      appLogo: '../../../../../assets/images/google.png'
     },
     {
       appName: 'Express',
-      appLogo: ''
+      appLogo: '../../../../../assets/images/google.png'
     }
-  ]
+  ];
 
   constructor() { }
 
