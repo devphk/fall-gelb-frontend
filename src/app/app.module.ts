@@ -7,32 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
-import { TestComponent } from './shared/components/test/test.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatOptionModule } from '@angular/material/core';
-import { PhkInputModule } from './shared/components/phk-input/phk-input.module';
-import { PhkSelectModule } from './shared/components/phk-select/phk-select.module';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     CoreModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
     ReactiveFormsModule,
-    MatOptionModule,
-    PhkInputModule,
-    PhkSelectModule,
+    MatSelectModule,
   ],
   providers: [SessionGuard],
   bootstrap: [AppComponent],
