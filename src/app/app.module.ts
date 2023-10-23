@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
