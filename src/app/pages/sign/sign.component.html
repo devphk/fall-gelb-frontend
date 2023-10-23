@@ -11,30 +11,19 @@
     </div>
 
     <div fxLayout="row"
-         fxLayoutAlign="space-evenly center"
+         fxLayoutAlign="center center"
          fxLayoutGap="40px"
          fxLayout.lt-md="column"
          class="w-100"
          [@fadeIn]>
-
-        <div fxFlex="calc(40%)"
-             fxLayout="column"
-             fxLayoutAlign="center center"
-             fxHide.lt-md="true">
-             <h2 class="w-50 fs-40">
-                 Bienvenido
-             </h2>
-             <p class="w-50 fs-20 lh-1-5">
-                Phoinike te moviliza. Hacemos el trabajo pesado!
-             </p>
-        </div>
 
         <div fxFlex="calc(60% - 40px)"
              fxLayout="column"
              fxLayoutAlign="center center">
 
             <mat-card class="mat-elevation-z0">
-                <h1>Entrar</h1>
+                <h4 class="text-center m-0">Inicia sesión</h4>
+                <h5 class="text-center m-10">Utiliza tu cuenta Phoinike</h5>
         
                 <form [formGroup]="signInFormGroup" 
                         fxLayout="column"
@@ -55,14 +44,35 @@
                     Ususario o contraseña incorrectos
                     </mat-error>
                 </app-phk-input>
-        
-                <button (click)="submit()"
-                        *ngIf="!openSpinner"
-                        class="w-100"
-                        color="primary"
-                        mat-raised-button>
-                    Entrar
+
+                <button class="forgot-password">
+                    <span>
+                        ¿Haz olvidado tu contraseña?
+                    </span>
                 </button>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center"
+                     class="w-100">
+
+                     <button (click)="submit()"
+                             *ngIf="!openSpinner"
+                             color="primary"
+                             class="fs-08"
+                             mat-button>
+                         Crear cuenta
+                     </button>
+
+                     <button (click)="submit()"
+                             *ngIf="!openSpinner"
+                             color="primary"
+                             class="fs-08"
+                             mat-raised-button>
+                         Entrar
+                     </button>
+
+                </div>
+        
         
                 <span class="w-100" 
                         fxLayoutAlign="center center">
