@@ -1,4 +1,5 @@
 export * from './fab-button-animation';
+export * from './fade-animation-fast';
 export * from './fade-animation';
 export * from './fade-splashscreen.animation';
 export * from './indicator-rotate-sidebar-animation';
