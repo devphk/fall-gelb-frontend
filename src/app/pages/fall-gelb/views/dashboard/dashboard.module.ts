@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhkDatePickerModule } from 'src/app/shared/components/phk-date-picker/phk-date-picker.module';
 import { MatButtonModule } from '@angular/material/button';
 import { PhkTableModule } from 'src/app/shared/components/phk-table/phk-table.module';
+import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-search-result.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     PhkDatePickerModule,
     MatButtonModule,
-    PhkTableModule
+    PhkTableModule,
+    PhkSearchResultModule
   ]
 })
 export class DashboardModule { }
