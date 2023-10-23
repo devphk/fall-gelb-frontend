@@ -7,22 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
-import { TestComponent } from './shared/components/test/test.component';
-import { PhkDatePickerModule } from './shared/components/phk-date-picker/phk-date-picker.module';
-import { PhkSelectModule } from './shared/components/phk-select/phk-select.module';
-import { PhkInputModule } from './shared/components/phk-input/phk-input.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     CoreModule,
-    PhkDatePickerModule,
-    PhkSelectModule,
-    PhkInputModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [SessionGuard],
   bootstrap: [AppComponent],
