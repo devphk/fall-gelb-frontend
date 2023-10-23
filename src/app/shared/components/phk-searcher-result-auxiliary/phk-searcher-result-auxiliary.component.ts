@@ -7,9 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PhkSearcherResultAuxiliaryComponent implements OnInit {
   constructor() {}
-  @Input() InfoResult: any[] = [];
+  @Input() tittle: string = '';
+  @Input() subTittle: string = '';
+  @Input() img: string = '';
+  @Input() extraInfo: string = '';
 
-  ngOnInit(): void {
-    this.InfoResult.map;
-  }
+  ngOnInit(): void {}
 }

@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [PhkSearcherResultAuxiliaryComponent],
@@ -14,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCheckboxModule,
     NgxSkeletonLoaderModule,
     MatGridListModule,
+    MatCardModule,
   ],
   exports: [PhkSearcherResultAuxiliaryComponent],
 })

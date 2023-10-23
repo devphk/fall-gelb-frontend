@@ -8,73 +8,67 @@ import { NewCustomerComponent } from '../entities/components/new-customer/new-cu
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-
   form: FormGroup = this.fb.group({
-    control: this.fb.control("")
+    control: this.fb.control(''),
   });
 
-  tableColumnsToDisplay: string[] = [
-    "Usuario",
-    "Rol",
-    "Correo",
-    "Teléfono"
-  ];
+  tableColumnsToDisplay: string[] = ['Usuario', 'Rol', 'Correo', 'Teléfono'];
 
-  tableColumnsTags: string[] = [
-    "userName",
-    "role",
-    "email",
-    "phone"
-  ]
+  tableColumnsTags: string[] = ['userName', 'role', 'email', 'phone'];
 
   tableData: any[] = [
     {
-      userName: "Agreda",
-      role: "Administrador",
-      email: "jagreda@gmail.com",
-      phone: "04127527692"
+      userName: 'Agreda',
+      role: 'Administrador',
+      email: 'jagreda@gmail.com',
+      phone: '04127527692',
     },
     {
-      userName: "Gabriel",
-      role: "Administrador",
-      email: "gdavila@gmail.com",
-      phone: "04127527692"
+      userName: 'Gabriel',
+      role: 'Administrador',
+      email: 'gdavila@gmail.com',
+      phone: '04127527692',
     },
     {
-      userName: "Gianfranco",
-      role: "Administrador",
-      email: "abinassar@gmail.com",
-      phone: "04127527692"
-    }
+      userName: 'Gianfranco',
+      role: 'Administrador',
+      email: 'abinassar@gmail.com',
+      phone: '04127527692',
+    },
   ];
 
   itemsSelected: any[] = [];
 
-  constructor(private fb: FormBuilder,
-              private modalService: ModalService) { }
+  infoAuxi: any = {
+    subTittle: 'One',
+    img: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+    extraInfo:
+      '    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat obcaecati quibusdam dolore magni placeat eum eligendi deserunt? A delectus voluptatem ipsum nihil ut repellendus aliquid, aut temporibus sed ipsam quidem?',
+    tittle: 'inu',
+  };
 
-  ngOnInit(): void {
-  }
+  constructor(private fb: FormBuilder, private modalService: ModalService) {}
+
+  ngOnInit(): void {}
 
   showItems() {
-    console.log("items ", this.itemsSelected)
+    console.log('items ', this.itemsSelected);
   }
 
   showForm() {
-    console.log("this.form: ", this.form)
-    console.log("value: ", this.form.get('control')!.value)
+    console.log('this.form: ', this.form);
+    console.log('value: ', this.form.get('control')!.value);
   }
 
   deleteItem() {
     this.tableData.shift();
-    console.log("data ", this.tableData)
+    console.log('data ', this.tableData);
   }
 
   showModal() {
-
     const dialogRef = this.modalService.openDialog(
       NewCustomerComponent,
       'Título del Diálogo',
@@ -82,10 +76,8 @@ export class DashboardComponent implements OnInit {
       '300px'
     );
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('El diálogo ha sido cerrado');
     });
-
   }
-
 }
