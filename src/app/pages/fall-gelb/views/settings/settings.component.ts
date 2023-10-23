@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/core/services';
-
-import { NewContainerTypeComponent } from './components/new-container-type/new-container-type.component';
+import { DialogService } from 'src/app/core/services';
+import { NewContainerTypeComponent } from './views/components/new-container-type/new-container-type.component';
 
 @Component({
   selector: 'app-settings',
@@ -10,18 +9,18 @@ import { NewContainerTypeComponent } from './components/new-container-type/new-c
 })
 export class SettingsComponent implements OnInit {
 
-  constructor( private modalService:ModalService ) { }
+  constructor( private dialogService:DialogService ) { }
 
   ngOnInit(): void {
   }
 
   containerTypeModal() {
 
-    const dialogRef = this.modalService.openDialog(
+    const dialogRef = this.dialogService.openDialog(
       NewContainerTypeComponent,
       'Nuevo Tipo de Contenedor',
       '600px',
-      '300px'
+      '250px'
     );
 
     dialogRef.afterClosed().subscribe(result => {
