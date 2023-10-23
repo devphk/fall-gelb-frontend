@@ -19,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EntitiesRoutingModule } from '../entities/entities-routing.module';
+import { OperationsRoutingModule } from './operations-routing.module';
 
 const routes: Routes = [
   {
@@ -37,7 +37,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule,
-    EntitiesRoutingModule,
+    OperationsRoutingModule,
     PhkTableModule,
     PhkDatePickerModule,
     MatIconModule,

@@ -11,11 +11,19 @@ export class FormCertificationComponent implements OnInit {
 
   certificationForm: FormGroup = this.formBuild.group({
     client: this.formBuild.control(''),
-    record: this.formBuild.control(''),
-    purchaseOrder: this.formBuild.control(''),
-    advancePaymentDate: this.formBuild.control(''),
-    advancePayment: this.formBuild.control(''),
-    advancePaymentNumber: this.formBuild.control(''),
+    record_id: this.formBuild.control(''),
+    purchase_order: this.formBuild.control(''),
+    advance_payment_date: this.formBuild.control(''),
+    advance_payment: this.formBuild.control(''),
+    advance_payment_number: this.formBuild.control(''),
   });
+
+  recrodOptions: string[] = ['PHK-22-0203 - adua', 'PHK-22-176 - adua'];
+
+  clienteOptions: string[] = [
+    'CERVECERIA POLAR, C.A.',
+    'PEPSI-COLA VENEZUELA, C.A.',
+  ];
+
   ngOnInit(): void {}
 }
