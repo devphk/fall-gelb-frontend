@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewUnitsComponent } from './components/new-units/new-units.component';
-import { ModalService } from 'src/app/core/services';
+import { DialogService } from '@core/services';
+import { NewUnitsComponent } from 'src/app/pages/fall-gelb/views/settings/views/components/new-units/new-units.component';
 
 @Component({
   selector: 'app-settings',
@@ -9,12 +9,12 @@ import { ModalService } from 'src/app/core/services';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private modalService:ModalService) { }
+  constructor(private modalService:DialogService) { }
 
   ngOnInit(): void {
   }
 
-  showModal() {
+  showUnitsModal() {
 
     const dialogRef = this.modalService.openDialog(
       NewUnitsComponent,
