@@ -1,3 +1,4 @@
+import { MatGridListModule } from '@angular/material/grid-list';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,21 +12,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     CoreModule,
+    MatGridListModule,
     ReactiveFormsModule,
     MatSelectModule
   ],
-  providers: [
-    SessionGuard
-  ],
-  bootstrap: [AppComponent]
+  providers: [SessionGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
