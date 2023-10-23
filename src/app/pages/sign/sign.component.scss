@@ -1,16 +1,18 @@
 
-// Sign in styles
+// Root styles
+
+
+
+// Sign in content styles
 
 .sign-in {
 
   height: 100%;
-  background: url('../../../assets/images/white-simple-background.jpg');
-  background-size: cover;
-  background-position: center center;
 
   mat-card {
     padding: 15px !important;
-    width: 400px;
+    width: 300px;
+    border: 1px solid #dadce0;
 
     @media screen and (max-width: 667px) {
         width: 300px;
@@ -22,6 +24,31 @@
   }
 
 }
+
+.forgot-password {
+  border-radius: 4px;
+  color: rgb(26,115,232);
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  outline: 0;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: inherit;
+  text-align: left;
+  margin: -2px -3px;
+  padding: 2px 3px;
+  border: 0;
+  margin: -10px 0 10px 0;
+
+  span {
+    font-size: 0.8em;
+    font-weight: 700;
+  }
+
+}
+
 
 // Footer styles
 
