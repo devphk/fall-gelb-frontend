@@ -16,6 +16,11 @@ const routes: Routes = [
         path: 'home', 
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
         canActivate: [SessionGuard] 
+    },
+    { 
+        path: 'fall-gelb', 
+        loadChildren: () => import('./pages/fall-gelb/fall-gelb.module').then(m => m.FallGelbModule),
+        canActivate: [SessionGuard] 
     }
 ];
 

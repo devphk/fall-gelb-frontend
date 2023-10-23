@@ -1,0 +1,29 @@
+
+
+.apps-container {
+    padding: 20px;
+    width: 320px;
+    background-color: #222222;
+    border: 8px solid #353535;
+    border-radius: 10px;
+
+    h4 {
+        color: #fafafa;
+        font-weight: 600;
+        margin: 0;
+    }
+
+}
+
+// Apps design
+
+.app {
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 15px;
+}
+
+.app:hover {
+    background-color: rgba(232,234,237,.08) !important;
+}
