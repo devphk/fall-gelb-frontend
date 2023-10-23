@@ -4,6 +4,7 @@ import { PhkTableComponent } from './phk-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     CommonModule,
     MatTableModule,
     MatCheckboxModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    MatPaginatorModule
   ],
   exports: [
     PhkTableComponent

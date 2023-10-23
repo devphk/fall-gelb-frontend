@@ -123,14 +123,6 @@ span {
   font-family: 'Raleway', sans-serif !important;
 }
 
-.fw-600 {
-  font-weight: 600 !important;
-}
-
-.fw-800 {
-  font-weight: 800 !important;
-}
-
 :root {
   --primary-color: #ff0000; // Define el color rojo como el color primario
 }
@@ -151,6 +143,12 @@ span {
   width: 50% !important;
 }
 
+// Pointer styles
+
+.pointer {
+  cursor: pointer !important;
+}
+
 // Global font-sizes
 
 .fs-40 {
@@ -165,6 +163,18 @@ span {
   font-size: 20px !important;
 }
 
+.fs-08 {
+  font-size: 0.8em !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
 // Line-height styles
 
 .lh-1-2 {
@@ -177,11 +187,31 @@ span {
 
 // Global Margins
 
+.m-0 {
+  margin: 0px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-35 {
+  margin-bottom: 35px !important;
+}
+
 .m-40 {
   margin: 40px;
 }
 
+.mt-m20 {
+  margin-top: -20px !important;
+}
+
 // Padding
+
+.p-0 {
+  padding: 0px !important;
+}
 
 .p-10 {
   padding: 10px !important;
@@ -193,4 +223,16 @@ span {
 
 .p-50 {
   padding: 50px !important;
+}
+
+// Text styles
+
+.text-center {
+  text-align: center;
+}
+
+// Color styles
+
+.white {
+  color: white;
 }

@@ -10,16 +10,15 @@ import { Router } from '@angular/router';
 export class PhkSidenavComponent implements OnInit {
 
   @Input() menuItems: any[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/entities', title: 'Entidades',  icon:'person', class: '' },
-    { path: '/operations', title: 'Operaciones',  icon:'content_paste', class: '' },
-    { path: '/statistics', title: 'Estadíticas',  icon:'library_books', class: '' },
-    { path: '/administration', title: 'Administración',  icon:'bubble_chart', class: '' },
-    { path: '/settings', title: 'Configuración',  icon:'location_on', class: '' },
-    { path: '/commercial', title: 'Comercial',  icon:'notifications', class: '' },
-    { path: '/comptroller', title: 'Contraloría',  icon:'notifications', class: '' } 
+    { path: '/dashboard', title: 'Inicio',  icon: 'dashboard' },
+    { path: '/entities', title: 'Entidades',  icon:'person' },
+    { path: '/operations', title: 'Operaciones',  icon:'content_paste' },
+    { path: '/statistics', title: 'Estadíticas',  icon:'library_books' },
+    { path: '/administration', title: 'Administración',  icon:'bubble_chart' },
+    { path: '/settings', title: 'Configuración',  icon:'location_on' },
+    { path: '/commercial', title: 'Comercial',  icon:'notifications' },
+    { path: '/comptroller', title: 'Contraloría',  icon:'notifications' } 
   ];
-
 
   location: Location;
   mobile_menu_visible: any = 0;
