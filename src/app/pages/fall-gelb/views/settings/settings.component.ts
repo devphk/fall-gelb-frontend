@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/core/services';
-import { NewWarehouseComponent } from './components/new-warehouse/new-warehouse.component';
+import { DialogService } from 'src/app/core/services';
+import { NewWarehouseComponent } from './views/agents/components/new-warehouse/new-warehouse.component';
 
 @Component({
   selector: 'app-settings',
@@ -9,18 +9,18 @@ import { NewWarehouseComponent } from './components/new-warehouse/new-warehouse.
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private modalService:ModalService) { }
+  constructor(private dialogService:DialogService) { }
 
   ngOnInit(): void {
   }
 
   warehouseModal() {
 
-    const dialogRef = this.modalService.openDialog(
+    const dialogRef = this.dialogService.openDialog(
       NewWarehouseComponent,
       'Nuevo Almacén',
       '800px',
-      '400px'
+      '250px'
     );
 
     dialogRef.afterClosed().subscribe(result => {
