@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'src/app/core/services';
-import { NewWarehouseComponent } from './views/agents/components/new-warehouse/new-warehouse.component';
+import { NewWarehouseComponent } from './views/components/new-warehouse/new-warehouse.component';
 
 @Component({
   selector: 'app-settings',
@@ -13,21 +13,5 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  warehouseModal() {
-
-    const dialogRef = this.dialogService.openDialog(
-      NewWarehouseComponent,
-      'Nuevo Almacén',
-      '800px',
-      '250px'
-    );
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo almacén ha sido cerrado');
-    });
-
-  }
-
 
 }
