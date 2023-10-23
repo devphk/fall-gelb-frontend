@@ -15,5 +15,5 @@ export const fadeAnimation = [
             })
         ),
         transition('void <=> *', animate(500)),
-    ]),
+    ])
 ];
