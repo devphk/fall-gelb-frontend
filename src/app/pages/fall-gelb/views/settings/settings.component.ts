@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from 'src/app/core/services';
-import { NewCustomsComponent } from './components/new-customs/new-customs.component';
+import { DialogService } from 'src/app/core/services';
+import { NewCustomsComponent } from './views/components/new-customs/new-customs.component';
 
 @Component({
   selector: 'app-settings',
@@ -9,18 +9,18 @@ import { NewCustomsComponent } from './components/new-customs/new-customs.compon
 })
 export class SettingsComponent implements OnInit {
 
-  constructor( private modalService:ModalService ) { }
+  constructor( private dialogService:DialogService ) { }
 
   ngOnInit(): void {
   }
 
   customsModal() {
 
-    const dialogRef = this.modalService.openDialog(
+    const dialogRef = this.dialogService.openDialog(
       NewCustomsComponent,
       'Nueva Aduana',
       '800px',
-      '400px'
+      '300px'
     );
 
     dialogRef.afterClosed().subscribe(result => {
