@@ -1,32 +1,55 @@
-<mat-card>
-  <mat-card-content>
-    <form [formGroup]="bankAccountForm">
-      <app-phk-select label="Banco" formControlName="bank">
-        <mat-option>Option 1</mat-option>
-        <mat-option>Option 2</mat-option>
+<div>
+  <form [formGroup]="bankAccountForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-select formControlName="bank" [label]="'Banco'">
+        <mat-option *ngFor="let bankOption of bankOptions" [value]="bankOption">
+          {{ bankOption }}
+        </mat-option>
       </app-phk-select>
+
       <app-phk-input
-        label="Número de cuenta"
         formControlName="numberAccount"
+        [label]="'Número de cuenta'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
         [required]="true"
       ></app-phk-input>
-      <app-phk-select label="Moneda" formControlName="currency">
-        <mat-option>Option 1</mat-option>
-        <mat-option>Option 2</mat-option>
+
+      <app-phk-select formControlName="currency" [label]="'Moneda'">
+        <mat-option
+          *ngFor="let currencyOption of currencyOptions"
+          [value]="currencyOption"
+        >
+          {{ currencyOption }}
+        </mat-option>
       </app-phk-select>
+
       <app-phk-input
-        label="Prioridad"
         formControlName="priority"
+        [label]="'Prioridad'"
+        fxFlex.gt-md="calc(66% - 20px)"
+        fxFlex.lt-md="calc(100%)"
         [required]="true"
       ></app-phk-input>
+
       <app-phk-slide-toggle
-        label="¿Quiere que sea visible?"
+        (click)="changeisVisible()"
         formControlName="isVisible"
-      >
-      </app-phk-slide-toggle>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Registrar</button>
-  </mat-card-actions>
-</mat-card>
+        [label]="'¿Quiere que sea visible?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+      ></app-phk-slide-toggle>
+
+      <div fxFlex="100">
+        <button class="w-100" mat-flat-button color="primary">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>

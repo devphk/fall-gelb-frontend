@@ -24,4 +24,6 @@ export class FormUserComponent implements OnInit {
     console.log('this.form: ', this.userForm);
     console.log('value: ', this.userForm.get('control')!.value);
   }
+
+  userRolOptions: string[] = ['Option 1', 'Option 2'];
 }

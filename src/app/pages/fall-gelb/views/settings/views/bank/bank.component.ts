@@ -27,7 +27,7 @@ export class BankComponent implements OnInit {
 
   newBank() {
     this.dialogService
-      .openDialog(FormBankComponent, 'Nuevo Proveedor', '800px', '460px')
+      .openDialog(FormBankComponent, 'Nuevo Banco', '800px', '460px')
       .afterClosed()
       .subscribe((data) => {
         console.log('Data ', data);

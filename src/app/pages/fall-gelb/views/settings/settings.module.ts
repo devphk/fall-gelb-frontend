@@ -2,7 +2,6 @@ import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AgentsComponent } from './views/agents/agents.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,20 +20,31 @@ import { BankComponent } from './views/bank/bank.component';
 import { BankAccountComponent } from './views/bank-account/bank-account.component';
 import { CurrencyComponent } from './views/currency/currency.component';
 import { UserComponent } from './views/user/user.component';
+import { SettingsRoutingModule } from './settings-routing.module';
+import { MatCardModule } from '@angular/material/card';
+import {
+  FormBankAccountComponent,
+  FormBankComponent,
+  FormCurrencyComponent,
+  FormUserComponent,
+} from './views/components';
 
 @NgModule({
   declarations: [
     SettingsComponent,
-    AgentsComponent,
     BankComponent,
     BankAccountComponent,
     CurrencyComponent,
     UserComponent,
+    FormBankComponent,
+    FormBankAccountComponent,
+    FormCurrencyComponent,
+    FormUserComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SettingsComponent,
+    SettingsRoutingModule,
     PhkTableModule,
     MatIconModule,
     MatButtonModule,
@@ -46,6 +56,7 @@ import { UserComponent } from './views/user/user.component';
     PhkSlideToggleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatCardModule,
     FlexLayoutModule,
   ],
 })

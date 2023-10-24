@@ -15,5 +15,20 @@ export class FormBankAccountComponent implements OnInit {
     priority: this.formBuild.control(''),
     isVisible: this.formBuild.control(''),
   });
+
+  isVisibleTrigger: boolean = true;
+  bankOptions: string[] = ['Option 1', 'Option 2'];
+  currencyOptions: string[] = ['Option 1', 'Option 2'];
+
   ngOnInit(): void {}
+
+  changeisVisible() {
+    if (this.isVisibleTrigger === true) {
+      this.isVisibleTrigger = false;
+      console.log('toggle on');
+    } else {
+      this.isVisibleTrigger = true;
+      console.log('toggle off');
+    }
+  }
 }

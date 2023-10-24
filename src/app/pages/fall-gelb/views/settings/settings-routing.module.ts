@@ -2,7 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {
   UserComponent,
-  AgentsComponent,
   BankComponent,
   BankAccountComponent,
   CurrencyComponent,
@@ -18,10 +17,6 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
-  },
-  {
-    path: 'agents',
-    component: AgentsComponent,
   },
   {
     path: 'banks',
