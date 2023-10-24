@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="userForm">
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-input
+        label="Dirección de correo"
+        formControlName="email"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-input
+        label="Nombre de Usuario"
+        formControlName="userName"
+        [required]="true"
+      ></app-phk-input>
+
+      <app-phk-input
+        label="Contraseña"
+        formControlName="password"
+        [required]="true"
+      ></app-phk-input>
+
+      <app-phk-input
+        label="Confirmar contraseña"
+        formControlName="passwordVerify"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-select label="Rol" formControlName="userRol">
+        <mat-option>Option 1</mat-option>
+        <mat-option>Option 2</mat-option>
+      </app-phk-select>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Registrar</button>
+  </mat-card-actions>
+</mat-card>

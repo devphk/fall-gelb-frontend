@@ -9,12 +9,15 @@ import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { MODE_STORAGE_SERVICE, PhkThemeStorageService, PhkThemeToggleModule, PhkThemeToggleService } from '@shared/components';
+import {
+  MODE_STORAGE_SERVICE,
+  PhkThemeStorageService,
+  PhkThemeToggleModule,
+  PhkThemeToggleService,
+} from '@shared/components';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,7 +25,7 @@ import { MODE_STORAGE_SERVICE, PhkThemeStorageService, PhkThemeToggleModule, Phk
     NgxMaskModule.forRoot(),
     CoreModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     SessionGuard,
@@ -30,8 +33,8 @@ import { MODE_STORAGE_SERVICE, PhkThemeStorageService, PhkThemeToggleModule, Phk
     {
       provide: MODE_STORAGE_SERVICE,
       useClass: PhkThemeStorageService,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

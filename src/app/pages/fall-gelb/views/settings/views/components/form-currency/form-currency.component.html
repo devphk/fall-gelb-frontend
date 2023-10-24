@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="currencyFrom">
+      <app-phk-input
+        label="Código"
+        formControlName="code"
+        [required]="true"
+      ></app-phk-input>
+      <app-phk-input
+        label="Descripción"
+        formControlName="description"
+        [required]="true"
+      ></app-phk-input>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Registrar</button>
+  </mat-card-actions>
+</mat-card>
