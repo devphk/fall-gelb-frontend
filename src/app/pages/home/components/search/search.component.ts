@@ -10,7 +10,7 @@ import { HomeService } from '../../home.service';
   styleUrls: ['./search.component.scss'],
   animations: [fadeFastAnimation]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   inputActive: boolean = false;
   appsOverlayOpened = false;
@@ -31,23 +31,12 @@ export class SearchComponent implements OnInit {
     }
   ];
 
-  currentMode: Mode = Mode.LIGHT;
-  themeSubscriptor = this.themeService
-                         .modeChanged$
-                         .subscribe((mode: Mode) => {
-    this.currentMode = mode;
-  });
   clickingAppsButton: boolean = false;
   clickingUserButton: boolean = false;
 
-  constructor(private themeService: PhkThemeToggleService,
-              public homeService: HomeService) { }
+  constructor(public homeService: HomeService) { }
 
   ngOnInit(): void {
-  }
-
-  ngOnDestroy(): void {
-    this.themeSubscriptor.unsubscribe();
   }
 
   toggleAppsList() {

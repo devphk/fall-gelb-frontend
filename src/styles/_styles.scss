@@ -124,6 +124,18 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+// Material global styles
+
+mat-card {
+  border: 1px solid #dadce0;
+  background: var(--bgSecondaryColor) !important;
+}
+
+.mat-typography h4,
+.mat-typography h5 {
+  color: var(--textPrimaryColor) !important;
+}
+
 // global fonts styles
 
 p,
@@ -135,7 +147,7 @@ h5,
 h6,
 span {
   font-family: 'Raleway', sans-serif !important;
-  color: var(--primary-color);
+  color: var(--textPrimaryColor) !important;
 }
 
 .h-100vh {

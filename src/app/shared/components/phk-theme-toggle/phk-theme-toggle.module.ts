@@ -14,11 +14,6 @@ import { MODE_STORAGE_SERVICE, PhkThemeStorageService } from './phk-theme-storag
     CommonModule
   ],
   providers: [
-    PhkThemeToggleService,
-    {
-      provide: MODE_STORAGE_SERVICE,
-      useClass: PhkThemeStorageService,
-    }
   ],
   exports: [
     PhkThemeToggleComponent

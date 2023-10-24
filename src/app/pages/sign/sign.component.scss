@@ -1,18 +1,25 @@
 
 // Root styles
 
-
+:host ::ng-deep {
+  .mat-typography h4 {
+    color: var(--textPrimaryColor) !important;
+  }
+}
 
 // Sign in content styles
 
 .sign-in {
 
   height: 100%;
+  background-color: var(--bgSecondaryColor);
 
   mat-card {
+
     padding: 15px !important;
     width: 300px;
     border: 1px solid #dadce0;
+    background: var(--bgSecondaryColor) !important;
 
     @media screen and (max-width: 667px) {
         width: 300px;
