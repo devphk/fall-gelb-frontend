@@ -14,20 +14,4 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  containerTypeModal() {
-
-    const dialogRef = this.dialogService.openDialog(
-      NewContainerTypeComponent,
-      'Nuevo Tipo de Contenedor',
-      '600px',
-      '250px'
-    );
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo contenedor ha sido cerrado');
-    });
-
-  }
-
-
 }
