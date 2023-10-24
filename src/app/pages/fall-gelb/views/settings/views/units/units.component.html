@@ -1,0 +1,23 @@
+
+<div class="p-20 table-container">
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+
+        <h1>Unidades</h1>
+
+        <button mat-mini-fab
+                color="primary" 
+                aria-label="Nueva unidad"
+                matTooltip="Nueva Unidad"
+                (click)="newUnit()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+
+    <app-phk-table [columnsTags]="tableColumnsTags"
+                   [columnsToDisplay]="tableColumnsToDisplay"
+                   [data]="tableData"></app-phk-table>
+                
+</div>
