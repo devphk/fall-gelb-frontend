@@ -1,23 +1,24 @@
+<div class="truckType">
+    <div class="p-20 table-container">
 
-<div class="p-20 table-container">
+        <div fxLayout="row"
+            fxLayoutAlign="space-between center">
 
-    <div fxLayout="row"
-         fxLayoutAlign="space-between center">
+            <h1>Tipos de Camiones</h1>
 
-        <h1>Tipos de Camiones</h1>
+            <button mat-mini-fab
+                    color="primary" 
+                    aria-label="Nuevo proveedor"
+                    matTooltip="Nuevo Proveedor"
+                    (click)="newTruckType()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
 
-        <button mat-mini-fab
-                color="primary" 
-                aria-label="Nuevo proveedor"
-                matTooltip="Nuevo Proveedor"
-                (click)="newTruckType()">
-            <mat-icon>add</mat-icon>
-        </button>
+
+        <app-phk-table [columnsTags]="tableColumnsTags"
+                    [columnsToDisplay]="tableColumnsToDisplay"
+                    [data]="tableData"></app-phk-table>
+                    
     </div>
-
-
-    <app-phk-table [columnsTags]="tableColumnsTags"
-                   [columnsToDisplay]="tableColumnsToDisplay"
-                   [data]="tableData"></app-phk-table>
-                
 </div>
