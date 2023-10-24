@@ -9,3 +9,20 @@
     right: 20px;
     bottom: 20px;
 }
+
+::ng-deep {
+
+    mat-dialog-container{
+        background: var(--bgPrimaryColor) !important;
+    }
+
+    .mat-select-panel {
+        background: var(--bgPrimaryColor) !important;
+    }
+}
+
+
+.providers {
+    background-color: var(--bgPrimaryColor);
+    height: 100%;
+}
