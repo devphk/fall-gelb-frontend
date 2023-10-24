@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
+import { PhkThemeToggleService } from '@shared/components';
+import { Mode } from '@shared/models';
 
 @Component({
   selector: 'app-search',
@@ -28,9 +30,22 @@ export class SearchComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  currentMode: Mode = Mode.LIGHT;
+  themeSubscriptor = this.themeService
+                         .modeChanged$
+                         .subscribe((mode: Mode) => {
+    this.currentMode = mode;
+  });
+
+  constructor(private themeService: PhkThemeToggleService) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.themeSubscriptor.unsubscribe();
   }
 
 }

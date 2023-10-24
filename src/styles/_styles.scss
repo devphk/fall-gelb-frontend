@@ -1,4 +1,7 @@
 @use '@angular/material' as mat;
+
+// Angular Material styles settings
+
 @include mat.core();
 $phk-turquoise-palette: (
   50: #dff7ff,
@@ -99,6 +102,17 @@ $phk-theme: mat.define-light-theme((
   )
 ));
 @include mat.all-component-themes($phk-theme);
+
+// Dark and Light theme settings
+
+@import "_variables";
+
+body.dark {
+  @include darken();
+}
+body.light {
+  @include lighten();
+}
 
 html, body { 
   height: 100%; 
