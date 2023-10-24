@@ -14,6 +14,7 @@ import { AppsComponent } from './components/apps/apps.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
 import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-popup/phk-user-account-popup.module';
+import { PhkThemeToggleModule } from '@shared/components';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-p
     MatMenuModule,
     OverlayModule,
     PhkAppsListModule,
-    PhkUserAccountPopupModule
+    PhkUserAccountPopupModule,
+    PhkThemeToggleModule
   ]
 })
 export class HomeModule { }

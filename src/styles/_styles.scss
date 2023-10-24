@@ -1,4 +1,7 @@
 @use '@angular/material' as mat;
+
+// Angular Material styles settings
+
 @include mat.core();
 $phk-turquoise-palette: (
   50: #dff7ff,
@@ -100,6 +103,17 @@ $phk-theme: mat.define-light-theme((
 ));
 @include mat.all-component-themes($phk-theme);
 
+// Dark and Light theme settings
+
+@import "_variables";
+
+body.dark {
+  @include darken();
+}
+body.light {
+  @include lighten();
+}
+
 html, body { 
   height: 100%; 
 }
@@ -108,6 +122,18 @@ body {
   margin: 0; 
   // font-family: Roboto, "Helvetica Neue", sans-serif; 
   font-family: 'Raleway', sans-serif;
+}
+
+// Material global styles
+
+mat-card {
+  border: 1px solid #dadce0;
+  background: var(--bgSecondaryColor) !important;
+}
+
+.mat-typography h4,
+.mat-typography h5 {
+  color: var(--textPrimaryColor) !important;
 }
 
 // global fonts styles
@@ -121,10 +147,7 @@ h5,
 h6,
 span {
   font-family: 'Raleway', sans-serif !important;
-}
-
-:root {
-  --primary-color: #ff0000; // Define el color rojo como el color primario
+  color: var(--textPrimaryColor) !important;
 }
 
 .h-100vh {
@@ -233,6 +256,6 @@ span {
 
 // Color styles
 
-.white {
-  color: white;
+.primary-color {
+  color: var(--textPrimaryColor);
 }
