@@ -8,6 +8,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
 import { MatSelectModule } from '@angular/material/select';
+import { MODE_STORAGE_SERVICE, PhkThemeStorageService, PhkThemeToggleModule, PhkThemeToggleService } from '@shared/components';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +25,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule
   ],
   providers: [
-    SessionGuard
+    SessionGuard,
+    PhkThemeToggleService,
+    {
+      provide: MODE_STORAGE_SERVICE,
+      useClass: PhkThemeStorageService,
+    }
   ],
   bootstrap: [AppComponent]
 })
