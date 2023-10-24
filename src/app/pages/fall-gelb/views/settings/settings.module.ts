@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomsComponent } from './views/customs/customs.component';
 import { MatIconModule } from '@angular/material/icon';
 import { SettingsRoutingModule } from './settings-routing.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
     PhkInputModule,
     PhkSelectModule,
     MatSelectModule,
+    MatTooltipModule,
     FlexLayoutModule,
     MatIconModule,
     PhkTableModule,

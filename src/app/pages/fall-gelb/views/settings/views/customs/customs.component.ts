@@ -50,7 +50,7 @@ export class CustomsComponent implements OnInit {
   newCustoms() {
     this.dialogService
         .openDialog(NewCustomsComponent,
-                    "Nuevo Proveedor",
+                    "Nueva Aduana",
                     "800px",
                     "300px").afterClosed()
                             .subscribe((data) => {
