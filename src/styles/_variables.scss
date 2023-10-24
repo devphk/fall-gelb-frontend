@@ -1,0 +1,122 @@
+
+
+// ---------- Dark theme variables ---------------- //
+
+// Background variables
+
+$bgPrimary_dark: #111111;
+$bgSecondary_dark: #1B1B1B;
+$bgTerciary_dark: #3A3A3A;
+$bgSearch_dark: #212226;
+
+// Text variables
+
+$textPrimary_dark: #FFFFFF;
+$textSecondary_dark: #9D9D9D;
+
+// Icons variables
+
+$colorPrimary_dark: #f4f4f4;
+
+// Border variables
+
+$borderPrimary_dark: #9D9D9D;
+$borderSecondary_dark: #242424;
+$borderTerciary_dark: #353535;
+
+// Angular material variables
+
+$borderFormField_dark: #9D9D9D;
+$formFieldPrimaryLabel_dark: #f4f4f4;
+
+// ---------- Light theme variables ---------------- //
+
+// Background variables
+
+$bgPrimary_light: #ffffff;
+$bgSecondary_light: #f4f4f4;
+$bgTerciary_light: #d0d0d0;
+$bgSearch_light: #ffffff;
+
+// Text variables
+
+$textPrimary_light: #2a2a2a;
+$textSecondary_light: #3e3e3e;
+
+// Icons variables
+
+$colorPrimary_light: #2a2a2a;
+
+// Border variables
+
+$borderPrimary_light: #2a2a2a;
+$borderSecondary_light: #c7c7c7;
+$borderTerciary_light: #dadada;
+
+// Angular material variables
+
+$borderFormField_light: #c7c7c7;
+$formFieldPrimaryLabel_light: rgba(0,0,0,.6);
+
+// mixin that enables css variables in light mode
+@mixin lighten() {
+
+  // Background variables
+
+  --bgPrimaryColor: #{$bgPrimary_light};
+  --bgSecondaryColor: #{$bgSecondary_light};
+  --bgTerciaryColor: #{$bgTerciary_light};
+  --bgSearchColor: #{$bgSearch_light};
+
+  // Text variables
+
+  --textPrimaryColor: #{$textPrimary_light};
+  --textSecondaryColor: #{$textSecondary_light};
+
+  // Icons variables
+
+  --iconColor: #{$colorPrimary_light};
+
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_light};
+  --borderSecondaryColor: #{$borderSecondary_light};
+  --borderTerciaryColor: #{$borderTerciary_light};
+
+  // Angular material variables
+
+  --borderFormFieldColor: #{$borderFormField_light};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
+}
+
+// mixin that enables css variables in dark mode
+@mixin darken() {
+
+  // Background variables
+
+  --bgPrimaryColor: #{$bgPrimary_dark};
+  --bgSecondaryColor: #{$bgSecondary_dark};
+  --bgTerciaryColor: #{$bgTerciary_dark};
+  --bgSearchColor: #{$bgSearch_dark};
+
+  // Text variables
+
+  --textPrimaryColor: #{$textPrimary_dark};
+  --textSecondaryColor: #{$textSecondary_dark};
+
+  // Icons variables
+
+  --iconColor: #{$colorPrimary_dark};
+
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_dark};
+  --borderSecondaryColor: #{$borderSecondary_dark};
+  --borderTerciaryColor: #{$borderTerciary_dark};
+
+  // Angular material variables
+  
+  --borderFormFieldColor: #{$borderFormField_dark};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
+
+}

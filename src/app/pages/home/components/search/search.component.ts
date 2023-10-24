@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
+import { PhkThemeToggleService } from '@shared/components';
+import { Mode } from '@shared/models';
+import { HomeService } from '../../home.service';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +10,7 @@ import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
   styleUrls: ['./search.component.scss'],
   animations: [fadeFastAnimation]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   inputActive: boolean = false;
   appsOverlayOpened = false;
@@ -28,9 +31,35 @@ export class SearchComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  clickingAppsButton: boolean = false;
+  clickingUserButton: boolean = false;
+
+  constructor(public homeService: HomeService) { }
 
   ngOnInit(): void {
   }
 
+  toggleAppsList() {
+
+    this.clickingAppsButton = true;
+    this.homeService.toggleAppsList = !this.homeService.toggleAppsList;
+    this.homeService.toggleAppsList ? 
+    this.homeService.appsListOpened = true : 
+    this.homeService.appsListOpened = false;
+
+    setTimeout(() => {
+      this.clickingAppsButton = false;
+    }, 100);
+  }
+
+  toggleUserAccount() {
+    this.clickingUserButton = true;
+    this.homeService.toggleUserAccount = !this.homeService.toggleUserAccount;
+    this.homeService.toggleUserAccount ? 
+    this.homeService.userAccountOpened = true : 
+    this.homeService.userAccountOpened = false;
+    setTimeout(() => {
+      this.clickingUserButton = false;
+    }, 100);
+  }
 }

@@ -1,18 +1,26 @@
 
 // Root styles
 
+:host ::ng-deep {
+  .mat-typography h4 {
+    color: var(--textPrimaryColor) !important;
+  }
 
+}
 
 // Sign in content styles
 
 .sign-in {
 
   height: 100%;
+  background-color: var(--bgSecondaryColor);
 
   mat-card {
+
     padding: 15px !important;
     width: 300px;
     border: 1px solid #dadce0;
+    background: var(--bgSecondaryColor) !important;
 
     @media screen and (max-width: 667px) {
         width: 300px;
@@ -27,7 +35,7 @@
 
 .forgot-password {
   border-radius: 4px;
-  color: rgb(26,115,232);
+  color: rgb(26,115,232) !important;
   display: inline-block;
   font-weight: 500;
   letter-spacing: 0.25px;
@@ -45,8 +53,17 @@
   span {
     font-size: 0.8em;
     font-weight: 700;
+    color: rgb(26,115,232) !important;
   }
 
+}
+
+.create-button span {
+  color: #0061ac !important;
+}
+
+.enter-button span {
+  color: white !important;
 }
 
 

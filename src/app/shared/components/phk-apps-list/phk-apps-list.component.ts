@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input } from '@angular/core';
 import { fadeFastAnimation } from '@shared/animations';
+import { HomeService } from 'src/app/pages/home/home.service';
 
 @Component({
   selector: 'app-phk-apps-list',
@@ -7,14 +8,22 @@ import { fadeFastAnimation } from '@shared/animations';
   styleUrls: ['./phk-apps-list.component.scss'],
   animations: [fadeFastAnimation]
 })
-export class PhkAppsListComponent implements OnInit {
-
+export class PhkAppsListComponent {
 
   @Input() appsList: any[] = [];
+  @Input() clickingInOutsideButton: boolean = false;
 
-  constructor() { }
+  constructor(private homeService: HomeService,
+              private elementRef: ElementRef) { }
 
-  ngOnInit(): void {
+  @HostListener('document:click', ['$event'])
+  public onDocumentClick(event: MouseEvent): void {
+    const targetElement = event.target as HTMLElement;
+
+    if (targetElement && !this.elementRef.nativeElement.contains(targetElement)
+        && !this.clickingInOutsideButton) {
+        this.homeService.toggleAppsList = false;
+    }
   }
 
 }
