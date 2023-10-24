@@ -20,6 +20,12 @@ import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NewAirlineComponent } from './views/components/new-airline/new-airline.component';
+import { NewConsolidatorComponent } from './views/components/new-consolidator/new-consolidator.component';
+import { NewDriverComponent } from './views/components/new-driver/new-driver.component';
+import { NewGroundtransportComponent } from './views/components/new-groundtransport/new-groundtransport.component';
+import { NewShippingcompanyComponent } from './views/components/new-shippingcompany/new-shippingcompany.component';
+import { NewCustomerComponent } from './views/components/new-customer/new-customer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DriversComponent,
     EntitiesComponent,
     ProvidersComponent,
-    NewProviderComponent
+    NewProviderComponent,
+    NewAirlineComponent,
+    NewConsolidatorComponent,
+    NewDriverComponent,
+    NewGroundtransportComponent,
+    NewShippingcompanyComponent,
+    NewCustomerComponent
   ],
   imports: [
     CommonModule,
