@@ -136,6 +136,30 @@ mat-card {
   color: var(--textPrimaryColor) !important;
 }
 
+//------------------ Angular material global styles -----------------
+
+/* Form field Border */
+.mat-form-field-appearance-outline 
+.mat-form-field-outline {
+  color: var(--borderFormFieldColor);
+}
+/* Font color */
+input.mat-input-element {
+  color: var(--borderFormFieldColor);
+}
+
+// Form field label color
+
+.mat-form-field-label {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+.mat-icon {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+//------------------ Angular material global styles -----------------
+
 // global fonts styles
 
 p,
@@ -147,7 +171,7 @@ h5,
 h6,
 span {
   font-family: 'Raleway', sans-serif !important;
-  color: var(--textPrimaryColor) !important;
+  color: var(--textPrimaryColor);
 }
 
 .h-100vh {

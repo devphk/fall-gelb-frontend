@@ -24,6 +24,11 @@ $borderPrimary_dark: #9D9D9D;
 $borderSecondary_dark: #242424;
 $borderTerciary_dark: #353535;
 
+// Angular material variables
+
+$borderFormField_dark: #9D9D9D;
+$formFieldPrimaryLabel_dark: #f4f4f4;
+
 // ---------- Light theme variables ---------------- //
 
 // Background variables
@@ -47,6 +52,11 @@ $colorPrimary_light: #2a2a2a;
 $borderPrimary_light: #2a2a2a;
 $borderSecondary_light: #c7c7c7;
 $borderTerciary_light: #dadada;
+
+// Angular material variables
+
+$borderFormField_light: #c7c7c7;
+$formFieldPrimaryLabel_light: rgba(0,0,0,.6);
 
 // mixin that enables css variables in light mode
 @mixin lighten() {
@@ -72,6 +82,11 @@ $borderTerciary_light: #dadada;
   --borderPrimaryColor: #{$borderPrimary_light};
   --borderSecondaryColor: #{$borderSecondary_light};
   --borderTerciaryColor: #{$borderTerciary_light};
+
+  // Angular material variables
+
+  --borderFormFieldColor: #{$borderFormField_light};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
 }
 
 // mixin that enables css variables in dark mode
@@ -98,5 +113,10 @@ $borderTerciary_light: #dadada;
   --borderPrimaryColor: #{$borderPrimary_dark};
   --borderSecondaryColor: #{$borderSecondary_dark};
   --borderTerciaryColor: #{$borderTerciary_dark};
+
+  // Angular material variables
+  
+  --borderFormFieldColor: #{$borderFormField_dark};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
 
 }
