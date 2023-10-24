@@ -1,7 +1,7 @@
 
-$bgColor_light: white;
 
-// Dark theme variables
+// ---------- Dark theme variables ---------------- //
+
 // Background variables
 
 $bgPrimary_dark: #111111;
@@ -21,8 +21,11 @@ $colorPrimary_dark: #f4f4f4;
 // Border variables
 
 $borderPrimary_dark: #9D9D9D;
+$borderSecondary_dark: #242424;
+$borderTerciary_dark: #353535;
 
-// Light theme variables
+// ---------- Light theme variables ---------------- //
+
 // Background variables
 
 $bgPrimary_light: #ffffff;
@@ -42,34 +45,58 @@ $colorPrimary_light: #2a2a2a;
 // Border variables
 
 $borderPrimary_light: #2a2a2a;
+$borderSecondary_light: #c7c7c7;
+$borderTerciary_light: #dadada;
 
 // mixin that enables css variables in light mode
 @mixin lighten() {
+
+  // Background variables
+
   --bgPrimaryColor: #{$bgPrimary_light};
   --bgSecondaryColor: #{$bgSecondary_light};
   --bgTerciaryColor: #{$bgTerciary_light};
   --bgSearchColor: #{$bgSearch_light};
 
+  // Text variables
+
   --textPrimaryColor: #{$textPrimary_light};
   --textSecondaryColor: #{$textSecondary_light};
 
+  // Icons variables
+
   --iconColor: #{$colorPrimary_light};
 
-  --borderColor: #{$borderPrimary_light};
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_light};
+  --borderSecondaryColor: #{$borderSecondary_light};
+  --borderTerciaryColor: #{$borderTerciary_light};
 }
 
 // mixin that enables css variables in dark mode
 @mixin darken() {
+
+  // Background variables
+
   --bgPrimaryColor: #{$bgPrimary_dark};
   --bgSecondaryColor: #{$bgSecondary_dark};
   --bgTerciaryColor: #{$bgTerciary_dark};
   --bgSearchColor: #{$bgSearch_dark};
 
+  // Text variables
+
   --textPrimaryColor: #{$textPrimary_dark};
   --textSecondaryColor: #{$textSecondary_dark};
 
+  // Icons variables
+
   --iconColor: #{$colorPrimary_dark};
 
-  --borderColor: #{$borderPrimary_dark};
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_dark};
+  --borderSecondaryColor: #{$borderSecondary_dark};
+  --borderTerciaryColor: #{$borderTerciary_dark};
 
 }

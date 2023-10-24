@@ -135,10 +135,7 @@ h5,
 h6,
 span {
   font-family: 'Raleway', sans-serif !important;
-}
-
-:root {
-  --primary-color: #ff0000; // Define el color rojo como el color primario
+  color: var(--primary-color);
 }
 
 .h-100vh {
@@ -247,6 +244,6 @@ span {
 
 // Color styles
 
-.white {
-  color: white;
+.primary-color {
+  color: var(--textPrimaryColor);
 }
