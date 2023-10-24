@@ -14,19 +14,4 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goodsTypeModal() {
-
-    const dialogRef = this.dialogService.openDialog(
-      NewGoodsTypeComponent,
-      'Nuevo Tipo de Mercancía',
-      '800px',
-      '250px'
-    );
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El diálogo ha sido cerrado');
-    });
-
-  }
-
 }
