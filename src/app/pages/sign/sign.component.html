@@ -5,9 +5,9 @@
     <div class="sign-in-header w-100 p-20"
          fxLayout="row"
          fxLayoutAlign="start center">
-         <h1>
+         <!-- <h1>
              Phoinike Logistics
-         </h1>
+         </h1> -->
     </div>
 
     <div fxLayout="row"
@@ -58,17 +58,21 @@
                      <button (click)="submit()"
                              *ngIf="!openSpinner"
                              color="primary"
-                             class="fs-08"
+                             class="fs-08 create-button"
                              mat-button>
-                         Crear cuenta
+                             <span>
+                                 Crear cuenta
+                             </span>
                      </button>
 
                      <button (click)="submit()"
                              *ngIf="!openSpinner"
                              color="primary"
-                             class="fs-08"
+                             class="fs-08 enter-button"
                              mat-raised-button>
-                         Entrar
+                             <span>
+                                Entrar
+                            </span>
                      </button>
 
                 </div>
@@ -89,12 +93,12 @@
     <div class="sign-in-footer w-100"
          fxLayout="row"
          fxLayoutAlign="space-between center">
-         <span>
+         <!-- <span>
             Copyright © {{year}} phoinike logistics, C.A.
          </span>
 
          <span>
             V0.0.0
-         </span>
+         </span> -->
     </div>
 </div>

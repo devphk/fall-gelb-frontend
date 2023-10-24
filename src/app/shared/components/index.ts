@@ -7,3 +7,5 @@ export * from './phk-sidenav';
 export * from './phk-slide-toggle';
 export * from './phk-table';
 export * from './phk-text-area';
+export * from './phk-theme-toggle';
+export * from './phk-user-account-popup';
