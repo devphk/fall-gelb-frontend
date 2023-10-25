@@ -1,0 +1,52 @@
+
+// Root styles
+
+:host ::ng-deep {
+    
+    .mat-expansion-panel {
+        background-color: var(--bgSecondaryColor);
+        border-radius: 15px;
+    }
+
+    .mat-expansion-panel-header-title {
+        color: var(--textPrimaryColor);
+        font-weight: 600;
+    }
+
+    .mat-expansion-indicator::after {
+        color: var(--textPrimaryColor);
+    }
+}
+
+.user-account-container {
+    padding: 15px;
+    width: 320px;
+    background-color: var(--bgPrimaryColor);
+    border: 8px solid var(--borderTerciaryColor);
+    border-radius: 20px;
+    margin-right: -55px;
+    margin-top: 10px;
+
+    h4 {
+        color: var(--textPrimaryColor);
+        font-weight: 600;
+        margin: 0;
+    }
+
+}
+
+.manage-account-button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #6d9bc3;
+    border: 2px solid #fafafa;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.manage-account-button:hover {
+    background-color: rgba($color: #6d9bc3, $alpha: 0.2);
+}

@@ -1,0 +1,29 @@
+
+
+.apps-container {
+    padding: 20px;
+    width: 320px;
+    background-color: var(--bgSecondaryColor);
+    border: 8px solid var(--borderTerciaryColor);
+    border-radius: 10px;
+
+    h4 {
+        font-weight: 600;
+        margin: 0;
+        color: var(--textPrimaryColor);
+    }
+
+}
+
+// Apps design
+
+.app {
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 15px;
+}
+
+.app:hover {
+    background-color: rgba(232,234,237,.08) !important;
+}

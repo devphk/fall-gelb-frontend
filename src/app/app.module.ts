@@ -10,15 +10,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
-import { TestComponent } from './shared/components/test/test.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import {
+  MODE_STORAGE_SERVICE,
+  PhkThemeStorageService,
+  PhkThemeToggleModule,
+  PhkThemeToggleService,
+} from '@shared/components';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,16 +28,16 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     NgxMaskModule.forRoot(),
     CoreModule,
     ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatButtonModule,
-    MatNativeDateModule,
-    MatMomentDateModule,
     MatSelectModule,
   ],
-  providers: [SessionGuard],
+  providers: [
+    SessionGuard,
+    PhkThemeToggleService,
+    {
+      provide: MODE_STORAGE_SERVICE,
+      useClass: PhkThemeStorageService,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
