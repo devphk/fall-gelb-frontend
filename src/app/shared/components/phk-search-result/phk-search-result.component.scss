@@ -1,11 +1,22 @@
+::ng-deep {
+
+    .mat-raised-button {
+        background-color: var(--bgPrimaryColor) !important;
+    }
+
+}
+
 .container{
     width: auto;
     margin-left: 20%;
     margin-right: 30%;
     min-width: 200px;
+    background-color: var(--bgPrimaryColor);
+    background-size: cover;
 }
 
 .main-container{
+    background: var(--bgSecondaryColor) !important;
     padding: 20px;
     margin-top: 20px;
     border-color: black;
@@ -32,7 +43,7 @@
 }
 
 .info-container {
-    background-color: rgba(223, 222, 222, 0.541);
+    background-color: var(--bgTerciaryColor);
     padding: 15px;
     border-radius: 5px;
     margin: 5px 10px 10px 5px;
@@ -47,7 +58,7 @@
 
 .other-search-container {
     margin-top: 20px;
-    background-color: rgba(223, 222, 222, 0.541);
+    background-color: var(--bgTerciaryColor);
     padding: 15px;
     border-radius: 5px;
 }
