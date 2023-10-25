@@ -4,31 +4,31 @@
 :host ::ng-deep {
     
     .mat-expansion-panel {
-        background-color: #161616;
+        background-color: var(--bgSecondaryColor);
         border-radius: 15px;
     }
 
     .mat-expansion-panel-header-title {
-        color: #fafafa;
+        color: var(--textPrimaryColor);
         font-weight: 600;
     }
 
     .mat-expansion-indicator::after {
-        color: #fafafa;
+        color: var(--textPrimaryColor);
     }
 }
 
 .user-account-container {
     padding: 15px;
     width: 320px;
-    background-color: #222222;
-    border: 8px solid #353535;
+    background-color: var(--bgPrimaryColor);
+    border: 8px solid var(--borderTerciaryColor);
     border-radius: 20px;
     margin-right: -55px;
     margin-top: 10px;
 
     h4 {
-        color: #fafafa;
+        color: var(--textPrimaryColor);
         font-weight: 600;
         margin: 0;
     }
