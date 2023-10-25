@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalService } from 'src/app/core/services';
-import { CreateComponent } from './record/create/create.component';
+import { CreateComponent } from './record/form-record/create.component';
 
 @Component({
   selector: 'app-operations',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OperationsComponent } from './operations.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RecordComponent } from './record/record.component';
-import { CreateComponent } from './record/create/create.component';
+import { CreateComponent } from './record/form-record/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhkDatePickerModule } from 'src/app/shared/components/phk-date-picker/phk-date-picker.module';
 import { MatSelectModule } from '@angular/material/select';
