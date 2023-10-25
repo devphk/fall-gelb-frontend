@@ -19,6 +19,7 @@ import {
   PhkSelectModule,
   PhkTextAreaModule,
   PhkSlideToggleModule,
+  PhkDatePickerModule,
 } from '@shared/components';
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
+    PhkDatePickerModule,
   ],
 })
 export class OperationsModule {}
