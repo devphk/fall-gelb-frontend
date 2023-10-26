@@ -5,17 +5,19 @@ import { SearchComponent } from './components';
 import { MatIconModule } from '@angular/material/icon';
 import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-search-result.module';
+import { PhkSearcherResultAuxiliaryModule } from '@shared/components/phk-searcher-result-auxiliary/phk-searcher-result-auxiliary.module';
 
 @NgModule({
-  declarations: [
-    SearchComponent
-  ],
+  declarations: [SearchComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     PhkUserAccountHeaderModule,
+    PhkSearchResultModule,
+    PhkSearcherResultAuxiliaryModule,
     MatIconModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

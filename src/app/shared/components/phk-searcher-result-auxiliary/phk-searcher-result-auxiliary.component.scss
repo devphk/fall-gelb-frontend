@@ -1,7 +1,18 @@
 .example-card {
   max-width: 400px;
   margin-bottom: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 10%;
 }
 .mat-card-title-group {
   width: 100%;
+}
+
+.mat-card-header .mat-card-title {
+  color: var(--textPrimaryColor);
+}
+
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+  color: var(--textSecondaryColor);
 }
