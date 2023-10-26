@@ -11,14 +11,12 @@ import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-  }
+    component: DashboardComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -26,7 +24,6 @@ const routes: Routes = [
     PhkDatePickerModule,
     MatButtonModule,
     PhkTableModule,
-    PhkSearchResultModule
-  ]
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

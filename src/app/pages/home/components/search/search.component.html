@@ -1,53 +1,12 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="space-between center"
+  class="search-container"
+>
+  <app-phk-user-account-header class="w-100"> </app-phk-user-account-header>
 
-<div fxLayout="column"
-     fxLayoutAlign="space-between center"
-     class="search-container">
-
-    <div fxLayout="row"
-         fxLayoutAlign="end center"
-         fxLayoutGap="15px"
-         class="search-header">
-
-         <app-phk-theme-toggle></app-phk-theme-toggle>
-
-        <button mat-mini-fab 
-                aria-label="Example icon button with a home icon"
-                cdkOverlayOrigin 
-                #trigger="cdkOverlayOrigin"
-                (click)="toggleAppsList()">
-            <mat-icon>apps</mat-icon>
-        </button>
-        <ng-template cdkConnectedOverlay
-                     [cdkConnectedOverlayOrigin]="trigger"
-                     [cdkConnectedOverlayOpen]="homeService.toggleAppsList">
-
-            <app-phk-apps-list [appsList]="appsList"
-                               [clickingInOutsideButton]="clickingAppsButton"></app-phk-apps-list>
-
-        </ng-template>
-
-        <ngx-avatar src="assets/images/jobs.png"
-                    size="40"
-                    cdkOverlayOrigin 
-                    #trigger="cdkOverlayOrigin"
-                    (click)="toggleUserAccount()"
-                    class="pointer"></ngx-avatar>
-
-        <ng-template cdkConnectedOverlay
-                     [cdkConnectedOverlayOrigin]="trigger"
-                     [cdkConnectedOverlayOpen]="homeService.toggleUserAccount">
-
-            <app-phk-user-account-popup [clickingInOutsideButton]="clickingUserButton"></app-phk-user-account-popup>
-
-        </ng-template>
-
-    </div>
-
-    <div>
-
-        <h1 class="search-title text-center mb-35">
-            Phoinike
-        </h1>
+  <div>
+    <h1 class="search-title text-center mb-35">Phoinike</h1>
 
         <div class="search-input"
              [ngClass]="{'active': inputActive,
@@ -60,31 +19,36 @@
                 <mat-icon class="mat-18">mic</mat-icon>
             </div>
         </div>
+
         <!-- <div class="box-opener" (click)="show = !show">
             Click to open/close the content box
-        </div> -->
+        </div>  -->
 
         <div class="box" [class.opened]="show">
             <div class="content"
                  fxLayout="row"
                  fxLayoutGap="20px">
                 <app-phk-search-result fxLayout="calc(50% - 20px)"></app-phk-search-result>
-                <app-phk-searcher-result-auxiliary fxLayout="calc(50% - 20px)"></app-phk-searcher-result-auxiliary>
+                <app-phk-searcher-result-auxiliary
+                  fxLayout="calc(50% - 20px)"
+                  [tittle]="'Ladrillo'"
+                  [subTittle]="'Código Arancelario: 02.05.20.20'"
+                  [extraInfo]="
+                    'Un ladrillo es de forma rectangular y de tamaño tal que se puede manejar convenientemente con una mano.'
+                  "
+                  [img]="'https://i.ytimg.com/vi/rkncggqM0Ug/maxresdefault.jpg'"
+                ></app-phk-searcher-result-auxiliary>
             </div>
         </div>
     </div>
 
-    <div fxLayout="row"
-         fxLayoutAlign="space-between center"
-         class="search-footer">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="search-footer"
+  >
+    <span> Copyright © 2023 Phoinike Logistics, C.A. </span>
 
-        <span>
-            Copyright © 2023 Phoinike Logistics, C.A.
-        </span>
-
-        <span>
-            V0.0.0
-        </span>
-
-    </div>
+    <span> V0.0.0 </span>
+  </div>
 </div>

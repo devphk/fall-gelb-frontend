@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Script to generate gh page to develop environment
+
+1.- Install github pages cli:
+
+npm i angular-cli-ghpages --save-dev
+
+2.- Build the project using the github repository as reference, for example:
+
+ng build --base-href "https://devphk.github.io/fall-gelb-frontend/"
+
+3.- Run the command below in your terminal to deploy the App:
+
+npx angular-cli-ghpages --dir=dist/Project-name

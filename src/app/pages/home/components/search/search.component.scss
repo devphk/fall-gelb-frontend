@@ -1,90 +1,81 @@
-
 // Root styles
 
 :host ::ng-deep {
-    .mat-icon {
-        color: var(--iconColor);
-    }
+  .mat-icon {
+    color: var(--iconColor);
+  }
 
-    .mat-icon,
-    .search-input,
-    input {
-        cursor: pointer;
-    }
+  .mat-icon,
+  .search-input,
+  input {
+    cursor: pointer;
+  }
 
-    .mat-mini-fab {
-        box-shadow: none;
-        background-color: transparent !important;
-        transition: all 0.2s;
-    }
+  .mat-mini-fab {
+    box-shadow: none;
+    background-color: transparent !important;
+    transition: all 0.2s;
+  }
 
-    .mat-mini-fab:hover {
-        background-color: rgba(232,234,237,.08) !important;
-    }
+  .mat-mini-fab:hover {
+    background-color: rgba(232, 234, 237, 0.08) !important;
+  }
 }
 
 // Global styles
 
 .search-container {
-    height: 100vh;
-    background-color: var(--bgSearchColor);
-    background-size: cover;
-    background-position: center center;
-}
-
-// Search header
-
-.search-header {
-    height: 80px;
-    padding: 0 20px;
-    width: 100%;
+  height: 100vh;
+  background-color: var(--bgSearchColor);
+  background-size: cover;
+  background-position: center center;
 }
 
 // Search content
 
 .search-title {
-    font-weight: bold;
-    font-size: 5em;
-    color: var(--textPrimaryColor);
+  font-weight: bold;
+  font-size: 5em;
+  color: var(--textPrimaryColor);
 }
 
 // Search input styles
 
 h1 {
-    color: var(--textPrimaryColor)
+  color: var(--textPrimaryColor);
 }
 
 .search-input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #searchBox {
-    border-radius: 55px;
-    padding: 4px 8px;
-    display: flex;
-    align-items: center;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
-    border: 2px var(--borderPrimaryColor) solid;
+  border-radius: 55px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
+  border: 2px var(--borderPrimaryColor) solid;
 }
 
 input {
-    font-size: 15px;
-    width: 0px;
-    border: 0;
-    background: transparent;
-    outline: none;
-    transition: 1s;
+  font-size: 15px;
+  width: 0px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  transition: 1s;
 }
 
 .active input {
-    width: 350px;
-    padding: 0px 20px;
+  width: 350px;
+  padding: 0px 20px;
 }
 
 .active .mic-icon {
-    width: 30px;
+  width: 30px;
 }
 
 // Footer styles

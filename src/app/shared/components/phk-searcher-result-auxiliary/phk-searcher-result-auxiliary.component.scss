@@ -1,8 +1,64 @@
 .example-card {
+  height: 60%;
+  width: 100%;
   max-width: 400px;
-  margin-bottom: 8px;
+  padding: 30px;
   margin-top: 20px;
+  margin-right: 10%;
+  border: none;
 }
+
+.chat-card {
+  height: 40%;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  margin-top: 20px;
+  margin-right: 10%;
+  border: none;
+}
+
 .mat-card-title-group {
   width: 100%;
 }
+
+.mat-card-content {
+  background-color: var(--bgSecondaryColor);
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--textPrimaryColor);
+  height: 95%;
+}
+
+.mat-card-header .mat-card-title {
+  color: var(--textPrimaryColor);
+}
+
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+  color: var(--textSecondaryColor);
+}
+
+.response {
+  max-width: 80%;
+  background: var(--bgTerciaryColor);
+  border-radius: 15px;
+  padding: 10px;
+  margin-left: 15%;
+  margin-bottom: 5%;
+}
+
+.petition {
+  max-width: 80%;
+  background: var(--bgTerciaryColor);
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 15%;
+  margin-bottom: 5%;
+  justify-content: flex-start !important; 
+}
+
+.petition p {
+  margin-left: 0;
+}
+
+

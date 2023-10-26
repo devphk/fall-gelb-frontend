@@ -6,6 +6,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { PhkInputModule } from '../phk-input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PhkSearcherResultAuxiliaryComponent],
@@ -16,6 +20,9 @@ import { MatCardModule } from '@angular/material/card';
     NgxSkeletonLoaderModule,
     MatGridListModule,
     MatCardModule,
+    PhkInputModule,
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   exports: [PhkSearcherResultAuxiliaryComponent],
 })
