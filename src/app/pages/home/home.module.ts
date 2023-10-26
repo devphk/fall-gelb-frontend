@@ -15,6 +15,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
 import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-popup/phk-user-account-popup.module';
 import { PhkThemeToggleModule } from '@shared/components';
+import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-search-result.module';
+import { PhkSearcherResultAuxiliaryModule } from '@shared/components/phk-searcher-result-auxiliary/phk-searcher-result-auxiliary.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { PhkThemeToggleModule } from '@shared/components';
     OverlayModule,
     PhkAppsListModule,
     PhkUserAccountPopupModule,
-    PhkThemeToggleModule
+    PhkThemeToggleModule,
+    PhkSearchResultModule,
+    PhkSearcherResultAuxiliaryModule
   ]
 })
 export class HomeModule { }

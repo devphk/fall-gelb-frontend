@@ -90,6 +90,7 @@ input {
 // Footer styles
 
 .search-footer {
+    background-color: var(--bgSearchColor);
     height: 55px;
     width: 100%;
     padding: 0 20px;
@@ -98,3 +99,27 @@ input {
 span {
     color: var(--textPrimaryColor);
 }
+
+// .box-opener {
+//     background-color: #f1e0b8;
+//     border: 1px solid #FFCC55;
+//     cursor: pointer;
+//     padding: 16px;
+//     user-select: none;
+// }
+
+.box {
+    background-color: var(--bgSearchColor);
+    max-height: 0px;
+    overflow-y: hidden;
+    transition: ease-in-out 400ms max-height;
+}
+
+.box.opened {
+    max-height: 100%;
+    transition: ease-in-out 800ms max-height;
+}
+
+.content {
+    padding: 16px;
+}   

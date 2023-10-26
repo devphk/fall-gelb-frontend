@@ -54,10 +54,22 @@
                          'p-0': inputActive}"
              (click)="inputActive = true">
             <div id="searchBox">
-                <mat-icon class="mat-25">search</mat-icon>
+                <mat-icon class="mat-25" (click)="show = !show">search</mat-icon>
                 <input type="text" 
                        placeholder="Busca en Phoinike" />
                 <mat-icon class="mat-18">mic</mat-icon>
+            </div>
+        </div>
+        <!-- <div class="box-opener" (click)="show = !show">
+            Click to open/close the content box
+        </div> -->
+
+        <div class="box" [class.opened]="show">
+            <div class="content"
+                 fxLayout="row"
+                 fxLayoutGap="20px">
+                <app-phk-search-result fxLayout="calc(50% - 20px)"></app-phk-search-result>
+                <app-phk-searcher-result-auxiliary fxLayout="calc(50% - 20px)"></app-phk-searcher-result-auxiliary>
             </div>
         </div>
     </div>
