@@ -8,11 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 import { SessionGuard } from './core/guards/guards/session.guard';
 import { CoreModule } from './core/core.module';
-import { MODE_STORAGE_SERVICE, PhkThemeStorageService, PhkThemeToggleModule, PhkThemeToggleService } from '@shared/components';
+import {
+  MODE_STORAGE_SERVICE,
+  PhkThemeStorageService,
+  PhkThemeToggleModule,
+  PhkThemeToggleService,
+} from '@shared/components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +28,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatGridListModule,
     ReactiveFormsModule,
     MatSelectModule,
-    FlexLayoutModule,
-    MatFormFieldModule
   ],
   providers: [
     SessionGuard,
@@ -34,8 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     {
       provide: MODE_STORAGE_SERVICE,
       useClass: PhkThemeStorageService,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
