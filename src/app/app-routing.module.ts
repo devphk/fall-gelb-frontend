@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'fall-gelb', 
         loadChildren: () => import('./pages/fall-gelb/fall-gelb.module').then(m => m.FallGelbModule),
         canActivate: [SessionGuard] 
+    },
+    { 
+        path: 'user-dashboard', 
+        loadChildren: () => import('./pages/user-dashboard/user-dashboard.module').then(m => m.UserDashboardModule),
+        canActivate: [SessionGuard] 
     }
 ];
 

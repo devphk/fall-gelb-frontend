@@ -1,4 +1,7 @@
 @use '@angular/material' as mat;
+
+// Angular Material styles settings
+
 @include mat.core();
 $phk-turquoise-palette: (
   50: #dff7ff,
@@ -100,6 +103,17 @@ $phk-theme: mat.define-light-theme((
 ));
 @include mat.all-component-themes($phk-theme);
 
+// Dark and Light theme settings
+
+@import "_variables";
+
+body.dark {
+  @include darken();
+}
+body.light {
+  @include lighten();
+}
+
 html, body { 
   height: 100%; 
 }
@@ -109,6 +123,42 @@ body {
   // font-family: Roboto, "Helvetica Neue", sans-serif; 
   font-family: 'Raleway', sans-serif;
 }
+
+// Material global styles
+
+mat-card {
+  border: 1px solid #dadce0;
+  background: var(--bgSecondaryColor) !important;
+}
+
+.mat-typography h4,
+.mat-typography h5 {
+  color: var(--textPrimaryColor) !important;
+}
+
+//------------------ Angular material global styles -----------------
+
+/* Form field Border */
+.mat-form-field-appearance-outline 
+.mat-form-field-outline {
+  color: var(--borderFormFieldColor);
+}
+/* Font color */
+input.mat-input-element {
+  color: var(--borderFormFieldColor);
+}
+
+// Form field label color
+
+.mat-form-field-label {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+.mat-icon {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+//------------------ Angular material global styles -----------------
 
 // global fonts styles
 
@@ -121,10 +171,7 @@ h5,
 h6,
 span {
   font-family: 'Raleway', sans-serif !important;
-}
-
-:root {
-  --primary-color: #ff0000; // Define el color rojo como el color primario
+  color: var(--textPrimaryColor);
 }
 
 .h-100vh {
@@ -177,18 +224,30 @@ span {
 
 // Line-height styles
 
+.lh-0-8 {
+  line-height: 0.8 !important;
+}
+
 .lh-1-2 {
-  line-height: 1.2;
+  line-height: 1.2 !important;
 }
 
 .lh-1-5 {
-  line-height: 1.5;
+  line-height: 1.5 !important;
 }
 
 // Global Margins
 
 .m-0 {
   margin: 0px !important;
+}
+
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
 }
 
 .mb-10 {
@@ -231,8 +290,18 @@ span {
   text-align: center;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 // Color styles
 
-.white {
-  color: white;
+.primary-color {
+  color: var(--textPrimaryColor);
+}
+
+// Button styles
+
+.material-shadow {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
 }

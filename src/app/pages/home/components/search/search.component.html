@@ -3,42 +3,9 @@
      fxLayoutAlign="space-between center"
      class="search-container">
 
-    <div fxLayout="row"
-         fxLayoutAlign="end center"
-         fxLayoutGap="15px"
-         class="search-header">
+    <app-phk-user-account-header class="w-100">
 
-        <button mat-mini-fab 
-                aria-label="Example icon button with a home icon"
-                cdkOverlayOrigin 
-                #trigger="cdkOverlayOrigin"
-                (click)="appsOverlayOpened = !appsOverlayOpened">
-            <mat-icon>apps</mat-icon>
-        </button>
-        <ng-template cdkConnectedOverlay
-                     [cdkConnectedOverlayOrigin]="trigger"
-                     [cdkConnectedOverlayOpen]="appsOverlayOpened">
-
-            <app-phk-apps-list [appsList]="appsList"></app-phk-apps-list>
-
-        </ng-template>
-
-        <ngx-avatar src="assets/images/jobs.png"
-                    size="40"
-                    cdkOverlayOrigin 
-                    #trigger="cdkOverlayOrigin"
-                    (click)="userAccountOverlayOpened = !userAccountOverlayOpened"
-                    class="pointer"></ngx-avatar>
-
-        <ng-template cdkConnectedOverlay
-                     [cdkConnectedOverlayOrigin]="trigger"
-                     [cdkConnectedOverlayOpen]="userAccountOverlayOpened">
-
-            <app-phk-user-account-popup></app-phk-user-account-popup>
-
-        </ng-template>
-
-    </div>
+    </app-phk-user-account-header>
 
     <div>
 
