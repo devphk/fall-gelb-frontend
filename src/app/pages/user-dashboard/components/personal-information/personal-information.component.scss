@@ -1,4 +1,9 @@
 
+// Global styles
+
+.w-100px {
+    width: 100px;
+}
 
 .personal-settings-container {
     max-width: 100%;
@@ -16,8 +21,26 @@ border-radius: 5px;
 
 }
 
+.personal-info-image {
+    width: 250px;
+    object-fit:contain;
+}
+
 .basic-information {
     padding: 20px;
     border: 1px solid #dadce0;
     border-radius: 5px;
+}
+
+.user-info {
+    padding: 10px 0;
+    border-top: 1px solid #dadce0;
+    cursor: pointer;
+    p {
+        margin-bottom: 0px !important   ;
+    } 
+}
+
+.user-info:hover {
+    background-color: #fafafa;
 }

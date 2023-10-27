@@ -28,7 +28,7 @@ $borderTerciary_dark: #353535;
 
 $borderFormField_dark: #9D9D9D;
 $formFieldPrimaryLabel_dark: #f4f4f4;
-$signMatCard_dark: #20232b;
+$signMatCardPrimary_dark: #20232b;
 
 // ---------- Light theme variables ---------------- //
 
@@ -58,7 +58,7 @@ $borderTerciary_light: #dadada;
 
 $borderFormField_light: #c7c7c7;
 $formFieldPrimaryLabel_light: rgba(0,0,0,.6);
-$signMatCard_light: #f4f4f4;
+$signMatCardPrimary_light: #ffffff;
 
 // mixin that enables css variables in light mode
 @mixin lighten() {
@@ -89,7 +89,7 @@ $signMatCard_light: #f4f4f4;
 
   --borderFormFieldColor: #{$borderFormField_light};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
-  --bgSignInCard: #{$signMatCard_light};
+  --bgSignInCard: #{$signMatCardPrimary_light};
 
 }
 
@@ -122,6 +122,6 @@ $signMatCard_light: #f4f4f4;
   
   --borderFormFieldColor: #{$borderFormField_dark};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
-  --bgSignInCard: #{$signMatCard_dark};
+  --bgSignInCard: #{$signMatCardPrimary_dark};
 
 }

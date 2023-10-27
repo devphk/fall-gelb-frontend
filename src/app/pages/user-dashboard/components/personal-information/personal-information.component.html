@@ -1,9 +1,10 @@
 
 <div fxLayout="column"
      fxLayoutAlign="center center"
-     class="w-100 ph-50">
+     class="w-80 ph-50 pb-50"
+     fxLayoutGap="20px">
 
-    <h1>
+    <h1 class="fw-600 mb-0">
         Información personal
     </h1>
 
@@ -12,7 +13,7 @@
     </h3>
 
     <div fxLayout="row"
-         fxLayoutGap="20px">
+         fxLayoutGap="40px">
 
         <div fxFlex="auto">
 
@@ -27,7 +28,7 @@
         </div>
 
         <img src="../../../../../assets/images/card.png" 
-             width="400px">
+             class="personal-info-image">
 
     </div>
 
@@ -46,34 +47,85 @@
          <div fxLayout="row"
               fxLayoutGap="20px"
               fxLayoutAlign="space-between center"
-              class="w-100">
+              class="w-100 mb-10">
 
               <div fxLayout="row"
                    fxLayoutGap="20px">
-                  <p class="fs-07 fw-600">
+                  <p class="fs-07 fw-600 w-100px mb-0">
                      Imagen de perfil
                   </p>
      
-                  <p class="fs-08">
+                  <p class="fs-08 mb-0">
                      Personaliza tu imagen de perfil
                   </p>
               </div>
 
             <ngx-avatar src="assets/images/jobs.png"
-                        size="60"
+                        size="50"
                         class="pointer material-shadow"></ngx-avatar>
 
          </div>
 
+         <div fxLayout="row"
+              fxLayoutGap="20px"
+              fxLayoutAlign="space-between center"
+              class="w-100 user-info">
+
+              <div fxLayout="row"
+                   fxLayoutGap="20px">
+                  <p class="fs-07 fw-600 w-100px">
+                     Nombre
+                  </p>
+     
+                  <p class="fs-09">
+                     Gianfranco Abinassar
+                  </p>
+              </div>
+
+              <i class="material-icons">chevron_right</i>
+
+         </div>
+
+         <div fxLayout="row"
+              fxLayoutGap="20px"
+              fxLayoutAlign="space-between center"
+              class="w-100 user-info">
+
+              <div fxLayout="row"
+                   fxLayoutGap="20px">
+                  <p class="fs-07 fw-600 w-100px">
+                     Cumpleaños
+                  </p>
+     
+                  <p class="fs-09">
+                     16 de Enero, 1995
+                  </p>
+              </div>
+
+              <i class="material-icons">chevron_right</i>
+
+         </div>
+
+         <div fxLayout="row"
+              fxLayoutGap="20px"
+              fxLayoutAlign="space-between center"
+              class="w-100 user-info">
+
+              <div fxLayout="row"
+                   fxLayoutGap="20px">
+                  <p class="fs-07 fw-600 w-100px">
+                     Género
+                  </p>
+     
+                  <p class="fs-09">
+                     Masculino
+                  </p>
+              </div>
+
+              <i class="material-icons">chevron_right</i>
+
+         </div>
 
     </div>
-
-    <!-- <div class="personal-settings-container p-50">
-
-        <div class="personal-settings-card w-100">
-
-        </div>
-
-    </div> -->
 
 </div>
