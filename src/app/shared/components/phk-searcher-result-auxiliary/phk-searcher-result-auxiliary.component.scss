@@ -25,16 +25,6 @@
   overflow-x: auto;
 }
 
-.example-card {
-  height: 60%;
-  width: 100%;
-  max-width: 400px;
-  padding: 30px;
-  margin-top: 20px;
-  margin-right: 10%;
-  border: none;
-}
-
 .chat-card {
   height: 30%;
   width: 100%;
@@ -45,11 +35,22 @@
   border: none;
 }
 
+.example-card {
+  height: 60%;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  margin-top: 20px;
+  margin-right: 10%;
+  border: none;
+}
+
+
 .mat-card-title-group {
   width: 100%;
 }
 
-.mat-card-content {
+.chat-card .mat-card-content {
   background-color: var(--bgSecondaryColor);
   border-radius: 10px;
   padding: 20px;

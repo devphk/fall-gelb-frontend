@@ -38,15 +38,15 @@
                     <h5 class="fw-800">{{doc.title}}</h5>
                     <hr>
                     <iframe [src]="getSanitizeUrl(doc.url)"></iframe>
-                    <br>
-                    <a [href]="getSanitizeUrl(doc.url)" mat-raised-button target="blank">
+
+                    <a class="pdfButton" [href]="getSanitizeUrl(doc.url)" mat-raised-button target="blank">
                         <mat-icon>open_in_new</mat-icon>
                     </a>
-            </div><br>
+            </div>
 
         </div>
     </div>
-<br>
+
 
     <div class="other-search-container"
          *ngFor="let search of otherSearches">
