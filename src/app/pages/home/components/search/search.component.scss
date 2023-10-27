@@ -49,6 +49,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 100px;
+  transition: ease-in-out 900ms max-height;
 }
 
 #searchBox {
@@ -90,14 +92,6 @@ input {
 span {
     color: var(--textPrimaryColor);
 }
-
-// .box-opener {
-//     background-color: #f1e0b8;
-//     border: 1px solid #FFCC55;
-//     cursor: pointer;
-//     padding: 16px;
-//     user-select: none;
-// }
 
 .box {
     background-color: var(--bgSearchColor);

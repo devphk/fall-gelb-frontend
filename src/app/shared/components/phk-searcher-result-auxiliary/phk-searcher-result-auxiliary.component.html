@@ -1,24 +1,27 @@
-<mat-card class="chat-card mat-elevation-z0">
+<mat-card class="chat-card mat-elevation-z3">
   <mat-card-header>
-    <mat-card-title>PhonikieBOT</mat-card-title>
+    <div mat-card-avatar class="header-avatar-image"></div>
+    <mat-card-title>PhoinikeBOT</mat-card-title>
   </mat-card-header>
   <mat-card-content fxLayout="column"
                     fxLayoutAlign="space-between">
       
-    <div>
-        <div class="response"
-             fxLayoutAlign="start center">
-          <p>¡Hola!, ¿En que te puedo ayudar?.</p>
-        </div>
-
+    <div class="chatMessage">
+        
         <div class="petition"
              fxLayoutAlign="end center">
-          <p>Prueba respuesta input </p>
+          <p>¡Hola!, ¿En que te puedo ayudar?</p>
+        </div>
+
+        <div class="response"
+             fxLayoutAlign="start center">
+          <p>Ladrillo</p>
         </div>
     </div>
     <form [formGroup]="chatForm">
       <app-phk-input  label="Pregúntame algo..."
-                      formControlName="chat"></app-phk-input>
+                      formControlName="chat"
+                      onSubmit=showForm()></app-phk-input>
     </form>
 
   </mat-card-content>

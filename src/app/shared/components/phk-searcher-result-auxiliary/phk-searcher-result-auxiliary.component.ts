@@ -21,6 +21,5 @@ export class PhkSearcherResultAuxiliaryComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  response: string = '';
-
+  
 }
