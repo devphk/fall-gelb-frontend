@@ -3,37 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { SearchComponent } from './components';
 import { MatIconModule } from '@angular/material/icon';
-
-// Import your AvatarModule
-import { AvatarModule } from 'ngx-avatar';
-import { HttpClientModule } from '@angular/common/http';
+import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { AppsComponent } from './components/apps/apps.component';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
-import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-popup/phk-user-account-popup.module';
-import { PhkThemeToggleModule } from '@shared/components';
 
 @NgModule({
   declarations: [
-    SearchComponent,
-    AppsComponent
+    SearchComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
+    PhkUserAccountHeaderModule,
     MatIconModule,
-    AvatarModule,
-    HttpClientModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatMenuModule,
-    OverlayModule,
-    PhkAppsListModule,
-    PhkUserAccountPopupModule,
-    PhkThemeToggleModule
+    FlexLayoutModule
   ]
 })
 export class HomeModule { }
