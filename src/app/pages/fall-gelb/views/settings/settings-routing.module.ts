@@ -7,6 +7,7 @@ import {
   CurrencyComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { UnitsComponent } from './views/units/units.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: '**',
     component: SettingsComponent,
     pathMatch: 'full',
+  },
+
+  {
+    path: 'units',
+    component: UnitsComponent,
   },
 ];
 

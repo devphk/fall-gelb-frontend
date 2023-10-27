@@ -1,27 +1,29 @@
 import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { Routes, RouterModule } from '@angular/router';
 import {
-  PhkTableModule,
   PhkInputModule,
+  PhkTableModule,
+  PhkThemeToggleModule,
   PhkSelectModule,
   PhkTextAreaModule,
   PhkSlideToggleModule,
 } from '@shared/components';
+import { NewUnitsComponent } from './views/components/new-units/new-units.component';
+import { UnitsComponent } from './views/units/units.component';
 import { BankComponent } from './views/bank/bank.component';
 import { BankAccountComponent } from './views/bank-account/bank-account.component';
 import { CurrencyComponent } from './views/currency/currency.component';
 import { UserComponent } from './views/user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { SettingsRoutingModule } from './settings-routing.module';
-import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import {
   FormBankAccountComponent,
   FormBankComponent,
@@ -29,35 +31,47 @@ import {
   FormUserComponent,
 } from './views/components';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: SettingsComponent,
+  },
+];
+
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     SettingsComponent,
-    BankComponent,
     BankAccountComponent,
+    BankComponent,
     CurrencyComponent,
     UserComponent,
-    FormBankComponent,
+    UnitsComponent,
+    NewUnitsComponent,
     FormBankAccountComponent,
+    FormBankComponent,
     FormCurrencyComponent,
     FormUserComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    SettingsRoutingModule,
-    PhkTableModule,
+    RouterModule.forChild(routes),
+    PhkInputModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
+    SettingsRoutingModule,
+    FlexLayoutModule,
     MatTooltipModule,
-    PhkInputModule,
-    PhkSelectModule,
     MatOptionModule,
+    MatFormFieldModule,
+    PhkTableModule,
+    PhkThemeToggleModule,
+    PhkSelectModule,
     PhkTextAreaModule,
     PhkSlideToggleModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
     MatCardModule,
-    FlexLayoutModule,
   ],
 })
 export class SettingsModule {}
