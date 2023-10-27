@@ -1,0 +1,25 @@
+<div>   
+    <form [formGroup]="warehouseForm">
+        <div mat-dialog-content 
+             fxLayout="row wrap" 
+             fxLayoutGap="20px">
+            <br>
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            label="Nombre del Almacén" 
+                            formControlName="name" 
+                            [required]="true">
+            </app-phk-input>
+
+            <app-phk-text-area  fxFlex="calc(33% - 20px)" 
+                                label="Dirección del Almacén" 
+                                formControlName="address" 
+                                [required]="true">
+            </app-phk-text-area>
+
+            <button class="w-100" 
+                    mat-flat-button color="primary">
+                    Enviar
+            </button>
+        </div>
+    </form>
+</div>

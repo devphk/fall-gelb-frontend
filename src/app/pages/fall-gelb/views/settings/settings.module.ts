@@ -30,6 +30,8 @@ import {
   FormCurrencyComponent,
   FormUserComponent,
 } from './views/components';
+import { NewWarehouseComponent } from './views/components/new-warehouse/new-warehouse.component';
+import { WarehouseComponent } from './views/warehouse/warehouse.component';
 
 const routes: Routes = [
   {
@@ -53,6 +55,8 @@ import { MatCardModule } from '@angular/material/card';
     FormBankComponent,
     FormCurrencyComponent,
     FormUserComponent,
+    NewWarehouseComponent,
+    WarehouseComponent,
   ],
   imports: [
     CommonModule,
@@ -72,6 +76,13 @@ import { MatCardModule } from '@angular/material/card';
     PhkTextAreaModule,
     PhkSlideToggleModule,
     MatCardModule,
+    PhkTextAreaModule,
+    PhkTableModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatIconModule,
+    SettingsRoutingModule,
   ],
 })
 export class SettingsModule {}
