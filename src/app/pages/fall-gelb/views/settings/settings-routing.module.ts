@@ -8,6 +8,7 @@ import {
 } from './views';
 import { SettingsComponent } from './settings.component';
 import { UnitsComponent } from './views/units/units.component';
+import { ContainerTypeComponent } from './views/container-type/container-type.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'units',
     component: UnitsComponent,
+  },
+  {
+    path: 'container-type',
+    component: ContainerTypeComponent,
   },
 ];
 

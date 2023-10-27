@@ -24,6 +24,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { NewGoodsTypeComponent } from './views/components/new-goods-type/new-goods-type.component';
+import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
 import {
   FormBankAccountComponent,
   FormBankComponent,
@@ -40,12 +43,9 @@ const routes: Routes = [
   },
 ];
 
-import { MatCardModule } from '@angular/material/card';
-import { NewGoodsTypeComponent } from './views/components/new-goods-type/new-goods-type.component';
-import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
-
 @NgModule({
   declarations: [
+    SettingsComponent,
     SettingsComponent,
     NewGoodsTypeComponent,
     GoodsTypeComponent,
