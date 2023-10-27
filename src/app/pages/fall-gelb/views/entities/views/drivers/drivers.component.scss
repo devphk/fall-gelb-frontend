@@ -1,0 +1,17 @@
+::ng-deep {
+
+    mat-dialog-container{
+        background: var(--bgPrimaryColor) !important;
+    }
+
+    .mat-input-element {
+        color: var(--textPrimaryColor) !important;
+    }
+
+}
+
+
+.drivers {
+    background-color: var(--bgPrimaryColor);
+    height: 100%;
+}

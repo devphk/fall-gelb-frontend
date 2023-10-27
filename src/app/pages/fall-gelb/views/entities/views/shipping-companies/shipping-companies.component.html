@@ -1,1 +1,24 @@
-<p>shipping-companies works!</p>
+<div class="shippingCompany">
+    <div class="p-20 table-container">
+
+        <div fxLayout="row"
+            fxLayoutAlign="space-between center">
+
+            <h1>Naviera</h1>
+
+            <button mat-mini-fab
+                    color="primary" 
+                    aria-label="Nueva naviera"
+                    matTooltip="Nueva Naviera"
+                    (click)="newShippingCompany()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+
+        <app-phk-table [columnsTags]="tableColumnsTags"
+                    [columnsToDisplay]="tableColumnsToDisplay"
+                    [data]="tableData"></app-phk-table>
+                    
+    </div>
+</div>

@@ -1,0 +1,20 @@
+::ng-deep {
+
+    mat-dialog-container{
+        background: var(--bgPrimaryColor) !important;
+    }
+
+    .mat-select-panel {
+        background: var(--bgPrimaryColor) !important;
+    }
+
+    .mat-input-element {
+        color: var(--textPrimaryColor) !important;
+    }
+}
+
+
+.customers {
+    background-color: var(--bgPrimaryColor);
+    height: 100%;
+}

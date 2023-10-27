@@ -1,1 +1,24 @@
-<p>drivers works!</p>
+<div class="drivers">
+    <div class="p-20 table-container">
+
+        <div fxLayout="row"
+            fxLayoutAlign="space-between center">
+
+            <h1>Choferes</h1>
+
+            <button mat-mini-fab
+                    color="primary" 
+                    aria-label="Nuevo chofer"
+                    matTooltip="Nuevo Chofer"
+                    (click)="newDriver()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+
+        <app-phk-table [columnsTags]="tableColumnsTags"
+                    [columnsToDisplay]="tableColumnsToDisplay"
+                    [data]="tableData"></app-phk-table>
+                    
+    </div>
+</div>
