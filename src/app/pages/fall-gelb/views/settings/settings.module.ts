@@ -41,10 +41,14 @@ const routes: Routes = [
 ];
 
 import { MatCardModule } from '@angular/material/card';
+import { NewGoodsTypeComponent } from './views/components/new-goods-type/new-goods-type.component';
+import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
 
 @NgModule({
   declarations: [
     SettingsComponent,
+    NewGoodsTypeComponent,
+    GoodsTypeComponent,
     BankAccountComponent,
     BankComponent,
     CurrencyComponent,
@@ -61,6 +65,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+
     PhkInputModule,
     ReactiveFormsModule,
     MatIconModule,
