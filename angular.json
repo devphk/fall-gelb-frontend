@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fall-helb": {
+    "fall-gelb": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fall-helb",
+            "outputPath": "dist/fall-gelb",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fall-helb:build:production"
+              "browserTarget": "fall-gelb:build:production"
             },
             "development": {
-              "browserTarget": "fall-helb:build:development"
+              "browserTarget": "fall-gelb:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fall-helb:build"
+            "browserTarget": "fall-gelb:build"
           }
         },
         "test": {
