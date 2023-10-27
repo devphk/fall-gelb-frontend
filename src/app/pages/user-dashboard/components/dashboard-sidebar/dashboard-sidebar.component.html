@@ -1,0 +1,33 @@
+
+
+<div class="sidebar-container">
+
+    <div *ngFor="let menuItem of sidebarItems" 
+         class="nav-item"
+         [routerLink]="[menuItem.itemLink]"
+         [ngClass]="{'active': isActive(menuItem.itemLink)}"
+         (click)="navigate(menuItem.itemLink)"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="15px"> 
+            <i class="material-icons">{{menuItem.itemIcon}}</i>
+            <span>
+                {{menuItem.itemTitle}}
+            </span>
+    </div>
+
+    <br>
+
+    <div class="nav-item"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="15px">
+
+        <i class="material-icons">dashboard</i>
+        <span>
+            sistema fallgelb
+        </span>
+
+    </div>
+
+</div>

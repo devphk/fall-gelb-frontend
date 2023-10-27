@@ -9,7 +9,7 @@ import { Mode } from '@shared/models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  title = 'fall-helb';
+  title = 'fall-gelb';
 
   currentMode: Mode = Mode.LIGHT;
   themeSubscriptor = this.themeService
