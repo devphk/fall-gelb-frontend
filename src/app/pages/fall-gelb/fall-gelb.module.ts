@@ -11,9 +11,7 @@ import { FallGelbComponent } from './fall-gelb.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [
-    FallGelbComponent
-  ],
+  declarations: [FallGelbComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -22,10 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatIconModule,
     PhkSidenavModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
-  providers: [
-    FallGelbService
-  ]
+  providers: [FallGelbService],
 })
-export class FallGelbModule { }
+export class FallGelbModule {}

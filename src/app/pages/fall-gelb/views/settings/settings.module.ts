@@ -7,18 +7,12 @@ import { AgentsComponent } from './views/agents/agents.component';
 const routes: Routes = [
   {
     path: '',
-    component: SettingsComponent
-  }
+    component: SettingsComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [
-    SettingsComponent,
-    AgentsComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  declarations: [SettingsComponent, AgentsComponent],
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class SettingsModule { }
+export class SettingsModule {}
