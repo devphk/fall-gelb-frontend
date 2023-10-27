@@ -13,14 +13,14 @@
 .sign-in {
 
   height: 100%;
-  background-color: var(--bgSecondaryColor);
+  background-color: var(--bgSearchColor);
 
   mat-card {
 
     padding: 15px !important;
     width: 300px;
     border: 1px solid #dadce0;
-    background: var(--bgSecondaryColor) !important;
+    background: var(--bgSignInCard) !important;
 
     @media screen and (max-width: 667px) {
         width: 300px;
