@@ -38,6 +38,9 @@ import { WarehouseComponent } from './views/warehouse/warehouse.component';
 import { NewCustomsComponent } from './views/components/new-customs/new-customs.component';
 import { MatSelectModule } from '@angular/material/select';
 import { CustomsComponent } from './views/customs/customs.component';
+import { NewTruckTypeComponent } from './views/components/new-truck-type/new-truck-type.component';
+import { TruckTypeComponent } from './views/truck-type/truck-type.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -65,6 +68,8 @@ const routes: Routes = [
     WarehouseComponent,
     NewCustomsComponent,
     CustomsComponent,
+    NewTruckTypeComponent,
+    TruckTypeComponent,
   ],
   imports: [
     CommonModule,
@@ -94,6 +99,13 @@ const routes: Routes = [
     MatSelectModule,
     MatIconModule,
     PhkTableModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    PhkInputModule,
+    PhkTableModule,
+    SettingsRoutingModule,
+    MatButtonModule,
+    FlexLayoutModule,
   ],
 })
 export class SettingsModule {}

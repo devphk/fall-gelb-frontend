@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings.component';
 import { UnitsComponent } from './views/units/units.component';
 import { ContainerTypeComponent } from './views/container-type/container-type.component';
 import { CustomsComponent } from './views/customs/customs.component';
+import { TruckTypeComponent } from './views/truck-type/truck-type.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'customs',
     component: CustomsComponent,
+  },
+  {
+    path: 'truck-type',
+    component: TruckTypeComponent,
   },
 ];
 
