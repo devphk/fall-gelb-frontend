@@ -11,6 +11,8 @@ import { UnitsComponent } from './views/units/units.component';
 import { ContainerTypeComponent } from './views/container-type/container-type.component';
 import { CustomsComponent } from './views/customs/customs.component';
 import { TruckTypeComponent } from './views/truck-type/truck-type.component';
+import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
+import { WarehouseComponent } from './views/warehouse/warehouse.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,14 @@ const routes: Routes = [
   {
     path: 'truck-type',
     component: TruckTypeComponent,
+  },
+  {
+    path: 'goodstype',
+    component: GoodsTypeComponent,
+  },
+  {
+    path: 'warehouse',
+    component: WarehouseComponent,
   },
 ];
 
