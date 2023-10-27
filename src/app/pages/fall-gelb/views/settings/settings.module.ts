@@ -35,7 +35,9 @@ import {
 } from './views/components';
 import { NewWarehouseComponent } from './views/components/new-warehouse/new-warehouse.component';
 import { WarehouseComponent } from './views/warehouse/warehouse.component';
-
+import { NewCustomsComponent } from './views/components/new-customs/new-customs.component';
+import { MatSelectModule } from '@angular/material/select';
+import { CustomsComponent } from './views/customs/customs.component';
 const routes: Routes = [
   {
     path: '',
@@ -61,11 +63,12 @@ const routes: Routes = [
     FormUserComponent,
     NewWarehouseComponent,
     WarehouseComponent,
+    NewCustomsComponent,
+    CustomsComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-
     PhkInputModule,
     ReactiveFormsModule,
     MatIconModule,
@@ -81,13 +84,16 @@ const routes: Routes = [
     PhkTextAreaModule,
     PhkSlideToggleModule,
     MatCardModule,
-    PhkTextAreaModule,
     PhkTableModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
-    SettingsRoutingModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    PhkInputModule,
+    MatSelectModule,
+    MatIconModule,
+    PhkTableModule,
   ],
 })
 export class SettingsModule {}

@@ -9,6 +9,7 @@ import {
 import { SettingsComponent } from './settings.component';
 import { UnitsComponent } from './views/units/units.component';
 import { ContainerTypeComponent } from './views/container-type/container-type.component';
+import { CustomsComponent } from './views/customs/customs.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'container-type',
     component: ContainerTypeComponent,
+  },
+  {
+    path: 'customs',
+    component: CustomsComponent,
   },
 ];
 
