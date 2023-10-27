@@ -9,6 +9,7 @@
   .search-input,
   input {
     cursor: pointer;
+    color: var(--textPrimaryColor) !important;
   }
 
   .mat-mini-fab {

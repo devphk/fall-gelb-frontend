@@ -17,6 +17,7 @@ export class SearchComponent {
   inputActive: boolean = false;
   appsOverlayOpened = false;
   userAccountOverlayOpened = false;
+  search: string = '';
 
   appsList: any[] = [
     {
@@ -63,5 +64,10 @@ export class SearchComponent {
     setTimeout(() => {
       this.clickingUserButton = false;
     }, 100);
+  }
+
+  showInput() {
+    this.show = !this.show;
+    console.log(this.search);
   }
 }

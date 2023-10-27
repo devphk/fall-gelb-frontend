@@ -30,7 +30,15 @@ export class PhkSearchResultComponent implements OnInit {
       url: 'https://www.orimi.com/pdf-test.pdf'
     },
     {
-      title: 'PDF Arancelario 2',
+      title: 'PDF Muestra',
+      url: 'https://s29.q4cdn.com/175625835/files/doc_downloads/test.pdf'
+    },
+    {
+      title: 'PDF Muestra',
+      url: 'https://s29.q4cdn.com/175625835/files/doc_downloads/test.pdf'
+    },
+    {
+      title: 'PDF Muestra',
       url: 'https://s29.q4cdn.com/175625835/files/doc_downloads/test.pdf'
     }
   ];

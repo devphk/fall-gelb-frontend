@@ -13,6 +13,8 @@ import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-p
 import { PhkThemeToggleModule } from '@shared/components';
 import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-search-result.module';
 import { PhkSearcherResultAuxiliaryModule } from '@shared/components/phk-searcher-result-auxiliary/phk-searcher-result-auxiliary.module';
+import { FormsModule } from '@angular/forms';
+import { PhkSearchLeftAuxiliaryModule } from '@shared/components/phk-search-left-auxiliary/phk-search-left-auxiliary.module';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -31,7 +33,9 @@ import { PhkSearcherResultAuxiliaryModule } from '@shared/components/phk-searche
     PhkUserAccountPopupModule,
     PhkThemeToggleModule,
     PhkSearchResultModule,
-    PhkSearcherResultAuxiliaryModule
+    PhkSearcherResultAuxiliaryModule,
+    PhkSearchLeftAuxiliaryModule,
+    FormsModule
   ]
 })
 export class HomeModule {}
