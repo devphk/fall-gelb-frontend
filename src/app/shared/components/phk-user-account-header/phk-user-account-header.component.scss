@@ -1,7 +1,26 @@
+
+// Global styles
+
+:host ::ng-deep {
+
+    .mat-mini-fab.mat-accent {
+        background-color: transparent;
+    }
+
+    .mat-mini-fab:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+    }
+
+    .mat-mini-fab:hover {
+        background-color: #f0f0f0;
+    }
+
+}
+
 // Header container
 
 .header-container {
-    height: 80px;
+    height: 70px;
     margin: 0 20px;
     display: flex;
     justify-content: end;

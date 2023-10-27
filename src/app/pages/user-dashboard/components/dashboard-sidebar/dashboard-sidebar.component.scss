@@ -7,7 +7,7 @@ i, span {
 .nav-item {
     margin: auto;
     padding: 15px 10px 15px 15px;
-    border-radius: 0 20px 20px 0;
+    border-radius: 0 25px 25px 0;
     margin-bottom: 10px;
     cursor: pointer;
     i {
@@ -24,8 +24,8 @@ i, span {
 }
 
 .active {
-    background-color: #00518f !important;
-    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4) !important;
+    background-color: #0074cd !important;
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgb(244 67 54 / 9%) !important;
     
     span, i {
         color: #eee;
