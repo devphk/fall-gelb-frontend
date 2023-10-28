@@ -2,6 +2,17 @@ import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { SettingsRoutingModule } from './settings-routing.module';
+
 import {
   PhkInputModule,
   PhkTableModule,
@@ -10,36 +21,30 @@ import {
   PhkTextAreaModule,
   PhkSlideToggleModule,
 } from '@shared/components';
-import { NewUnitsComponent } from './views/components/new-units/new-units.component';
-import { UnitsComponent } from './views/units/units.component';
-import { BankComponent } from './views/bank/bank.component';
-import { BankAccountComponent } from './views/bank-account/bank-account.component';
-import { CurrencyComponent } from './views/currency/currency.component';
-import { UserComponent } from './views/user/user.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { SettingsRoutingModule } from './settings-routing.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatOptionModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatCardModule } from '@angular/material/card';
-import { NewGoodsTypeComponent } from './views/components/new-goods-type/new-goods-type.component';
-import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
+
 import {
-  FormBankAccountComponent,
   FormBankComponent,
+  FormBankAccountComponent,
   FormCurrencyComponent,
   FormUserComponent,
+  NewUnitsComponent,
+  NewGoodsTypeComponent,
+  NewWarehouseComponent,
+  NewCustomsComponent,
+  NewTruckTypeComponent,
 } from './views/components';
-import { NewWarehouseComponent } from './views/components/new-warehouse/new-warehouse.component';
-import { WarehouseComponent } from './views/warehouse/warehouse.component';
-import { NewCustomsComponent } from './views/components/new-customs/new-customs.component';
-import { MatSelectModule } from '@angular/material/select';
-import { CustomsComponent } from './views/customs/customs.component';
-import { NewTruckTypeComponent } from './views/components/new-truck-type/new-truck-type.component';
-import { TruckTypeComponent } from './views/truck-type/truck-type.component';
+
+import {
+  BankComponent,
+  BankAccountComponent,
+  CurrencyComponent,
+  CustomsComponent,
+  GoodsTypeComponent,
+  TruckTypeComponent,
+  UnitsComponent,
+  UserComponent,
+  WarehouseComponent,
+} from './views';
 
 const routes: Routes = [
   {
@@ -50,7 +55,6 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SettingsComponent,
     SettingsComponent,
     NewGoodsTypeComponent,
     GoodsTypeComponent,
