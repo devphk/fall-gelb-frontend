@@ -25,7 +25,7 @@ const routes: Routes = [
     component: BankComponent,
   },
   {
-    path: 'bank-acounts',
+    path: 'bank-accounts',
     component: BankAccountComponent,
   },
   {
@@ -54,7 +54,7 @@ const routes: Routes = [
     component: TruckTypeComponent,
   },
   {
-    path: 'goodstype',
+    path: 'goods-type',
     component: GoodsTypeComponent,
   },
   {

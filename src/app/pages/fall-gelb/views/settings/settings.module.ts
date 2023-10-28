@@ -12,7 +12,6 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { SettingsRoutingModule } from './settings-routing.module';
-
 import {
   PhkInputModule,
   PhkTableModule,
@@ -32,6 +31,7 @@ import {
   NewWarehouseComponent,
   NewCustomsComponent,
   NewTruckTypeComponent,
+  NewContainerTypeComponent,
 } from './views/components';
 
 import {
@@ -44,6 +44,7 @@ import {
   UnitsComponent,
   UserComponent,
   WarehouseComponent,
+  ContainerTypeComponent,
 } from './views';
 
 const routes: Routes = [
@@ -55,25 +56,27 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SettingsComponent,
     NewGoodsTypeComponent,
+    NewWarehouseComponent,
+    NewUnitsComponent,
+    NewCustomsComponent,
+    NewTruckTypeComponent,
+    NewContainerTypeComponent,
+    SettingsComponent,
     GoodsTypeComponent,
     BankAccountComponent,
     BankComponent,
     CurrencyComponent,
     UserComponent,
     UnitsComponent,
-    NewUnitsComponent,
+    WarehouseComponent,
+    CustomsComponent,
+    TruckTypeComponent,
+    ContainerTypeComponent,
     FormBankAccountComponent,
     FormBankComponent,
     FormCurrencyComponent,
-    FormUserComponent,
-    NewWarehouseComponent,
-    WarehouseComponent,
-    NewCustomsComponent,
-    CustomsComponent,
-    NewTruckTypeComponent,
-    TruckTypeComponent,
+    FormUserComponent
   ],
   imports: [
     CommonModule,
