@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PhkSidenavModule } from 'src/app/shared/components/phk-sidenav/phk-sidenav.module';
 import { FallGelbComponent } from './fall-gelb.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [FallGelbComponent],

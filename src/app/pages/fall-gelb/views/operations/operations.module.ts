@@ -22,6 +22,9 @@ import {
   PhkDatePickerModule,
 } from '@shared/components';
 
+import { CertificationComponent } from './views/certification/certification.component';
+import { FormCertificationComponent } from './views/components/form-certification/form-certification.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -30,7 +33,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [RecordComponent, FormRecordComponent, OperationsComponent],
+  declarations: [
+    RecordComponent,
+    FormRecordComponent,
+    OperationsComponent,
+    CertificationComponent,
+    FormCertificationComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -40,6 +49,7 @@ const routes: Routes = [
     MatButtonModule,
     MatTooltipModule,
     MatDividerModule,
+    PhkDatePickerModule,
     PhkInputModule,
     PhkSelectModule,
     MatOptionModule,
@@ -48,7 +58,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
-    PhkDatePickerModule,
   ],
 })
 export class OperationsModule {}
