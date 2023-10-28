@@ -5,24 +5,20 @@ import {
   BankComponent,
   BankAccountComponent,
   CurrencyComponent,
+  UnitsComponent,
+  ContainerTypeComponent,
+  CustomsComponent,
+  TruckTypeComponent,
+  GoodsTypeComponent,
+  WarehouseComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
-import { UnitsComponent } from './views/units/units.component';
-import { ContainerTypeComponent } from './views/container-type/container-type.component';
-import { CustomsComponent } from './views/customs/customs.component';
-import { TruckTypeComponent } from './views/truck-type/truck-type.component';
-import { GoodsTypeComponent } from './views/goods-type/goods-type.component';
-import { WarehouseComponent } from './views/warehouse/warehouse.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'settings',
     pathMatch: 'full',
-  },
-  {
-    path: 'settings',
-    component: SettingsComponent,
   },
   {
     path: 'banks',
@@ -39,11 +35,6 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserComponent,
-  },
-  {
-    path: '**',
-    component: SettingsComponent,
-    pathMatch: 'full',
   },
 
   {
@@ -69,6 +60,11 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
+  },
+  {
+    path: '**',
+    component: SettingsComponent,
+    pathMatch: 'full',
   },
 ];
 
