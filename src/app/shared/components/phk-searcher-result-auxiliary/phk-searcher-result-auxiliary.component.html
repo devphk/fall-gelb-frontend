@@ -1,0 +1,43 @@
+<mat-card class="chat-card mat-elevation-z3">
+  <mat-card-header>
+    <div mat-card-avatar class="header-avatar-image"></div>
+    <mat-card-title>PhoinikeCHAT</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxLayout="column"
+                    fxLayoutAlign="space-between">
+      
+    <div class="chatMessage">
+        
+        <div class="petition"
+             fxLayoutAlign="end center">
+          <p>¡Hola!, ¿En que te puedo ayudar?</p>
+        </div>
+
+        <div class="response"
+             fxLayoutAlign="start center">
+          <p>Ladrillo</p>
+        </div>
+    </div>
+    <form [formGroup]="chatForm">
+      <app-phk-input  label="Pregúntame algo..."
+                      formControlName="chat"></app-phk-input>
+    </form>
+
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{ tittle }}</mat-card-title>
+    <mat-card-subtitle>{{ subTittle }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-title-group>
+    <img mat-card-image src="{{ img }}" />
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <p>
+      {{ extraInfo }}
+    </p>
+  </mat-card-content>
+</mat-card>

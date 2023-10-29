@@ -1,0 +1,77 @@
+<div>   
+    <form [formGroup]="customsForm">
+        <div mat-dialog-content fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column"
+        fxLayout.md="column" fxLayout.xs="column">
+            <br>
+            <div fxFlex="calc(50% - 20px)">
+                <p>Nombre*</p>
+                <app-phk-input label="Nombre" formControlName="name" [required]="true"></app-phk-input>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)">
+                <p>Teléfono</p>
+                <app-phk-input label="Teléfono" formControlName="phone"></app-phk-input>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)">
+                 <button
+                    (click)="setActive()"
+                    mat-raised-button>
+                    Agregar Item
+                 </button>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)">
+                 <button
+                    (click)="setUnactive()"
+                    mat-raised-button>
+                    Eliminar Item
+                 </button>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)">
+                <br><p>Tipo de Transporte</p>
+                <app-phk-select label="Seleccione..." formControlName="transportType">
+                    <mat-option value="1">Marítimo</mat-option>
+                    <mat-option value="2">Aéreo</mat-option>
+                    <mat-option value="3">Terrestre</mat-option>
+                </app-phk-select>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)"
+                 *ngIf="active1">
+                <br><p>Tipo de Transporte</p>
+                <app-phk-select label="Seleccione..." formControlName="transportType2">
+                    <mat-option value="1">Marítimo</mat-option>
+                    <mat-option value="2">Aéreo</mat-option>
+                    <mat-option value="3">Terrestre</mat-option>
+                </app-phk-select>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)"
+                 *ngIf="active2">
+                <br><p>Tipo de Transporte</p>
+                <app-phk-select label="Seleccione..." formControlName="transportType3">
+                    <mat-option value="1">Marítimo</mat-option>
+                    <mat-option value="2">Aéreo</mat-option>
+                    <mat-option value="3">Terrestre</mat-option>
+                </app-phk-select>
+            </div>
+
+            <div fxFlex="calc(50% - 20px)">
+                <br><p>Ubicación</p>
+                <app-phk-input label="INPUT DE RELLENO PARA LUEGO COLOCAR LA UBICACION" formControlName="location"></app-phk-input>
+            </div>
+            
+
+            <div fxFlex="50"
+                 fxFlex.xs="100"
+                 fxFlex.sm="100"
+                 fxFlex.md="33"
+                 fxFlex.lg="100"
+                 fxFlex.xl="100">
+                <button class="w-100" mat-flat-button color="primary" (click)="showForm()">Enviar</button>
+            </div>
+        </div> 
+    </form>
+</div>

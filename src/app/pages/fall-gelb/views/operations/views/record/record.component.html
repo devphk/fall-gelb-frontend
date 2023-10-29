@@ -1,0 +1,21 @@
+<div class="p-20 table-container record-contianer">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Listado de expedientes</h1>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Nuevo Expediente"
+      matTooltip="Nuevo Expediente"
+      (click)="newRecord()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <app-phk-table
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+  ></app-phk-table>
+</div>

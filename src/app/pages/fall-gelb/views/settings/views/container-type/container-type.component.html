@@ -1,0 +1,21 @@
+<div class="containerType">
+  <div class="p-20 table-container">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <h1>Tipos de Contenedor</h1>
+
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Nuevo Tipo de Contenedor"
+        matTooltip="Nuevo Tipo de Contenedor"
+        (click)="newContainerType()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <app-phk-table
+      [columnsTags]="tableColumnsTags"
+      [columnsToDisplay]="tableColumnsToDisplay"
+      [data]="tableData"></app-phk-table>
+  </div>
+</div>

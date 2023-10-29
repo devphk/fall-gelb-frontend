@@ -1,25 +1,16 @@
+<button (click)="showItems()">itemsSelected</button>
 
-<button (click)="showItems()">
-  itemsSelected
-</button>
+<button (click)="addItem()">add</button>
 
-<button (click)="addItem()">
-  add
-</button>
-
-<button (click)="deleteItem()">
-  delete
-</button>
-
+<button (click)="deleteItem()">delete</button>
 
 <div class="p-50">
-  <h1>
-    Tabla phoinike
-  </h1>
+  <h1>Tabla phoinike</h1>
 
-  <app-phk-table [columnsTags]="tableColumnsTags"
-                 [columnsToDisplay]="tableColumnsToDisplay"
-                 [data]="tableData"
-                 [(itemsSelected)]="itemsSelected"></app-phk-table>
-
+  <app-phk-table
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+    [(itemsSelected)]="itemsSelected"
+  ></app-phk-table>
 </div>

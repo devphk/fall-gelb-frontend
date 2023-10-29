@@ -1,0 +1,19 @@
+<div>
+  <form [formGroup]="containerTypeForm">
+  <div
+    mat-dialog-content
+    fxLayout="row wrap"
+    fxLayoutGap="20px"
+    fxLayout.lt-md="column"
+  >
+    <br />
+    <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Nombre" 
+                            formControlName="name" 
+                            [required]="true">
+            </app-phk-input>
+
+    <button class="w-100" mat-flat-button color="primary">Enviar</button>
+  </div>
+  </form>
+</div>

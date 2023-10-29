@@ -1,0 +1,21 @@
+<div class="p-20 table-container">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Roles y Permisos</h1>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Nuevo roles y permisos"
+      matTooltip="Nuevo roles y permisos"
+      (click)="newRol()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <app-phk-table
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+  ></app-phk-table>
+</div>

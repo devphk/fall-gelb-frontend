@@ -1,0 +1,99 @@
+::ng-deep {
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: #3C9AFF;
+      background: var(--bgTerciaryColor) !important;
+    }
+    
+    input.mat-input-element {
+        color: var(--textPrimaryColor);
+        margin-top: 5px;
+    }
+
+    .mat-raised-button:hover {
+      background-color: #3C9AFF !important;
+    }
+
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.chatMessage {
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.chat-card {
+  height: 30%;
+  width: 60%;
+  max-width: 60%;
+  padding: 30px;
+  margin-top: 20px;
+  margin-right: 10%;
+  border: none;
+}
+
+.example-card {
+  height: 60%;
+  width: 60%;
+  max-width: 60%;
+  padding: 30px;
+  margin-top: 20px;
+  margin-right: 10%;
+  border: none;
+}
+
+
+.mat-card-title-group {
+  width: 100%;
+}
+
+.chat-card .mat-card-content {
+  background-color: var(--bgSecondaryColor);
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--textPrimaryColor);
+  height: 95%;
+}
+
+.mat-card-header .mat-card-title {
+  color: var(--textPrimaryColor);
+}
+
+.mat-card-header .mat-card-subtitle:not(:first-child) {
+  color: var(--textSecondaryColor);
+}
+
+.response {
+  max-width: 80%;
+  background: #3C9AFF;
+  border-radius: 15px;
+  padding: 10px;
+  margin-left: 20%;
+  margin-bottom: 5%;
+  border-bottom-right-radius: 0px;
+}
+
+.petition {
+  max-width: 80%;
+  background: var(--bgTerciaryColor);
+  border-radius: 15px;
+  padding: 10px;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  justify-content: flex-start !important;
+  border-bottom-left-radius: 0px; 
+}
+
+.petition p {
+  margin-left: 0;
+}
+
+.header-avatar-image {
+  background-image: url(../../../../assets/images/phoinike.jpg);
+  background-size: cover;
+}
+
+
