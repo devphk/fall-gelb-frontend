@@ -27,11 +27,11 @@ import {
   FormCurrencyComponent,
   FormUserComponent,
   NewUnitsComponent,
-  NewGoodsTypeComponent,
   NewWarehouseComponent,
   NewCustomsComponent,
   NewTruckTypeComponent,
   NewContainerTypeComponent,
+  NewCommodityTypeComponent,
 } from './views/components';
 
 import {
@@ -39,7 +39,7 @@ import {
   BankAccountComponent,
   CurrencyComponent,
   CustomsComponent,
-  GoodsTypeComponent,
+  CommodityTypeComponent,
   TruckTypeComponent,
   UnitsComponent,
   UserComponent,
@@ -56,14 +56,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    NewGoodsTypeComponent,
+    NewCommodityTypeComponent,
     NewWarehouseComponent,
     NewUnitsComponent,
     NewCustomsComponent,
     NewTruckTypeComponent,
     NewContainerTypeComponent,
     SettingsComponent,
-    GoodsTypeComponent,
+    CommodityTypeComponent,
     BankAccountComponent,
     BankComponent,
     CurrencyComponent,

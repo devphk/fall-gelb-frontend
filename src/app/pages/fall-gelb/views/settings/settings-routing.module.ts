@@ -9,8 +9,8 @@ import {
   ContainerTypeComponent,
   CustomsComponent,
   TruckTypeComponent,
-  GoodsTypeComponent,
   WarehouseComponent,
+  CommodityTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
 
@@ -53,8 +53,8 @@ const routes: Routes = [
     component: TruckTypeComponent,
   },
   {
-    path: 'goods-type',
-    component: GoodsTypeComponent,
+    path: 'commodity-type',
+    component: CommodityTypeComponent,
   },
   {
     path: 'warehouse',

@@ -4,7 +4,7 @@ export * from './form-currency';
 export * from './form-user';
 export * from './new-container-type';
 export * from './new-customs';
-export * from './new-goods-type';
+export * from './new-commodity-type';
 export * from './new-truck-type';
 export * from './new-units';
 export * from './new-warehouse';

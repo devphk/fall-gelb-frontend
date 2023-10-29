@@ -26,30 +26,74 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Proveedores'
         },
         {
-          path: 'operations',
-          title: 'Operaciones'
+          path: 'customers',
+          title: 'Clientes'
         },
         {
-          path: 'statistics',
-          title: 'Estadísticas'
+          path: 'shipping-companies',
+          title: 'Navieras'
         },
         {
-          path: 'administration',
-          title: 'Administración'
+          path: 'air-consolidators',
+          title: 'Consolidador aéreo'
         },
         {
-          path: 'settings',
-          title: 'Configuración'
+          path: 'airlines',
+          title: 'Aerolíneas'
         },
         {
-          path: 'commercial',
-          title: 'Comercial'
+          path: 'terrestrials',
+          title: 'Terrestre'
         },
         {
-          path: 'comptroller',
-          title: 'Contraloría'
+          path: 'drivers',
+          title: 'Choferes'
         }
       ]
+    },
+    { 
+      path: 'settings', 
+      title: 'Configuración',  
+      icon:'settings',
+      childrenLinks: [
+        {
+          path: 'users',
+          title: 'Usuarios'
+        },
+        {
+          path: 'bank-accounts',
+          title: 'Cuentas bancarias'
+        },
+        {
+          path: 'currencies',
+          title: 'Monedas'
+        },
+        {
+          path: 'units',
+          title: 'Unidades'
+        },
+        {
+          path: 'container-type',
+          title: 'Tipos de contenedor'
+        },
+        {
+          path: 'customs',
+          title: 'Aduanas'
+        },
+        {
+          path: 'truck-type',
+          title: 'Tipos de camiones'
+        },
+        {
+          path: 'commodity-type',
+          title: 'Tipos de Mercancia'
+        },
+        {
+          path: 'warehouse',
+          title: 'Almacenes'
+        }
+      ]
+
     },
     // { 
     //   path: '/operations', 
@@ -94,17 +138,6 @@ export class PhkSidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    //   this.listTitles = ROUTES.filter(listTitle => listTitle);
-    //   const navbar: HTMLElement = this.element.nativeElement;
-    //   this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
-      this.router.events.subscribe((event) => {
-        this.sidebarClose();
-         var $layer: any = document.getElementsByClassName('close-layer')[0];
-         if ($layer) {
-           $layer.remove();
-           this.mobile_menu_visible = 0;
-         }
-     });
   }
 
   navigate(paths: string[]) {
@@ -117,25 +150,6 @@ export class PhkSidenavComponent implements OnInit {
     this.router.navigate(pathArray);
     
   }
-
-  sidebarOpen() {
-    const toggleButton = this.toggleButton;
-    const body = document.getElementsByTagName('body')[0];
-    setTimeout(function () {
-      toggleButton.classList.add('toggled');
-    }, 500);
-
-    body.classList.add('nav-open');
-
-    this.sidebarVisible = true;
-  };
-  sidebarClose() {
-    const body = document.getElementsByTagName('body')[0];
-    this.toggleButton.classList.remove('toggled');
-    this.sidebarVisible = false;
-    body.classList.remove('nav-open');
-  };
-
 
   isActive(path: string): boolean {
 

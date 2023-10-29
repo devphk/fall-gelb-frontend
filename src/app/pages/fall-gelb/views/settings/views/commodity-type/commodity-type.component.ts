@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '@core/services';
-import { NewGoodsTypeComponent } from '../components/new-goods-type/new-goods-type.component';
+import { NewCommodityTypeComponent } from '../components/new-commodity-type/new-commodity-type.component';
 
 @Component({
-  selector: 'app-goods-type',
-  templateUrl: './goods-type.component.html',
-  styleUrls: ['./goods-type.component.scss']
+  selector: 'app-commodity-type',
+  templateUrl: './commodity-type.component.html',
+  styleUrls: ['./commodity-type.component.scss']
 })
-export class GoodsTypeComponent implements OnInit {
+export class CommodityTypeComponent implements OnInit {
 
   tableColumnsToDisplay: string[] = [
     "ID",
@@ -49,7 +49,7 @@ export class GoodsTypeComponent implements OnInit {
 
   newGoodsType() {
     this.dialogService
-        .openDialog(NewGoodsTypeComponent,
+        .openDialog(NewCommodityTypeComponent,
                     "Nuevo Tipo de Mercancia",
                     "800px",
                     "250px").afterClosed()
