@@ -383,3 +383,10 @@ i {
 .stroked-button:hover {
   background-color: #fafafa;
 }
+
+// Color of word in the button
+
+.mat-primary span,
+.mat-primary .mat-icon {
+  color: #fff !important;
+}

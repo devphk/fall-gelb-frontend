@@ -52,7 +52,7 @@ export class DriversComponent implements OnInit {
         .openDialog(NewDriverComponent,
                     "Nuevo Chofer",
                     "800px",
-                    "400px").afterClosed()
+                    "auto").afterClosed()
                             .subscribe((data) => {
                               console.log("Data ", data)
                             });

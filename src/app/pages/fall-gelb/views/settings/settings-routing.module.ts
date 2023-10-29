@@ -36,7 +36,6 @@ const routes: Routes = [
     path: 'users',
     component: UserComponent,
   },
-
   {
     path: 'units',
     component: UnitsComponent,
