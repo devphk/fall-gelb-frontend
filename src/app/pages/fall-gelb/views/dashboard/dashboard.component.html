@@ -6,7 +6,16 @@
   </h1>
 
   <div class="card">
-    Hi
+    
+    <div style="display: block;">
+      <canvas baseChart class="w-100"
+        [type]="'line'"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend">
+      </canvas>
+    </div>
+
   </div>
 
 

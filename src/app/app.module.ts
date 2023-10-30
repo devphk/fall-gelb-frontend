@@ -17,6 +17,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    NgChartsModule
   ],
   providers: [
     SessionGuard,
