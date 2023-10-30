@@ -1,0 +1,15 @@
+::ng-deep {
+
+    mat-dialog-container{
+        background: var(--bgPrimaryColor) !important;
+    }
+
+    .mat-input-element {
+        color: var(--textPrimaryColor) !important;
+    }
+
+}
+
+.airlines {
+    background-color: var(--bgPrimaryColor);
+}

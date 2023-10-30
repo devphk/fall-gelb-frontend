@@ -4,6 +4,7 @@ import { PhkSidenavComponent } from './phk-sidenav.component';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuItem, MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MatMenuItem, MatMenuModule } from '@angular/material/menu';
     CommonModule,
     RouterModule,
     FlexLayoutModule,
-    MatMenuModule
+    MatMenuModule,
+    MatExpansionModule
   ],
   exports: [
     PhkSidenavComponent

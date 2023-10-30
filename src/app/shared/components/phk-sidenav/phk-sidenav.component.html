@@ -2,73 +2,54 @@
 
 <div class="sidenav-container"
      fxLayout="column"
-     fxLayoutAlign="center center"
+     fxLayoutAlign="center start"
      fxLayoutGap="10px">
-    <div *ngFor="let menuItem of menuItems" 
-         class="nav-item"
-         [routerLink]="[menuItem.path]"
-         fxLayout="row"
-         fxLayoutAlign="start center"
-         fxLayoutGap="15px"
-         [ngClass]="{'active': isActive(menuItem.path)}"
-         (click)="navigate(menuItem.path)"
-         mat-button [matMenuTriggerFor]="animals"> 
-            <i class="material-icons">{{menuItem.icon}}</i>
-            <p>
-                {{menuItem.title}}
-            </p>
-    </div>
 
-    <mat-menu #animals="matMenu"
-              [xPosition]="'before'">
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Proveedores
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Clientes
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Navieras
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Consolidador Aéreo
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Aéreolineas
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Terrestre
-        </button>
-        <button mat-menu-item 
-                [matMenuTriggerFor]="vertebrates">
-                Choferes
-        </button>
-      </mat-menu>
-    <mat-menu #vertebrates="matMenu"
-              [xPosition]="'after'">
-      <!-- <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
-      <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
-      <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button> -->
-      <button mat-menu-item>Birds</button>
-      <button mat-menu-item>Mammals</button>
-    </mat-menu>
-    
-    <mat-menu #invertebrates="matMenu">
-      <button mat-menu-item>Insects</button>
-      <button mat-menu-item>Molluscs</button>
-      <button mat-menu-item>Crustaceans</button>
-      <button mat-menu-item>Corals</button>
-      <button mat-menu-item>Arachnids</button>
-      <button mat-menu-item>Velvet worms</button>
-      <button mat-menu-item>Horseshoe crabs</button>
-    </mat-menu>
+        <div *ngFor="let menuItem of menuItems; let menuIndex = index"
+             class="w-100">
+
+                <div class="nav-item"
+                     fxLayout="row"
+                     fxLayoutAlign="start center"
+                     fxLayoutGap="15px"
+                     [ngClass]="{'active': isActive(menuItem.path)}"
+                     (click)="navigate([menuItem.path])"
+                     *ngIf="menuItem.childrenLinks.length === 0"> 
+                        <i class="material-icons">{{menuItem.icon}}</i>
+                        <p>
+                                {{menuItem.title}}
+                        </p>
+                </div>
+                <mat-expansion-panel class="w-100"
+                                     *ngIf="menuItem.childrenLinks.length > 0">
+        
+                        <mat-expansion-panel-header [ngClass]="{'active': isActive(menuItem.path)}">
+                                <mat-panel-title fxLayout="row"
+                                                fxLayoutAlign="start center"
+                                                fxLayoutGap="15px">
+                                        <i class="material-icons">{{menuItem.icon}}</i>
+                                        <p>
+                                                {{menuItem.title}}
+                                        </p>    
+                                </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="nav-item mb-5"
+                             fxLayout="row"
+                             fxLayoutAlign="start center"
+                             fxLayoutGap="15px"
+                             [ngClass]="{'mt-10': childrenIndex === 0}"
+                             (click)="navigate([menuItem.path, childrenLink.path])"
+                             *ngFor="let childrenLink of menuItem.childrenLinks; let childrenIndex = index"> 
+                                <p>
+                                        {{childrenLink.title}}
+                                </p>
+                        </div>                
+                        
+                </mat-expansion-panel>
+        </div>
+
+
 </div>
 
-<button mat-button [matMenuTriggerFor]="animals">Animal index</button>
 

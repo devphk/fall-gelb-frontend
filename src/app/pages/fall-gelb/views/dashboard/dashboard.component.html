@@ -1,25 +1,23 @@
 
-<button (click)="showItems()">
-  itemsSelected
-</button>
-
-<button (click)="addItem()">
-  add
-</button>
-
-<button (click)="deleteItem()">
-  delete
-</button>
-
-
 <div class="p-50">
+
   <h1>
-    Tabla phoinike
+    Bienvenido!
   </h1>
 
-  <app-phk-table [columnsTags]="tableColumnsTags"
-                 [columnsToDisplay]="tableColumnsToDisplay"
-                 [data]="tableData"
-                 [(itemsSelected)]="itemsSelected"></app-phk-table>
+  <div class="card">
+    
+    <div style="display: block;">
+      <canvas baseChart class="w-100"
+        [type]="'line'"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend">
+      </canvas>
+    </div>
+
+  </div>
+
 
 </div>
+

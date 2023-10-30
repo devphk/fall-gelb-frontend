@@ -1,0 +1,55 @@
+<div>
+  <form [formGroup]="bankAccountForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-select formControlName="bank" [label]="'Banco'">
+        <mat-option *ngFor="let bankOption of bankOptions" [value]="bankOption">
+          {{ bankOption }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        formControlName="numberAccount"
+        [label]="'Número de cuenta'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      ></app-phk-input>
+
+      <app-phk-select formControlName="currency" [label]="'Moneda'">
+        <mat-option
+          *ngFor="let currencyOption of currencyOptions"
+          [value]="currencyOption"
+        >
+          {{ currencyOption }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        formControlName="priority"
+        [label]="'Prioridad'"
+        fxFlex.gt-md="calc(66% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      ></app-phk-input>
+
+      <app-phk-slide-toggle
+        (click)="changeisVisible()"
+        formControlName="isVisible"
+        [label]="'¿Quiere que sea visible?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+      ></app-phk-slide-toggle>
+
+      <div fxFlex="100">
+        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

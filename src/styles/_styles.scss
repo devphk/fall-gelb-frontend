@@ -174,6 +174,10 @@ span {
   color: var(--textPrimaryColor);
 }
 
+i {
+  color: var(--textPrimaryColor);
+}
+
 .h-100vh {
   height: calc(100vh) !important;
 }
@@ -210,8 +214,24 @@ span {
   font-size: 20px !important;
 }
 
+.fs-18 {
+  font-size: 18px !important;
+}
+
+.fs-15 {
+  font-size: 15px !important;
+}
+
+.fs-09 {
+  font-size: 0.9em !important;
+}
+
 .fs-08 {
   font-size: 0.8em !important;
+}
+
+.fs-07 {
+  font-size: 0.7em !important;
 }
 
 .fw-600 {
@@ -242,12 +262,20 @@ span {
   margin: 0px !important;
 }
 
+.mb-0 {
+  margin-bottom: 0px !important;
+}
+
 .mt-10 {
   margin-top: 10px !important;
 }
 
 .mt-20 {
   margin-top: 20px !important;
+}
+
+.mb-5 {
+  margin-bottom: 5px !important;
 }
 
 .mb-10 {
@@ -280,8 +308,46 @@ span {
   padding: 20px !important;
 }
 
+.p-40 {
+  padding: 40px !important;
+}
+
 .p-50 {
   padding: 50px !important;
+}
+
+.ph-20 {
+  padding: 0px 20px;
+}
+
+.ph-50 {
+  padding: 0px 50px;
+}
+
+.pv-10 {
+  padding: 10px 0 !important;
+}
+
+.pb-20 {
+  padding-bottom: 20px !important;
+}
+
+.pb-50 {
+  padding-bottom: 50px !important;
+}
+
+// Asimetric padding styles
+
+.pv10-h20 {
+  padding: 10px 20px !important;
+}
+
+.pv20-h40 {
+  padding: 20px 40px !important;
+}
+
+.pv20-h50 {
+  padding: 20px 50px !important;
 }
 
 // Text styles
@@ -304,4 +370,31 @@ span {
 
 .material-shadow {
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.simple-border-card {
+  padding-top: 15px;
+  border: 1px solid #dadce0;
+  background: var(--bgSignInCard);
+  border-radius: 5px;
+}
+
+.stroked-button {
+  padding: 20px 25px;
+  color: #0081cd;
+  font-weight: 500;
+  transition: all 0.3s;
+  border-top: 1px solid #dadce0;
+  cursor: pointer;
+}
+
+.stroked-button:hover {
+  background-color: #fafafa;
+}
+
+// Color of word in the button
+
+.mat-primary span,
+.mat-primary .mat-icon {
+  color: #fff !important;
 }

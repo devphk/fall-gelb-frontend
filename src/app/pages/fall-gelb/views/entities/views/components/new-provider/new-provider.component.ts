@@ -52,13 +52,13 @@ export class NewProviderComponent implements OnInit {
 
   changeNational() {
 
-    if(this.nationaltrigger === true){
-      this.nationaltrigger = false;
-      console.log("toggle on");
-    }else{
-      this.nationaltrigger = true;
-      console.log("toggle off");
-    }
+    // if(this.nationaltrigger === true){
+    //   this.nationaltrigger = false;
+    //   console.log("toggle on");
+    // }else{
+    //   this.nationaltrigger = true;
+    //   console.log("toggle off");
+    // }
     
 
   }

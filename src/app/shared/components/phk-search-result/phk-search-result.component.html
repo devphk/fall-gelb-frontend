@@ -1,0 +1,68 @@
+<div fxLayout="row">
+    <div fxFlex="calc(10%)" class="side-container mat-elevation-z1">
+        <h5 class="fw-600">Contenido</h5>
+        <div class="test-container" >
+            <div *ngFor="let doc of docsResults" (click)="getSanitizeUrl(doc.url)">
+                <a [href]="getSanitizeUrl(doc.url)" target="_blank">{{doc.title}}</a>
+            </div>
+        </div>         
+    </div>
+
+    <div fxFlex="calc(90%)" class="container">
+        <div class="main-container mat-elevation-z1">
+            <div class="main-title-photo-container">
+                    <div>
+                        <h1 class="fw-800">{{title}}</h1>
+                        <h5 class="fw-600">Código Arancelario: {{code}}</h5>
+                    </div>
+                    <div>
+                    
+                    </div>
+                    <div>
+                        <img class="thumbnail-photo" [src]=imageUrl alt="photo-test">
+                    </div>
+            </div>
+            
+            <div>
+                <p>{{meaning}}</p>
+            </div><br>
+
+            <p class="fw-800">Ficha Técnica</p>
+            <hr>
+
+            <div fxLayout="row wrap"
+                fxLayoutGap="10px"
+                fxLayout.sm="column"
+                fxLayout.xs="column">
+                
+                <div fxFlex="calc(40% - 10px)"
+                    class="info-container">
+                        <h5 class="fw-800">{{auxInfo.title}}</h5>
+                        <hr>
+                        <p>{{auxInfo.info}}</p>
+                </div><br>
+
+                <div fxFlex="calc(40% - 10px)"
+                    class="info-container"
+                    *ngFor="let doc of docsResults">
+                        <h5 class="fw-800">{{doc.title}}</h5>
+                        <hr>
+                        <iframe [src]="getSanitizeUrl(doc.url)"></iframe>
+
+                        <a class="pdfButton" [href]="getSanitizeUrl(doc.url)" mat-raised-button target="blank">
+                            <mat-icon>open_in_new</mat-icon>
+                        </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="other-search-container"
+            *ngFor="let search of otherSearches">
+            <p class="fw-800">{{search.title}}</p>
+            <hr>
+            <p class="other-title-preview">{{search.subtitle}}</p>
+        </div>
+    </div>
+</div>

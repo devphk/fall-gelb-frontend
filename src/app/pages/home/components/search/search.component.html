@@ -1,42 +1,52 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="space-between center"
+  class="search-container"
+>
+  <app-phk-user-account-header class="w-100"> </app-phk-user-account-header>
 
-<div fxLayout="column"
-     fxLayoutAlign="space-between center"
-     class="search-container">
-
-    <app-phk-user-account-header class="w-100">
-
-    </app-phk-user-account-header>
-
-    <div>
-
-        <h1 class="search-title text-center mb-35">
-            Phoinike
-        </h1>
+  <div>
+    <h1 class="search-title text-center mb-35">Phoinike</h1>
 
         <div class="search-input"
              [ngClass]="{'active': inputActive,
                          'p-0': inputActive}"
              (click)="inputActive = true">
             <div id="searchBox">
-                <mat-icon class="mat-25">search</mat-icon>
+                <mat-icon class="mat-25" (click)="showInput()">search</mat-icon>
                 <input type="text" 
-                       placeholder="Busca en Phoinike" />
+                       placeholder="Busca en Phoinike"
+                       (keydown.enter)="showInput()"
+                       [(ngModel)]="search" />
                 <mat-icon class="mat-18">mic</mat-icon>
+            </div>
+        </div>
+
+        <div class="box" [class.opened]="show">
+            <div class="content"
+                 fxLayout="row"
+                 fxLayoutGap="50px">
+                <app-phk-search-result fxFlex="calc(55% - 50px)"></app-phk-search-result>
+                <app-phk-searcher-result-auxiliary
+                  fxFlex="calc(40% - 50px)"
+                  [tittle]="'Ladrillo'"
+                  [subTittle]="'Código Arancelario: 02.05.20.20'"
+                  [extraInfo]="
+                    'Un ladrillo es de forma rectangular y de tamaño tal que se puede manejar convenientemente con una mano.'
+                  "
+                  [img]="'https://i.ytimg.com/vi/rkncggqM0Ug/maxresdefault.jpg'"
+                ></app-phk-searcher-result-auxiliary>
             </div>
         </div>
     </div>
 
-    <div fxLayout="row"
-         fxLayoutAlign="space-between center"
-         class="search-footer">
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="search-footer"
+  >
+    <span> Copyright © 2023 Phoinike Logistics, C.A. </span>
 
-        <span>
-            Copyright © 2023 Phoinike Logistics, C.A.
-        </span>
-
-        <span>
-            V0.0.0
-        </span>
-
-    </div>
+    <span> V0.0.0 </span>
+  </div>
 </div>

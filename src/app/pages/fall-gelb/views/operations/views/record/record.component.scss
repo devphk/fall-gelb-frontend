@@ -1,0 +1,14 @@
+::ng-deep {
+  mat-dialog-container {
+    background: var(--bgSearchColor) !important;
+  }
+
+  .mat-select-panel {
+    background: var(--bgSearchColor) !important;
+  }
+}
+
+.record-contianer {
+  background-color: var(--bgSearchColor);
+  height: 100%;
+}

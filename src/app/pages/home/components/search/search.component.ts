@@ -3,18 +3,21 @@ import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
 import { PhkThemeToggleService } from '@shared/components';
 import { Mode } from '@shared/models';
 import { HomeService } from '../../home.service';
+import { fastAnimation } from '@shared/animations/fast-animation';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  animations: [fadeFastAnimation]
+  animations: [fastAnimation]
 })
 export class SearchComponent {
 
+  public show: boolean = false;
   inputActive: boolean = false;
   appsOverlayOpened = false;
   userAccountOverlayOpened = false;
+  search: string = '';
 
   appsList: any[] = [
     {
@@ -61,5 +64,10 @@ export class SearchComponent {
     setTimeout(() => {
       this.clickingUserButton = false;
     }, 100);
+  }
+
+  showInput() {
+    this.show = !this.show;
+    console.log(this.search);
   }
 }

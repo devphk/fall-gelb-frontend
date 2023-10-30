@@ -1,0 +1,227 @@
+<div>
+  <form [formGroup]="formgruoup">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-select
+        formControlName="client"
+        [label]="'Cliente'"
+        fxFlex.gt-md="calc(44% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option *ngFor="let client of clientOptions" [value]="client">
+          {{ client }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="analystClient"
+        [label]="'Analista Cliente'"
+        fxFlex.gt-md="calc(44% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let analystClient of analystClientOptions"
+          [value]="analystClient"
+        >
+          {{ analystClient }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        formControlName="orderPayment"
+        [label]="'OC'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        formControlName="guideBl"
+        [label]="'Guía / BL'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        formControlName="merchandise"
+        [label]="'Mercancía'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+      <!-- 
+      <app-phk-date-picker
+        formControlName="dateEta"
+        label="'Fecha de ETA'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-date-picker> -->
+
+      <app-phk-select
+        formControlName="analystPhk"
+        [label]="'Analista PHK'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let analystPhk of analystPhkOptions"
+          [value]="analystPhk"
+        >
+          {{ analystPhk }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="analystClosePhk"
+        [label]="'Analista Cierre PHK'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let analystClosePhk of analystClosePhkOptions"
+          [value]="analystClosePhk"
+        >
+          {{ analystClosePhk }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        formControlName="recrodPhk"
+        [label]="'Expediente PHK'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        formControlName="recordSdn"
+        [label]="'Expediente SDN'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-select
+        formControlName="biller"
+        [label]="'Facturador'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option *ngFor="let biller of billerOptions" [value]="biller">
+          {{ biller }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="customsAgent"
+        [label]="'Agente Aduanal'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let customsAgent of customsAgentOptions"
+          [value]="customsAgent"
+        >
+          {{ customsAgent }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-slide-toggle
+        formControlName="transportActive"
+        [label]="'¿Vincular Transporte?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        class="mt-m20"
+      ></app-phk-slide-toggle>
+
+      <app-phk-select
+        formControlName="serviceType"
+        [label]="'Tipo de Servicio'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let serviceType of serviceTypeOptions"
+          [value]="serviceType"
+        >
+          {{ serviceType }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="transportType"
+        [label]="'Tipo de Transporte'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let transportType of transportTypeOptions"
+          [value]="transportType"
+        >
+          {{ transportType }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="transportCompany"
+        [label]="'Empresa de Transporte'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let transportCompany of transportCompanyOptions"
+          [value]="transportCompany"
+        >
+          {{ transportCompany }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="port"
+        [label]="'Puerto'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option *ngFor="let port of portOptions" [value]="port">
+          {{ port }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        formControlName="loadType"
+        [label]="'Tipo de Carga'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option *ngFor="let loadType of loadTypeOptions" [value]="loadType">
+          {{ loadType }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        label="Cantidad 20'"
+        formControlName="container20"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        label="Cantidad 40'"
+        formControlName="container40"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <div
+        fxFlex="50"
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="33"
+        fxFlex.lg="100"
+        fxFlex.xl="100"
+      >
+        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

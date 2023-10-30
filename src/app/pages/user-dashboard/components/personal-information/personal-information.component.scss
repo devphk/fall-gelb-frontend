@@ -1,0 +1,47 @@
+
+// Global styles
+
+.w-100px {
+    width: 100px;
+}
+
+.personal-settings-container {
+    max-width: 100%;
+    width: 100%;
+
+}
+
+.personal-settings-card {
+
+padding: 15px !important;
+height: 200px;
+border: 2px solid #dadce0;
+background: var(--bgSecondaryColor) !important;
+border-radius: 5px;
+
+}
+
+.personal-info-image {
+    width: 250px;
+    object-fit:contain;
+}
+
+.basic-information {
+    padding: 20px;
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+    background: var(--bgSignInCard);
+}
+
+.user-info {
+    padding: 10px 0;
+    border-top: 1px solid #dadce0;
+    cursor: pointer;
+    p {
+        margin-bottom: 0px !important   ;
+    } 
+}
+
+.user-info:hover {
+    background-color: #fafafa;
+}

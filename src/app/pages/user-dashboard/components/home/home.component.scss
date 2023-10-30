@@ -1,5 +1,9 @@
 
+// Global styles
 
+h2 {
+  font-size: 1.5em;
+}
 
 .user-setting-title {
     margin: 15px 0 5px 0;
@@ -10,12 +14,6 @@
   padding: 20px 50px;
 }
 
-.user-account-card {
-
-  padding: 15px !important;
-  height: 200px;
-  border: 2px solid #dadce0;
-  background: var(--bgSecondaryColor) !important;
-  border-radius: 5px;
-
+.card-img {
+  width: calc(80%);
 }

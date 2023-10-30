@@ -1,0 +1,28 @@
+<div>
+  <form [formGroup]="banckFrom">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+        fxFlex="100"
+      ></app-phk-input>
+      <div
+        fxFlex="50"
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="100"
+        fxFlex.lg="100"
+        fxFlex.xl="100"
+      >
+        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

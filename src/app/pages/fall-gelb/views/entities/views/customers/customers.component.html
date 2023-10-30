@@ -1,1 +1,24 @@
-<p>customers works!</p>
+<div class="customers">
+    <div class="pv20-h50 table-container">
+
+        <div fxLayout="row"
+            fxLayoutAlign="space-between center">
+
+            <h1>Clientes</h1>
+
+            <button mat-mini-fab
+                    color="primary" 
+                    aria-label="Nuevo cliente"
+                    matTooltip="Nuevo Cliente"
+                    (click)="newCustomer()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+
+        <app-phk-table [columnsTags]="tableColumnsTags"
+                    [columnsToDisplay]="tableColumnsToDisplay"
+                    [data]="tableData"></app-phk-table>
+                    
+    </div>
+</div>

@@ -36,7 +36,10 @@ export class DashboardSidebarComponent implements OnInit {
   }
 
   navigate(path: string) {
-    console.log("path ", path)
     this.router.navigate(['user-dashboard/', path]);
+  }
+
+  navigateToFallGelb() {
+    this.router.navigate(['fall-gelb']);
   }
 }

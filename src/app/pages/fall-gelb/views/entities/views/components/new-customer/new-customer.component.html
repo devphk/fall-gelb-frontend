@@ -1,0 +1,72 @@
+<div>   
+    <form [formGroup]="customerForm">
+        <div mat-dialog-content 
+             fxLayout="row wrap" 
+             fxLayoutGap="20px"
+             fxLayout.lt-md="column"
+             fxLayoutAlign="start center">
+            <br>
+
+            <app-phk-input  label="Nombre" 
+                            formControlName="name" 
+                            [required]="true"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+
+            <app-phk-input  label="Teléfono" 
+                            formControlName="phone"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+
+            <app-phk-input  label="Rif" 
+                            formControlName="rif"
+                            [required]="true"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+
+            <app-phk-text-area  label="Dirección Fiscal"
+                                formControlName="dir"
+                                fxFlex.gt-md="calc(33% - 20px)"
+                                fxFlex.lt-md="calc(100%)"></app-phk-text-area>
+            
+            <app-phk-input  label="Rif en PDF" 
+                            formControlName="rifPDF" 
+                            [required]="true"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+
+            <app-phk-select label="Contribuyente Especial"
+                            formControlName="taxpayer"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)">
+                            <mat-option *ngFor="let tax of taxpayerOptions"
+                                        [value]="tax">
+                                        {{tax}}
+                            </mat-option>
+            </app-phk-select>
+            
+            <app-phk-select label="Facturador"
+                            formControlName="biller"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)">
+                            <mat-option *ngFor="let bill of billerOptions"
+                                        [value]="bill">
+                                        {{bill}}
+                            </mat-option>
+            </app-phk-select>
+
+            <app-phk-select label="Tiempo para Solicitar Anticipos"
+                            formControlName="time"
+                            fxFlex.gt-md="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)">
+                            <mat-option *ngFor="let time of timeOptions"
+                                        [value]="time">
+                                        {{time}}
+                            </mat-option>
+            </app-phk-select>
+            
+            <button class="w-100" mat-flat-button color="primary">Guardar</button>
+    
+        </div>
+    </form>
+</div>

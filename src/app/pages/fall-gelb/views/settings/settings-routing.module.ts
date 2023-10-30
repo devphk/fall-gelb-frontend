@@ -1,26 +1,74 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { UnitsComponent } from './views/units/units.component';
+import {
+  UserComponent,
+  BankComponent,
+  BankAccountComponent,
+  CurrencyComponent,
+  UnitsComponent,
+  ContainerTypeComponent,
+  CustomsComponent,
+  TruckTypeComponent,
+  WarehouseComponent,
+  CommodityTypeComponent,
+} from './views';
+import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'units',
-        pathMatch: 'full'
-    },
-    {
-        path: 'units',
-        component: UnitsComponent
-    },
-    {
-        path: '**',
-        component: UnitsComponent,
-        pathMatch: 'full'
-    }
+  {
+    path: '',
+    redirectTo: 'settings',
+    pathMatch: 'full',
+  },
+  {
+    path: 'banks',
+    component: BankComponent,
+  },
+  {
+    path: 'bank-accounts',
+    component: BankAccountComponent,
+  },
+  {
+    path: 'currencies',
+    component: CurrencyComponent,
+  },
+  {
+    path: 'users',
+    component: UserComponent,
+  },
+  {
+    path: 'units',
+    component: UnitsComponent,
+  },
+  {
+    path: 'container-type',
+    component: ContainerTypeComponent,
+  },
+  {
+    path: 'customs',
+    component: CustomsComponent,
+  },
+  {
+    path: 'truck-type',
+    component: TruckTypeComponent,
+  },
+  {
+    path: 'commodity-type',
+    component: CommodityTypeComponent,
+  },
+  {
+    path: 'warehouse',
+    component: WarehouseComponent,
+  },
+  {
+    path: '**',
+    component: SettingsComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class SettingsRoutingModule { }
+export class SettingsRoutingModule {}

@@ -1,0 +1,18 @@
+<div>   
+    <form [formGroup]="commodityTypeForm">
+        <div mat-dialog-content 
+             fxLayout="row wrap" 
+             fxLayoutGap="20px"
+             fxLayout.lt-md="column">
+                <br>
+                <app-phk-input  fxFlex="calc(33% - 20px)" 
+                                label="Nombre de Tipo de Mercancía" 
+                                formControlName="name" 
+                                [required]="true">
+                </app-phk-input>
+                
+                <button class="w-100" mat-flat-button color="primary">Guardar</button>
+            
+        </div>
+    </form>
+</div>

@@ -1,0 +1,76 @@
+<div>
+  <form [formGroup]="userForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        [required]="true"
+        label="Nombre"
+        formControlName="name"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        [required]="true"
+        label="Dirección de correo"
+        formControlName="email"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+      <app-phk-input
+        [required]="true"
+        label="Nombre de Usuario"
+        formControlName="userName"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        [required]="true"
+        [label]="'Contraseña'"
+        formControlName="password"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-input
+        [required]="true"
+        [label]="'Confirmar contraseña'"
+        formControlName="passwordVerify"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
+
+      <app-phk-select
+        [required]="true"
+        [label]="'Rol'"
+        formControlName="userRol"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let userRolOption of userRolOptions"
+          [value]="userRolOption"
+        >
+          {{ userRolOption }}
+        </mat-option>
+      </app-phk-select>
+
+      <div
+        fxFlex="50"
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="100"
+        fxFlex.lg="100"
+        fxFlex.xl="100"
+      >
+        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>

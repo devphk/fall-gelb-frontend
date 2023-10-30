@@ -39,4 +39,8 @@ ng build --base-href "https://devphk.github.io/fall-gelb-frontend/"
 
 3.- Run the command below in your terminal to deploy the App:
 
-npx angular-cli-ghpages --dir=dist/Project-name
+npx angular-cli-ghpages --dir=dist/fall-gelb
+
+4- Visit the App Page:
+
+Visit the URL to your App gh-pages, it is the same URL you created earlier on our terminal; https://devphk.github.io/fall-gelb-frontend/
