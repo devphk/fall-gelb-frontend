@@ -56,4 +56,5 @@ export class FallGelbComponent implements OnInit {
     }
     this.fallgelbService.toggle();
   }
+  
 }

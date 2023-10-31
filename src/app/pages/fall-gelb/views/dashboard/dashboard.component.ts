@@ -13,6 +13,24 @@ export class DashboardComponent implements OnInit {
     control: this.fb.control("")
   });
 
+  // Pie
+  pieChartOptions: ChartOptions<'pie'> = {
+    responsive: false,
+  };
+  pieChartLabels = [ 'Pérdidas', 'Ventas', 'Inversiones' ];
+  pieChartDatasets = [ {
+    data: [ 300, 500, 100 ],
+    backgroundColor: [
+      'rgb(0, 191, 255)',
+      'rgb(54, 162, 235)',
+      'rgb(77, 61, 240)'
+    ],
+  }];
+  pieChartLegend = true;
+  pieChartPlugins = [];
+
+  // Line charts config
+
   lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: [
       'Enero',
@@ -79,7 +97,12 @@ export class DashboardComponent implements OnInit {
       }
     },
     layout: {
-      padding: 30
+      padding: {
+        left: 30,
+        right: 30,
+        bottom: 30,
+        top: 0
+      }
     }
   };
   public lineChartLegend = true;

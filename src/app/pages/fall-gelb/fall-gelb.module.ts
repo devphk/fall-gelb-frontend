@@ -10,6 +10,10 @@ import { PhkSidenavModule } from 'src/app/shared/components/phk-sidenav/phk-side
 import { FallGelbComponent } from './fall-gelb.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PhkThemeToggleModule, PhkUserAccountButtonsModule, PhkUserAccountPopupModule } from '@shared/components';
+import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
+import { AvatarModule } from 'ngx-avatar';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [FallGelbComponent],
@@ -22,6 +26,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatIconModule,
     PhkSidenavModule,
     FlexLayoutModule,
+    PhkThemeToggleModule,
+    PhkAppsListModule,
+    AvatarModule,
+    PhkUserAccountPopupModule,
+    OverlayModule,
+    PhkUserAccountButtonsModule
   ],
   providers: [FallGelbService],
 })

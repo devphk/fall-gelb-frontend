@@ -35,7 +35,8 @@ import { PhkSearchLeftAuxiliaryModule } from '@shared/components/phk-search-left
     PhkSearchResultModule,
     PhkSearcherResultAuxiliaryModule,
     PhkSearchLeftAuxiliaryModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class HomeModule {}

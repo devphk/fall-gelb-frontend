@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { SignService } from './sign.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -35,6 +37,9 @@ const routes: Routes = [
     MatFormFieldModule,
     FlexLayoutModule,
     MatButtonModule
+  ],
+  providers: [
+    SignService
   ]
 })
 export class SignModule { }

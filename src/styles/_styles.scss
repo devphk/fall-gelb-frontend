@@ -194,6 +194,12 @@ i {
   width: 50% !important;
 }
 
+// Content styles
+
+.content-center {
+  margin: 0 auto !important;
+}
+
 // Pointer styles
 
 .pointer {
@@ -338,6 +344,14 @@ i {
 
 // Asimetric padding styles
 
+.pv0-h20 {
+  padding: 0px 20px !important;
+}
+
+.pv0-h15 {
+  padding: 0px 15px !important;
+}
+
 .pv10-h20 {
   padding: 10px 20px !important;
 }
@@ -386,6 +400,24 @@ i {
   transition: all 0.3s;
   border-top: 1px solid #dadce0;
   cursor: pointer;
+}
+
+.stroked-button:hover {
+  background-color: #fafafa;
+}
+
+.stroked-transparent-button {
+  padding: 10px 15px;
+  color: #2a2a2a;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.stroked-transparent-button:hover {
+  background-color: #fafafa;
 }
 
 .stroked-button:hover {

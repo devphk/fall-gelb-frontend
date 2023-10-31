@@ -36,6 +36,17 @@ export class HttpService {
       {headers, params})
   }
 
+  postLogin(uri: string,
+            body: any = {},
+            params?: HttpParams,
+            startLoading = true,
+            headers: HttpHeaders = new HttpHeaders({Accept: 'application/json', 'Content-Type': 'application/json'})): Observable<any> {
+    return this.http.post<any>(
+      uri,
+      headers.get('Content-Type') !== 'application/x-www-form-urlencoded' ? JSON.stringify(body) : body,
+      {headers, params})
+  }
+
   put(uri: string,
       body: any = {},
       params?: HttpParams,

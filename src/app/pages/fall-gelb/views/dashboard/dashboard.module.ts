@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { PhkTableModule } from 'src/app/shared/components/phk-table/phk-table.module';
 import { PhkSearchResultModule } from '@shared/components/phk-search-result/phk-search-result.module';
 import { NgChartsModule } from 'ng2-charts';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
     PhkDatePickerModule,
     MatButtonModule,
     PhkTableModule,
-    NgChartsModule
+    NgChartsModule,
+    FlexLayoutModule
   ],
 })
 export class DashboardModule {}

@@ -16,10 +16,19 @@
         Hola, Gianfranco
     </h2>
 
-    <button class="manage-account-button">
-        Gestiona tu cuenta Phoinike
+    <button class="manage-account-button"
+            (click)="openFallgelb()">
+      Gestiona tu cuenta Phoinike
     </button>
 
+    <button class="logout-button"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+            fxLayoutGap="20px"
+            (click)="logout()">
+      <i class="material-icons">logout</i>
+      Cerrar sesión
+    </button>
   <mat-expansion-panel class="w-100">
 
     <mat-expansion-panel-header>

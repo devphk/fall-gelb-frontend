@@ -1,24 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
-import { PhkThemeToggleService } from '@shared/components';
-import { Mode } from '@shared/models';
-import { HomeService } from '../../home.service';
-import { fastAnimation } from '@shared/animations/fast-animation';
-import { Router } from '@angular/router';
+import { HomeService } from 'src/app/pages/home/home.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  animations: [fastAnimation]
+  selector: 'app-phk-user-account-buttons',
+  templateUrl: './phk-user-account-buttons.component.html',
+  styleUrls: ['./phk-user-account-buttons.component.scss']
 })
-export class SearchComponent {
+export class PhkUserAccountButtonsComponent implements OnInit {
 
-  public show: boolean = false;
   inputActive: boolean = false;
   appsOverlayOpened = false;
   userAccountOverlayOpened = false;
-  search: string = '';
 
   appsList: any[] = [
     {
@@ -37,15 +29,10 @@ export class SearchComponent {
 
   clickingAppsButton: boolean = false;
   clickingUserButton: boolean = false;
-  isLogged: boolean = false;
 
-  constructor(public homeService: HomeService,
-              private router: Router) { }
+  constructor(public homeService: HomeService) { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('fallgelb')) {
-      this.isLogged = true;
-    }
   }
 
   toggleAppsList() {
@@ -72,12 +59,4 @@ export class SearchComponent {
     }, 100);
   }
 
-  showInput() {
-    this.show = !this.show;
-    console.log(this.search);
-  }
-
-  signIn() {
-    this.router.navigate(['sign']);
-  }
 }
