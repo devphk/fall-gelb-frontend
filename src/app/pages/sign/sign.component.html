@@ -25,9 +25,9 @@
                 <h4 class="text-center m-0">Inicia sesión</h4>
                 <h5 class="text-center m-10">Utiliza tu cuenta Phoinike</h5>
         
-                <form [formGroup]="signInFormGroup" 
-                        fxLayout="column"
-                        fxLayoutAlign="center start">
+                <form [formGroup]="signInForm" 
+                      fxLayout="column"
+                      fxLayoutAlign="center start">
         
                 <app-phk-input formControlName="username" 
                                 label="Usuario"
@@ -40,8 +40,8 @@
                     <mat-icon (click)="hidePassword = !hidePassword" class="pointer" suffix>
                     {{hidePassword ? 'visibility_off' : 'visibility'}}
                     </mat-icon>
-                    <mat-error error *ngIf="signInFormGroup.get('password')!.errors?.['invalid']">
-                    Ususario o contraseña incorrectos
+                    <mat-error error *ngIf="signInForm.get('password')!.errors?.['invalid']">
+                        Usuario o contraseña incorrectos
                     </mat-error>
                 </app-phk-input>
 
@@ -51,38 +51,41 @@
                     </span>
                 </button>
 
-                <div fxLayout="row"
-                     fxLayoutAlign="space-between center"
-                     class="w-100">
+                    <div fxLayout="row"
+                        fxLayoutAlign="space-between center"
+                        class="w-100">
 
-                     <button (click)="submit()"
-                             *ngIf="!openSpinner"
-                             color="primary"
-                             class="fs-08 create-button"
-                             mat-button>
-                             <span>
-                                 Crear cuenta
-                             </span>
-                     </button>
+                        <button color="primary"
+                                class="fs-08 create-button"
+                                mat-button>
+                                <span>
+                                    Crear cuenta
+                                </span>
+                        </button>
 
-                     <button (click)="submit()"
-                             *ngIf="!openSpinner"
-                             color="primary"
-                             class="fs-08 enter-button"
-                             mat-raised-button>
-                             <span>
-                                Entrar
+                        <div>
+
+                            <button (click)="submit()"
+                                    *ngIf="!openSpinner"
+                                    color="primary"
+                                    class="fs-08 enter-button"
+                                    mat-raised-button
+                                    type="submit">
+                                    <span>
+                                        Entrar
+                                    </span>
+                            </button>
+    
+                            <span fxLayoutAlign="center center"
+                                  class="pv0-h15">
+                                <mat-spinner *ngIf="openSpinner"
+                                            [diameter]="30"></mat-spinner>
                             </span>
-                     </button>
 
-                </div>
+                        </div>
+
+                    </div>
         
-        
-                <span class="w-100" 
-                        fxLayoutAlign="center center">
-                    <mat-spinner *ngIf="openSpinner"
-                                [diameter]="30"></mat-spinner>
-                </span>
                 </form>
         
             </mat-card>

@@ -3,6 +3,11 @@
     mat-form-field {
         width: 100% !important;
     }
+
+    .mat-primary .mat-icon {
+        color: var(--formFieldPrimaryLabelColor) !important;
+    }
+
 }
 
 

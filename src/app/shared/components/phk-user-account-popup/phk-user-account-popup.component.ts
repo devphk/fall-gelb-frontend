@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { fadeFastAnimation } from '@shared/animations';
 import { HomeService } from 'src/app/pages/home/home.service';
 
@@ -13,7 +14,8 @@ export class PhkUserAccountPopupComponent {
   @Input() clickingInOutsideButton: boolean = false;
 
   constructor(private elementRef: ElementRef,
-              private homeService: HomeService) { }
+              private homeService: HomeService,
+              private router: Router) { }
 
   @HostListener('document:click', ['$event'])
   public onDocumentClick(event: MouseEvent): void {
@@ -24,6 +26,15 @@ export class PhkUserAccountPopupComponent {
           && !this.clickingInOutsideButton) {
         this.homeService.toggleUserAccount = false;
       }
+  }
+
+  openFallgelb() {
+    this.router.navigate(['fallgelb']);
+  }
+
+  logout() {
+    sessionStorage.removeItem('fallgelb');
+    this.router.navigate(['home']);
   }
 
 }

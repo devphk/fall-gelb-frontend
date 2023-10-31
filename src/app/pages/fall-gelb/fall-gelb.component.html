@@ -14,13 +14,24 @@
     </mat-drawer>
     <mat-drawer-content class="h-100vh">
         
-        <mat-toolbar color="primary">
-            <button mat-icon-button 
-                    aria-label="toolbar button"
-                    (click)="onToggleDrawer()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>Phoinike</span>
+        <mat-toolbar color="primary"
+                     fxLayout="row"
+                     fxLayoutAlign="space-between center">
+
+            <div>
+                <button mat-icon-button 
+                        aria-label="toolbar button"
+                        (click)="onToggleDrawer()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>Phoinike</span>
+            </div>
+
+            <div fxLayout="row"
+                 fxLayoutAlign="center center">
+                <app-phk-user-account-buttons></app-phk-user-account-buttons>
+            </div>
+
         </mat-toolbar>
 
         <router-outlet></router-outlet>

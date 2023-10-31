@@ -11,7 +11,7 @@ export class SessionGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree { 
 
-      return true
+      return sessionStorage.getItem('fallgelb') ?  true : false;
       
   }
 

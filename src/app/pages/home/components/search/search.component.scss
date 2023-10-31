@@ -21,6 +21,7 @@
   .mat-mini-fab:hover {
     background-color: rgba(232, 234, 237, 0.08) !important;
   }
+
 }
 
 // Global styles
@@ -30,6 +31,20 @@
   background-color: var(--bgSearchColor);
   background-size: cover;
   background-position: center center;
+}
+
+// Header styles
+
+.home-header-container {
+  height: 70px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  button {
+    margin: 0 20px;
+  }
 }
 
 // Search content

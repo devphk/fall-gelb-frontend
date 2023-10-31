@@ -35,7 +35,8 @@
 
 }
 
-.manage-account-button {
+.manage-account-button,
+.logout-button {
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -45,8 +46,12 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    i {
+        color: #6d9bc3;
+    }
 }
 
-.manage-account-button:hover {
+.manage-account-button:hover,
+.logout-button:hover {
     background-color: rgba($color: #6d9bc3, $alpha: 0.2);
 }

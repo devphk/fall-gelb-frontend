@@ -3,7 +3,20 @@
   fxLayoutAlign="space-between center"
   class="search-container"
 >
-  <app-phk-user-account-header class="w-100"> </app-phk-user-account-header>
+
+  <div *ngIf="isLogged" class="w-100">
+
+    <app-phk-user-account-header> </app-phk-user-account-header>
+
+  </div>
+
+
+  <div *ngIf="!isLogged"
+       class="home-header-container w-100">
+
+    <button class="stroked-transparent-button" (click)="signIn()">Ingresar</button>
+
+  </div>
 
   <div>
     <h1 class="search-title text-center mb-35">Phoinike</h1>

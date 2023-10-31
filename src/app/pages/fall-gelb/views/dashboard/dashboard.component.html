@@ -5,18 +5,49 @@
     Bienvenido!
   </h1>
 
-  <div class="card">
-    
-    <div style="display: block;">
-      <canvas baseChart class="w-100"
-        [type]="'line'"
-        [data]="lineChartData"
-        [options]="lineChartOptions"
-        [legend]="lineChartLegend">
-      </canvas>
-    </div>
+  <div fxLayout="column"
+       fxLayoutAlign="center center">
+
+       <div fxLayout="row"
+            fxLayoutAlign="center start"
+            fxLayoutGap="20px"
+            class="w-100">
+          
+            <div class="simple-border-card p-20"
+                 fxFlex="calc(70&)">
+
+                <h3 class="fw-800">Balance financiero</h3>
+              
+                <canvas baseChart class="w-100"
+                  [type]="'line'"
+                  [data]="lineChartData"
+                  [options]="lineChartOptions"
+                  [legend]="lineChartLegend">
+                </canvas>
+          
+            </div>
+
+            <div class="simple-border-card p-20"
+                 fxFlex="calc(30& - 20px)">
+
+                <h3 class="fw-800">Administración</h3>    
+                <canvas baseChart
+                        [type]="'pie'"
+                        [datasets]="pieChartDatasets"
+                        [labels]="pieChartLabels"
+                        [options]="pieChartOptions"
+                        [plugins]="pieChartPlugins"
+                        [legend]="pieChartLegend"
+                        class="content-center">
+                </canvas>
+          
+            </div>
+          
+
+       </div>
 
   </div>
+
 
 
 </div>
