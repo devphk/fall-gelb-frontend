@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="userForm">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
     <div
       mat-dialog-content
       fxLayout="row wrap"
@@ -13,22 +13,35 @@
         formControlName="name"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        ngModel
       ></app-phk-input>
 
+      <app-phk-input
+        [required]="true"
+        label="Apellido"
+        formControlName="lastname"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        ngModel
+      ></app-phk-input>
+      
       <app-phk-input
         [required]="true"
         label="Dirección de correo"
         formControlName="email"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        ngModel
       ></app-phk-input>
       <app-phk-input
         [required]="true"
         label="Nombre de Usuario"
-        formControlName="userName"
+        formControlName="username"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        ngModel
       ></app-phk-input>
+
 
       <app-phk-input
         [required]="true"
@@ -36,17 +49,19 @@
         formControlName="password"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        ngModel
       ></app-phk-input>
-
+      
       <app-phk-input
         [required]="true"
-        [label]="'Confirmar contraseña'"
+        label="Confirmar Contraseña"
         formControlName="passwordVerify"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        ngModel
       ></app-phk-input>
 
-      <app-phk-select
+      <!-- <<app-phk-select
         [required]="true"
         [label]="'Rol'"
         formControlName="userRol"
@@ -59,7 +74,7 @@
         >
           {{ userRolOption }}
         </mat-option>
-      </app-phk-select>
+      </app-phk-select>> -->
 
       <div
         fxFlex="50"

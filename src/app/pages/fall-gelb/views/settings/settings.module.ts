@@ -46,6 +46,8 @@ import {
   WarehouseComponent,
   ContainerTypeComponent,
 } from './views';
+import { HttpService } from '@core/services/http.service';
+import { TokenService } from '@core/services/token.service';
 
 const routes: Routes = [
   {
@@ -98,5 +100,6 @@ const routes: Routes = [
     MatCardModule,
     MatSelectModule,
   ],
+  providers:[HttpService, TokenService]
 })
 export class SettingsModule {}

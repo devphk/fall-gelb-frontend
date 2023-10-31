@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
+import { TokenService } from '@core/services/token.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,10 +33,12 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgChartsModule
+    NgChartsModule,
+    HttpClientModule
   ],
   providers: [
     SessionGuard,
+    TokenService,
     PhkThemeToggleService,
     {
       provide: MODE_STORAGE_SERVICE,
