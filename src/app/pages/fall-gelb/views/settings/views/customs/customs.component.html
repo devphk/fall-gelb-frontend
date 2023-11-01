@@ -16,7 +16,9 @@
         </div>
 
 
-        <app-phk-table [columnsTags]="tableColumnsTags"
+        <app-phk-table 
+                    *ngIf="tableData !== []"
+                    [columnsTags]="tableColumnsTags"
                     [columnsToDisplay]="tableColumnsToDisplay"
                     [data]="tableData"></app-phk-table>
                     

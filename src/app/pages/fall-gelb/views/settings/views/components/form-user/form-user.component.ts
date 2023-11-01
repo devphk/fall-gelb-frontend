@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../user/user.service';
 import { User } from '@shared/models';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-user',
@@ -19,14 +20,32 @@ export class FormUserComponent implements OnInit {
   });
 
   constructor(private formBuild: FormBuilder,
-              private userService:UserService) {}
+              private userService:UserService,
+              private snackBar:MatSnackBar) {}
 
   ngOnInit(): void {}
+
+  durationInSeconds = 2;
+
+  openSnackBar(type:number){
+    if(type === 1) {
+      this.snackBar.open('Agregado Exitosamente!','Close',{
+        duration: this.durationInSeconds * 1000,
+        panelClass: ['success-snackbar']
+      });
+    }else{
+      this.snackBar.open('Ha ocurrido un Error!','Close',{
+        duration: this.durationInSeconds * 1000,
+        panelClass: ['error-snackbar']
+      });
+    }
+  }
     
   onSubmit(formData:any) {
     console.log('FormData: ',formData);
     if(this.userForm.valid) {
       console.log('VÁLIDO');
+      this.openSnackBar(1);
       
       this.userService
       .postUsers(formData)
@@ -37,6 +56,7 @@ export class FormUserComponent implements OnInit {
 
     }else {
       console.log('INVÁLIDO');
+      this.openSnackBar(2);
     }
     
 

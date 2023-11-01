@@ -31,7 +31,6 @@ export class UserComponent implements OnInit {
   constructor(private dialogService: DialogService,
     private userService: UserService) {}
     
-  test:string = '';
     
   ngOnInit(): void {
 
@@ -39,7 +38,8 @@ export class UserComponent implements OnInit {
     .getUsers()
     .subscribe( (resp) => {
       console.log(resp);
-      
+
+
       const tableData: UserDataTable[] = [];
       
       resp.forEach((user) => {
@@ -73,7 +73,7 @@ export class UserComponent implements OnInit {
   }
 
   editUser() {
-
+    
     this.dialogService
       .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px')
       .afterClosed()

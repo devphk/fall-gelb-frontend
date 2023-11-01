@@ -20,6 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenService } from '@core/services/token.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import { TokenService } from '@core/services/token.service';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     NgChartsModule,
     HttpClientModule
   ],

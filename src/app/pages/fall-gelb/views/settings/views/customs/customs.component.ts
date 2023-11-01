@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewCustomsComponent } from '../components/new-customs/new-customs.component';
 import { DialogService } from '@core/services';
+import { CustomsService } from './customs.service';
+import { Customs, CustomsDataTable } from '@shared/models';
 
 @Component({
   selector: 'app-customs',
@@ -12,39 +14,40 @@ export class CustomsComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
+    "Direccion"
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
+    "address"
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService,
+              private customsService:CustomsService ) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.customsService
+      .getCustoms()
+      .subscribe((resp) => {
+        console.log(resp);
+
+        const tableData: CustomsDataTable[] =[]
+
+        resp.forEach((customs) =>{
+
+          const customsToPush: CustomsDataTable = {
+            id: customs.id,
+            name: customs.name,
+            address: customs.address
+          }
+
+          tableData.push(customsToPush);
+
+        })
+
+        this.tableData = tableData;
+      })
   }
 
   newCustoms() {
