@@ -63,7 +63,8 @@ export class CustomsComponent implements OnInit {
                     "800px",
                     "300px").afterClosed()
                             .subscribe((data) => {
-                              console.log("Data ", data)
+                              console.log("Data ", data);
+                              this.ngOnInit();
                             });
   }
 
@@ -77,6 +78,20 @@ export class CustomsComponent implements OnInit {
       })
   }
 
+  openSnackBar(type:number){
+    if(type === 1) {
+      this.snackBar.open('Agregado Exitosamente!','Close',{
+        duration: this.durationInSeconds * 1000,
+        panelClass: ['success-snackbar']
+      });
+    }else{
+      this.snackBar.open('Ha ocurrido un Error!','Close',{
+        duration: this.durationInSeconds * 1000,
+        panelClass: ['error-snackbar']
+      });
+    }
+  }
+
   deleteCustoms() {
     this.tableCheck.currentMessage.subscribe((id) => this.selectedID = id)
     console.log('SelectedID:  ', this.selectedID);
@@ -84,17 +99,12 @@ export class CustomsComponent implements OnInit {
       .deleteCustoms(this.selectedID)
       .subscribe((data) => {
         console.log('EXITOSO!: ', data);
-        this.snackBar.open('Eliminado Exitosamente!','Close',{
-          duration: this.durationInSeconds * 1000,
-          panelClass: ['success-snackbar']
-        });
+        this.openSnackBar(1);
+        this.ngOnInit();
       },
       (error) => {
         console.error('ERROR!: ', error);
-        this.snackBar.open('Ha Ocurrido un Error!','Close',{
-          duration: this.durationInSeconds * 1000,
-          panelClass: ['error-snackbar']
-        });
+        this.openSnackBar(2);
       })
   }
   

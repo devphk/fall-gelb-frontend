@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomsService } from '../../customs/customs.service';
 import { Customs, Transporttype } from '../../../../../../../shared/models/Customs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-new-customs',
@@ -25,7 +26,8 @@ export class NewCustomsComponent implements OnInit{
   
   constructor( private fb:FormBuilder, 
                private customsService:CustomsService,
-               private snackBar:MatSnackBar) { }
+               private snackBar:MatSnackBar,
+               private matDialog:MatDialogRef<NewCustomsComponent>) { }
 
   ngOnInit(): void {
     this.customsService
@@ -62,10 +64,15 @@ export class NewCustomsComponent implements OnInit{
       console.log('VÁLIDO');
       this.openSnackBar(1);
       this.customsService
-        .postCustoms(formData)
-        .subscribe(
-          data => console.log('EXITOSO! :', data),
-          error => console.error('ERROR! :', error)
+      .postCustoms(formData)
+      .subscribe(
+        (data) => {
+            console.log('EXITOSO! :', data)
+            this.matDialog.close();
+        },
+          (error) => {
+            console.error('ERROR! :', error)
+          }
         )
     }else {
       this.openSnackBar(2);

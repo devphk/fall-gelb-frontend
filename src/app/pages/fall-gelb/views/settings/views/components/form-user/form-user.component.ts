@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../user/user.service';
 import { User } from '@shared/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
+import { matchpassword } from './match-password.validator';
 
 @Component({
   selector: 'app-form-user',
@@ -17,11 +19,14 @@ export class FormUserComponent implements OnInit {
     lastname: this.formBuild.control('', Validators.required),
     password: this.formBuild.control('', Validators.required),
     passwordVerify: this.formBuild.control('', Validators.required),
+  },{
+    validators:matchpassword
   });
 
   constructor(private formBuild: FormBuilder,
               private userService:UserService,
-              private snackBar:MatSnackBar) {}
+              private snackBar:MatSnackBar,
+              private matDialog:MatDialogRef<FormUserComponent>) {}
 
   ngOnInit(): void {}
 
@@ -50,8 +55,11 @@ export class FormUserComponent implements OnInit {
       this.userService
       .postUsers(formData)
       .subscribe( 
-        data => console.log('Exitoso! :', data),
-        error =>console.error('Error! : ', error)
+        (data) => {
+          console.log('Exitoso! :', data);
+          this.matDialog.close();
+        },
+        error =>console.error('Error! :', error)
       );
 
     }else {
