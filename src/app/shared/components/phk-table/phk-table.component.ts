@@ -1,5 +1,14 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, EventEmitter, Input, OnInit, DoCheck, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  DoCheck,
+  Output,
+  ViewChild,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,11 +19,9 @@ import { TableCheckService } from './table-check.service';
   selector: 'app-phk-table',
   templateUrl: './phk-table.component.html',
   styleUrls: ['./phk-table.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation],
 })
-export class PhkTableComponent implements OnInit,
-                                          DoCheck {
-
+export class PhkTableComponent implements OnInit, DoCheck {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -26,62 +33,57 @@ export class PhkTableComponent implements OnInit,
   @Input() skeletonRowNumber: number = 12;
 
   // Two binding of items selected
-  
+
   @Input() itemsSelected: any[] = [];
   @Output() itemsSelectedChange = new EventEmitter<any[]>();
-    
+
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
   backupData: any[] = [];
   showSkeleton: boolean = true;
   element: number = 0;
-  constructor(private changeDetectorRef: ChangeDetectorRef,
-              private tableCheck:TableCheckService) { 
-}
+  checked: boolean = false;
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private tableCheck: TableCheckService
+  ) {}
 
   ngOnInit(): void {
-
-    this.columnsTags.unshift("select");
-    this.columnsToDisplay.unshift("select");
+    this.columnsTags.unshift('select');
+    this.columnsToDisplay.unshift('select');
 
     this.setData();
   }
 
   ngDoCheck(): void {
-    
     if (this.backupData.length !== this.data.length) {
       this.changeDetectorRef.detectChanges();
       this.setData();
     }
-
   }
 
   setData() {
-
     this.showSkeleton = true;
-    let randomSeconds = Math.random()*2000;
+    let randomSeconds = Math.random() * 2000;
 
     setTimeout(() => {
-      
       this.dataSource = new MatTableDataSource<any>(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.backupData = this.data.slice();
       // this.dataSource.filterPredicate = this.createFilter();
-  
+
       this.showSkeleton = false;
-
     }, randomSeconds);
-
   }
 
   // Selection logic
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
     this.itemsSelected.splice(0);
 
     if (this.selection.selected.length > 0) {
@@ -89,14 +91,14 @@ export class PhkTableComponent implements OnInit,
         this.itemsSelected.push(item);
       });
     }
-
   }
 
   updateCheckedList(event: any, element: any) {
-    console.log("event ", event)
-    console.log("Element selected ", element)
+    console.log('event ', event);
+    console.log('Element selected ', element);
     this.element = element.id;
-    this.tableCheck.changeMessage(this.element);
+    this.checked = event.checked;
+    this.tableCheck.changeMessage(this.element, this.checked);
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {

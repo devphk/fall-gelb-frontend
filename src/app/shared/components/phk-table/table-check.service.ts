@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TableCheckService {
-
-  private messageSource = new BehaviorSubject(404);
+  private messageSource = new Subject<any>();
   currentMessage = this.messageSource.asObservable();
 
-  constructor() { }
+  constructor() {}
 
-    changeMessage(id: number) {
-    this.messageSource.next(id)
+  changeMessage(id: number, check: boolean) {
+    this.messageSource.next({
+      id: id,
+      check: check,
+    });
   }
-
 }
