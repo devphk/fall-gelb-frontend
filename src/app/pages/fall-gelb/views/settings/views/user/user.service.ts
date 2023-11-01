@@ -19,6 +19,10 @@ export class UserService {
   }
 
   deleteUsers(id:number) {
-    return this.http.delete('/users/'+ id)
+    return this.http.delete('/users/'+ id);
+  }
+
+  getUser(id:number){
+    return this.http.get('/users/'+ id);
   }
 }

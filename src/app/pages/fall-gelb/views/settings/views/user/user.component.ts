@@ -5,6 +5,7 @@ import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
 import { TableCheckService } from '@shared/components/phk-table/table-check.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user',
@@ -31,11 +32,15 @@ export class UserComponent implements OnInit {
   tableData: any[] = [];
   selectedID: number = 0;
   durationInSeconds = 2;
+
+  selectedEditData = {} = {}
+
   
   constructor(private dialogService: DialogService,
               private userService: UserService,
               private tableCheck:TableCheckService,
-              private snackBar:MatSnackBar) {}
+              private snackBar:MatSnackBar,
+              private dialog:MatDialog) {}
     
     
   ngOnInit(): void {
@@ -93,14 +98,16 @@ export class UserComponent implements OnInit {
       });
   }
 
-  editUser() {
+  editUser() {    
+    this.tableCheck.currentMessage.subscribe((id) => this.selectedID = id)
     
-    this.dialogService
-      .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data: ', data);
+    this.userService.getUser(this.selectedID)
+      .subscribe((resp) => {
+        this.selectedEditData = resp;
+        this.dialog.open(FormUserComponent, {
+          data: this.selectedEditData})
       })
+
   }
 
   deleteUser() {

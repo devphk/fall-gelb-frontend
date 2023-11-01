@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { UserService } from '../../user/user.service';
 import { User } from '@shared/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { matchpassword } from './match-password.validator';
 
 @Component({
@@ -12,23 +12,36 @@ import { matchpassword } from './match-password.validator';
   styleUrls: ['./form-user.component.scss'],
 })
 export class FormUserComponent implements OnInit {
-  userForm: FormGroup = this.formBuild.group({
-    name: this.formBuild.control('', Validators.required),
-    email: this.formBuild.control('',[Validators.required, Validators.email]),
-    username: this.formBuild.control('', Validators.required),
-    lastname: this.formBuild.control('', Validators.required),
-    password: this.formBuild.control('', Validators.required),
-    passwordVerify: this.formBuild.control('', Validators.required),
+  userForm: FormGroup = this.fb.group({
+    name: this.fb.control('', Validators.required),
+    email: this.fb.control('',[Validators.required, Validators.email]),
+    username: this.fb.control('', Validators.required),
+    lastname: this.fb.control('', Validators.required),
+    // password: this.fb.control('', Validators.required),
+    // passwordVerify: this.fb.control('', Validators.required),
   },{
     validators:matchpassword
   });
-
-  constructor(private formBuild: FormBuilder,
+  test:string = 'testVariable';
+  constructor(private fb: FormBuilder,
               private userService:UserService,
               private snackBar:MatSnackBar,
-              private matDialog:MatDialogRef<FormUserComponent>) {}
+              private matDialog:MatDialogRef<FormUserComponent>,
+              @Inject(MAT_DIALOG_DATA) private data: User) 
+  {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.data) {
+      this.userForm.patchValue({
+        name: this.data.name,
+        email: this.data.email,
+        username: this.data.username,
+        lastname: this.data.lastname
+      })
+    }
+    console.log('INJECT DATA: ',this.data)
+    console.log('DATA NAME: ', this.data.name)
+  }
 
   durationInSeconds = 2;
 
@@ -52,15 +65,15 @@ export class FormUserComponent implements OnInit {
       console.log('VÁLIDO');
       this.openSnackBar(1);
       
-      this.userService
-      .postUsers(formData)
-      .subscribe( 
-        (data) => {
-          console.log('Exitoso! :', data);
-          this.matDialog.close();
-        },
-        error =>console.error('Error! :', error)
-      );
+      // this.userService
+      // .postUsers(formData)
+      // .subscribe( 
+      //   (data) => {
+      //     console.log('Exitoso! :', data);
+      //     this.matDialog.close();
+      //   },
+      //   error =>console.error('Error! :', error)
+      // );
 
     }else {
       console.log('INVÁLIDO');
