@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
+import { TableCheckService } from './table-check.service';
 
 @Component({
   selector: 'app-phk-table',
@@ -33,8 +34,10 @@ export class PhkTableComponent implements OnInit,
   selection = new SelectionModel<any>(true, []);
   backupData: any[] = [];
   showSkeleton: boolean = true;
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  element: number = 0;
+  constructor(private changeDetectorRef: ChangeDetectorRef,
+              private tableCheck:TableCheckService) { 
+}
 
   ngOnInit(): void {
 
@@ -92,6 +95,8 @@ export class PhkTableComponent implements OnInit,
   updateCheckedList(event: any, element: any) {
     console.log("event ", event)
     console.log("Element selected ", element)
+    this.element = element.id;
+    this.tableCheck.changeMessage(this.element);
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {

@@ -17,4 +17,8 @@ export class CustomsService {
   postCustoms(data:Customs): Observable<Customs[]> {
     return this.http.post('/customs', data);
   }
+
+  deleteCustoms(id:number) {
+    return this.http.delete('/customs/' + id);
+  }
 }

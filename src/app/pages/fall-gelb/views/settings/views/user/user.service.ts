@@ -17,4 +17,8 @@ export class UserService {
   postUsers (data:User): Observable<User[]> {
     return this.http.post('/users', data);
   }
+
+  deleteUsers(id:number) {
+    return this.http.delete('/users/'+ id)
+  }
 }

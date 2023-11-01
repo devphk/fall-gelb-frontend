@@ -61,12 +61,12 @@ export class NewCustomsComponent implements OnInit{
     if(this.customsForm.valid) {
       console.log('VÁLIDO');
       this.openSnackBar(1);
-      // this.customsService
-      //   .postCustoms(formData)
-      //   .subscribe(
-      //     data => console.log('EXITOSO! :', data),
-      //     error => console.error('ERROR! :', error)
-      //   )
+      this.customsService
+        .postCustoms(formData)
+        .subscribe(
+          data => console.log('EXITOSO! :', data),
+          error => console.error('ERROR! :', error)
+        )
     }else {
       this.openSnackBar(2);
       console.log('INVÁLIDO');

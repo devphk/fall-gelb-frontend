@@ -18,3 +18,21 @@
     background-color: var(--bgPrimaryColor);
     height: 100%;
 }
+
+::ng-deep {
+    .mat-snack-bar-container{
+        &.success-snackbar{
+        background-color: #22bb33 !important;
+        }
+    }
+    .mat-snack-bar-container{
+        &.error-snackbar{
+        background-color: #bb2124 !important;
+        }
+    }
+
+}
+
+.crud-button {
+    margin-left: 5px;
+}

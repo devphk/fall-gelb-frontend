@@ -3,6 +3,8 @@ import { DialogService } from '@core/services';
 import { FormUserComponent } from '../components';
 import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
+import { TableCheckService } from '@shared/components/phk-table/table-check.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user',
@@ -27,9 +29,13 @@ export class UserComponent implements OnInit {
     'status'
   ];
   tableData: any[] = [];
+  selectedID: number = 0;
+  durationInSeconds = 2;
   
   constructor(private dialogService: DialogService,
-    private userService: UserService) {}
+              private userService: UserService,
+              private tableCheck:TableCheckService,
+              private snackBar:MatSnackBar) {}
     
     
   ngOnInit(): void {
@@ -83,12 +89,26 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.dialogService
-      .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data: ', data);
-      })
+    this.tableCheck.currentMessage.subscribe((id) => this.selectedID = id)
+    // console.log('SelectedID:  ', this.selectedID);
+    this.userService
+      .deleteUsers(this.selectedID)
+      .subscribe(
+        (data) => {
+          console.log('EXITOSO!: ', data);
+          this.snackBar.open('Eliminado Exitosamente!','Close',{
+            duration: this.durationInSeconds * 1000,
+            panelClass: ['success-snackbar']
+          });
+        },
+        (error) => {
+          console.error('ERROR!: ', error);
+          this.snackBar.open('Ha Ocurrido un Error!','Close',{
+            duration: this.durationInSeconds * 1000,
+            panelClass: ['error-snackbar']
+          });
+        }
+      )
   }
 
 
