@@ -9,95 +9,87 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-customs',
   templateUrl: './customs.component.html',
-  styleUrls: ['./customs.component.scss']
+  styleUrls: ['./customs.component.scss'],
 })
 export class CustomsComponent implements OnInit {
-
-  tableColumnsToDisplay: string[] = [
-    "ID",
-    "Nombre",
-    "Direccion"
-  ];
-  tableColumnsTags: string[] = [
-    "id",
-    "name",
-    "address"
-  ];
+  tableColumnsToDisplay: string[] = ['ID', 'Nombre', 'Direccion'];
+  tableColumnsTags: string[] = ['id', 'name', 'address'];
   tableData: any[] = [];
   selectedID: number = 0;
   durationInSeconds = 2;
 
-  constructor(private dialogService: DialogService,
-              private customsService:CustomsService,
-              private tableCheck:TableCheckService,
-              private snackBar:MatSnackBar) { }
+  constructor(
+    private dialogService: DialogService,
+    private customsService: CustomsService,
+    private tableCheck: TableCheckService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.customsService
-      .getCustoms()
-      .subscribe((resp) => {
-        console.log(resp);
+    this.tableCheck.currentMessage.subscribe((tabletSeleted) => {
+      console.log(tabletSeleted);
 
-        const tableData: CustomsDataTable[] =[]
+      if (tabletSeleted.check) {
+        this.selectedID = tabletSeleted.id;
+      } else {
+        this.selectedID = 0;
+      }
+    });
+    this.customsService.getCustoms().subscribe((resp) => {
+      console.log(resp);
 
-        resp.forEach((customs) =>{
+      const tableData: CustomsDataTable[] = [];
 
-          const customsToPush: CustomsDataTable = {
-            id: customs.id,
-            name: customs.name,
-            address: customs.address
-          }
+      resp.forEach((customs) => {
+        const customsToPush: CustomsDataTable = {
+          id: customs.id,
+          name: customs.name,
+          address: customs.address,
+        };
 
-          tableData.push(customsToPush);
+        tableData.push(customsToPush);
+      });
 
-        })
-
-        this.tableData = tableData;
-      })
+      this.tableData = tableData;
+    });
   }
 
   newCustoms() {
     this.dialogService
-        .openDialog(NewCustomsComponent,
-                    "Nueva Aduana",
-                    "800px",
-                    "300px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data);
-                              this.ngOnInit();
-                            });
+      .openDialog(NewCustomsComponent, 'Nueva Aduana', '800px', '300px')
+      .afterClosed()
+      .subscribe((data) => {
+        console.log('Data ', data);
+        this.ngOnInit();
+      });
   }
 
   editCustoms() {
-    
     this.dialogService
       .openDialog(NewCustomsComponent, 'Editar Aduana', '800px', '300px')
       .afterClosed()
       .subscribe((data) => {
         console.log('Data: ', data);
-      })
+      });
   }
 
-  openSnackBar(type:number){
-    if(type === 1) {
-      this.snackBar.open('Agregado Exitosamente!','Close',{
+  openSnackBar(type: number) {
+    if (type === 1) {
+      this.snackBar.open('Agregado Exitosamente!', 'Close', {
         duration: this.durationInSeconds * 1000,
-        panelClass: ['success-snackbar']
+        panelClass: ['success-snackbar'],
       });
-    }else{
-      this.snackBar.open('Ha ocurrido un Error!','Close',{
+    } else {
+      this.snackBar.open('Ha ocurrido un Error!', 'Close', {
         duration: this.durationInSeconds * 1000,
-        panelClass: ['error-snackbar']
+        panelClass: ['error-snackbar'],
       });
     }
   }
 
   deleteCustoms() {
-    this.tableCheck.currentMessage.subscribe((id) => this.selectedID = id)
-    console.log('SelectedID:  ', this.selectedID);
-    this.customsService
-      .deleteCustoms(this.selectedID)
-      .subscribe((data) => {
+    this.customsService.deleteCustoms(this.selectedID).subscribe(
+      (data) => {
         console.log('EXITOSO!: ', data);
         this.openSnackBar(1);
         this.ngOnInit();
@@ -105,8 +97,7 @@ export class CustomsComponent implements OnInit {
       (error) => {
         console.error('ERROR!: ', error);
         this.openSnackBar(2);
-      })
+      }
+    );
   }
-  
-
 }
