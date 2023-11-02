@@ -10,4 +10,8 @@
         }
     }
 
+    .mat-primary span, .mat-primary .mat-icon {
+        color: var(--textPrimaryColor) !important;
+    }
+
 }

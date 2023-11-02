@@ -16,6 +16,7 @@ export class CustomsComponent implements OnInit {
   tableColumnsTags: string[] = ['id', 'name', 'address'];
   tableData: any[] = [];
   selectedID: number = 0;
+  selectedData: any[] = []
   durationInSeconds = 2;
 
   constructor(
@@ -58,30 +59,29 @@ export class CustomsComponent implements OnInit {
     this.dialogService
       .openDialog(NewCustomsComponent, 'Nueva Aduana', '800px', '300px')
       .afterClosed()
-      .subscribe((data) => {
-        console.log('Data ', data);
-        this.ngOnInit();
-      });
+      .subscribe(() => this.ngOnInit());
   }
 
   editCustoms() {
-    this.dialogService
-      .openDialog(NewCustomsComponent, 'Editar Aduana', '800px', '300px')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data: ', data);
-      });
+    this.customsService.getCustom(this.selectedID)
+      .subscribe((resp) => {
+        this.selectedData = resp;
+
+        this.dialogService
+          .openDialog(NewCustomsComponent, 'Editar Aduana', '800px', '300px', this.selectedData)
+            .afterClosed()
+              .subscribe(() => this.ngOnInit());
+        
+      })
   }
 
   openSnackBar(type: number) {
     if (type === 1) {
-      this.snackBar.open('Agregado Exitosamente!', 'Close', {
-        duration: this.durationInSeconds * 1000,
+      this.snackBar.open('Agregado Exitosamente!', 'Close', {duration: this.durationInSeconds * 1000,
         panelClass: ['success-snackbar'],
       });
     } else {
-      this.snackBar.open('Ha ocurrido un Error!', 'Close', {
-        duration: this.durationInSeconds * 1000,
+      this.snackBar.open('Ha ocurrido un Error!', 'Close', {duration: this.durationInSeconds * 1000,
         panelClass: ['error-snackbar'],
       });
     }

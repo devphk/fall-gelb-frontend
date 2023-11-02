@@ -25,4 +25,8 @@ export class UserService {
   getUser(id:number){
     return this.http.get('/users/'+ id);
   }
+
+  putUser(data:User, id:number){
+    return this.http.put(`/users/${id}`, data);
+  }
 }

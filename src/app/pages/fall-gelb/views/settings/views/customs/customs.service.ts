@@ -21,4 +21,12 @@ export class CustomsService {
   deleteCustoms(id:number) {
     return this.http.delete('/customs/' + id);
   }
+
+  getCustom(id:number) {
+    return this.http.get('/customs/'+ id);
+  }
+
+  putCustoms(data:number, id:number){
+    return this.http.put(`/customs/${id}`, data);
+  }
 }

@@ -20,3 +20,23 @@ export interface Transporttype {
   name: string;
   code: string;
 }
+
+export interface CustomsExport {
+  title: string;
+  info:  customsInfo;
+}
+
+export interface customsInfo {
+  id:              number;
+  name:            string;
+  address:         string;
+  latitude:        string;
+  longitude:       string;
+  transport_types: TransportType[];
+}
+
+export interface TransportType {
+  id:   number;
+  name: string;
+  code: string;
+}

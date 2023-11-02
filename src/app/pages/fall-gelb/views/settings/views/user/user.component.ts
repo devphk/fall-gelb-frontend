@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
 import { TableCheckService } from '@shared/components/phk-table/table-check.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user',
@@ -23,18 +23,18 @@ export class UserComponent implements OnInit {
   tableColumnsTags: string[] = ['id', 'name', 'username', 'email', 'status'];
   tableData: any[] = [];
   selectedID: number = 0;
+  selectedData: any[] = []
   durationInSeconds = 2;
 
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
     private tableCheck: TableCheckService,
-    private snackBar: MatSnackBar
-  ) {}
+    private snackBar: MatSnackBar  ) {}
 
   ngOnInit(): void {
     this.tableCheck.currentMessage.subscribe((tabletSeleted) => {
-      console.log(tabletSeleted);
+      console.log('Table Selected: ', tabletSeleted);
 
       if (tabletSeleted.check) {
         this.selectedID = tabletSeleted.id;
@@ -65,13 +65,11 @@ export class UserComponent implements OnInit {
 
   openSnackBar(type: number) {
     if (type === 1) {
-      this.snackBar.open('Agregado Exitosamente!', 'Close', {
-        duration: this.durationInSeconds * 1000,
+      this.snackBar.open('Eliminado Exitosamente!', 'Close', {duration: this.durationInSeconds * 1000,
         panelClass: ['success-snackbar'],
       });
     } else {
-      this.snackBar.open('Ha ocurrido un Error!', 'Close', {
-        duration: this.durationInSeconds * 1000,
+      this.snackBar.open('Ha ocurrido un Error!', 'Close', {duration: this.durationInSeconds * 1000,
         panelClass: ['error-snackbar'],
       });
     }
@@ -80,20 +78,23 @@ export class UserComponent implements OnInit {
   newUser() {
     this.dialogService
       .openDialog(FormUserComponent, 'Registrar Usuario', '800px', '300px')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data ', data);
-        this.ngOnInit();
-      });
+        .afterClosed()
+          .subscribe(() => this.ngOnInit());
   }
 
   editUser() {
-    this.dialogService
-      .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data: ', data);
-      });
+    this.userService.getUser(this.selectedID)
+      .subscribe((resp) => {
+        this.selectedData = resp;
+      
+        this.dialogService
+          .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px', this.selectedData)
+            .afterClosed()
+              .subscribe(() => this.ngOnInit());
+      
+      })
+
+
   }
 
   deleteUser() {

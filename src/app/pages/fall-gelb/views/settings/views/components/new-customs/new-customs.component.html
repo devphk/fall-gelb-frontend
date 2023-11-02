@@ -10,34 +10,30 @@
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Nombre" 
                             formControlName="name" 
-                            [required]="true"
-                            ngModel>
+                            [required]="true">
             </app-phk-input>
             
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Dirección"
-                            formControlName="address"
-                            ngModel>
+                            formControlName="address">
             </app-phk-input>
 
             <app-phk-select fxFlex="calc(33% - 20px)" 
                             label="Seleccione..." 
                             formControlName="transport_types"
                             [multiple]="true"
-                            ngModel>
+                            [formControl]="customForm">
                 <mat-option *ngFor="let transport of transportType" [value]="transport.id">{{transport.name}}</mat-option>
             </app-phk-select>
 
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Latitud"
-                            formControlName="latitude"
-                            ngModel>
+                            formControlName="latitude">
             </app-phk-input>
 
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Longitud"
-                            formControlName="longitude"
-                            ngModel>
+                            formControlName="longitude">
             </app-phk-input>
             
             <button class="w-100" mat-flat-button color="primary">Enviar</button>
