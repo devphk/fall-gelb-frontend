@@ -5,10 +5,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ActivePipe } from '@shared/pipes/active.pipe';
 
 @NgModule({
   declarations: [
-    PhkTableComponent
+    PhkTableComponent,
+    ActivePipe
   ],
   imports: [
     CommonModule,

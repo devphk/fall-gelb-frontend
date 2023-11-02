@@ -45,11 +45,29 @@
                   </span>
                 </div>
               </th>
+
+              <span [ngSwitch]="">
+              <p *ngSwitchCase="true">
+              
+              </p>
+              <p *ngSwitchCase="false">
+              
+              </p>
+              <p *ngSwitchDefault>
+              
+              </p>
+              </span>
       
               <td mat-cell *matCellDef="let element, let rowIndex = index">
-                <span>
-                  {{element[columnsTags[columnIndex]]}}
-                </span>
+
+                <div [ngSwitch]="getType(element[columnsTags[columnIndex]])">
+                  <span *ngSwitchCase="'boolean'">
+                    {{element[columnsTags[columnIndex]] | active}}
+                  </span>
+                  <span *ngSwitchDefault>
+                    {{element[columnsTags[columnIndex]]}}
+                  </span>
+                </div>
               </td>
   
             </div>

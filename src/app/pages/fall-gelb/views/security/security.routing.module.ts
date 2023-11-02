@@ -6,8 +6,7 @@ import { SecurityComponent } from './security.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'securites',
-    pathMatch: 'full',
+    component: SecurityComponent
   },
   {
     path: 'roles',
@@ -17,7 +16,7 @@ const routes: Routes = [
     path: '**',
     component: SecurityComponent,
     pathMatch: 'full',
-  },
+  }
 ];
 
 @NgModule({

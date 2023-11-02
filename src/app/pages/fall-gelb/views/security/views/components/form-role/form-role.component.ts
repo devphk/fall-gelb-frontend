@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-form-role',
@@ -7,11 +9,15 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-  constructor(private _formBuilder: FormBuilder) {}
 
-  roleFormGroup = this._formBuilder.group({
-    name: ['', Validators.required],
+  constructor(private _formBuilder: FormBuilder,
+              private dialogRef: MatDialogRef<FormRoleComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  roleForm = this._formBuilder.group({
+    name: this._formBuilder.control('', [Validators.required])
   });
+
   permisionFormGroup = this._formBuilder.group({
     modules: [],
   });
@@ -56,4 +62,20 @@ export class FormRoleComponent implements OnInit {
   ];
 
   ngOnInit(): void {}
+
+  selectPermissions(stepper: MatStepper) {
+    if (this.roleForm.valid) {
+     stepper.next();
+    } else {
+      this.roleForm.markAllAsTouched();
+    }
+  }
+
+  saveRole() {
+    const roleToAdd = {
+      roleName: this.roleForm.get('name')?.value,
+    }
+    this.dialogRef.close(roleToAdd);
+  }
+
 }

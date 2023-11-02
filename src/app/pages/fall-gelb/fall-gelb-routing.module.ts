@@ -64,10 +64,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'securites',
+        path: 'security',
         loadChildren: () =>
           import('./views/security/security.module').then(
-            (m) => m.SettingsModule
+            (m) => m.SecurityModule
           ),
       },
       {

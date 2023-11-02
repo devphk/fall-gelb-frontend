@@ -8,20 +8,34 @@ import { FormRoleComponent } from '../components';
   styleUrls: ['./roles.component.scss'],
 })
 export class RolesComponent implements OnInit {
-  tableColumnsToDisplay: string[] = ['ID', 'Rol'];
-  tableColumnsTags: string[] = ['id', 'name'];
+
+  tableColumnsToDisplay: string[] = [
+    'Id', 
+    'Rol', 
+    '¿Activo?'
+  ];
+  
+  tableColumnsTags: string[] = [
+    'id', 
+    'role', 
+    'active'
+  ];
+
   tableData: any[] = [
     {
       id: 1,
-      name: 'Admin',
+      role: 'Admin',
+      active: true
     },
     {
       id: 1,
-      name: 'Analista',
+      role: 'Analista',
+      active: true
     },
     {
       id: 1,
-      name: 'Cliente',
+      role: 'Cliente',
+      active: true
     },
   ];
 
@@ -33,7 +47,7 @@ export class RolesComponent implements OnInit {
 
   newRol() {
     this.dialogService
-      .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', '460px')
+      .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', 'auto')
       .afterClosed()
       .subscribe((data) => {
         console.log('Data ', data);

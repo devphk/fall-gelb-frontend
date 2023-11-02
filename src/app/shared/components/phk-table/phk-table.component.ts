@@ -23,6 +23,7 @@ export class PhkTableComponent implements OnInit,
   @Input() columnsTags: string[] = [];
   @Input() data: any[] = [];
   @Input() skeletonRowNumber: number = 12;
+  @Input() showSelectColumn: boolean = true;
 
   // Two binding of items selected
   
@@ -38,8 +39,11 @@ export class PhkTableComponent implements OnInit,
 
   ngOnInit(): void {
 
-    this.columnsTags.unshift("select");
-    this.columnsToDisplay.unshift("select");
+    if (this.showSelectColumn) {
+      this.columnsTags.unshift("select");
+      this.columnsToDisplay.unshift("select");
+    }
+
 
     this.setData();
   }
@@ -111,5 +115,9 @@ export class PhkTableComponent implements OnInit,
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
+  }
+
+  getType(variable: any) {
+    return typeof variable;
   }
 }

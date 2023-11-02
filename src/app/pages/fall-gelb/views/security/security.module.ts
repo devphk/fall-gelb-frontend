@@ -44,4 +44,4 @@ const routes: Routes = [
     MatStepperModule,
   ],
 })
-export class SettingsModule {}
+export class SecurityModule {}

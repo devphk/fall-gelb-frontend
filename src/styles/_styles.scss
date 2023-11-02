@@ -145,7 +145,7 @@ mat-card {
 }
 /* Font color */
 input.mat-input-element {
-  color: var(--borderFormFieldColor);
+  // color: var(--borderFormFieldColor);
 }
 
 // Form field label color
@@ -426,7 +426,8 @@ i {
 
 // Color of word in the button
 
-.mat-primary span,
+.mat-horizontal-stepper-header .mat-step-icon span,
+.mat-raised-button span,
 .mat-primary .mat-icon {
   color: #fff !important;
 }

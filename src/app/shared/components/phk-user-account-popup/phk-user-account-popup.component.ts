@@ -29,7 +29,7 @@ export class PhkUserAccountPopupComponent {
   }
 
   openFallgelb() {
-    this.router.navigate(['fallgelb']);
+    this.router.navigate(['fall-gelb']);
   }
 
   logout() {

@@ -1,17 +1,30 @@
+
+
 <mat-stepper linear #stepper>
-  <mat-step [stepControl]="roleFormGroup" [editable]="true">
-    <form [formGroup]="roleFormGroup">
+
+  <mat-step [stepControl]="roleForm" 
+            [editable]="true"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+            fxLayoutGap="15px">
+    <form [formGroup]="roleForm">
       <ng-template matStepLabel>Nuevo Rol</ng-template>
-      <app-phk-input
-        label="Nombre"
-        formControlName="name"
-        fxFlex="100"
-      ></app-phk-input>
-      <div>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
+      <app-phk-input label="Nombre"
+                     formControlName="name"
+                     fxFlex="100">
+                    
+        <mat-error error *ngIf="roleForm.get('name')?.errors
+                          && roleForm.get('name')?.hasError('required')">
+          Nombre es requerido
+        </mat-error>
+      </app-phk-input>
     </form>
+    <button mat-raised-button 
+            matStepperNext
+            color="primary"
+            (click)="selectPermissions(stepper)">Siguiente</button>
   </mat-step>
+
   <mat-step [stepControl]="permisionFormGroup" [editable]="true">
     <form [formGroup]="permisionFormGroup">
       <ng-template matStepLabel>Asignar Permisos a Roles </ng-template>
@@ -20,7 +33,7 @@
         [label]="'Modulos'"
         fxFlex.gt-md="calc(100%)"
         fxFlex.lt-md="calc(100%)"
-      >
+        >
         <mat-option *ngFor="let modules of modulesOptions" [value]="modules">
           {{ modules }}
         </mat-option>
@@ -30,16 +43,18 @@
         [columnsToDisplay]="tableColumnsToDisplay"
         [data]="tableData"
       ></app-phk-table>
-      <div>
-        <button mat-button matStepperPrevious>Anterior</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
     </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Enviar</ng-template>
-    <div>
-      <button mat-button matStepperPrevious>Anterior</button>
+
+    <div fxLayout="row"
+         fxLayoutGap="10px"
+         class="mt-10">
+      <button mat-raised-button
+              color="primary"
+              matStepperPrevious>Anterior</button>
+      <button mat-raised-button
+              color="primary"
+              matStepperNext
+              (click)="saveRole()">Guardar</button>
     </div>
   </mat-step>
 </mat-stepper>

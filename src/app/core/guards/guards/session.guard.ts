@@ -11,7 +11,12 @@ export class SessionGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree { 
 
-      return sessionStorage.getItem('fallgelb') ?  true : false;
+      if (sessionStorage.getItem('fallgelb')) {
+        return true;
+      } else {
+        this.router.navigate(['home']);
+        return false;
+      }
       
   }
 
