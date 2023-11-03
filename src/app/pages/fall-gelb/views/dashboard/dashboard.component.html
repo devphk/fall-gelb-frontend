@@ -124,17 +124,71 @@
             <div class="simple-border-card p-20"
                  fxFlex="calc(30% - 20px)">
 
-                <h3 class="fw-800">Administración</h3>    
-                <canvas baseChart
-                        [type]="'pie'"
-                        [datasets]="pieChartDatasets"
-                        [labels]="pieChartLabels"
-                        [options]="pieChartOptions"
-                        [plugins]="pieChartPlugins"
-                        [legend]="pieChartLegend"
-                        [width]="200"
-                        class="center-content">
-                </canvas>
+                <h3 class="fw-800">Gestión de ventas</h3>    
+
+                <div fxLayout="row"
+                     fxLayoutGap="10px">
+
+                    <div fxFlex="calc(65% - 80px)"
+                         class="mt-m10">
+
+                      <h2 class="m-0 fw-800">
+                        $36.415,63
+                      </h2>
+
+                      <div fxLayout="row"
+                           fxLayoutAlign="start center"
+                           fxLayoutGap="7px"
+                           class="trending-data">
+                        
+                        <mat-icon class="mat-10">
+                          trending_up
+                        </mat-icon>
+
+                        <p class="fs-08 m-0">
+                          <strong>+9%</strong>
+                          el último año
+                        </p>
+                      </div> 
+
+                      <div fxLayout="row"
+                           fxLayoutGap="10px"
+                           class="mt-10">
+
+                        <div fxLayout="row"
+                             fxLayoutAlign="center center"
+                             fxLayoutGap="10px">
+                          <div class="dot-3"></div>
+  
+                          <h5 class="m-0">
+                            2022
+                          </h5>
+                        </div>
+  
+                        <div fxLayout="row"
+                             fxLayoutAlign="center center"
+                             fxLayoutGap="10px">
+                          <div class="dot-1"></div>
+    
+                          <h5 class="m-0">
+                            2023
+                          </h5>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                    <canvas baseChart
+                            [type]="'pie'"
+                            [datasets]="pieChartDatasets"
+                            [labels]="pieChartLabels"
+                            [options]="pieChartOptions"
+                            [width]="80">
+                    </canvas>
+
+                </div>
+
           
             </div>
           

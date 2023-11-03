@@ -16,7 +16,9 @@
 
 }
 
-.dot-1 {
+.dot-1,
+.dot-2,
+.dot-3 {
     background-color: #0093e1;
     border-radius: 50%;
     height: 10px;
@@ -25,7 +27,22 @@
 
 .dot-2 {
     background-color: #386E93;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
+}
+
+.dot-3 {
+    background-color: rgb(77, 61, 240)
+}
+
+.trending-data {
+    .mat-icon {
+        background-color: rgba($color: #0093e1, $alpha: 0.2);
+        border-radius: 50%;
+        color: #0093e1;
+        padding: 2px;
+        transition: all 0.3s;
+    }
+
+    .mat-icon:hover {
+        background-color: rgba($color: #0093e1, $alpha: 0.4);
+    }
 }

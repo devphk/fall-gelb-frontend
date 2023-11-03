@@ -16,6 +16,11 @@ export class DashboardComponent implements OnInit {
   // Pie
   pieChartOptions: ChartOptions<'pie'> = {
     responsive: false,
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
   };
   pieChartLabels = [ 'Pérdidas', 'Ventas', 'Inversiones' ];
   pieChartDatasets = [ {
@@ -26,7 +31,6 @@ export class DashboardComponent implements OnInit {
       'rgb(77, 61, 240)'
     ],
   }];
-  pieChartLegend = true;
   pieChartPlugins = [];
 
   // Line charts config
