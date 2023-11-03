@@ -87,19 +87,29 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-    // this.userService
-    //     .deleteUsers()
-    //     .subscribe(
-    //   (data) => {
-    //     console.log('EXITOSO!: ', data);
-    //     this.openSnackBar(1);
-    //     this.ngOnInit();
-    //   },
-    //   (error) => {
-    //     console.error('ERROR!: ', error);
-    //     this.openSnackBar(2);
-    //   }
-    // );
+    this.userService
+        .deleteUsers(this.itemsSelected[0].id)
+        .subscribe(
+      (data) => {
+
+        this.snackBar
+            .open('Eliminado Exitosamente!', 
+                  'Ok', {
+                    duration: this.durationInSeconds * 1000,
+                    panelClass: ['success-snackbar']
+                  });  
+
+      },
+      (error) => {
+
+        this.snackBar
+            .open('Ha ocurrido un error, intenta mas tarde!', 
+                  'Ok', {
+                    duration: this.durationInSeconds * 1000,
+                    panelClass: ['error-snackbar'],
+                  });  
+      }
+    );
   }
 
 }
