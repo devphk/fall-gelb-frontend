@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-user',
@@ -7,23 +8,47 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form-user.component.scss'],
 })
 export class FormUserComponent implements OnInit {
+
   userForm: FormGroup = this.formBuild.group({
-    name: this.formBuild.control(''),
-    email: this.formBuild.control(''),
-    userName: this.formBuild.control(''),
-    password: this.formBuild.control(''),
-    passwordVerify: this.formBuild.control(''),
-    userRol: this.formBuild.control(''),
+    name: this.formBuild.control('', [Validators.required]),
+    email: this.formBuild.control('', [Validators.required]),
+    userName: this.formBuild.control('', [Validators.required]),
+    password: this.formBuild.control('', [Validators.required]),
+    passwordVerify: this.formBuild.control('', [Validators.required]),
+    role: this.formBuild.control('', [Validators.required]),
   });
+  userRolOptions: string[] = [
+    'Option 1', 
+    'Option 2'
+  ];
 
-  constructor(private formBuild: FormBuilder) {}
+  constructor(private formBuild: FormBuilder,
+              private dialogRef:MatDialogRef<FormUserComponent>,
+              @Inject(MAT_DIALOG_DATA) private data: any) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("data ", this.data)
+  }
 
   showForm() {
     console.log('this.form: ', this.userForm);
     console.log('value: ', this.userForm.get('control')!.value);
   }
 
-  userRolOptions: string[] = ['Option 1', 'Option 2'];
+  saveUser() {
+    if (this.userForm.valid) {
+      const user = {
+        name: this.userForm.get('name')?.value, 
+        email: this.userForm.get('email')?.value,
+        userName: this.userForm.get('userName')?.value,
+        password: this.userForm.get('password')?.value,
+        passwordVerify: this.userForm.get('passwordVerify')?.value,
+        role: this.userForm.get('role')?.value  
+      }
+      this.dialogRef.close(user);
+    } else {
+      this.userForm.markAllAsTouched();
+    }
+  }
+
 }

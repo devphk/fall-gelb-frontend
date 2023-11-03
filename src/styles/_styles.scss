@@ -428,6 +428,7 @@ i {
 
 .mat-horizontal-stepper-header .mat-step-icon span,
 .mat-raised-button span,
-.mat-primary .mat-icon {
+.mat-primary .mat-icon,
+.mat-flat-button.mat-primary span{
   color: #fff !important;
 }

@@ -21,9 +21,8 @@ export class UserComponent implements OnInit {
   ];
   tableColumnsTags: string[] = ['id', 'name', 'username', 'email', 'status'];
   tableData: any[] = [];
-  selectedID: number = 0;
-  selectedData: any[] = []
   durationInSeconds = 2;
+  itemsSelected: any[] = [];
 
   constructor(
     private dialogService: DialogService,
@@ -31,13 +30,18 @@ export class UserComponent implements OnInit {
     private snackBar: MatSnackBar  ) {}
 
   ngOnInit(): void {
+    this.getUsers();
+  }
 
-    this.userService.getUsers().subscribe((resp) => {
-      console.log(resp);
+  getUsers() {
+
+    this.userService
+        .getUsers()
+        .subscribe((response) => {
 
       const tableData: UserDataTable[] = [];
 
-      resp.forEach((user) => {
+      response.forEach((user) => {
         const userToInput: UserDataTable = {
           id: user.id,
           name: user.name,
@@ -50,7 +54,11 @@ export class UserComponent implements OnInit {
       });
 
       this.tableData = tableData;
+
+    }, (error) => {
+      
     });
+
   }
 
   openSnackBar(type: number) {
@@ -65,43 +73,33 @@ export class UserComponent implements OnInit {
     }
   }
 
-  newUser() {
+  processUser(processType: string) {
     this.dialogService
-      .openDialog(FormUserComponent, 'Registrar Usuario', '800px', '300px')
+        .openDialog(FormUserComponent, 
+                    processType === 'Add' ? 'Crear Usuario' : 'Editar Usuario', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
         .afterClosed()
-          .subscribe(() => this.ngOnInit());
-  }
-
-  editUser() {
-    this.userService.getUser(this.selectedID)
-      .subscribe((resp) => {
-        this.selectedData = resp;
-      
-        this.dialogService
-          .openDialog(FormUserComponent, 
-                      'Editar Usuario', 
-                      '800px', 
-                      'auto',
-                      // this.itemsSelected)
-            .afterClosed()
-              .subscribe(() => this.ngOnInit());
-      
-      })
-
-
+        .subscribe((user) => {
+          console.log("user ", user)
+        });
   }
 
   deleteUser() {
-    this.userService.deleteUsers(this.selectedID).subscribe(
-      (data) => {
-        console.log('EXITOSO!: ', data);
-        this.openSnackBar(1);
-        this.ngOnInit();
-      },
-      (error) => {
-        console.error('ERROR!: ', error);
-        this.openSnackBar(2);
-      }
-    );
+    // this.userService
+    //     .deleteUsers()
+    //     .subscribe(
+    //   (data) => {
+    //     console.log('EXITOSO!: ', data);
+    //     this.openSnackBar(1);
+    //     this.ngOnInit();
+    //   },
+    //   (error) => {
+    //     console.error('ERROR!: ', error);
+    //     this.openSnackBar(2);
+    //   }
+    // );
   }
+
 }

@@ -2,14 +2,16 @@
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <h1>Usuarios</h1>
 
-    <div fxLayoutGap>
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
       <button
         class="crud-button"
         mat-mini-fab
         color="primary"
         aria-label="Registrar Usuario"
         matTooltip="Registrar Usuario"
-        (click)="newUser()"
+        (click)="processUser('Add')"
       >
         <mat-icon>add</mat-icon>
       </button>
@@ -20,7 +22,7 @@
             color="primary"
             aria-label="Editar Usuario"
             matTooltip="Editar Usuario"
-            (click)="editUser()">
+            (click)="processUser('Edit')">
         <mat-icon>edit</mat-icon>
       </button>
       

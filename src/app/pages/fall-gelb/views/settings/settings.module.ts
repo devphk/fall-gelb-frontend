@@ -46,6 +46,7 @@ import {
   WarehouseComponent,
   ContainerTypeComponent,
 } from './views';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {
@@ -97,6 +98,7 @@ const routes: Routes = [
     PhkSlideToggleModule,
     MatCardModule,
     MatSelectModule,
-  ],
+    MatSnackBarModule
+  ]
 })
 export class SettingsModule {}

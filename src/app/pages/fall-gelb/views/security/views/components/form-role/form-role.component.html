@@ -11,12 +11,10 @@
       <ng-template matStepLabel>Nuevo Rol</ng-template>
       <app-phk-input label="Nombre"
                      formControlName="name"
-                     fxFlex="100">
+                     fxFlex="100"
+                     [errorMessage]="roleForm.get('name')?.errors?.['required'] 
+                                     ? 'Nombre es requerido def' : null">
                     
-        <mat-error error *ngIf="roleForm.get('name')?.errors
-                          && roleForm.get('name')?.hasError('required')">
-          Nombre es requerido
-        </mat-error>
       </app-phk-input>
     </form>
     <button mat-raised-button 
