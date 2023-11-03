@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
 import { PhkThemeToggleService } from '@shared/components';
 import { Mode } from '@shared/models';
 import { HomeService } from '../../home.service';
 import { fastAnimation } from '@shared/animations/fast-animation';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.scss'],
   animations: [fastAnimation]
 })
-export class SearchComponent {
+export class SearchComponent implements OnDestroy {
 
   public show: boolean = false;
   inputActive: boolean = false;
@@ -38,6 +39,12 @@ export class SearchComponent {
   clickingAppsButton: boolean = false;
   clickingUserButton: boolean = false;
   isLogged: boolean = false;
+
+  // subscriptions
+
+  logoutSubscription: Subscription = this.homeService
+                                         .logout$
+                                         .subscribe(() => this.isLogged = false);
 
   constructor(public homeService: HomeService,
               private router: Router) { }
@@ -80,4 +87,9 @@ export class SearchComponent {
   signIn() {
     this.router.navigate(['sign']);
   }
+
+  ngOnDestroy(): void {
+    this.logoutSubscription.unsubscribe();
+  }
+
 }

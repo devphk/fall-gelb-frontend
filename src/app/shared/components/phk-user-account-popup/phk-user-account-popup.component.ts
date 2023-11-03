@@ -28,12 +28,13 @@ export class PhkUserAccountPopupComponent {
       }
   }
 
-  openFallgelb() {
-    this.router.navigate(['fall-gelb']);
+  openDashboard() {
+    this.router.navigate(['user-dashboard']);
   }
 
   logout() {
     sessionStorage.removeItem('fallgelb');
+    this.homeService.logout.next();
     this.router.navigate(['home']);
   }
 
