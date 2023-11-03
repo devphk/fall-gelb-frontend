@@ -24,15 +24,15 @@ export class SearchComponent implements OnDestroy {
   appsList: any[] = [
     {
       appName: 'Truck',
-      appLogo: '../../../../../assets/images/google.png',
+      appLogo: 'src/assets/images/google.png',
     },
     {
       appName: 'Customs',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: 'src/assets/images/google.png'
     },
     {
       appName: 'Express',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: 'src/assets/images/google.png'
     }
   ];
 
