@@ -12,6 +12,7 @@ import { HomeService } from 'src/app/pages/home/home.service';
 })
 export class PhkUserAccountHeaderComponent {
 
+  @Input() showLogo: boolean = false;
   @Input() showSearch: boolean = false;
   inputActive: boolean = false;
   appsOverlayOpened = false;

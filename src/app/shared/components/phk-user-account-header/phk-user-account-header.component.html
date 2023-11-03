@@ -1,7 +1,12 @@
 <div class="header-container"
      fxLayout="row"
      fxLayoutAlign="space-between center">
-     <div>
+     <div fxLayout="row">
+
+        <img src="../../../../assets/images/logo.png" 
+             width="150px"
+             *ngIf="showLogo">
+
         <div class="search-input active p-0"
              (click)="inputActive = true">
             <div id="searchBox">
