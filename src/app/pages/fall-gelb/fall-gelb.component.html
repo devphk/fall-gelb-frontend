@@ -3,11 +3,6 @@
 <mat-drawer-container>
     <mat-drawer #drawer 
                 [mode]="'side'">
-                <!-- <div fxLayout="column">
-                    <button *ngFor="let link of links" 
-                            mat-flat-button
-                            [routerLink]="link.linkUrl">{{link.linkTitle}}</button>
-                </div> -->
 
         <app-phk-sidenav></app-phk-sidenav>
     
@@ -17,21 +12,7 @@
         <mat-toolbar color="primary"
                      fxLayout="row"
                      fxLayoutAlign="space-between center">
-
-            <div>
-                <button mat-icon-button 
-                        aria-label="toolbar button"
-                        (click)="onToggleDrawer()">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <span>Phoinike</span>
-            </div>
-
-            <div fxLayout="row"
-                 fxLayoutAlign="center center">
-                <app-phk-user-account-buttons></app-phk-user-account-buttons>
-            </div>
-
+            <app-phk-user-account-header class="w-100"></app-phk-user-account-header>
         </mat-toolbar>
 
         <div class="center-content p-20 w-90"
