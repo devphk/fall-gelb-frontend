@@ -7,7 +7,10 @@
 $bgPrimary_dark: #111111;
 $bgSecondary_dark: #1B1B1B;
 $bgTerciary_dark: #3A3A3A;
-$bgSearch_dark: #212226;
+// $bgSearch_dark: #212226;
+$bgSearch_dark: #1C1C1EFF;
+$bgSidenavItem_dark: #3A3A3A;
+$bgSidenavItemHover_dark: #575757;
 
 // Text variables
 
@@ -38,6 +41,8 @@ $bgPrimary_light: #ffffff;
 $bgSecondary_light: #f4f4f4;
 $bgTerciary_light: #d0d0d0;
 $bgSearch_light: #ffffff;
+$bgSidenavItem_light: #ffffff;
+$bgSidenavItemHover_light: #eee;
 
 // Text variables
 
@@ -69,7 +74,9 @@ $signMatCardPrimary_light: #ffffff;
   --bgSecondaryColor: #{$bgSecondary_light};
   --bgTerciaryColor: #{$bgTerciary_light};
   --bgSearchColor: #{$bgSearch_light};
-
+  --bgSidenavItem: #{$bgSidenavItem_light};
+  --bgSidenavItemHover: #{$bgSidenavItemHover_light};
+  
   // Text variables
 
   --textPrimaryColor: #{$textPrimary_light};
@@ -102,6 +109,8 @@ $signMatCardPrimary_light: #ffffff;
   --bgSecondaryColor: #{$bgSecondary_dark};
   --bgTerciaryColor: #{$bgTerciary_dark};
   --bgSearchColor: #{$bgSearch_dark};
+  --bgSidenavItem: #{$bgSidenavItem_dark};
+  --bgSidenavItemHover: #{$bgSidenavItemHover_dark};
 
   // Text variables
 

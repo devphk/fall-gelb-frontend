@@ -14,6 +14,13 @@
 
     }
 
+    .mat-select-placeholder,
+    .mat-form-field-appearance-outline .mat-select-arrow-wrapper,
+    .mat-select-arrow {
+        color: var(--textPrimaryColor);
+        transition: none;
+    }
+
 }
 
 .dot-1,
