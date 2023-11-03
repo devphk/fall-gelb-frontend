@@ -28,18 +28,21 @@
                         </h5>
                       </div>
 
-                      <mat-form-field appearance="outline"
-                                      fxFlex="calc(20%)">
-                        <mat-select placeholder="Mes">
+                      <form [formGroup]="monthForm"
+                            fxFlex="calc(20% - 20px)">
+                        <app-phk-select
+                          [required]="true"
+                          [label]="'Mes'"
+                          formControlName="month">
                           <mat-option>
                             Marzo 2023
                           </mat-option>
                           <mat-option>
                             Abril 2023
                           </mat-option>
-  
-                        </mat-select>
-                      </mat-form-field>
+                        </app-phk-select>
+                      </form>
+
 
                  </div>
 

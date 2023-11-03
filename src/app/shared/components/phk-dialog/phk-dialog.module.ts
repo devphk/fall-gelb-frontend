@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PhkDialogComponent } from './phk-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FlexModule } from '@angular/flex-layout';
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class PhkDialogModule { }

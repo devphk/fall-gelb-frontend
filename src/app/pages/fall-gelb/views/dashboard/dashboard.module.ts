@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { PhkSelectModule } from '@shared/components';
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
     FlexLayoutModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    PhkSelectModule
   ],
 })
 export class DashboardModule {}

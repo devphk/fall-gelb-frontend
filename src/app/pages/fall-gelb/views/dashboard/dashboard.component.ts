@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 
 @Component({
@@ -11,6 +11,10 @@ export class DashboardComponent implements OnInit {
 
   form: FormGroup = this.fb.group({
     control: this.fb.control("")
+  });
+
+  monthForm: FormGroup = this.fb.group({
+    month: this.fb.control('', [Validators.required])
   });
 
   // Pie
