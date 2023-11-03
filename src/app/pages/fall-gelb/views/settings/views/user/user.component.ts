@@ -3,7 +3,6 @@ import { DialogService } from '@core/services';
 import { FormUserComponent } from '../components';
 import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
-import { TableCheckService } from '@shared/components/phk-table/table-check.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -29,19 +28,10 @@ export class UserComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
-    private tableCheck: TableCheckService,
     private snackBar: MatSnackBar  ) {}
 
   ngOnInit(): void {
-    this.tableCheck.currentMessage.subscribe((tabletSeleted) => {
-      console.log('Table Selected: ', tabletSeleted);
 
-      if (tabletSeleted.check) {
-        this.selectedID = tabletSeleted.id;
-      } else {
-        this.selectedID = 0;
-      }
-    });
     this.userService.getUsers().subscribe((resp) => {
       console.log(resp);
 
@@ -88,7 +78,11 @@ export class UserComponent implements OnInit {
         this.selectedData = resp;
       
         this.dialogService
-          .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px', this.selectedData)
+          .openDialog(FormUserComponent, 
+                      'Editar Usuario', 
+                      '800px', 
+                      'auto',
+                      // this.itemsSelected)
             .afterClosed()
               .subscribe(() => this.ngOnInit());
       
