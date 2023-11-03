@@ -22,7 +22,8 @@
           color="primary"
           aria-label="Editar Usuario"
           matTooltip="Editar Usuario"
-          (click)="processUser('Edit')">
+          (click)="processUser('Edit')"
+          [disabled]="itemsSelected.length > 1">
       <mat-icon>edit</mat-icon>
     </button>
     
@@ -43,5 +44,5 @@
                 [columnsTags]="tableColumnsTags"
                 [columnsToDisplay]="tableColumnsToDisplay"
                 [data]="tableData"
-                [itemsSelected]="itemsSelected"></app-phk-table>
+                [(itemsSelected)]="itemsSelected"></app-phk-table>
 

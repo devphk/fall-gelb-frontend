@@ -10,13 +10,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class FormUserComponent implements OnInit {
 
   userForm: FormGroup = this.formBuild.group({
-    name: this.formBuild.control('', [Validators.required]),
-    email: this.formBuild.control('', [Validators.required]),
-    userName: this.formBuild.control('', [Validators.required]),
+    name: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
+    email: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].email : '', [Validators.required]),
+    userName: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].username : '', [Validators.required]),
     password: this.formBuild.control('', [Validators.required]),
     passwordVerify: this.formBuild.control('', [Validators.required]),
     role: this.formBuild.control('', [Validators.required]),
   });
+  
   userRolOptions: string[] = [
     'Option 1', 
     'Option 2'
