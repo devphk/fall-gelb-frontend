@@ -1,49 +1,47 @@
-<div class="table-container">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Usuarios</h1>
 
-    <div fxLayout="row"
-         fxLayoutAlign="center center"
-         fxLayoutGap="10px">
-      <button
-        class="crud-button"
-        mat-mini-fab
-        color="primary"
-        aria-label="Registrar Usuario"
-        matTooltip="Registrar Usuario"
-        (click)="processUser('Add')"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Usuarios</h1>
 
-      <button 
-            class="crud-button"
-            mat-mini-fab
-            color="primary"
-            aria-label="Editar Usuario"
-            matTooltip="Editar Usuario"
-            (click)="processUser('Edit')">
-        <mat-icon>edit</mat-icon>
-      </button>
-      
-      <button 
-            class="crud-button"
-            mat-mini-fab
-            color="primary"
-            aria-label="Eliminar Usuario"
-            matTooltip="Eliminar Usuario"
-            (click)="deleteUser()">
-        <mat-icon>delete</mat-icon>
-      </button>
+  <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Registrar Usuario"
+      matTooltip="Registrar Usuario"
+      (click)="processUser('Add')"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
 
-    </div>
+    <button 
+          class="crud-button"
+          mat-mini-fab
+          color="primary"
+          aria-label="Editar Usuario"
+          matTooltip="Editar Usuario"
+          (click)="processUser('Edit')">
+      <mat-icon>edit</mat-icon>
+    </button>
+    
+    <button 
+          class="crud-button"
+          mat-mini-fab
+          color="primary"
+          aria-label="Eliminar Usuario"
+          matTooltip="Eliminar Usuario"
+          (click)="deleteUser()">
+      <mat-icon>delete</mat-icon>
+    </button>
+
   </div>
-
-  <app-phk-table *ngIf="tableData !== []"
-                 [columnsTags]="tableColumnsTags"
-                 [columnsToDisplay]="tableColumnsToDisplay"
-                 [data]="tableData"
-                 [itemsSelected]="itemsSelected"></app-phk-table>
-
-
 </div>
+
+<app-phk-table *ngIf="tableData !== []"
+                [columnsTags]="tableColumnsTags"
+                [columnsToDisplay]="tableColumnsToDisplay"
+                [data]="tableData"
+                [itemsSelected]="itemsSelected"></app-phk-table>
+

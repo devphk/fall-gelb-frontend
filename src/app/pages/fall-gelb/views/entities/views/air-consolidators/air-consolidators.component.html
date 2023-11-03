@@ -1,24 +1,20 @@
-<div class="air-consolidator">
-    <div class="table-container">
 
-        <div fxLayout="row"
-            fxLayoutAlign="space-between center">
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
 
-            <h1>Consolidador Aéreo</h1>
+    <h1>Consolidador Aéreo</h1>
 
-            <button mat-mini-fab
-                    color="primary" 
-                    aria-label="Nuevo consolidador aéreo"
-                    matTooltip="Nuevo Consolidador Aéreo"
-                    (click)="newAirConsolidator()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </div>
-
-
-        <app-phk-table [columnsTags]="tableColumnsTags"
-                    [columnsToDisplay]="tableColumnsToDisplay"
-                    [data]="tableData"></app-phk-table>
-                    
-    </div>
+    <button mat-mini-fab
+            color="primary" 
+            aria-label="Nuevo consolidador aéreo"
+            matTooltip="Nuevo Consolidador Aéreo"
+            (click)="newAirConsolidator()">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
+
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"></app-phk-table>
+            

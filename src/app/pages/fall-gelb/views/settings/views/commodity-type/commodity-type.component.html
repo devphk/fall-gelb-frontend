@@ -1,24 +1,19 @@
-<div class="goodsType">
-    <div class="table-container">
 
-        <div fxLayout="row"
-            fxLayoutAlign="space-between center">
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
 
-            <h1>Tipos de Mercancia</h1>
+    <h1>Tipos de Mercancia</h1>
 
-            <button mat-mini-fab
-                    color="primary" 
-                    aria-label="Nuevo Tipo de Mercancia"
-                    matTooltip="Nuevo Tipo de Mercancia"
-                    (click)="newGoodsType()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </div>
-
-
-        <app-phk-table [columnsTags]="tableColumnsTags"
-                    [columnsToDisplay]="tableColumnsToDisplay"
-                    [data]="tableData"></app-phk-table>
-                    
-    </div>
+    <button mat-mini-fab
+            color="primary" 
+            aria-label="Nuevo Tipo de Mercancia"
+            matTooltip="Nuevo Tipo de Mercancia"
+            (click)="newGoodsType()">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
+
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"></app-phk-table>

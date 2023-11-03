@@ -1,21 +1,21 @@
-<div class="table-container">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Monedas</h1>
+  
+<div fxLayout="row" 
+      fxLayoutAlign="space-between center">
+  <h1>Monedas</h1>
 
-    <button
-      mat-mini-fab
-      color="primary"
-      aria-label="Registrar Moneda"
-      matTooltip="Registrar Moneda"
-      (click)="newCurrency()"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <app-phk-table
-    [columnsTags]="tableColumnsTags"
-    [columnsToDisplay]="tableColumnsToDisplay"
-    [data]="tableData"
-  ></app-phk-table>
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Registrar Moneda"
+    matTooltip="Registrar Moneda"
+    (click)="newCurrency()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
+
+<app-phk-table
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+></app-phk-table>
