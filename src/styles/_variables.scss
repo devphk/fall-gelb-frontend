@@ -11,6 +11,8 @@ $bgTerciary_dark: #3A3A3A;
 $bgSearch_dark: #1C1C1EFF;
 $bgSidenavItem_dark: #3A3A3A;
 $bgSidenavItemHover_dark: #575757;
+$bgToolbar_dark: #3A3A3A;
+$bgUserAccountPopup_dark: #3A3A3A;
 
 // Text variables
 
@@ -43,6 +45,8 @@ $bgTerciary_light: #d0d0d0;
 $bgSearch_light: #ffffff;
 $bgSidenavItem_light: #ffffff;
 $bgSidenavItemHover_light: #eee;
+$bgToolbar_light: #0093e1;
+$bgUserAccountPopup_light: #f4f4f4;
 
 // Text variables
 
@@ -76,7 +80,9 @@ $signMatCardPrimary_light: #ffffff;
   --bgSearchColor: #{$bgSearch_light};
   --bgSidenavItem: #{$bgSidenavItem_light};
   --bgSidenavItemHover: #{$bgSidenavItemHover_light};
-  
+  --bgToolbar: #{$bgToolbar_light};
+  --bgUserAccountPopup: #{$bgUserAccountPopup_light};
+
   // Text variables
 
   --textPrimaryColor: #{$textPrimary_light};
@@ -111,6 +117,8 @@ $signMatCardPrimary_light: #ffffff;
   --bgSearchColor: #{$bgSearch_dark};
   --bgSidenavItem: #{$bgSidenavItem_dark};
   --bgSidenavItemHover: #{$bgSidenavItemHover_dark};
+  --bgToolbar: #{$bgToolbar_dark};
+  --bgUserAccountPopup: #{$bgUserAccountPopup_dark};
 
   // Text variables
 

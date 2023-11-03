@@ -9,4 +9,13 @@
     .mat-drawer-side {
         border: none;
     }
+
+    .mat-toolbar.mat-primary {
+        background-color: var(--bgToolbar);
+    }
+
+    .mat-toolbar span {
+        color: #fafafa;
+    }
+    
 }

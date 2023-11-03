@@ -4,7 +4,7 @@
 :host ::ng-deep {
     
     .mat-expansion-panel {
-        background-color: var(--bgSecondaryColor);
+        background-color: var(--bgUserAccountPopup);
         border-radius: 15px;
     }
 
@@ -21,7 +21,7 @@
 .user-account-container {
     padding: 15px;
     width: 320px;
-    background-color: var(--bgPrimaryColor);
+    background-color: var(--bgSecondaryColor);
     border: 8px solid var(--borderTerciaryColor);
     border-radius: 20px;
     margin-right: -55px;

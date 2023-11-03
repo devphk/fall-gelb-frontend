@@ -19,15 +19,15 @@ export class PhkUserAccountHeaderComponent {
   appsList: any[] = [
     {
       appName: 'Truck',
-      appLogo: '../../../../../assets/images/google.png',
+      appLogo: '../../../../../assets/images/Recurso 12@4x.png',
     },
     {
       appName: 'Customs',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: '../../../../../assets/images/Recurso 13@4x.png'
     },
     {
       appName: 'Express',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: '../../../../../assets/images/Recurso 14@4x.png'
     }
   ];
 
