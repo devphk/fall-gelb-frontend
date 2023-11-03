@@ -21,6 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,12 +35,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatSnackBarModule,
     NgChartsModule,
     HttpClientModule,
     MatTooltipModule
   ],
   providers: [
     SessionGuard,
+    TokenService,
     PhkThemeToggleService,
     HttpClient,
     TokenService,
