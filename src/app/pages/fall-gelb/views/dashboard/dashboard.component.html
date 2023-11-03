@@ -1,5 +1,6 @@
 
-<div class="p-50">
+<div class="center-content p-20 w-90"
+     ngClass.gt-sm="w-60">
 
   <h1>
     Bienvenido!
@@ -14,21 +15,114 @@
             class="w-100">
           
             <div class="simple-border-card p-20"
-                 fxFlex="calc(70&)">
+                 fxFlex="calc(70%)">
 
-                <h3 class="fw-800">Balance financiero</h3>
+                 <div fxLayout="row"
+                      fxLayoutAlign="space-between start">
+
+                      <div fxFlex="calc(80%)">
+                        <h3 class="fw-800 m-0">
+                          Balance mensual
+                        </h3>
+                        <h5 class="mt-m3">
+                          Resumen de ganancias
+                        </h5>
+                      </div>
+
+                      <mat-form-field appearance="outline"
+                                      fxFlex="calc(20%)">
+                        <mat-select placeholder="Mes">
+                          <mat-option>
+                            Marzo 2023
+                          </mat-option>
+                          <mat-option>
+                            Abril 2023
+                          </mat-option>
+  
+                        </mat-select>
+                      </mat-form-field>
+
+                 </div>
+
+                <div fxLayout="row"
+                     fxLayoutGap="10px">
+                  <canvas baseChart 
+                          class="w-100"
+                          [type]="'line'"
+                          [data]="lineChartData"
+                          [options]="lineChartOptions"
+                          [legend]="lineChartLegend"
+                          fxFlex="calc(70%)">
+                  </canvas>
+
+                  <div fxFlex="calc(30% - 10px)">
+
+                    <div fxLayout="column"
+                         fxLayoutAlign="start start"
+                         fxLayoutGap="20px">
+
+                         <div fxLayout="row"
+                              fxLayoutGap="10px"
+                              class="status-summary">
+     
+                           <mat-icon class="mat-18">bar_chart_4_bars</mat-icon>
+     
+                           <div>
+                             <h2 class="fw-800 m-0">
+                               $65.413,62
+                             </h2>
+                             <h5 class="mt-m3">
+                               Total de ganancias
+                             </h5>
+                           </div>
+     
+                         </div>
+
+                           <div fxLayout="row"
+                                fxLayoutGap="10px"
+                                fxLayoutAlign="center center">
+       
+                                <div class="dot-1"></div>
+
+                                <div>
+                                  <h5 class="m-0">
+                                    Ganancias este mes
+                                  </h5>
+
+                                  <h3 class="fw-800 m-0">
+                                    $65.413,62
+                                  </h3>
+                                </div>
+                           </div>
+
+                         <div fxLayout="row"
+                              fxLayoutGap="10px"
+                              fxLayoutAlign="center center">
+     
+                              <div class="dot-2"></div>
+     
+                              <div>
+                                <h5 class="m-0">
+                                  Gastos este mes
+                                </h5>
+
+                                <h3 class="fw-800 m-0">
+                                  $15.706,62
+                                </h3>
+                              </div>
+     
+                         </div>
+                    </div>
+
+                  </div>
+
+                </div>
               
-                <canvas baseChart class="w-100"
-                  [type]="'line'"
-                  [data]="lineChartData"
-                  [options]="lineChartOptions"
-                  [legend]="lineChartLegend">
-                </canvas>
           
             </div>
 
             <div class="simple-border-card p-20"
-                 fxFlex="calc(30& - 20px)">
+                 fxFlex="calc(30% - 20px)">
 
                 <h3 class="fw-800">Administración</h3>    
                 <canvas baseChart
@@ -38,7 +132,8 @@
                         [options]="pieChartOptions"
                         [plugins]="pieChartPlugins"
                         [legend]="pieChartLegend"
-                        class="content-center">
+                        [width]="200"
+                        class="center-content">
                 </canvas>
           
             </div>

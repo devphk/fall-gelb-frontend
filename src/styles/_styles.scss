@@ -186,8 +186,20 @@ i {
   width: 100% !important;
 }
 
+.w-90 {
+  width: 90% !important;
+}
+
 .w-80 {
   width: 80% !important;
+}
+
+.w-70 {
+  width: 70% !important;
+}
+
+.w-60 {
+  width: 60% !important;
 }
 
 .w-50 {
@@ -196,7 +208,7 @@ i {
 
 // Content styles
 
-.content-center {
+.center-content {
   margin: 0 auto !important;
 }
 
@@ -294,6 +306,14 @@ i {
 
 .m-40 {
   margin: 40px;
+}
+
+.mt-m3 {
+  margin-top: -3px !important;
+}
+
+.mt-m5 {
+  margin-top: -5px !important;
 }
 
 .mt-m20 {
@@ -431,4 +451,10 @@ i {
 .mat-primary .mat-icon,
 .mat-flat-button.mat-primary span{
   color: #fff !important;
+}
+
+.table-container {
+  height: calc(100vh - 150px);
+  width: 70%;
+  margin: 0 auto;
 }

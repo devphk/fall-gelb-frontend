@@ -98,9 +98,9 @@ export class DashboardComponent implements OnInit {
     },
     layout: {
       padding: {
-        left: 30,
-        right: 30,
-        bottom: 30,
+        left: 15,
+        right: 15,
+        bottom: 0,
         top: 0
       }
     }
