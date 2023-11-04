@@ -23,6 +23,25 @@
 
 }
 
+// Header styles
+
+.header-card {
+    background-color: var(--bgSearchBox);
+    border-radius: 5px;
+    padding: 15px;
+
+    p {
+        font-size: 0.9em;
+    }
+
+    span {
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-top: -6px;
+    }
+
+}
+
 .dot-1,
 .dot-2,
 .dot-3 {
