@@ -17,8 +17,8 @@ export interface UserDataTable {
   email: string;
   status: string;
   username: string;
-  lastname: string;
-}
+  lastname:string;
+  }
 
 export interface UserExport {
   title: string;
