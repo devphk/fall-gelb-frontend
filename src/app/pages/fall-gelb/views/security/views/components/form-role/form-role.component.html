@@ -1,58 +1,92 @@
-
-
-<mat-stepper linear #stepper>
-
-  <mat-step [stepControl]="roleForm" 
-            [editable]="true"
-            fxLayout="row"
-            fxLayoutAlign="center center"
-            fxLayoutGap="15px">
-    <form [formGroup]="roleForm">
+<mat-stepper orientation="vertical" #stepper>
+  <mat-step [stepControl]="roleFormGroup" [editable]="true">
+    <form
+      [formGroup]="roleFormGroup"
+      fxLayout="column"
+      fxLayoutAlign="space-around center"
+    >
       <ng-template matStepLabel>Nuevo Rol</ng-template>
-      <app-phk-input label="Nombre"
-                     formControlName="name"
-                     fxFlex="100"
-                     [errorMessage]="roleForm.get('name')?.errors?.['required'] 
-                                     ? 'Nombre es requerido def' : null">
-                    
-      </app-phk-input>
+      <div fxFlex="100" fxFill fxLayoutGap="20px">
+        <app-phk-input
+          label="Nombre"
+          formControlName="name"
+          [errorMessage]="roleFormGroup.get('name')?.errors?.['required'] 
+                                     ? 'Nombre es requerido def' : null"
+        >
+        </app-phk-input>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="selectPermissions(stepper)"
+        >
+          Siguiente
+        </button>
+      </div>
     </form>
-    <button mat-raised-button 
-            matStepperNext
-            color="primary"
-            (click)="selectPermissions(stepper)">Siguiente</button>
   </mat-step>
 
   <mat-step [stepControl]="permisionFormGroup" [editable]="true">
-    <form [formGroup]="permisionFormGroup">
+    <form
+      [formGroup]="permisionFormGroup"
+      fxLayout="column"
+      fxLayoutAlign="space-around center"
+    >
       <ng-template matStepLabel>Asignar Permisos a Roles </ng-template>
-      <app-phk-select
-        formControlName="modules"
-        [label]="'Modulos'"
-        fxFlex.gt-md="calc(100%)"
-        fxFlex.lt-md="calc(100%)"
+      <div
+        fxFlex="100"
+        fxFill
+        fxLayoutGap="20px"
+        fxLayout="column"
+        fxLayoutAlign="space-around none"
+      >
+        <div
+          mat-dialog-content
+          fxLayout="row wrap"
+          fxLayoutGap="20px"
+          fxLayout.lt-md="column"
+          fxLayoutAlign="start center"
         >
-        <mat-option *ngFor="let modules of modulesOptions" [value]="modules">
-          {{ modules }}
-        </mat-option>
-      </app-phk-select>
-      <app-phk-table
-        [columnsTags]="tableColumnsTags"
-        [columnsToDisplay]="tableColumnsToDisplay"
-        [data]="tableData"
-      ></app-phk-table>
+          <app-phk-select
+            formControlName="modulePermission"
+            [label]="'Modulos'"
+            fxFlex.gt-md="calc(33% - 20px)"
+            fxFlex.lt-md="calc(33% - 20px)"
+          >
+            <mat-option
+              *ngFor="let modules of modulesOptions"
+              [value]="modules.id"
+            >
+              {{ modules.name }}
+            </mat-option>
+          </app-phk-select>
+          <button mat-raised-button color="accent" (click)="savePermisions()">
+            Guardar
+          </button>
+        </div>
+        <app-phk-table
+          [columnsTags]="tableColumnsTags"
+          [columnsToDisplay]="tableColumnsToDisplay"
+          [(itemsSelected)]="permisionsSelected"
+          [data]="tableData"
+        ></app-phk-table>
+        <div
+          class="container-button"
+          fxFlex="100"
+          fxLayout="row"
+          fxLayoutAlign="space-between center"
+        >
+          <button mat-raised-button color="warn" matStepperPrevious>
+            Anterior
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="onSubmit(roleFormGroup.value)"
+          >
+            Finalizar
+          </button>
+        </div>
+      </div>
     </form>
-
-    <div fxLayout="row"
-         fxLayoutGap="10px"
-         class="mt-10">
-      <button mat-raised-button
-              color="primary"
-              matStepperPrevious>Anterior</button>
-      <button mat-raised-button
-              color="primary"
-              matStepperNext
-              (click)="saveRole()">Guardar</button>
-    </div>
   </mat-step>
 </mat-stepper>

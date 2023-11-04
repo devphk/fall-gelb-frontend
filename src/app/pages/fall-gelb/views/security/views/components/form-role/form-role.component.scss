@@ -5,3 +5,65 @@
 .mat-mdc-form-field {
   margin-top: 16px;
 }
+
+::ng-deep {
+  mat-dialog-container {
+    background: var(--bgPrimaryColor) !important;
+  }
+
+  .mat-input-element {
+    color: var(--textPrimaryColor) !important;
+  }
+
+  .mat-option {
+    color: var(--textPrimaryColor);
+  }
+
+  .mat-step {
+    background-color: var(--bgPrimaryColor);
+  }
+  .mat-select-panel {
+    background-color: var(--bgPrimaryColor);
+    color: var(--textPrimaryColor) !important;
+  }
+
+  .mat-primary span,
+  .mat-primary .mat-icon {
+    color: var(--textPrimaryColor) !important;
+  }
+
+  .mat-step-header .mat-step-icon {
+    background-color: #b5a3a38a;
+  }
+
+  .mat-step-header .mat-step-icon-selected {
+    background-color: #0093e1;
+    color: white;
+  }
+
+  .mat-step-header .mat-step-label.mat-step-label-active {
+    color: var(--textPrimaryColor) !important;
+  }
+
+  .mat-step-label {
+    color: var(--textSecondaryColor) !important;
+  }
+  .mat-stepper-vertical-line::before {
+    border-left-color: var(--borderPrimaryColor);
+    border-left-width: 2px;
+  }
+}
+
+.container-form-roles {
+  background-color: var(--bgPrimaryColor);
+}
+
+.btn-primary {
+  background-color: var(--buttonPrimary) !important;
+}
+.btn-accent {
+  background-color: var(--buttonAccent) !important;
+}
+.btn-warn {
+  background-color: var(--buttonWarn) !important;
+}
