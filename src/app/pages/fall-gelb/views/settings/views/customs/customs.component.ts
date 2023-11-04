@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewCustomsComponent } from '../components/new-customs/new-customs.component';
 import { DialogService } from '@core/services';
+import { CustomsService } from './customs.service';
+import { CustomsDataTable } from '@shared/models';
 
 @Component({
   selector: 'app-customs',
@@ -12,50 +14,67 @@ export class CustomsComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
+    "Dirección",
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
+    "address",
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+
+  constructor(private dialogService: DialogService,
+              private customsService:CustomsService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getCustoms();
   }
 
-  newCustoms() {
+  getCustoms() {
+    this.customsService.getCustoms()
+      .subscribe((response) => {
+        const tableData: CustomsDataTable[] = [];
+        
+        response.forEach((customs) => {
+          const customtoInput:CustomsDataTable = {
+            id: customs.id,
+            name: customs.name,
+            address: customs.address,
+            transport_types: customs.transport_types,
+            longitude: customs.longitude,
+            latitude:customs.latitude
+          };
+
+          tableData.push(customtoInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
+  }
+
+  processCustoms(processType: string) {
     this.dialogService
-        .openDialog(NewCustomsComponent,
-                    "Nueva Aduana",
-                    "800px",
-                    "300px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+        .openDialog(NewCustomsComponent, 
+                    processType === 'Add' ? 'Crear Aduana' : 'Editar Aduana', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          console.log("custom ", custom);
+        });
+  }
+
+  deleteCustoms() {
+    this.customsService
+      .deleteCustoms(this.itemsSelected[0].id)
+        .subscribe( (data) => {console.log(data)},
+        (error) => {console.log(error)});
   }
 
 }

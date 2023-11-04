@@ -15,11 +15,12 @@ export class UserComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     'ID',
     'Nombre',
+    'Apellido',
     'Nombre de Usuario',
     'Correo',
     'Estatus',
   ];
-  tableColumnsTags: string[] = ['id', 'name', 'username', 'email', 'status'];
+  tableColumnsTags: string[] = ['id', 'name', 'lastname', 'username', 'email', 'status'];
   tableData: any[] = [];
   durationInSeconds = 2;
   itemsSelected: any[] = [];
@@ -48,6 +49,7 @@ export class UserComponent implements OnInit {
           email: user.email,
           status: user.status ? 'Activo' : 'Inactivo',
           username: user.username,
+          lastname:user.lastname,
         };
 
         tableData.push(userToInput);

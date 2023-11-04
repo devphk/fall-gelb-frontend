@@ -14,7 +14,7 @@ export class UserService {
     return this.http.get('/users');
   }
 
-  postUsers (data:User): Observable<User[]> {
+  postUsers (data:any): Observable<User[]> {
     return this.http.post('/users', data);
   }
 
@@ -26,7 +26,7 @@ export class UserService {
     return this.http.get('/users/'+ id);
   }
 
-  putUser(data:User, id:number){
+  putUser(data:any, id:number){
     return this.http.put(`/users/${id}`, data);
   }
 }
