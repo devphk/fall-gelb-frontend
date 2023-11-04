@@ -14,6 +14,7 @@ import { PhkThemeToggleModule, PhkUserAccountButtonsModule, PhkUserAccountPopupM
 import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
 import { AvatarModule } from 'ngx-avatar';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
 
 @NgModule({
   declarations: [FallGelbComponent],
@@ -31,7 +32,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     AvatarModule,
     PhkUserAccountPopupModule,
     OverlayModule,
-    PhkUserAccountButtonsModule
+    PhkUserAccountButtonsModule,
+    PhkUserAccountHeaderModule
   ],
   providers: [FallGelbService],
 })

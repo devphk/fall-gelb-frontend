@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 
 @Component({
@@ -9,8 +9,40 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
+  headerCards: any[] = [
+    {
+      icon: 'supervisor_account',
+      title: 'Usuarios',
+      count: 346
+    },
+    {
+      icon: 'account_balance_wallet',
+      title: 'Clientes',
+      count: 415
+    },
+    {
+      icon: 'star',
+      title: 'Proyectos',
+      count: 6
+    },
+    {
+      icon: 'groups',
+      title: 'Reuniones',
+      count: 125
+    },
+    {
+      icon: 'description',
+      title: 'Reportes',
+      count: 231
+    }
+  ]
+
   form: FormGroup = this.fb.group({
     control: this.fb.control("")
+  });
+
+  monthForm: FormGroup = this.fb.group({
+    month: this.fb.control('', [Validators.required])
   });
 
   // Pie

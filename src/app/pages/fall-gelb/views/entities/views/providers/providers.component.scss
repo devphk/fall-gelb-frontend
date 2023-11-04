@@ -6,7 +6,7 @@
     bottom: 20px;
 }
 
-::ng-deep {
+:host ::ng-deep {
 
     mat-dialog-container{
         background: var(--bgPrimaryColor) !important;

@@ -5,6 +5,28 @@
     Bienvenido!
   </h1>
 
+  <div fxLayout="row"
+       fxLayoutGap="10px">
+
+       <div class="header-card mb-10"
+            fxFlex="calc(20% - 10px)"
+            fxLayout="column"
+            fxLayoutGap="5px"
+            fxLayoutAlign="center center"
+            *ngFor="let headerCard of headerCards">
+
+          <mat-icon class="mat-18">{{headerCard.icon}}</mat-icon>
+
+          <p>
+            {{headerCard.title}}
+          </p>
+
+          <span>{{headerCard.count}}</span>
+
+       </div>
+
+  </div>
+
   <div fxLayout="column"
        fxLayoutAlign="center center">
 
@@ -28,18 +50,21 @@
                         </h5>
                       </div>
 
-                      <mat-form-field appearance="outline"
-                                      fxFlex="calc(20%)">
-                        <mat-select placeholder="Mes">
+                      <form [formGroup]="monthForm"
+                            fxFlex="calc(20% - 20px)">
+                        <app-phk-select
+                          [required]="true"
+                          [label]="'Mes'"
+                          formControlName="month">
                           <mat-option>
                             Marzo 2023
                           </mat-option>
                           <mat-option>
                             Abril 2023
                           </mat-option>
-  
-                        </mat-select>
-                      </mat-form-field>
+                        </app-phk-select>
+                      </form>
+
 
                  </div>
 
@@ -195,8 +220,6 @@
        </div>
 
   </div>
-
-
 
 </div>
 

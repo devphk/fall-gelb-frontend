@@ -126,6 +126,21 @@ body {
 
 // Material global styles
 
+// Background of modal and font color
+
+.mat-dialog-container{
+  background: var(--bgSignInCard) !important;
+
+  button span {
+    color: var(--textPrimaryColor) !important;
+  }
+
+}
+
+.mat-input-element {
+  color: var(--textPrimaryColor) !important;
+}
+
 mat-card {
   border: 1px solid #dadce0;
   background: var(--bgSecondaryColor) !important;
@@ -328,6 +343,10 @@ i {
 
 .mb-10 {
   margin-bottom: 10px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
 }
 
 .mb-35 {
