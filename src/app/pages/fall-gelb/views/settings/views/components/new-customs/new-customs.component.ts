@@ -35,7 +35,6 @@ export class NewCustomsComponent implements OnInit{
   ngOnInit(): void {
     this.getTranspTypes();
     this.getSelectedTransType();
-    console.log('DATA : ', this.data);
   }
 
   getTranspTypes() {
@@ -57,7 +56,6 @@ export class NewCustomsComponent implements OnInit{
           });
       });
     });
-     console.log('transportType: ', this.transportType);
   }
 
   getSelectedTransType() {
@@ -70,8 +68,6 @@ export class NewCustomsComponent implements OnInit{
     }
     
     this.selectedTypes = transportTypeIds;
-
-    console.log('selectedTypes:  ',this.selectedTypes);
 
     this.customForm = new FormControl(this.selectedTypes);
   }
@@ -87,11 +83,11 @@ export class NewCustomsComponent implements OnInit{
         // passwordVerify: this.customsForm.get('passwordVerify')?.value,
         // role: this.customsForm.get('role')?.value  
       }
-      console.log('Custom: ', custom);
+
       this.customsService.postCustoms(custom)
         .subscribe((data) => console.log('EXITOSO!: ', data),
-        (error) => console.error('ERROR! :', error))
-      this.dialogRef.close(custom);
+                   (error) => console.error('ERROR! :', error))
+
     } else if(this.customsForm.valid && this.data.title === 'Editar Aduana'){
       // this.customsForm.markAllAsTouched();
       const customEdit = {
@@ -103,11 +99,11 @@ export class NewCustomsComponent implements OnInit{
         // passwordVerify: this.customsForm.get('passwordVerify')?.value,
         // role: this.customsForm.get('role')?.value  
       }
-      console.log('Custom: ', customEdit);
+
       this.customsService.putCustom(customEdit, this.data.dialogData[0].id)
         .subscribe((data) => console.log('EXITOSO!: ', data),
-        (error) => console.error('ERROR! :', error))
-      this.dialogRef.close(customEdit);
+                   (error) => console.error('ERROR! :', error))
+
     }
   }
 }

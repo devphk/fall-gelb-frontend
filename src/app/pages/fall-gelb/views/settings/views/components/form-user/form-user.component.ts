@@ -35,12 +35,11 @@ export class FormUserComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) private data: any) {}
 
   ngOnInit(): void {
-    console.log("data ", this.data)
   }
 
   saveUser() {
     if (this.userForm.valid && this.data.title === 'Crear Usuario') {
-      console.log('Creando...')
+
       const user = {
         name: this.userForm.get('name')?.value, 
         lastname: this.userForm.get('lastname')?.value, 
@@ -50,10 +49,11 @@ export class FormUserComponent implements OnInit {
         // passwordVerify: this.userForm.get('passwordVerify')?.value,
         // role: this.userForm.get('role')?.value  
       }
+
       this.userService.postUsers(user)
         .subscribe((data) => console.log('EXITOSO!: ', data),
-        (error) => console.error('ERROR! :', error))
-      this.dialogRef.close(user);
+                   (error) => console.error('ERROR! :', error))
+
     } else if(this.userForm.valid && this.data.title === 'Editar Usuario'){
       // this.userForm.markAllAsTouched();
       const userEdit = {
@@ -63,10 +63,11 @@ export class FormUserComponent implements OnInit {
         username: this.userForm.get('username')?.value,
         password: this.userForm.get('password')?.value,
       }
+
         this.userService.putUser(userEdit, this.data.dialogData[0].id)
         .subscribe((data) => console.log('EXITOSO!: ', data),
-        (error) => console.error('ERROR! :', error))
-      this.dialogRef.close(userEdit);
+                   (error) => console.error('ERROR! :', error))
+                   
     }
   }
 
