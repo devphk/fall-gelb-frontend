@@ -1,0 +1,17 @@
+::ng-deep {
+    .mat-snack-bar-container{
+        &.success-snackbar{
+        background-color: #22bb33 !important;
+        }
+    }
+    .mat-snack-bar-container{
+        &.error-snackbar{
+        background-color: #bb2124 !important;
+        }
+    }
+
+    .mat-primary span, .mat-primary .mat-icon {
+        color: var(--textPrimaryColor) !important;
+    }
+
+}

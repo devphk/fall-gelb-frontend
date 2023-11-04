@@ -1,5 +1,5 @@
 <div>   
-    <form [formGroup]="customsForm">
+    <form [formGroup]="customsForm" (ngSubmit)="onSubmit(customsForm.value)">
         <div mat-dialog-content f
              fxLayout="row wrap" 
              fxLayoutGap="20px"
@@ -18,23 +18,12 @@
                             formControlName="address">
             </app-phk-input>
 
-            <!-- <button
-                fxFlex="calc(50% - 20px)"
-                (click)="setActive()"
-                mat-raised-button>
-                Agregar Item
-            </button>
-
-            <div fxFlex="calc(50% - 20px)">
-                 <button
-                    (click)="setUnactive()"
-                    mat-raised-button>
-                    Eliminar Item
-                 </button>
-            </div> -->
-
             <app-phk-select fxFlex="calc(33% - 20px)" 
                             label="Seleccione..." 
+                            formControlName="transport_types"
+                            [multiple]="true"
+                            [formControl]="customForm">
+                <mat-option *ngFor="let transport of transportType" [value]="transport.id">{{transport.name}}</mat-option>
                             formControlName="transport_types"
                             [multiple]="true"
                             [formControl]="customForm">

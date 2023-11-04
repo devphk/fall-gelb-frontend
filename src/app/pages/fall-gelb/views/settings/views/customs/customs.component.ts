@@ -7,7 +7,7 @@ import { CustomsDataTable } from '@shared/models';
 @Component({
   selector: 'app-customs',
   templateUrl: './customs.component.html',
-  styleUrls: ['./customs.component.scss']
+  styleUrls: ['./customs.component.scss'],
 })
 export class CustomsComponent implements OnInit {
 
