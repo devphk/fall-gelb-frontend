@@ -8,7 +8,8 @@
              *ngIf="showLogo">
 
         <div class="search-input active p-0"
-             (click)="inputActive = true">
+             (click)="inputActive = true"
+             *ngIf="showSearch">
             <div id="searchBox">
                 <mat-icon class="mat-25">search</mat-icon>
                 <input type="text" 
