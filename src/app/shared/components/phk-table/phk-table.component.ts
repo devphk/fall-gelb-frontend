@@ -94,56 +94,6 @@ export class PhkTableComponent implements OnInit, DoCheck {
         this.itemsSelected.push(item);
       });
     }
-<<<<<<< HEAD
-    console.log("selection ", this.selection)
-  }
-
-  updateCheckedList(event: any, element: any, rowIndex: number) {
-    console.log("event ", event)
-    console.log("element ", element)
-    console.log("rowIndex ", rowIndex)
-
-    
-    if (event.checked) {
-
-      this.itemsSelected.push(element);
-
-    } else {
-
-      let index = this.itemsSelected.findIndex(
-        (item) => item.UserName === element.UserName
-      );
-      if (index !== -1) {
-        this.itemsSelected.splice(index, 1);
-      }
-
-    }
-
-  }
-
-  selectRow(checkboxChange: MatCheckboxChange,
-            rowElement: any,
-            rowIndex: number) {
-
-    if (checkboxChange) {
-
-      this.selection.toggle(rowElement);
-      this.updateCheckedList(checkboxChange, rowElement, rowIndex);
-
-      // I check the first option of multiselect options
-
-      if (this.data[rowIndex].options) {
-
-        let itemSelectedIndex = this.itemsSelected.findIndex((item) => {
-          return item.rowIndex === rowIndex
-        })
-        this.itemsSelected[itemSelectedIndex]
-            .optionsSelected
-            .push(this.itemsSelected[itemSelectedIndex].options[0]);
-
-      }
-    }
-=======
   }
 
   updateCheckedList(event: any, element: any, rowIndex: number) {
@@ -177,7 +127,6 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
       }
     }
->>>>>>> feat/SEC-01
               
   }
 
@@ -198,10 +147,9 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
   }
 
-  selectionChange(rowElement: any, selectEvent: MatSelectChange, rowIndex: number) {
-    console.log("rowIndex ", rowIndex)
-    console.log("event ", selectEvent)
-    console.log("this.data ", this.data)
+  selectionChange(rowElement: any, 
+                  selectEvent: MatSelectChange, 
+                  rowIndex: number) {
 
     let event = {
       checked: selectEvent.value.length > 0 ? true : false
