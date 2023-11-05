@@ -51,6 +51,7 @@
             [label]="'Modulos'"
             fxFlex.gt-md="calc(33% - 20px)"
             fxFlex.lt-md="calc(33% - 20px)"
+            (optionSelected)="moduleSelected($event)"
           >
             <mat-option
               *ngFor="let modules of modulesOptions"
@@ -59,31 +60,29 @@
               {{ modules.name }}
             </mat-option>
           </app-phk-select>
-          <button mat-raised-button color="accent" (click)="savePermisions()">
-            Guardar
-          </button>
         </div>
-        <app-phk-table
-          [columnsTags]="tableColumnsTags"
-          [columnsToDisplay]="tableColumnsToDisplay"
-          [(itemsSelected)]="permisionsSelected"
-          [data]="tableData"
-        ></app-phk-table>
-        <div
-          class="container-button"
-          fxFlex="100"
-          fxLayout="row"
-          fxLayoutAlign="space-between center"
-        >
-          <button mat-raised-button color="warn" matStepperPrevious>
+        <button (click)="show()">
+          show()
+        </button>
+        <app-phk-table [columnsTags]="tableColumnsTags"
+                       [columnsToDisplay]="tableColumnsToDisplay"
+                       [(itemsSelected)]="permisionsSelected"
+                       [data]="tableData"
+                       *ngIf="permisionFormGroup.get('modulePermission')?.value !== ''"></app-phk-table>
+        <div class="container-button"
+             fxFlex="100"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="10px">
+          <button mat-raised-button 
+                  color="primary" 
+                  matStepperPrevious>
             Anterior
           </button>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="onSubmit(roleFormGroup.value)"
-          >
-            Finalizar
+          <button mat-raised-button
+                  color="primary"
+                  (click)="createRole()">
+            Guardar
           </button>
         </div>
       </div>

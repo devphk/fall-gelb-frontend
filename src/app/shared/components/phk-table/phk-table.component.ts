@@ -13,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-phk-table',
@@ -21,6 +22,7 @@ import { fadeAnimation } from '../../animations';
   animations: [fadeAnimation],
 })
 export class PhkTableComponent implements OnInit, DoCheck {
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -89,19 +91,30 @@ export class PhkTableComponent implements OnInit, DoCheck {
         this.itemsSelected.push(item);
       });
     }
+    console.log("selection ", this.selection)
   }
 
-  updateCheckedList(event: any, element: any) {
+  updateCheckedList(event: any, element: any, rowIndex: number) {
+    console.log("event ", event)
+    console.log("element ", element)
+    console.log("rowIndex ", rowIndex)
+
+    
     if (event.checked) {
+
       this.itemsSelected.push(element);
+
     } else {
+
       let index = this.itemsSelected.findIndex(
         (item) => item.UserName === element.UserName
       );
       if (index !== -1) {
         this.itemsSelected.splice(index, 1);
       }
+
     }
+
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -112,6 +125,43 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   getType(variable: any) {
-    return typeof variable;
+
+    if (Array.isArray(variable)) {
+      return 'array';
+    } else {
+      return typeof variable;
+    }
+
   }
+
+  selectionChange(tableElement: any, selectEvent: MatSelectChange, rowIndex: number) {
+    console.log("rowIndex ", rowIndex)
+    console.log("event ", selectEvent)
+    console.log("this.data ", this.data)
+
+    let event = {
+      checked: selectEvent.value.length > 0 ? true : false
+    }
+
+    // First i check if the item exist in the selected
+    // Items attay
+
+    let existIndex = this.itemsSelected.findIndex((item) => {
+      return item.rowIndex === rowIndex
+    });
+
+    if (selectEvent.value.length === 0
+        || existIndex === -1) {
+      this.selection.toggle(tableElement);
+      this.updateCheckedList(event, this.data[rowIndex], rowIndex);
+    }
+
+    let itemIndex = this.itemsSelected.findIndex((item) => {
+      return item.rowIndex === rowIndex
+    });
+
+    this.itemsSelected[itemIndex].optionsSelected = selectEvent.value;
+
+  }
+
 }

@@ -26,6 +26,7 @@ export class RolesService {
       data
     );
   }
+  
   getRoles(): Observable<Role> {
     return this.http.get<Role>(this.baseRouteRoles);
   }
@@ -38,7 +39,7 @@ export class RolesService {
     return this.http.get<ModuleAction>(`${this.baseRouteModules}/${role_id}`);
   }
 
-  postRol(data: Role): Observable<Role> {
+  createRole(data: Role): Observable<Role> {
     return this.http.post<Role>(this.baseRouteRoles, data);
   }
 }

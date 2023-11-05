@@ -163,9 +163,11 @@ input.mat-input-element {
   // color: var(--borderFormFieldColor);
 }
 
-// Form field label color
+// Labels styles to show white label in dark mode
+// and black label in light theme
 
-.mat-form-field-label {
+.mat-form-field-label,
+.mat-select-placeholder {
   color: var(--formFieldPrimaryLabelColor);
 }
 

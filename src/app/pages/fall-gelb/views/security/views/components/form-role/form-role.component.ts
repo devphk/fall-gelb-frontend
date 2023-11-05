@@ -13,23 +13,30 @@ export class FormRoleComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private roleService: RolesService,
-    private matDialog: MatDialogRef<FormRoleComponent>,
     private dialogRef: MatDialogRef<FormRoleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   roleFormGroup = this._formBuilder.group({
-    name: ['', Validators.required],
+    name: this._formBuilder.control('', Validators.required)
   });
 
   permisionFormGroup = this._formBuilder.group({
-    modulePermission: '',
+    modulePermission: this._formBuilder.control('', [Validators.required]),
   });
 
   modulesOptions: any;
   dataSelect: any[] = [];
-  tableColumnsToDisplay: string[] = ['Formulario', 'Accion', 'Estado'];
-  tableColumnsTags: string[] = ['resource', 'action', 'status'];
+  tableColumnsToDisplay: string[] = [
+    'Formulario', 
+    'Acciones', 
+    // 'Estado'
+  ];
+  tableColumnsTags: string[] = [
+    'form', 
+    'options', 
+    // 'status'
+  ];
   tableData: any[] = [];
 
   permisionsSelected: any[] = [];
@@ -45,14 +52,6 @@ export class FormRoleComponent implements OnInit {
       this.modulesOptions = response;
     });
 
-    this.permisionFormGroup
-      .get('modulePermission')
-      ?.valueChanges.subscribe((moduleId) => {
-        this.permisionsSelected = [];
-
-        this.insertDataTable(Number(moduleId));
-      });
-
     console.log(this.permisionsSave);
   }
 
@@ -64,23 +63,21 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  savePermisions(): void {
-    let moduleId = Number(
-      this.permisionFormGroup.get('modulePermission')?.value
-    );
-    console.log(this.permisionsSave + 'antes del push');
+  show() {
+    console.log("permisionsSelected ", this.permisionsSelected)
+  }
 
-    this.permisionsSave[moduleId] = {
-      permission_id: this.permisionsSelected,
-      module_id: moduleId,
-    };
-
-    console.log(this.permisionsSave);
+  moduleSelected(moduleId: number) {
+    console.log("module ", moduleId)
+    this.getTableData(moduleId);
   }
 
   onSubmit(dataRol: any): void {
-    this.matDialog.close();
-    this.roleService.postRol(dataRol).subscribe((respose) => {
+
+    this.roleService
+        .createRole(dataRol)
+        .subscribe((respose) => {
+
       // if (this.permisionsSave) {
       //   this.roleService
       //     .postRolPermissions(this.permisionsSave, Number(respose.id))
@@ -88,28 +85,60 @@ export class FormRoleComponent implements OnInit {
       //       console.log(respose);
       //     });
       // }
-    });
-  }
-  //functions
 
-  insertDataTable(moduleId: number) {
+    });
+
+  }
+
+  createRole() {
+    if (this.roleFormGroup.valid) {
+      console.log("this.permisionsSave ", this.permisionsSave)
+    }
+  }
+
+  getTableData(moduleId: number) {
+
     this.roleService
-      .getModuleActions(Number(moduleId))
-      .subscribe((response) => {
-        this.tableData = [];
-        response.resources.map((resource: any) => {
-          resource.actions.map((action: any) => {
-            this.tableData.push({
-              id: action.id,
-              resource: resource.description,
-              action: action.name,
-              status:
-                this.permisionsSave[moduleId]?.permission_id.findIndex(
-                  (item: any) => item === action.id
-                ) !== -1,
+        .getModuleActions(moduleId)
+        .subscribe((response) => {
+          
+            this.tableData = [];
+
+            console.log("response ", response)
+
+            response.resources.forEach((modulePermissions, index) => {
+
+              const tableRow = {
+                form: modulePermissions.name,
+                options: modulePermissions.actions,
+                rowIndex: index,
+                optionsSelected: []
+              };
+
+              this.tableData.push(tableRow);
+
             });
-          });
-        });
+
+            console.log("table data ", this.tableData)
+
+            // response.resources.map((resource: any) => {
+            //   resource.actions.map((action: any) => {
+
+            //     console.log("action ", action)
+
+            //     this.tableData.push({
+            //       id: action.id,
+            //       resource: resource.description,
+            //       action: action.name,
+            //       status:
+            //         this.permisionsSave[moduleId]?.permission_id.findIndex(
+            //           (item: any) => item === action.id
+            //         ) !== -1,
+            //     });
+
+            //   });
+            // });
+
       });
   }
 }
