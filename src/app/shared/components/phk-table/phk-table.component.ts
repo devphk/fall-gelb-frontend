@@ -8,12 +8,14 @@ import {
   Output,
   ViewChild,
   ChangeDetectorRef,
+  ElementRef
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
 import { MatSelectChange } from '@angular/material/select';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-phk-table',
@@ -23,6 +25,7 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class PhkTableComponent implements OnInit, DoCheck {
 
+  @ViewChild('multipleSelect') multipleSelect!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -117,6 +120,31 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
   }
 
+  selectRow(checkboxChange: MatCheckboxChange,
+            rowElement: any,
+            rowIndex: number) {
+
+    if (checkboxChange) {
+
+      this.selection.toggle(rowElement);
+      this.updateCheckedList(checkboxChange, rowElement, rowIndex);
+
+      // I check the first option of multiselect options
+
+      if (this.data[rowIndex].options) {
+
+        let itemSelectedIndex = this.itemsSelected.findIndex((item) => {
+          return item.rowIndex === rowIndex
+        })
+        this.itemsSelected[itemSelectedIndex]
+            .optionsSelected
+            .push(this.itemsSelected[itemSelectedIndex].options[0]);
+
+      }
+    }
+              
+  }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -134,7 +162,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
   }
 
-  selectionChange(tableElement: any, selectEvent: MatSelectChange, rowIndex: number) {
+  selectionChange(rowElement: any, selectEvent: MatSelectChange, rowIndex: number) {
     console.log("rowIndex ", rowIndex)
     console.log("event ", selectEvent)
     console.log("this.data ", this.data)
@@ -152,7 +180,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
     if (selectEvent.value.length === 0
         || existIndex === -1) {
-      this.selection.toggle(tableElement);
+      this.selection.toggle(rowElement);
       this.updateCheckedList(event, this.data[rowIndex], rowIndex);
     }
 
@@ -160,7 +188,9 @@ export class PhkTableComponent implements OnInit, DoCheck {
       return item.rowIndex === rowIndex
     });
 
-    this.itemsSelected[itemIndex].optionsSelected = selectEvent.value;
+    if (itemIndex !== -1) {
+      this.itemsSelected[itemIndex].optionsSelected = selectEvent.value;
+    }
 
   }
 
