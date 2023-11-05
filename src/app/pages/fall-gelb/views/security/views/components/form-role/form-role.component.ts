@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { RolesService } from '../../roles/roles.service';
+import { ToastService } from '@core/services';
 
 @Component({
   selector: 'app-form-role',
@@ -10,12 +11,11 @@ import { RolesService } from '../../roles/roles.service';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-  constructor(
-    private _formBuilder: FormBuilder,
-    private roleService: RolesService,
-    private dialogRef: MatDialogRef<FormRoleComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  constructor(private _formBuilder: FormBuilder,
+              private roleService: RolesService,
+              private dialogRef: MatDialogRef<FormRoleComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private toastService: ToastService) {}
 
   roleFormGroup = this._formBuilder.group({
     name: this._formBuilder.control('', Validators.required)
@@ -88,11 +88,16 @@ export class FormRoleComponent implements OnInit {
   
         this.roleService
           .addRolePermissions(modulePermission, createRoleResponse.id)
-          .subscribe((respose) => {
-            console.log('Add permission role ', respose);
-
+          .subscribe((response) => {
+            this.toastService.showToaster("Rol creadoo exitosamente");
+            this.dialogRef.close(response);
+          },
+          (error) => {
+            this.toastService.showToaster(error.error.message, true);
           });
   
+      }, (error) => {
+        this.toastService.showToaster(error.error.message, true);
       });
       
     }

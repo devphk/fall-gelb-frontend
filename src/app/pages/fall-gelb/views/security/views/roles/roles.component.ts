@@ -32,6 +32,7 @@ export class RolesComponent implements OnInit {
   }
 
   getRoles() {
+    this.tableData = [];
     this.roleService
         .getRoles()
         .subscribe((roles) => {
@@ -57,12 +58,10 @@ export class RolesComponent implements OnInit {
         .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', 'auto')
         .afterClosed()
         .subscribe((data) => {
-          console.log('Data ', data);
+          if (data) {
+            this.getRoles();
+          }
         });
-  }
-
-  showToast() {
-    this.toastService.showToaster("HEllo", false);
   }
 
 }

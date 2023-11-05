@@ -20,10 +20,12 @@ export class AppComponent implements OnDestroy {
                          .subscribe((mode: Mode) => {
     this.currentMode = mode;
   });
-  loadingMessage: LoadingMessage | undefined | string;
+  loadingMessage: LoadingMessage = LoadingMessage.DEFAULT;
   loadingObservable = this.spinnerService.$loadingStatus.subscribe((startLoading) => {
-    return (startLoading) ? this.spinner.show('full-screen-spinner') : this.spinner.hide('full-screen-spinner');
-  })
+    return (startLoading) ? 
+           this.spinner.show('full-screen-spinner') : 
+           this.spinner.hide('full-screen-spinner');
+  });
 
   constructor(private themeService: PhkThemeToggleService,
               private spinner: NgxSpinnerService,

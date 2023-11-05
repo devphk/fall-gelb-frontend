@@ -26,44 +26,39 @@
   </mat-step>
 
   <mat-step [stepControl]="permisionFormGroup" [editable]="true">
-    <form
-      [formGroup]="permisionFormGroup"
-      fxLayout="column"
-      fxLayoutAlign="space-around center"
-    >
-      <ng-template matStepLabel>Asignar Permisos a Roles </ng-template>
-      <div
-        fxFlex="100"
-        fxFill
-        fxLayoutGap="20px"
-        fxLayout="column"
-        fxLayoutAlign="space-around none"
-      >
-        <div
-          mat-dialog-content
-          fxLayout="row"
-          fxLayoutGap="20px"
-          fxLayout.lt-md="column"
-          fxLayoutAlign="start center"
-        >
-          <app-phk-select
-            formControlName="modulePermission"
-            [label]="'Modulos'"
-            fxFlex.gt-md="calc(33% - 20px)"
-            fxFlex.lt-md="calc(33% - 20px)"
-            (optionSelected)="moduleSelected($event)">
-            <mat-option
-              *ngFor="let modules of modulesOptions"
-              [value]="modules.id"
-            >
-              {{ modules.name }}
-            </mat-option>
-          </app-phk-select>
-        </div>
+    <form [formGroup]="permisionFormGroup"
+          fxLayout="column"
+          fxLayoutAlign="space-around center">
+      <ng-template matStepLabel>Asignar permisos a rol </ng-template>
+
+      <span class="fs-07 text-start w-100">
+        Selecciona el módulo del rol
+      </span>
+
+      <div fxLayoutGap="10px"
+           fxLayout="column"
+           fxLayoutAlign="center start"
+           class="w-100">
+
+        <app-phk-select formControlName="modulePermission"
+                        [label]="'Módulos'"
+                        (optionSelected)="moduleSelected($event)">
+          <mat-option *ngFor="let modules of modulesOptions"
+                      [value]="modules.id">
+            {{ modules.name }}
+          </mat-option>
+        </app-phk-select>
+
+        <span class="fs-07 text-start mt-m20"
+              *ngIf="tableData.length > 0">
+          Selecciona los permisos dentro del módulo
+        </span>
+
         <app-phk-table [columnsTags]="tableColumnsTags"
                        [columnsToDisplay]="tableColumnsToDisplay"
                        [(itemsSelected)]="itemsSelected"
                        [data]="tableData"
+                       class="w-100"
                        *ngIf="permisionFormGroup.get('modulePermission')?.value !== ''"></app-phk-table>
         <div class="container-button"
              fxFlex="100"

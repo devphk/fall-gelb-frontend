@@ -202,7 +202,7 @@ input.mat-input-element {
   @extend .toast;
 }
 
-.mat-snack-bar-container.error {
+.error-mat-snack-bar-container {
   background: #950000 !important;
   text-align: center !important;
 }
@@ -329,6 +329,10 @@ i {
 
 .fs-07 {
   font-size: 0.7em !important;
+}
+
+.fs-05 {
+  font-size: 0.5em !important;
 }
 
 .fw-600 {
@@ -479,6 +483,10 @@ i {
 
 .text-center {
   text-align: center;
+}
+
+.text-start {
+  text-align: start;
 }
 
 .text-justify {

@@ -25,7 +25,8 @@ export class DialogService {
                             height: height,
                             maxWidth: '95vw',
                             maxHeight: '95vh',
-                            data: { 
+                            disableClose: true,
+                            data: {
                               title,
                               childComponent,
                               dialogData
