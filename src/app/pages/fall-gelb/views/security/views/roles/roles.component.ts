@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { FormRoleComponent } from '../components';
 import { RolesService } from './roles.service';
 
@@ -24,10 +24,10 @@ export class RolesComponent implements OnInit {
   rolesList: any[] = [];
 
   constructor(private dialogService: DialogService,
-              private roleService: RolesService) {}
+              private roleService: RolesService,
+              private toastService: ToastService) {}
 
   ngOnInit(): void {
-    // this.tableData.push(this.tableData[0]);
     this.getRoles();
   }
 
@@ -60,4 +60,9 @@ export class RolesComponent implements OnInit {
           console.log('Data ', data);
         });
   }
+
+  showToast() {
+    this.toastService.showToaster("HEllo", false);
+  }
+
 }

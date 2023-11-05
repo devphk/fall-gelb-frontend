@@ -11,6 +11,7 @@ export class ToastService {
     constructor(private snackBar: MatSnackBar) {}
 
     get defaultConfig() {
+        console.log("default")
         const config = new MatSnackBarConfig();
         config.horizontalPosition = 'start';
         config.verticalPosition = 'bottom';

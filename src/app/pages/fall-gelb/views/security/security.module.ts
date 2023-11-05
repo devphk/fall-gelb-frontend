@@ -18,6 +18,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { SecurityRoutingModule } from './security.routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from '@core/services';
 
 const routes: Routes = [
   {
@@ -41,7 +43,11 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
-    MatStepperModule,
+    MatStepperModule
   ],
+  providers: [
+    MatSnackBar,
+    ToastService
+  ]
 })
 export class SecurityModule {}

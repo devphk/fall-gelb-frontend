@@ -1,7 +1,10 @@
 import { Component,
-         OnDestroy } from '@angular/core';
+         OnDestroy, 
+         OnInit} from '@angular/core';
+import { SpinnerService } from '@core/services/spinner-service.service';
 import { PhkThemeToggleService } from '@shared/components';
-import { Mode } from '@shared/models';
+import { LoadingMessage, Mode } from '@shared/models';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -17,13 +20,20 @@ export class AppComponent implements OnDestroy {
                          .subscribe((mode: Mode) => {
     this.currentMode = mode;
   });
+  loadingMessage: LoadingMessage | undefined | string;
+  loadingObservable = this.spinnerService.$loadingStatus.subscribe((startLoading) => {
+    return (startLoading) ? this.spinner.show('full-screen-spinner') : this.spinner.hide('full-screen-spinner');
+  })
 
-  constructor(private themeService: PhkThemeToggleService) { }
+  constructor(private themeService: PhkThemeToggleService,
+              private spinner: NgxSpinnerService,
+              private spinnerService: SpinnerService) { }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
+    
     this.themeSubscriptor.unsubscribe();
+    this.loadingObservable.unsubscribe();
+    
   }
 
 }
