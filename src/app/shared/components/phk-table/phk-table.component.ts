@@ -94,6 +94,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
         this.itemsSelected.push(item);
       });
     }
+<<<<<<< HEAD
     console.log("selection ", this.selection)
   }
 
@@ -142,6 +143,41 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
       }
     }
+=======
+  }
+
+  updateCheckedList(event: any, element: any, rowIndex: number) {
+    if (event.checked) {
+      this.itemsSelected.push(element);
+    } else {
+      this.itemsSelected.splice(rowIndex, 1);
+    }
+
+  }
+
+  selectRow(checkboxChange: MatCheckboxChange,
+            rowElement: any,
+            rowIndex: number) {
+
+    if (checkboxChange) {
+
+      this.selection.toggle(rowElement);
+      this.updateCheckedList(checkboxChange, rowElement, rowIndex);
+
+      // I check the first option of multiselect options
+
+      if (this.data[rowIndex].options) {
+
+        let itemSelectedIndex = this.itemsSelected.findIndex((item) => {
+          return item.rowIndex === rowIndex
+        })
+        this.itemsSelected[itemSelectedIndex]
+            .optionsSelected
+            .push(this.itemsSelected[itemSelectedIndex].options[0]);
+
+      }
+    }
+>>>>>>> feat/SEC-01
               
   }
 

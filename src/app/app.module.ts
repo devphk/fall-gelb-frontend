@@ -21,6 +21,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +37,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     NgChartsModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxSpinnerModule
   ],
   providers: [
     SessionGuard,
