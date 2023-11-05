@@ -59,6 +59,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
+    
     if (this.backupData.length !== this.data.length) {
       this.changeDetectorRef.detectChanges();
       this.setData();
@@ -66,6 +67,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   setData() {
+
     this.showSkeleton = true;
     let randomSeconds = Math.random() * 2000;
 
@@ -94,28 +96,13 @@ export class PhkTableComponent implements OnInit, DoCheck {
         this.itemsSelected.push(item);
       });
     }
-    console.log("selection ", this.selection)
   }
 
   updateCheckedList(event: any, element: any, rowIndex: number) {
-    console.log("event ", event)
-    console.log("element ", element)
-    console.log("rowIndex ", rowIndex)
-
-    
     if (event.checked) {
-
       this.itemsSelected.push(element);
-
     } else {
-
-      let index = this.itemsSelected.findIndex(
-        (item) => item.UserName === element.UserName
-      );
-      if (index !== -1) {
-        this.itemsSelected.splice(index, 1);
-      }
-
+      this.itemsSelected.splice(rowIndex, 1);
     }
 
   }

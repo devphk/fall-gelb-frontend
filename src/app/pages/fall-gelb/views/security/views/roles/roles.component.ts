@@ -32,7 +32,9 @@ export class RolesComponent implements OnInit {
   }
 
   getRoles() {
+    
     this.tableData = [];
+    this.rolesList = [];
     this.roleService
         .getRoles()
         .subscribe((roles) => {
