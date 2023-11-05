@@ -41,7 +41,7 @@
       >
         <div
           mat-dialog-content
-          fxLayout="row wrap"
+          fxLayout="row"
           fxLayoutGap="20px"
           fxLayout.lt-md="column"
           fxLayoutAlign="start center"
@@ -51,8 +51,7 @@
             [label]="'Modulos'"
             fxFlex.gt-md="calc(33% - 20px)"
             fxFlex.lt-md="calc(33% - 20px)"
-            (optionSelected)="moduleSelected($event)"
-          >
+            (optionSelected)="moduleSelected($event)">
             <mat-option
               *ngFor="let modules of modulesOptions"
               [value]="modules.id"
@@ -63,7 +62,7 @@
         </div>
         <app-phk-table [columnsTags]="tableColumnsTags"
                        [columnsToDisplay]="tableColumnsToDisplay"
-                       [(itemsSelected)]="permisionsSelected"
+                       [(itemsSelected)]="itemsSelected"
                        [data]="tableData"
                        *ngIf="permisionFormGroup.get('modulePermission')?.value !== ''"></app-phk-table>
         <div class="container-button"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '@core/services';
 import { FormRoleComponent } from '../components';
+import { RolesService } from './roles.service';
 
 @Component({
   selector: 'app-roles',
@@ -11,46 +12,52 @@ export class RolesComponent implements OnInit {
 
   tableColumnsToDisplay: string[] = [
     'Id', 
-    'Rol', 
-    '¿Activo?'
+    'Rol'
   ];
   
   tableColumnsTags: string[] = [
     'id', 
-    'role', 
-    'active'
+    'name'
   ];
 
-  tableData: any[] = [
-    {
-      id: 1,
-      role: 'Admin',
-      active: true
-    },
-    {
-      id: 1,
-      role: 'Analista',
-      active: true
-    },
-    {
-      id: 1,
-      role: 'Cliente',
-      active: true
-    },
-  ];
+  tableData: any[] = [];
+  rolesList: any[] = [];
 
-  constructor(private dialogService: DialogService) {}
+  constructor(private dialogService: DialogService,
+              private roleService: RolesService) {}
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
+    // this.tableData.push(this.tableData[0]);
+    this.getRoles();
+  }
+
+  getRoles() {
+    this.roleService
+        .getRoles()
+        .subscribe((roles) => {
+
+          roles.forEach((role) => {
+            
+            const roleToInsert =  {
+              id: role.id,
+              name: role.name
+            }
+
+            this.rolesList.push(roleToInsert);
+
+          });
+
+          this.tableData = this.rolesList.slice();
+
+        })
   }
 
   newRol() {
     this.dialogService
-      .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', 'auto')
-      .afterClosed()
-      .subscribe((data) => {
-        console.log('Data ', data);
-      });
+        .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', 'auto')
+        .afterClosed()
+        .subscribe((data) => {
+          console.log('Data ', data);
+        });
   }
 }

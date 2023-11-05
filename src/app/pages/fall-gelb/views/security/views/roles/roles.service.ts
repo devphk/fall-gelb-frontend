@@ -1,45 +1,44 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpService } from '@core/services/http.service';
 import { ModuleAction } from '@shared/models/module-action';
-import { Permission } from '@shared/models/permission';
-import { Role } from '@shared/models/role';
+import { RolePermissionAdded, RoleResponse } from '@shared/models/role';
 import { SelectOption } from '@shared/models/select-option';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RolesService {
-  private baseRouteRoles = `${environment.urlBase}/roles`;
-  private baseRouteModules = `${environment.urlBase}/modules`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
-  postRolPermissions(
-    data: Permission,
-    roleId: number
-  ): Observable<Permission[]> {
-    return this.http.post<Permission[]>(
-      `${this.baseRouteRoles}/${roleId}/permissions/`,
-      data
+  addRolePermissions(
+    modulePermission: any,
+    roleId: any
+  ): Observable<RolePermissionAdded[]> {
+
+    return this.http.post(
+      `/roles/${roleId}/permissions/`,
+      modulePermission
     );
   }
   
-  getRoles(): Observable<Role> {
-    return this.http.get<Role>(this.baseRouteRoles);
+  getRoles(): Observable<RoleResponse[]> {
+    return this.http.get('/roles');
   }
 
   getModules(): Observable<SelectOption> {
-    return this.http.get<SelectOption>(this.baseRouteModules);
+    return this.http.get('/modules');
   }
 
   getModuleActions(role_id: number): Observable<ModuleAction> {
-    return this.http.get<ModuleAction>(`${this.baseRouteModules}/${role_id}`);
+    return this.http.get(`/modules/${role_id}`);
   }
 
-  createRole(data: Role): Observable<Role> {
-    return this.http.post<Role>(this.baseRouteRoles, data);
+  createRole(roleName: any): Observable<RoleResponse> {
+    const body = {
+      name: roleName
+    }
+    return this.http.post('/roles', body);
   }
 }

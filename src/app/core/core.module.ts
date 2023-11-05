@@ -4,7 +4,7 @@ import { DialogService, ToastService } from './services';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpService } from './services/http.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpRequestsResponseInterceptor } from './interceptors/http-request-response.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
@@ -18,6 +18,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ToastService,
     MatDialog,
     HttpService,
+    HttpClientModule,
     {provide: HTTP_INTERCEPTORS, useClass: HttpRequestsResponseInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],

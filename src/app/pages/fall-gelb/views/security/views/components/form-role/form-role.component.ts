@@ -39,20 +39,13 @@ export class FormRoleComponent implements OnInit {
   ];
   tableData: any[] = [];
 
-  permisionsSelected: any[] = [];
-  permisionsSave: {
-    [key: number]: {
-      module_id: number;
-      permission_id: number[];
-    };
-  } = {};
+  itemsSelected: any[] = [];
 
   ngOnInit(): void {
     this.roleService.getModules().subscribe((response: any) => {
       this.modulesOptions = response;
     });
 
-    console.log(this.permisionsSave);
   }
 
   selectPermissions(stepper: MatStepper) {
@@ -63,37 +56,47 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  show() {
-    console.log("permisionsSelected ", this.permisionsSelected)
-  }
-
   moduleSelected(moduleId: number) {
-    console.log("module ", moduleId)
     this.getTableData(moduleId);
   }
 
-  onSubmit(dataRol: any): void {
-
-    this.roleService
-        .createRole(dataRol)
-        .subscribe((respose) => {
-
-      // if (this.permisionsSave) {
-      //   this.roleService
-      //     .postRolPermissions(this.permisionsSave, Number(respose.id))
-      //     .subscribe((respose) => {
-      //       console.log(respose);
-      //     });
-      // }
-
-    });
-
-  }
-
   createRole() {
-    if (this.roleFormGroup.valid) {
-      console.log("this.permisionsSave ", this.permisionsSave)
+
+    if (this.roleFormGroup.valid
+        && this.permisionFormGroup.valid) {
+
+      const permissionIds: number[] = [];
+
+      this.itemsSelected.forEach((item) => {
+
+        item.optionsSelected.forEach((option: any) => {
+          permissionIds.push(option.id)
+        });
+
+      });
+
+      const moduleId = this.permisionFormGroup?.get('modulePermission')?.value;
+        
+      this.roleService
+          .createRole(this.roleFormGroup.get('name')?.value)
+          .subscribe((createRoleResponse) => {
+
+        const modulePermission = {
+          permission_id: permissionIds,
+          module_id: moduleId
+        }
+  
+        this.roleService
+          .addRolePermissions(modulePermission, createRoleResponse.id)
+          .subscribe((respose) => {
+            console.log('Add permission role ', respose);
+
+          });
+  
+      });
+      
     }
+    
   }
 
   getTableData(moduleId: number) {
@@ -103,9 +106,7 @@ export class FormRoleComponent implements OnInit {
         .subscribe((response) => {
           
             this.tableData = [];
-
-            console.log("response ", response)
-
+            
             response.resources.forEach((modulePermissions, index) => {
 
               const tableRow = {
@@ -118,26 +119,6 @@ export class FormRoleComponent implements OnInit {
               this.tableData.push(tableRow);
 
             });
-
-            console.log("table data ", this.tableData)
-
-            // response.resources.map((resource: any) => {
-            //   resource.actions.map((action: any) => {
-
-            //     console.log("action ", action)
-
-            //     this.tableData.push({
-            //       id: action.id,
-            //       resource: resource.description,
-            //       action: action.name,
-            //       status:
-            //         this.permisionsSave[moduleId]?.permission_id.findIndex(
-            //           (item: any) => item === action.id
-            //         ) !== -1,
-            //     });
-
-            //   });
-            // });
 
       });
   }
