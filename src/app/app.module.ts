@@ -35,7 +35,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatSnackBarModule,
     NgChartsModule,
     HttpClientModule,
     MatTooltipModule,

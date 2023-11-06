@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { FormUserComponent } from '../components';
 import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SettingsModule } from '../../settings.module';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +29,8 @@ export class UserComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
-    private snackBar: MatSnackBar  ) {}
+    private snackBar: MatSnackBar,
+    private toastService:ToastService  ) {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -63,18 +65,6 @@ export class UserComponent implements OnInit {
 
   }
 
-  openSnackBar(type: number) {
-    if (type === 1) {
-      this.snackBar.open('Eliminado Exitosamente!', 'Close', {duration: this.durationInSeconds * 1000,
-        panelClass: ['success-snackbar'],
-      });
-    } else {
-      this.snackBar.open('Ha ocurrido un Error!', 'Close', {duration: this.durationInSeconds * 1000,
-        panelClass: ['error-snackbar'],
-      });
-    }
-  }
-
   processUser(processType: string) {
     this.dialogService
         .openDialog(FormUserComponent, 
@@ -84,36 +74,50 @@ export class UserComponent implements OnInit {
                     processType === 'Add' ? null : this.itemsSelected)
         .afterClosed()
         .subscribe((user) => {
-          console.log("user ", user)
+          if(user) {
+            this.refreshUsers();
+          }
         });
   }
 
   deleteUser() {
 
-    this.dialogService.openDialog(FormUserComponent,'TEST', '800px', 'auto')
-    // this.userService
-    //     .deleteUsers(this.itemsSelected[0].id)
-    //     .subscribe(
-    //   (data) => {
+    this.dialogService
+        .openConfirmationDialog(
+                `Desea eliminar usuario '${this.itemsSelected[0].name}'`,
+                'Este cambio no se puede revertir')
+        .afterClosed()
+        .subscribe((response)=>{
+          if (response) {
+            this.userService.deleteUsers(this.itemsSelected[0].id)
+            .subscribe((data) => {
+              this.toastService.showToaster('Usuario eliminado correctamente!')
+              this.refreshUsers();
+            },
+              (error) => this.toastService.showToaster(error.error.message, true));
+          }})
+  }
 
-    //     this.snackBar
-    //         .open('Eliminado Exitosamente!', 
-    //               'Ok', {
-    //                 duration: this.durationInSeconds * 1000,
-    //                 panelClass: ['success-snackbar']
-    //               });  
+  refreshUsers() {
+    this.tableData = [];
 
-    //   },
-    //   (error) => {
+    this.userService.getUsers()
+        .subscribe((users) => {
+          users.forEach((user) => {
 
-    //     this.snackBar
-    //         .open('Ha ocurrido un error, intenta mas tarde!', 
-    //               'Ok', {
-    //                 duration: this.durationInSeconds * 1000,
-    //                 panelClass: ['error-snackbar'],
-    //               });  
-    //   }
-    // );
+            const userToInput = {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              status: user.status ? 'Activo' : 'Inactivo',
+              username: user.username,
+              lastname:user.lastname,
+            };
+
+            this.tableData.push(userToInput);
+
+          });
+        })
   }
 
 }

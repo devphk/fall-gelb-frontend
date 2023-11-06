@@ -45,7 +45,6 @@
 
 
       <app-phk-input
-        [required]="true"
         [label]="'Contraseña'"
         formControlName="password"
         fxFlex="calc(33% - 20px)"
@@ -54,14 +53,12 @@
       ></app-phk-input>
       
       <app-phk-input
-        [required]="true"
         label="Confirmar Contraseña"
-        formControlName="passwordVerify"
+        formControlName="confirmPassword"
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
-      >
-    </app-phk-input>
+      ></app-phk-input>
     
     <mat-error *ngIf="userForm.errors?.['passwordmatcherror']">Las contraseñas no coinciden!</mat-error>
       <!-- <app-phk-select
