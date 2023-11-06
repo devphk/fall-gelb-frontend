@@ -27,16 +27,19 @@ export class FormRoleComponent implements OnInit {
 
   modulesOptions: any;
   dataSelect: any[] = [];
+
   tableColumnsToDisplay: string[] = [
     'Formulario', 
     'Acciones', 
     // 'Estado'
   ];
+
   tableColumnsTags: string[] = [
     'form', 
     'options', 
     // 'status'
   ];
+
   tableData: any[] = [];
 
   itemsSelected: any[] = [];
@@ -45,6 +48,8 @@ export class FormRoleComponent implements OnInit {
     this.roleService.getModules().subscribe((response: any) => {
       this.modulesOptions = response;
     });
+
+    console.log("data ", this.data)
 
   }
 
