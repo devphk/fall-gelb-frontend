@@ -39,7 +39,7 @@ export class PhkSelectComponent implements OnInit,
   @ContentChildren(MatOption) queryOptions!: QueryList<MatOption>;
   options!: { value: any, viewValue: any, disabled: boolean }[];
   @Input() disabled = false;
-  @Output() optionSelected: EventEmitter<string> = new EventEmitter();
+  @Output() optionSelected: EventEmitter<any> = new EventEmitter();
   @Output() extraField: EventEmitter<string> = new EventEmitter();
   ngControl!: any;
   extraFieldInput: string = '';

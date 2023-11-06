@@ -33,3 +33,8 @@ export const defaultTableData: any[] = [
         phone: "04127527692"
     }
 ];
+
+export interface TableRow {
+    rowIndex: number;
+    optionsSelected?: any[]
+}

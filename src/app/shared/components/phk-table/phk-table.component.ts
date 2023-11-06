@@ -8,12 +8,14 @@ import {
   Output,
   ViewChild,
   ChangeDetectorRef,
+  ElementRef
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
-import { TableCheckService } from './table-check.service';
+import { MatSelectChange } from '@angular/material/select';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-phk-table',
@@ -22,6 +24,8 @@ import { TableCheckService } from './table-check.service';
   animations: [fadeAnimation],
 })
 export class PhkTableComponent implements OnInit, DoCheck {
+
+  @ViewChild('multipleSelect') multipleSelect!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -42,20 +46,14 @@ export class PhkTableComponent implements OnInit, DoCheck {
   selection = new SelectionModel<any>(true, []);
   backupData: any[] = [];
   showSkeleton: boolean = true;
-  element: number = 0;
-  checked: boolean = false;
-  constructor(
-    private changeDetectorRef: ChangeDetectorRef,
-    private tableCheck: TableCheckService
-  ) {}
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-
     if (this.showSelectColumn) {
-      this.columnsTags.unshift("select");
-      this.columnsToDisplay.unshift("select");
+      this.columnsTags.unshift('select');
+      this.columnsToDisplay.unshift('select');
     }
-
 
     this.setData();
   }
@@ -98,24 +96,38 @@ export class PhkTableComponent implements OnInit, DoCheck {
     }
   }
 
-  updateCheckedList(event: any, element: any) {
-    console.log('event ', event);
-    console.log('Element selected ', element);
-    this.element = element.id;
-    this.checked = event.checked;
-    this.tableCheck.changeMessage(this.element, this.checked);
+  updateCheckedList(event: any, element: any, rowIndex: number) {
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {
-      let i = 0;
-      this.itemsSelected.forEach((item: any) => {
-        if (item.UserName === element.UserName) {
-          this.itemsSelected.splice(i, 1);
-          return;
-        }
-        i++;
-      });
+      this.itemsSelected.splice(rowIndex, 1);
     }
+
+  }
+
+  selectRow(checkboxChange: MatCheckboxChange,
+            rowElement: any,
+            rowIndex: number) {
+
+    if (checkboxChange) {
+
+      this.selection.toggle(rowElement);
+      this.updateCheckedList(checkboxChange, rowElement, rowIndex);
+
+      // I check the first option of multiselect options
+
+      if (this.data[rowIndex].options) {
+
+        let itemSelectedIndex = this.itemsSelected.findIndex((item) => {
+          return item.rowIndex === rowIndex
+        })
+        this.itemsSelected[itemSelectedIndex]
+            .optionsSelected
+            .push(this.itemsSelected[itemSelectedIndex].options[0]);
+
+      }
+    }
+              
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -126,6 +138,44 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   getType(variable: any) {
-    return typeof variable;
+
+    if (Array.isArray(variable)) {
+      return 'array';
+    } else {
+      return typeof variable;
+    }
+
   }
+
+  selectionChange(rowElement: any, 
+                  selectEvent: MatSelectChange, 
+                  rowIndex: number) {
+
+    let event = {
+      checked: selectEvent.value.length > 0 ? true : false
+    }
+
+    // First i check if the item exist in the selected
+    // Items attay
+
+    let existIndex = this.itemsSelected.findIndex((item) => {
+      return item.rowIndex === rowIndex
+    });
+
+    if (selectEvent.value.length === 0
+        || existIndex === -1) {
+      this.selection.toggle(rowElement);
+      this.updateCheckedList(event, this.data[rowIndex], rowIndex);
+    }
+
+    let itemIndex = this.itemsSelected.findIndex((item) => {
+      return item.rowIndex === rowIndex
+    });
+
+    if (itemIndex !== -1) {
+      this.itemsSelected[itemIndex].optionsSelected = selectEvent.value;
+    }
+
+  }
+
 }

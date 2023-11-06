@@ -163,14 +163,48 @@ input.mat-input-element {
   // color: var(--borderFormFieldColor);
 }
 
-// Form field label color
+// Labels styles to show white label in dark mode
+// and black label in light theme
 
-.mat-form-field-label {
+.mat-form-field-label,
+.mat-select-placeholder {
   color: var(--formFieldPrimaryLabelColor);
 }
 
 .mat-icon {
   color: var(--formFieldPrimaryLabelColor);
+}
+
+// Snack bar styles
+
+// .success-mat-snack-bar-container
+
+.toast {
+  color: #ffffff;
+  font-size: 14px;
+  button {
+      border: 1px solid #ffffff !important;
+      color: #ffffff !important;
+      margin-right: 10px !important;
+      padding: 0px 11px !important;
+      line-height: 27px !important;
+      font-size: 11px !important;
+  }
+}
+
+.error-mat-snack-bar-container {
+  background: var(--main-grey) !important;
+  @extend .toast;
+}
+
+.success-mat-snack-bar-container {
+  background-color: #4caf50 !important;
+  @extend .toast;
+}
+
+.error-mat-snack-bar-container {
+  background: #950000 !important;
+  text-align: center !important;
 }
 
 //------------------ Angular material global styles -----------------
@@ -295,6 +329,10 @@ i {
 
 .fs-07 {
   font-size: 0.7em !important;
+}
+
+.fs-05 {
+  font-size: 0.5em !important;
 }
 
 .fw-600 {
@@ -445,6 +483,10 @@ i {
 
 .text-center {
   text-align: center;
+}
+
+.text-start {
+  text-align: start;
 }
 
 .text-justify {

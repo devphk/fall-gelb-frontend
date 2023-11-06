@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
+import { RolesService } from '../../roles/roles.service';
+import { ToastService } from '@core/services';
 
 @Component({
   selector: 'app-form-role',
@@ -9,73 +11,120 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-
   constructor(private _formBuilder: FormBuilder,
+              private roleService: RolesService,
               private dialogRef: MatDialogRef<FormRoleComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {}
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private toastService: ToastService) {}
 
-  roleForm = this._formBuilder.group({
-    name: this._formBuilder.control('', [Validators.required])
+  roleFormGroup = this._formBuilder.group({
+    name: this._formBuilder.control('', Validators.required)
   });
 
   permisionFormGroup = this._formBuilder.group({
-    modules: [],
+    modulePermission: this._formBuilder.control('', [Validators.required]),
   });
 
-  modulesOptions: string[] = ['Seguridad', 'Operaciones'];
-
-  tableColumnsToDisplay: string[] = ['Formulario', 'Accion'];
-  tableColumnsTags: string[] = ['moduleForm', 'action'];
-  tableData: any[] = [
-    {
-      moduleForm: 'Usuario',
-      action: 'crear',
-    },
-    {
-      moduleForm: 'Usuario',
-      action: 'editar',
-    },
-    {
-      moduleForm: 'Usuario',
-      action: 'ver',
-    },
-    {
-      moduleForm: 'Usuario',
-      action: 'eliminar',
-    },
-    {
-      moduleForm: 'Roles',
-      action: 'crear',
-    },
-    {
-      moduleForm: 'Roles',
-      action: 'editar',
-    },
-    {
-      moduleForm: 'Roles',
-      action: 'ver',
-    },
-    {
-      moduleForm: 'Roles',
-      action: 'eliminar',
-    },
+  modulesOptions: any;
+  dataSelect: any[] = [];
+  tableColumnsToDisplay: string[] = [
+    'Formulario', 
+    'Acciones', 
+    // 'Estado'
   ];
+  tableColumnsTags: string[] = [
+    'form', 
+    'options', 
+    // 'status'
+  ];
+  tableData: any[] = [];
 
-  ngOnInit(): void {}
+  itemsSelected: any[] = [];
+
+  ngOnInit(): void {
+    this.roleService.getModules().subscribe((response: any) => {
+      this.modulesOptions = response;
+    });
+
+  }
 
   selectPermissions(stepper: MatStepper) {
-    if (this.roleForm.valid) {
-     stepper.next();
+    if (this.roleFormGroup.valid) {
+      stepper.next();
     } else {
-      this.roleForm.markAllAsTouched();
+      this.roleFormGroup.markAllAsTouched();
     }
   }
 
-  saveRole() {
-    const roleToAdd = {
-      roleName: this.roleForm.get('name')?.value,
-    }
-    this.dialogRef.close(roleToAdd);
+  moduleSelected(moduleId: number) {
+    this.getTableData(moduleId);
   }
 
+  createRole() {
+
+    if (this.roleFormGroup.valid
+        && this.permisionFormGroup.valid) {
+
+      const permissionIds: number[] = [];
+
+      this.itemsSelected.forEach((item) => {
+
+        item.optionsSelected.forEach((option: any) => {
+          permissionIds.push(option.id)
+        });
+
+      });
+
+      const moduleId = this.permisionFormGroup?.get('modulePermission')?.value;
+        
+      this.roleService
+          .createRole(this.roleFormGroup.get('name')?.value)
+          .subscribe((createRoleResponse) => {
+
+        const modulePermission = {
+          permission_id: permissionIds,
+          module_id: moduleId
+        }
+  
+        this.roleService
+          .addRolePermissions(modulePermission, createRoleResponse.id)
+          .subscribe((response) => {
+            this.toastService.showToaster("Rol creadoo exitosamente");
+            this.dialogRef.close(response);
+          },
+          (error) => {
+            this.toastService.showToaster(error.error.message, true);
+          });
+  
+      }, (error) => {
+        this.toastService.showToaster(error.error.message, true);
+      });
+      
+    }
+    
+  }
+
+  getTableData(moduleId: number) {
+
+    this.roleService
+        .getModuleActions(moduleId)
+        .subscribe((response) => {
+          
+            this.tableData = [];
+            
+            response.resources.forEach((modulePermissions, index) => {
+
+              const tableRow = {
+                form: modulePermissions.name,
+                options: modulePermissions.actions,
+                rowIndex: index,
+                optionsSelected: []
+              };
+
+              this.tableData.push(tableRow);
+
+            });
+
+      });
+  }
 }
