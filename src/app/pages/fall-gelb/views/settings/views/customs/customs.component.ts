@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewCustomsComponent } from '../components/new-customs/new-customs.component';
 import { DialogService } from '@core/services';
 import { CustomsService } from './customs.service';
-import { Customs, CustomsDataTable } from '@shared/models';
-import { TableCheckService } from '@shared/components/phk-table/table-check.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomsDataTable } from '@shared/models';
 
 @Component({
   selector: 'app-customs',
@@ -12,92 +10,71 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./customs.component.scss'],
 })
 export class CustomsComponent implements OnInit {
-  tableColumnsToDisplay: string[] = ['ID', 'Nombre', 'Direccion'];
-  tableColumnsTags: string[] = ['id', 'name', 'address'];
-  tableData: any[] = [];
-  selectedID: number = 0;
-  selectedData: any[] = []
-  durationInSeconds = 2;
 
-  constructor(
-    private dialogService: DialogService,
-    private customsService: CustomsService,
-    private tableCheck: TableCheckService,
-    private snackBar: MatSnackBar
-  ) {}
+  tableColumnsToDisplay: string[] = [
+    "ID",
+    "Nombre",
+    "Dirección",
+  ];
+  tableColumnsTags: string[] = [
+    "id",
+    "name",
+    "address",
+  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
+
+
+  constructor(private dialogService: DialogService,
+              private customsService:CustomsService) { }
 
   ngOnInit(): void {
-    this.tableCheck.currentMessage.subscribe((tabletSeleted) => {
-      console.log(tabletSeleted);
-
-      if (tabletSeleted.check) {
-        this.selectedID = tabletSeleted.id;
-      } else {
-        this.selectedID = 0;
-      }
-    });
-    this.customsService.getCustoms().subscribe((resp) => {
-      console.log(resp);
-
-      const tableData: CustomsDataTable[] = [];
-
-      resp.forEach((customs) => {
-        const customsToPush: CustomsDataTable = {
-          id: customs.id,
-          name: customs.name,
-          address: customs.address,
-        };
-
-        tableData.push(customsToPush);
-      });
-
-      this.tableData = tableData;
-    });
+    this.getCustoms();
   }
 
-  newCustoms() {
-    this.dialogService
-      .openDialog(NewCustomsComponent, 'Nueva Aduana', '800px', '300px')
-      .afterClosed()
-      .subscribe(() => this.ngOnInit());
-  }
-
-  editCustoms() {
-    this.customsService.getCustom(this.selectedID)
-      .subscribe((resp) => {
-        this.selectedData = resp;
-
-        this.dialogService
-          .openDialog(NewCustomsComponent, 'Editar Aduana', '800px', '300px', this.selectedData)
-            .afterClosed()
-              .subscribe(() => this.ngOnInit());
+  getCustoms() {
+    this.customsService.getCustoms()
+      .subscribe((response) => {
+        const tableData: CustomsDataTable[] = [];
         
-      })
+        response.forEach((customs) => {
+          const customtoInput:CustomsDataTable = {
+            id: customs.id,
+            name: customs.name,
+            address: customs.address,
+            transport_types: customs.transport_types,
+            longitude: customs.longitude,
+            latitude:customs.latitude
+          };
+
+          tableData.push(customtoInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
   }
 
-  openSnackBar(type: number) {
-    if (type === 1) {
-      this.snackBar.open('Agregado Exitosamente!', 'Close', {duration: this.durationInSeconds * 1000,
-        panelClass: ['success-snackbar'],
-      });
-    } else {
-      this.snackBar.open('Ha ocurrido un Error!', 'Close', {duration: this.durationInSeconds * 1000,
-        panelClass: ['error-snackbar'],
-      });
-    }
+  processCustoms(processType: string) {
+    this.dialogService
+        .openDialog(NewCustomsComponent, 
+                    processType === 'Add' ? 'Crear Aduana' : 'Editar Aduana', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          console.log("custom ", custom);
+        });
   }
 
   deleteCustoms() {
-    this.customsService.deleteCustoms(this.selectedID).subscribe(
-      (data) => {
-        console.log('EXITOSO!: ', data);
-        this.openSnackBar(1);
-        this.ngOnInit();
-      },
-      (error) => {
-        console.error('ERROR!: ', error);
-        this.openSnackBar(2);
-      }
-    );
+    this.customsService
+      .deleteCustoms(this.itemsSelected[0].id)
+        .subscribe( (data) => {console.log(data)},
+        (error) => {console.log(error)});
   }
+
 }

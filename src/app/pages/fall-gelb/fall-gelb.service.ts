@@ -15,26 +15,26 @@ export class FallGelbService {
   private drawer!: MatDrawer;
 
   // setDrawer
-  public setDrawer(flyout: MatDrawer) {
+  setDrawer(flyout: MatDrawer) {
     this.drawer = flyout;
   }
 
   // open
-  public open() {
+  open() {
     return this.drawer.open();
   }
 
-  public isOpend() {
+  isOpend() {
     return this.drawer.opened;
   }
 
   // close
-  public close() {
+  close() {
     return this.drawer.close();
   }
 
   // toggle
-  public toggle(): void {
+  toggle(): void {
     this.drawer.toggle();
   }
 }

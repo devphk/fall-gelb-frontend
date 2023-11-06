@@ -1,21 +1,21 @@
-<div class="pv20-h50 table-container">
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Bancos</h1>
+  
+<div fxLayout="row" 
+      fxLayoutAlign="space-between center">
+  <h1>Bancos</h1>
 
-    <button
-      mat-mini-fab
-      color="primary"
-      aria-label="Registrar Banco"
-      matTooltip="Registrar Banco"
-      (click)="newBank()"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-
-  <app-phk-table
-    [columnsTags]="tableColumnsTags"
-    [columnsToDisplay]="tableColumnsToDisplay"
-    [data]="tableData"
-  ></app-phk-table>
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="Registrar Banco"
+    matTooltip="Registrar Banco"
+    (click)="newBank()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
+
+<app-phk-table
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+></app-phk-table>

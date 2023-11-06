@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { fadeAnimation, fadeFastAnimation } from '@shared/animations';
 import { PhkThemeToggleService } from '@shared/components';
 import { Mode } from '@shared/models';
@@ -12,6 +12,8 @@ import { HomeService } from 'src/app/pages/home/home.service';
 })
 export class PhkUserAccountHeaderComponent {
 
+  @Input() showLogo: boolean = false;
+  @Input() showSearch: boolean = false;
   inputActive: boolean = false;
   appsOverlayOpened = false;
   userAccountOverlayOpened = false;
@@ -19,15 +21,15 @@ export class PhkUserAccountHeaderComponent {
   appsList: any[] = [
     {
       appName: 'Truck',
-      appLogo: '../../../../../assets/images/google.png',
+      appLogo: 'src/assets/images/Recurso 12@4x.png',
     },
     {
       appName: 'Customs',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: 'src/assets/images/Recurso 13@4x.png'
     },
     {
       appName: 'Express',
-      appLogo: '../../../../../assets/images/google.png'
+      appLogo: 'src/assets/images/Recurso 14@4x.png'
     }
   ];
 

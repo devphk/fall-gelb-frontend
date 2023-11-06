@@ -46,8 +46,8 @@ import {
   WarehouseComponent,
   ContainerTypeComponent,
 } from './views';
-import { HttpService } from '@core/services/http.service';
-import { TokenService } from '@core/services/token.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WithholdingConceptsComponent } from './views/withholding-concepts/withholding-concepts.component';
 
 const routes: Routes = [
   {
@@ -78,7 +78,8 @@ const routes: Routes = [
     FormBankAccountComponent,
     FormBankComponent,
     FormCurrencyComponent,
-    FormUserComponent
+    FormUserComponent,
+    WithholdingConceptsComponent
   ],
   imports: [
     CommonModule,
@@ -99,7 +100,7 @@ const routes: Routes = [
     PhkSlideToggleModule,
     MatCardModule,
     MatSelectModule,
-  ],
-  providers:[HttpService, TokenService]
+    MatSnackBarModule
+  ]
 })
 export class SettingsModule {}

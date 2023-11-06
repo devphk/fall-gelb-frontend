@@ -1,4 +1,4 @@
-::ng-deep {
+:host ::ng-deep {
 
     .mat-form-field-appearance-outline .mat-form-field-outline {
       color: #3C9AFF;
@@ -8,10 +8,6 @@
     input.mat-input-element {
         color: var(--textPrimaryColor);
         margin-top: 5px;
-    }
-
-    .mat-raised-button:hover {
-      background-color: #3C9AFF !important;
     }
 
 }

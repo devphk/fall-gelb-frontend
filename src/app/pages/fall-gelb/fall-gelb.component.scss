@@ -1,0 +1,18 @@
+
+:host ::ng-deep {
+    .mat-drawer-container,
+    .mat-drawer-inner-container {
+        background-color: var(--bgSearchColor);
+        color: rgba(0, 0, 0, 0.87);
+    }
+
+    .mat-toolbar.mat-primary {
+        background-color: transparent;
+    }
+
+    .mat-toolbar span,
+    .mat-primary .mat-icon {
+        color: var(--textPrimaryColor) !important;
+    }
+    
+}

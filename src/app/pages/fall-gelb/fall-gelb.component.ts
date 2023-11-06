@@ -48,12 +48,12 @@ export class FallGelbComponent implements OnInit {
 
   ngOnInit(): void {
     this.fallgelbService.setDrawer(this.drawer);
+    setTimeout(() => {
+      this.onToggleDrawer();
+    }, 200);
   }
 
   onToggleDrawer() {
-    if (this.fallgelbService.isOpend()) {
-      this.fallgelbService.close();
-    }
     this.fallgelbService.toggle();
   }
   

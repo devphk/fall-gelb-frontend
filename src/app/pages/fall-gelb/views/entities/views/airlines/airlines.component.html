@@ -1,24 +1,20 @@
-<div class="airlines">
-    <div class="pv20-h50 table-container">
 
-        <div fxLayout="row"
-            fxLayoutAlign="space-between center">
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
 
-            <h1>Aereolineas</h1>
+    <h1>Aereolineas</h1>
 
-            <button mat-mini-fab
-                    color="primary" 
-                    aria-label="Nueva aerolínea"
-                    matTooltip="Nueva Aerolínea"
-                    (click)="newAirline()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </div>
-
-
-        <app-phk-table [columnsTags]="tableColumnsTags"
-                    [columnsToDisplay]="tableColumnsToDisplay"
-                    [data]="tableData"></app-phk-table>
-                    
-    </div>
+    <button mat-mini-fab
+            color="primary" 
+            aria-label="Nueva aerolínea"
+            matTooltip="Nueva Aerolínea"
+            (click)="newAirline()">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>
+
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"></app-phk-table>
+            

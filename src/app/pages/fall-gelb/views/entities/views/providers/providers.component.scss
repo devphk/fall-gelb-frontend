@@ -1,8 +1,4 @@
 
-.table-container {
-    height: calc(100vh - 150px);
-}
-
 .add-button {
     position: absolute;
     z-index: 99;
@@ -10,7 +6,7 @@
     bottom: 20px;
 }
 
-::ng-deep {
+:host ::ng-deep {
 
     mat-dialog-container{
         background: var(--bgPrimaryColor) !important;

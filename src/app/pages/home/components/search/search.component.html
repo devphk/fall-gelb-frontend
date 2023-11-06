@@ -6,7 +6,7 @@
 
   <div *ngIf="isLogged" class="w-100">
 
-    <app-phk-user-account-header> </app-phk-user-account-header>
+    <app-phk-user-account-header [showSearch]="false"> </app-phk-user-account-header>
 
   </div>
 
@@ -14,16 +14,16 @@
   <div *ngIf="!isLogged"
        class="home-header-container w-100">
 
-    <button class="stroked-transparent-button" (click)="signIn()">Ingresar</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="signIn()">Ingresar</button>
 
   </div>
 
   <div>
     <h1 class="search-title text-center mb-35">Phoinike</h1>
 
-        <div class="search-input"
-             [ngClass]="{'active': inputActive,
-                         'p-0': inputActive}"
+        <div class="search-input active p-0"
              (click)="inputActive = true">
             <div id="searchBox">
                 <mat-icon class="mat-25" (click)="showInput()">search</mat-icon>

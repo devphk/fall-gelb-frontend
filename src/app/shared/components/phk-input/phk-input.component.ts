@@ -35,6 +35,7 @@ export class PhkInputComponent implements OnInit, ControlValueAccessor {
   @Input() minLength = 1;
   @Input() maxLength = 100;
   @Input() appearance: 'legacy' | 'standard' | 'fill' | 'outline' = 'outline';
+  @Input() errorMessage: string | null = null;
   inputControl = new UntypedFormControl(null);
   ngControl!: any;
 

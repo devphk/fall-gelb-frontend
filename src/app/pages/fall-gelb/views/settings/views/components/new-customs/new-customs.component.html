@@ -1,5 +1,5 @@
 <div>   
-    <form [formGroup]="customsForm" (ngSubmit)="onSubmit(customsForm.value)">
+    <form [formGroup]="customsForm">
         <div mat-dialog-content f
              fxLayout="row wrap" 
              fxLayoutGap="20px"
@@ -14,7 +14,7 @@
             </app-phk-input>
             
             <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Dirección"
+                            label="Dirección" 
                             formControlName="address">
             </app-phk-input>
 
@@ -24,19 +24,20 @@
                             [multiple]="true"
                             [formControl]="customForm">
                 <mat-option *ngFor="let transport of transportType" [value]="transport.id">{{transport.name}}</mat-option>
+                            
             </app-phk-select>
 
             <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Latitud"
+                            label="Latitud" 
                             formControlName="latitude">
             </app-phk-input>
 
             <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Longitud"
+                            label="Longitud" 
                             formControlName="longitude">
             </app-phk-input>
             
-            <button class="w-100" mat-flat-button color="primary">Enviar</button>
+            <button class="w-100" mat-flat-button color="primary" (click)="saveCustoms()">Enviar</button>
 
         </div> 
     </form>

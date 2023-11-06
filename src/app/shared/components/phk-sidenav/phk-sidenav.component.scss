@@ -2,6 +2,18 @@
 // Root styles
 
 :host ::ng-deep {
+
+    .mat-expansion-panel {
+        background-color: var(--bgSidenavItem);
+        p, 
+        i, 
+        .mat-expansion-indicator,
+        .mat-expansion-panel-header-description, 
+        .mat-expansion-indicator::after {
+            color: var(--textPrimaryColor) !important;
+        }
+    }
+
     .mat-expansion-panel-header {
         padding: 0 12px;
     }
@@ -18,19 +30,26 @@
             color: #eee !important;
         }
 
-        .mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+        .mat-expansion-panel-header-description, 
+        .mat-expansion-indicator::after {
             color: white;
         }
     }
+    
 }
 
 .sidenav-container {
     width: 200px;
     padding: 10px;
+    height: 100%;
+}
+
+.sidebar-logo {
+    margin: 10px auto 10px auto;
 }
 
 i, p {
-    color: #2b2b2b;
+    color: var(--textPrimaryColor);
 }
 
 .nav-item {
@@ -39,6 +58,7 @@ i, p {
     margin: auto;
     padding: 15px 10px 15px 15px;
     border-radius: 5px;
+    background-color: var(--bgSidenavItem);
     cursor: pointer;
     i {
         margin-right: 5px;
@@ -47,7 +67,7 @@ i, p {
 }
 
 .nav-item:hover {
-    background-color: #eee;
+    background-color: var(--bgSidenavItemHover);
     color: #3C4858;
 }
 

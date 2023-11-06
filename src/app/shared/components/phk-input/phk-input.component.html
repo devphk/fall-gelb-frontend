@@ -19,7 +19,11 @@
         <ng-content select="[suffix]">
         </ng-content>
     </div>
-    <div *ngIf="ngControl.touched">
+    <!-- <div *ngIf="ngControl.touched">
         <ng-content select="[error]"></ng-content>
+    </div> -->
+    <div >
+        <mat-error *ngIf="ngControl.touched && errorMessage">{{ errorMessage }}</mat-error>
     </div>
+
 </mat-form-field>

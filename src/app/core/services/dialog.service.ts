@@ -17,7 +17,7 @@ export class DialogService {
                 title: string,
                 width: string, 
                 height: string,
-                info?:any[]): MatDialogRef<PhkDialogComponent> {
+                dialogData: any = null): MatDialogRef<PhkDialogComponent> {
 
     const dialogRef = this.dialog
                           .open(PhkDialogComponent, {
@@ -28,7 +28,7 @@ export class DialogService {
                             data: { 
                               title,
                               childComponent,
-                              info
+                              dialogData
                             }
                           });
 

@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+  <form [formGroup]="userForm">
     <div
       mat-dialog-content
       fxLayout="row wrap"
@@ -11,8 +11,18 @@
         [required]="true"
         label="Nombre"
         formControlName="name"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        class="w-100"
+      ></app-phk-input>
+      
+      <app-phk-input
+        [required]="true"
+        label="Apellido"
+        formControlName="lastname"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="w-100"
       ></app-phk-input>
 
       <app-phk-input
@@ -27,15 +37,17 @@
         [required]="true"
         label="Dirección de correo"
         formControlName="email"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        class="w-100"
       ></app-phk-input>
       <app-phk-input
         [required]="true"
         label="Nombre de Usuario"
         formControlName="username"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        class="w-100"
       ></app-phk-input>
 
 
@@ -43,23 +55,25 @@
         [required]="true"
         [label]="'Contraseña'"
         formControlName="password"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        class="w-100"
       ></app-phk-input>
       
       <app-phk-input
         [required]="true"
         label="Confirmar Contraseña"
         formControlName="passwordVerify"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        class="w-100"
       ></app-phk-input>
-      <span class="errorMessage" *ngIf="userForm.errors?.['passwordmatcherror']">Las contraseñas no coinciden!</span>
+      <span *ngIf="userForm.errors?.['passwordmatcherror']">Las contraseñas no coinciden!</span>
 
-      <!-- <<app-phk-select
+      <!-- <app-phk-select
         [required]="true"
         [label]="'Rol'"
-        formControlName="userRol"
+        formControlName="role"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
       >
@@ -69,18 +83,13 @@
         >
           {{ userRolOption }}
         </mat-option>
-      </app-phk-select>> -->
+      </app-phk-select> -->
 
-      <div
-        fxFlex="50"
-        fxFlex.xs="100"
-        fxFlex.sm="100"
-        fxFlex.md="100"
-        fxFlex.lg="100"
-        fxFlex.xl="100"
-      >
-        <button class="w-100" mat-flat-button color="primary">Guardar</button>
-      </div>
+
+        <button class="w-100" 
+                mat-flat-button 
+                color="primary"
+                (click)="saveUser()">Guardar</button>
     </div>
   </form>
 </div>

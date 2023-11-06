@@ -3,7 +3,6 @@ import { DialogService } from '@core/services';
 import { FormUserComponent } from '../components';
 import { UserService } from './user.service';
 import { User, UserDataTable } from '@shared/models';
-import { TableCheckService } from '@shared/components/phk-table/table-check.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -16,51 +15,52 @@ export class UserComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     'ID',
     'Nombre',
+    'Apellido',
     'Nombre de Usuario',
     'Correo',
     'Estatus',
   ];
-  tableColumnsTags: string[] = ['id', 'name', 'username', 'email', 'status'];
+  tableColumnsTags: string[] = ['id', 'name', 'lastname', 'username', 'email', 'status'];
   tableData: any[] = [];
-  selectedID: number = 0;
-  selectedData: any[] = []
   durationInSeconds = 2;
+  itemsSelected: any[] = [];
 
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
-    private tableCheck: TableCheckService,
     private snackBar: MatSnackBar  ) {}
 
   ngOnInit(): void {
-    this.tableCheck.currentMessage.subscribe((tabletSeleted) => {
-      console.log('Table Selected: ', tabletSeleted);
+    this.getUsers();
+  }
 
-      if (tabletSeleted.check) {
-        this.selectedID = tabletSeleted.id;
-      } else {
-        this.selectedID = 0;
-      }
-    });
-    this.userService.getUsers().subscribe((resp) => {
-      console.log(resp);
+  getUsers() {
+
+    this.userService
+        .getUsers()
+        .subscribe((response) => {
 
       const tableData: UserDataTable[] = [];
 
-      resp.forEach((user) => {
+      response.forEach((user) => {
         const userToInput: UserDataTable = {
           id: user.id,
           name: user.name,
           email: user.email,
           status: user.status ? 'Activo' : 'Inactivo',
           username: user.username,
+          lastname:user.lastname,
         };
 
         tableData.push(userToInput);
       });
 
       this.tableData = tableData;
+
+    }, (error) => {
+      
     });
+
   }
 
   openSnackBar(type: number) {
@@ -75,39 +75,43 @@ export class UserComponent implements OnInit {
     }
   }
 
-  newUser() {
+  processUser(processType: string) {
     this.dialogService
-      .openDialog(FormUserComponent, 'Registrar Usuario', '800px', '300px')
+        .openDialog(FormUserComponent, 
+                    processType === 'Add' ? 'Crear Usuario' : 'Editar Usuario', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
         .afterClosed()
-          .subscribe(() => this.ngOnInit());
-  }
-
-  editUser() {
-    this.userService.getUser(this.selectedID)
-      .subscribe((resp) => {
-        this.selectedData = resp;
-      
-        this.dialogService
-          .openDialog(FormUserComponent, 'Editar Usuario', '800px', '300px', this.selectedData)
-            .afterClosed()
-              .subscribe(() => this.ngOnInit());
-      
-      })
-
-
+        .subscribe((user) => {
+          console.log("user ", user)
+        });
   }
 
   deleteUser() {
-    this.userService.deleteUsers(this.selectedID).subscribe(
+    this.userService
+        .deleteUsers(this.itemsSelected[0].id)
+        .subscribe(
       (data) => {
-        console.log('EXITOSO!: ', data);
-        this.openSnackBar(1);
-        this.ngOnInit();
+
+        this.snackBar
+            .open('Eliminado Exitosamente!', 
+                  'Ok', {
+                    duration: this.durationInSeconds * 1000,
+                    panelClass: ['success-snackbar']
+                  });  
+
       },
       (error) => {
-        console.error('ERROR!: ', error);
-        this.openSnackBar(2);
+
+        this.snackBar
+            .open('Ha ocurrido un error, intenta mas tarde!', 
+                  'Ok', {
+                    duration: this.durationInSeconds * 1000,
+                    panelClass: ['error-snackbar'],
+                  });  
       }
     );
   }
+
 }

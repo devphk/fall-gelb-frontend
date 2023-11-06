@@ -2,7 +2,8 @@
 // Root styles
 
 :host ::ng-deep {
-  .mat-typography h4 {
+  .mat-typography h4,
+  .mat-input-element {
     color: var(--textPrimaryColor) !important;
   }
 
@@ -17,7 +18,7 @@
 
   mat-card {
 
-    padding: 15px !important;
+    padding: 30px 15px 40px 15px !important;
     width: 300px;
     border: 1px solid #dadce0;
     background: var(--bgSignInCard) !important;

@@ -12,5 +12,8 @@ export class HomeService {
   appsListOpened: boolean = false;
   userAccountOpened: boolean = false;
 
+  logout = new Subject<void>();
+  logout$ = this.logout.asObservable();
+
   constructor() { }
 }
