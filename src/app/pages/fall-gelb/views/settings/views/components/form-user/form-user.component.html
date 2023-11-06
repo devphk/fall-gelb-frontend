@@ -24,14 +24,6 @@
         fxFlex.lt-md="calc(100%)"
         class="w-100"
       ></app-phk-input>
-
-      <app-phk-input
-        [required]="true"
-        label="Apellido"
-        formControlName="lastname"
-        fxFlex.gt-md="calc(33% - 20px)"
-        fxFlex.lt-md="calc(100%)"
-      ></app-phk-input>
       
       <app-phk-input
         [required]="true"
@@ -41,6 +33,7 @@
         fxFlex.lt-md="calc(100%)"
         class="w-100"
       ></app-phk-input>
+      
       <app-phk-input
         [required]="true"
         label="Nombre de Usuario"
@@ -67,9 +60,10 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
-      ></app-phk-input>
-      <span *ngIf="userForm.errors?.['passwordmatcherror']">Las contraseñas no coinciden!</span>
-
+      >
+    </app-phk-input>
+    
+    <mat-error *ngIf="userForm.errors?.['passwordmatcherror']">Las contraseñas no coinciden!</mat-error>
       <!-- <app-phk-select
         [required]="true"
         [label]="'Rol'"

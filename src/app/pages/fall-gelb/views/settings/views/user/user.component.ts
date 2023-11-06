@@ -89,29 +89,31 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.userService
-        .deleteUsers(this.itemsSelected[0].id)
-        .subscribe(
-      (data) => {
 
-        this.snackBar
-            .open('Eliminado Exitosamente!', 
-                  'Ok', {
-                    duration: this.durationInSeconds * 1000,
-                    panelClass: ['success-snackbar']
-                  });  
+    this.dialogService.openDialog(FormUserComponent,'TEST', '800px', 'auto')
+    // this.userService
+    //     .deleteUsers(this.itemsSelected[0].id)
+    //     .subscribe(
+    //   (data) => {
 
-      },
-      (error) => {
+    //     this.snackBar
+    //         .open('Eliminado Exitosamente!', 
+    //               'Ok', {
+    //                 duration: this.durationInSeconds * 1000,
+    //                 panelClass: ['success-snackbar']
+    //               });  
 
-        this.snackBar
-            .open('Ha ocurrido un error, intenta mas tarde!', 
-                  'Ok', {
-                    duration: this.durationInSeconds * 1000,
-                    panelClass: ['error-snackbar'],
-                  });  
-      }
-    );
+    //   },
+    //   (error) => {
+
+    //     this.snackBar
+    //         .open('Ha ocurrido un error, intenta mas tarde!', 
+    //               'Ok', {
+    //                 duration: this.durationInSeconds * 1000,
+    //                 panelClass: ['error-snackbar'],
+    //               });  
+    //   }
+    // );
   }
 
 }
