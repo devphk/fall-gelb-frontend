@@ -35,9 +35,18 @@
       color="primary"
       aria-label="Eliminar Aduana"
       matTooltip="Eliminar Aduana"
-      (click)="deleteCustoms()">
+      (click)="deleteCustoms()"
+      [disabled]="itemsSelected.length > 1">
   <mat-icon>delete</mat-icon>
 </button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="refreshCustoms()">
+        <mat-icon>refresh</mat-icon>
+      </button>
 
 </div>
 </div>

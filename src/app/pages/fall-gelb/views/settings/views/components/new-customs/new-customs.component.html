@@ -10,7 +10,8 @@
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Nombre" 
                             formControlName="name" 
-                            [required]="true">
+                            [required]="true"
+                            [errorMessage]="customsForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
             </app-phk-input>
             
             <app-phk-input  fxFlex="calc(33% - 20px)" 
