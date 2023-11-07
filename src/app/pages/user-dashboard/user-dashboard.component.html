@@ -10,10 +10,14 @@
     <div fxLayout="row"
          fxLayoutGap="20px">
 
-        <app-dashboard-sidebar fxFlex="calc(25% - 20px)"></app-dashboard-sidebar>
+        <app-dashboard-sidebar fxFlex="280px"></app-dashboard-sidebar>
 
-        <div fxFlex="calc(75% - 20px)">
-            <router-outlet></router-outlet>
+        <div fxFlex="calc(100% - 300px)">
+            <div class="center-content"
+                 ngClass.gt-md="w-50"
+                 ngClass.lt-md="w-100">
+                <router-outlet></router-outlet>
+            </div>
         </div>
 
     </div>
