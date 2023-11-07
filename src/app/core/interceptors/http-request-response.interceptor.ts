@@ -10,11 +10,13 @@ import {Observable,
 import {catchError, 
         map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import { ToastService } from '@core/services';
 
 @Injectable()
 export class HttpRequestsResponseInterceptor implements HttpInterceptor {
 
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router,
+              private toastService: ToastService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -27,23 +29,14 @@ export class HttpRequestsResponseInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         switch (error.status) {
           case 403:
-            // this.ToastService.show({
-            //   text: 'Sign in again', 
-            //   type: 'warning'
-            // });
+            this.toastService.showToaster('No autorizado', true);
             this.router.navigate(['']);
             break;
           case 500:
-            // this.ToastService.show({
-            //   text: 'Something bad happened, try again later', 
-            //   type: 'error'
-            // });
+            this.toastService.showToaster('Ocurrió un problema, intenta más tarde', true);
             break;
           case 502:
-            // this.ToastService.show({
-            //   text: 'Bad gateway', 
-            //   type: 'error'
-            // });
+            this.toastService.showToaster('Ocurrió un problema, intenta más tarde', true);
             break;
         }
         return throwError(error);
