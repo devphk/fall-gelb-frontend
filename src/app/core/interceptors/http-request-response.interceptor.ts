@@ -32,6 +32,10 @@ export class HttpRequestsResponseInterceptor implements HttpInterceptor {
             this.toastService.showToaster('No autorizado', true);
             this.router.navigate(['']);
             break;
+          case 401:
+            this.toastService.showToaster('No autorizado', true);
+            this.router.navigate(['']);
+            break;
           case 500:
             this.toastService.showToaster('Ocurrió un problema, intenta más tarde', true);
             break;
