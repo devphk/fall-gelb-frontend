@@ -41,4 +41,12 @@ export class RolesService {
     }
     return this.http.post('/roles', body);
   }
+
+  editRole(roleName: any,
+           roleId: number): Observable<RoleResponse> {
+    const body = {
+      name: roleName
+    }
+    return this.http.put(`/roles/${roleId}`, body);
+  }
 }

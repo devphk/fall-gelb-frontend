@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { FormRoleComponent } from '../components';
 import { RolesService } from './roles.service';
+import { Role } from '@shared/models';
 
 @Component({
   selector: 'app-roles',
@@ -31,6 +32,12 @@ export class RolesComponent implements OnInit {
     this.getRoles();
   }
 
+  editRegister(role: Role) {
+    
+    console.log("edit event ", role)
+    this.newRol(role);
+  }
+
   getRoles() {
     
     this.tableData = [];
@@ -55,9 +62,14 @@ export class RolesComponent implements OnInit {
         })
   }
 
-  newRol() {
+  newRol(roleData: Role | null) {
     this.dialogService
-        .openDialog(FormRoleComponent, 'Nuevo Rol', '800px', 'auto')
+        .openDialog(FormRoleComponent,
+                    roleData ? `Editar Rol: ${roleData.name}` 
+                             : 'Nuevo Rol', 
+                    '800px', 
+                    'auto',
+                    roleData)
         .afterClosed()
         .subscribe((data) => {
           if (data) {

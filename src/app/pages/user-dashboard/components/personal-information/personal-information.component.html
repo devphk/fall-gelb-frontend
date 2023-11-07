@@ -1,27 +1,31 @@
 
 <div fxLayout="column"
      fxLayoutAlign="center center"
-     class="w-80 ph-50 pb-50"
      fxLayoutGap="20px">
 
     <h1 class="fw-600 mb-0">
         Información personal
     </h1>
 
-    <h3>
+    <h3 ngClass.lt-md="text-center">
         Información sobre ti y tus preferencias Phoinike.
     </h3>
 
-    <div fxLayout="row"
+    <div fxLayout.gt-sm="row"
+         fxLayout.lt-sm="column"
+         fxLayoutGap.lt-sm="10px"
+         fxLayoutAlign.lt-sm="center center"
          fxLayoutGap="40px">
 
-        <div fxFlex="auto">
+        <div fxFlex="auto"
+             ngClass.lt-md="center-content">
 
             <h1 class="fw-600">
                 La información de tu perfil
             </h1>
 
-            <p class="fs-18 lh-1-5">
+            <p class="fs-18 lh-1-5"
+               ngClass.lt-md="text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Laudantium provident, numquam sit veritatis impedit.
             </p>

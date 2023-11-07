@@ -5,6 +5,9 @@
 
     .mat-expansion-panel {
         background-color: var(--bgSidenavItem);
+        border-radius: 0px 25px 25px 0px;
+        padding: 1px 0;
+
         p, 
         i, 
         .mat-expansion-indicator,
@@ -12,6 +15,21 @@
         .mat-expansion-indicator::after {
             color: var(--textPrimaryColor) !important;
         }
+
+        .mat-expansion-indicator {
+            margin-top: -6px;
+        }
+
+    }
+
+    .mat-expansion-panel-header.mat-expanded {
+        height: 54px;
+
+        // Compense the bottom margin
+        .mat-expansion-indicator {
+            margin-bottom: -10px !important;
+        }
+
     }
 
     .mat-expansion-panel-header {
@@ -19,7 +37,7 @@
     }
 
     .mat-expansion-panel-body {
-        padding: 0 10px 10px 10px;
+        padding: 0 10px 10px 0px;
     }
 
     .active {
@@ -40,7 +58,7 @@
 
 .sidenav-container {
     width: 200px;
-    padding: 10px;
+    padding: 10px 10px 10px 0px;
     height: 100%;
 }
 
@@ -57,7 +75,7 @@ i, p {
     width: 100%;
     margin: auto;
     padding: 15px 10px 15px 15px;
-    border-radius: 5px;
+    border-radius: 0px 25px 25px 0px;
     background-color: var(--bgSidenavItem);
     cursor: pointer;
     i {

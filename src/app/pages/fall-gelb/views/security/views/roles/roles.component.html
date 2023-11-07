@@ -15,7 +15,7 @@
               color="primary"
               aria-label="Nuevo roles y permisos"
               matTooltip="Nuevo roles y permisos"
-              (click)="newRol()">
+              (click)="newRol(null)">
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -25,5 +25,7 @@
   <app-phk-table [columnsTags]="tableColumnsTags"
                  [columnsToDisplay]="tableColumnsToDisplay"
                  [data]="tableData"
-                 [showSelectColumn]="false"></app-phk-table>
+                 [showSelectColumn]="false"
+                 [showEditIcon]="true"
+                 (editRegister)="editRegister($event)"></app-phk-table>
 </div>
