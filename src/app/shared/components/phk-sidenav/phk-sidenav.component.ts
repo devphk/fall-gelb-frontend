@@ -95,36 +95,17 @@ export class PhkSidenavComponent implements OnInit {
       ]
 
     },
-    // { 
-    //   path: '/operations', 
-    //   title: 'Operaciones',  
-    //   icon:'content_paste' 
-    // },
-    // { 
-    //   path: '/statistics', 
-    //   title: 'Estadíticas',  
-    //   icon:'library_books' 
-    // },
-    // {
-    //   path: '/administration', 
-    //   title: 'Administración',  
-    //   icon:'bubble_chart' 
-    // },
-    // { 
-    //   path: '/settings', 
-    //   title: 'Configuración',  
-    //   icon:'location_on' 
-    // },
-    // { 
-    //   path: '/commercial', 
-    //   title: 'Comercial',  
-    //   icon:'notifications' 
-    // },
-    // { 
-    //   path: '/comptroller', 
-    //   title: 'Contraloría',  
-    //   icon:'notifications' 
-    // } 
+    {
+      path: 'security',
+      title: 'Seguridad',
+      icon: 'security',
+      childrenLinks: [
+        {
+          path: 'roles',
+          title: 'Roles'
+        }
+      ]
+    }
   ];
 
   location: Location;
