@@ -26,7 +26,6 @@ export class FormUserComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();    
   }
-
   
   initializeForm() {
 

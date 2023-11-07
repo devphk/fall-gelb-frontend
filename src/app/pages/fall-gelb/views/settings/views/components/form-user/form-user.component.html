@@ -14,6 +14,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
+        [errorMessage]="userForm.controls['lastname'].invalid ? 'Debe ingresar un nombre' : null"
       ></app-phk-input>
       
       <app-phk-input
@@ -23,6 +24,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
+        [errorMessage]="userForm.controls['lastname'].invalid ? 'Debe ingresar un apellido' : null"
       ></app-phk-input>
       
       <app-phk-input
@@ -32,6 +34,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
+        [errorMessage]="userForm.controls['email'].invalid ? 'Correo inválido' : null"
       ></app-phk-input>
       
       <app-phk-input
@@ -41,6 +44,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
+        [errorMessage]="userForm.controls['lastname'].invalid ? 'Debe ingresar un nombre de usuario' : null"
       ></app-phk-input>
 
 
