@@ -17,8 +17,9 @@ export class FormRoleComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
               private toastService: ToastService) {}
 
+  title: string = '';
   roleFormGroup = this._formBuilder.group({
-    name: this._formBuilder.control('', Validators.required)
+    name: this._formBuilder.control(this.data.dialogData ? this.data.dialogData.name : '', Validators.required)
   });
 
   permisionFormGroup = this._formBuilder.group({
@@ -49,7 +50,7 @@ export class FormRoleComponent implements OnInit {
       this.modulesOptions = response;
     });
 
-    console.log("data ", this.data)
+    this.title = this.data.title;
 
   }
 
@@ -81,30 +82,59 @@ export class FormRoleComponent implements OnInit {
       });
 
       const moduleId = this.permisionFormGroup?.get('modulePermission')?.value;
-        
-      this.roleService
-          .createRole(this.roleFormGroup.get('name')?.value)
-          .subscribe((createRoleResponse) => {
 
-        const modulePermission = {
-          permission_id: permissionIds,
-          module_id: moduleId
-        }
-  
+      if (this.title.includes("Editar")) {
+        
         this.roleService
-          .addRolePermissions(modulePermission, createRoleResponse.id)
-          .subscribe((response) => {
-            this.toastService.showToaster("Rol creadoo exitosamente");
-            this.dialogRef.close(response);
-          },
-          (error) => {
-            this.toastService.showToaster(error.error.message, true);
-          });
+            .editRole(this.roleFormGroup.get('name')?.value,
+                      this.data.dialogData.id)
+            .subscribe((createRoleResponse) => {
   
-      }, (error) => {
-        this.toastService.showToaster(error.error.message, true);
-      });
-      
+          const modulePermission = {
+            permission_id: permissionIds,
+            module_id: moduleId
+          }
+    
+          this.roleService
+            .addRolePermissions(modulePermission, createRoleResponse.id)
+            .subscribe((response) => {
+              this.toastService.showToaster("Rol editado exitosamente");
+              this.dialogRef.close(response);
+            },
+            (error) => {
+              this.toastService.showToaster(error.error.message, true);
+            });
+    
+        }, (error) => {
+          this.toastService.showToaster(error.error.message, true);
+        });
+
+      } else {
+        
+        this.roleService
+            .createRole(this.roleFormGroup.get('name')?.value)
+            .subscribe((createRoleResponse) => {
+  
+          const modulePermission = {
+            permission_id: permissionIds,
+            module_id: moduleId
+          }
+    
+          this.roleService
+            .addRolePermissions(modulePermission, createRoleResponse.id)
+            .subscribe((response) => {
+              this.toastService.showToaster("Rol creadoo exitosamente");
+              this.dialogRef.close(response);
+            },
+            (error) => {
+              this.toastService.showToaster(error.error.message, true);
+            });
+    
+        }, (error) => {
+          this.toastService.showToaster(error.error.message, true);
+        });
+      }
+        
     }
     
   }

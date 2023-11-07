@@ -1,8 +1,7 @@
 
-interface LoginResponse {
-  grant_type: string;
-  client_id: string;
-  client_secret: string;
-  username: string;
-  password: string;
+export interface LoginResponse {
+  token_type: string;
+  expires_in: number;
+  access_token: string;
+  refresh_token: string;
 }

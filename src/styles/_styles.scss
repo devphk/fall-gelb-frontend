@@ -175,6 +175,11 @@ input.mat-input-element {
   color: var(--formFieldPrimaryLabelColor);
 }
 
+.mat-select-panel .mat-option,
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: var(--bgSignInCard) !important;
+}
+
 // Snack bar styles
 
 // .success-mat-snack-bar-container

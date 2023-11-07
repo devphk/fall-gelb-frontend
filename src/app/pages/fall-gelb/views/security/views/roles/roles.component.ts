@@ -32,9 +32,10 @@ export class RolesComponent implements OnInit {
     this.getRoles();
   }
 
-  editRegister($event: any) {
+  editRegister(role: Role) {
     
-    
+    console.log("edit event ", role)
+    this.newRol(role);
   }
 
   getRoles() {
@@ -63,11 +64,12 @@ export class RolesComponent implements OnInit {
 
   newRol(roleData: Role | null) {
     this.dialogService
-        .openDialog(FormRoleComponent, 
+        .openDialog(FormRoleComponent,
                     roleData ? `Editar Rol: ${roleData.name}` 
                              : 'Nuevo Rol', 
                     '800px', 
-                    'auto')
+                    'auto',
+                    roleData)
         .afterClosed()
         .subscribe((data) => {
           if (data) {
