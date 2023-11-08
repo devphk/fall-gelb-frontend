@@ -47,6 +47,7 @@ import {
   ContainerTypeComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { WithholdingConceptsComponent } from './views/withholding-concepts/withholding-concepts.component';
 
 const routes: Routes = [
   {
@@ -77,7 +78,8 @@ const routes: Routes = [
     FormBankAccountComponent,
     FormBankComponent,
     FormCurrencyComponent,
-    FormUserComponent
+    FormUserComponent,
+    WithholdingConceptsComponent
   ],
   imports: [
     CommonModule,
