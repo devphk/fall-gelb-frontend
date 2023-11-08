@@ -27,19 +27,9 @@
                 <mat-option *ngFor="let transport of transportType" [value]="transport.id">{{transport.name}}</mat-option>
                             
             </app-phk-select>
-
-            <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Latitud" 
-                            formControlName="latitude">
-            </app-phk-input>
-
-            <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Longitud" 
-                            formControlName="longitude">
-            </app-phk-input>
             
-            <button class="w-100" mat-flat-button color="primary" (click)="saveCustoms()">Enviar</button>
-
         </div> 
     </form>
+    <div id="map"></div>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveCustoms()">Enviar</button>
 </div>
