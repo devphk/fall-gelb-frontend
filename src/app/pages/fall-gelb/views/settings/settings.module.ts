@@ -47,7 +47,6 @@ import {
   ContainerTypeComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { WithholdingConceptsComponent } from './views/withholding-concepts/withholding-concepts.component';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
 
 const routes: Routes = [
@@ -80,8 +79,7 @@ const routes: Routes = [
     FormBankComponent,
     FormCurrencyComponent,
     FormUserComponent,
-    WithholdingConceptsComponent
-  ],
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
