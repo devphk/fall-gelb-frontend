@@ -13,6 +13,9 @@ export interface CustomsDataTable {
   id: number;
   name: string;
   address: string;
+  transport_types:TransportType[],
+  latitude: string;
+  longitude: string;
 }
 
 export interface Transporttype {

@@ -14,39 +14,30 @@
             </app-phk-input>
             
             <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Teléfono" 
-                            formControlName="phone">
+                            label="Dirección" 
+                            formControlName="address">
             </app-phk-input>
-
-            <!-- <button
-                fxFlex="calc(50% - 20px)"
-                (click)="setActive()"
-                mat-raised-button>
-                Agregar Item
-            </button>
-
-            <div fxFlex="calc(50% - 20px)">
-                 <button
-                    (click)="setUnactive()"
-                    mat-raised-button>
-                    Eliminar Item
-                 </button>
-            </div> -->
 
             <app-phk-select fxFlex="calc(33% - 20px)" 
                             label="Seleccione..." 
-                            formControlName="transport"
-                            [multiple]="true">
-                <mat-option *ngFor="let transport of transportType" [value]="transport">{{transport}}</mat-option>
+                            formControlName="transport_types"
+                            [multiple]="true"
+                            [formControl]="customForm">
+                <mat-option *ngFor="let transport of transportType" [value]="transport.id">{{transport.name}}</mat-option>
+                            
             </app-phk-select>
 
             <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="INPUT DE RELLENO PARA LUEGO COLOCAR LA UBICACION" 
-                            formControlName="location">
+                            label="Latitud" 
+                            formControlName="latitude">
+            </app-phk-input>
 
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Longitud" 
+                            formControlName="longitude">
             </app-phk-input>
             
-            <button class="w-100" mat-flat-button color="primary" (click)="showForm()">Enviar</button>
+            <button class="w-100" mat-flat-button color="primary" (click)="saveCustoms()">Enviar</button>
 
         </div> 
     </form>

@@ -16,6 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
 import { MatSelectChange } from '@angular/material/select';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { TableCheckService } from './table-check.service';
 
 @Component({
   selector: 'app-phk-table',
@@ -110,6 +111,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   updateCheckedList(event: any, element: any, rowIndex: number) {
+    
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {
