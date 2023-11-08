@@ -4,5 +4,7 @@ export enum LoadingMessage {
   CREATING_USER = 'Creando usuario...',
   DELETING_USER = 'Eliminando usuario...',
   CREATING_CUSTOM = 'Creando aduana...',
-  DELETING_CUSTOM = 'Eliminando aduana...'
+  DELETING_CUSTOM = 'Eliminando aduana...',
+  CREATING_UNIT = 'Creando Unidad...',
+  DELETING_UNIT = 'Eliminando Unidad...'
 }
