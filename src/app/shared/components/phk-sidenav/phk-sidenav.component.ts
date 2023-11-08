@@ -91,6 +91,10 @@ export class PhkSidenavComponent implements OnInit {
         {
           path: 'warehouse',
           title: 'Almacenes'
+        },
+        {
+          path: 'withholding-concepts',
+          title: 'Conceptos de Retención'
         }
       ]
 

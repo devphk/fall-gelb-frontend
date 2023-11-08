@@ -13,6 +13,7 @@ import {
   CommodityTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { WithholdingConceptComponent } from './views/withholding-concept/withholding-concept.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
+  },
+  {
+    path: 'withholding-concepts',
+    component: WithholdingConceptComponent,
   },
   {
     path: '**',

@@ -26,10 +26,11 @@ import {
 })
 export class PhkInputComponent implements OnInit, ControlValueAccessor {
   @Input() label!: string;
-  @Input() type: 'text' | 'password' = 'text';
+  @Input() type: 'number' | 'text' | 'password' = 'text' ;
   @Input() disabled = false;
   @Input() readOnly = false;
-  @Input() mask = null;
+  @Input() hint:string = '';
+  @Input() mask:string = '';
   @Input() requiredMarker = false;
   @Input() required = false;
   @Input() minLength = 1;
