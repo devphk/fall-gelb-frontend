@@ -5,6 +5,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { RolesService } from '../../roles/roles.service';
 import { ToastService } from '@core/services';
 import { HttpParams } from '@angular/common/http';
+import { Resource } from '@shared/models';
 
 @Component({
   selector: 'app-form-role',
@@ -28,24 +29,16 @@ export class FormRoleComponent implements OnInit {
   modulesOptions: any;
   dataSelect: any[] = [];
 
-  tableColumnsToDisplay: string[] = [
-    'Formulario',
-    'Acciones',
-    // 'Estado'
-  ];
-
-  tableColumnsTags: string[] = [
-    'form',
-    'options',
-    // 'status'
-  ];
-
   tableData: any[] = [];
   itemsSelected: any[] = [];
   modulesPermissionForm = this.fb.group({
     modulesPermission: this.fb.array([])
   });
-  showForm: boolean = false
+  showTable: boolean = false;
+  permissionIds: number[] = [];
+  modulesPermissionsBackup: any[] = [];
+  modulePreviousId: number = 0;
+  modulePreviousResource: Resource[] = [];
 
   constructor(private _formBuilder: FormBuilder,
               private roleService: RolesService,
@@ -75,21 +68,106 @@ export class FormRoleComponent implements OnInit {
   }
 
   moduleSelected(moduleId: number) {
+
+    if (this.modulePreviousId !== 0) {
+      this.setModulePermission(this.modulePreviousId);
+    }
+
+    this.permisionFormGroup.get('modulePermission')?.value;
+
     let roleId = this.data.dialogData ? this.data.dialogData.id : false;
+    console.log("roleId ", roleId)
+    console.log("moduleId ", moduleId)
     this.getTableData(moduleId, roleId);
+    this.modulePreviousId = moduleId
+  }
+
+  setModulePermission(moduleId: number) {
+    let permissionIds: number[] = [];
+
+    for (let formArrayIndex = 0; formArrayIndex < this.modulesPermissionControls.length; formArrayIndex++) {
+      const formPermissions = this.modulesPermissionControls?.at(formArrayIndex)?.get('permission')?.value;
+
+      if (formPermissions
+          && formPermissions.length > 0) {
+        permissionIds = [...permissionIds, ...formPermissions];
+      }
+    }
+
+    let moduleIndexInBackup = this.modulesPermissionsBackup
+                                  .findIndex((module) => {
+      return module.id === moduleId
+    });
+
+    const moduleBackup = {
+      moduleId,
+      permissionIds,
+      moduleResource: this.modulePreviousResource
+    }
+
+    if (moduleIndexInBackup === -1) {
+      this.modulesPermissionsBackup.push(moduleBackup)
+    } else {
+      this.modulesPermissionsBackup[moduleIndexInBackup] = moduleBackup
+    }
+
+    console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
+
+  }
+
+  setFormData(resources: Resource[]) {
+
+    resources.forEach((resource, index) => {
+  
+      // Create the formgroup to add
+      // In FormArray
+
+      const permissionGroup = this.fb.group({
+        form: this.fb.control(resource.name),
+        permission: this.fb.control([0])
+      })
+
+      const actions = resource.actions;
+      const actionsList: number[] = [];
+
+      // Set the permissions of the action array
+
+      actions.forEach((action) => {
+        actionsList.push(action.id);
+      });
+
+      permissionGroup.get('permission')?.setValue(actionsList);
+
+      this.modulesPermissionControls.push(permissionGroup);
+
+      this.setDataRow(resource, index);
+    });
+
+  }
+
+  setDataRow(resource: Resource, 
+             index: number) {
+    const tableRow = {
+      form: resource.name,
+      options: resource.actions,
+      rowIndex: index,
+      optionsSelected: [],
+    };
+
+    this.tableData.push(tableRow);
   }
 
   createRole() {
-    if (this.roleFormGroup.valid && this.permisionFormGroup.valid) {
-      const permissionIds: number[] = [];
 
-      this.itemsSelected.forEach((item) => {
-        item.optionsSelected.forEach((option: any) => {
-          permissionIds.push(option.id);
-        });
-      });
+    if (this.roleFormGroup.valid 
+        && this.permisionFormGroup.valid) {
+      
+      let moduleId: any = this.permisionFormGroup.get('modulePermission')?.value;
+      this.setModulePermission(moduleId);
 
-      const moduleId = this.permisionFormGroup?.get('modulePermission')?.value;
+      console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
+
+      return
 
       if (this.title.includes('Editar')) {
         this.roleService
@@ -100,7 +178,7 @@ export class FormRoleComponent implements OnInit {
           .subscribe(
             (createRoleResponse) => {
               const modulePermission = {
-                permission_id: permissionIds,
+                permission_id: this.permissionIds,
                 module_id: moduleId,
               };
 
@@ -126,7 +204,7 @@ export class FormRoleComponent implements OnInit {
           .subscribe(
             (createRoleResponse) => {
               const modulePermission = {
-                permission_id: permissionIds,
+                permission_id: this.permissionIds,
                 module_id: moduleId,
               };
 
@@ -150,63 +228,60 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  getTableData(moduleId: number, roleId?: number) {
+  getTableData(moduleId: number, 
+               roleId?: number) {
+
+    this.modulesPermissionForm = this.fb.group({
+      modulesPermission: this.fb.array([])
+    });
+    this.showTable = false;
+
     let getModuleActions;
+    let modulePermissionsModified = this.modulesPermissionsBackup
+                                        .findIndex((module) => {
+      return module.moduleId === moduleId
+    })
 
-    if (roleId) {
-      let params = new HttpParams();
-      params = params.set('role_id', roleId);
-      getModuleActions = this.roleService.getModuleActions(moduleId, params);
-    } else {
-      getModuleActions = this.roleService.getModuleActions(moduleId);
-    }
+    console.log("modulePermissionsModified ", modulePermissionsModified)
 
-    getModuleActions.subscribe((response) => {
-
-      console.log("response ", response)
+    if (modulePermissionsModified === -1) {
 
       if (roleId) {
-
-        response.resources.forEach((resource) => {
-
-          // Create the formgroup to add
-          // In FormArray
-
-          const permissionGroup = this.fb.group({
-            permission: this.fb.control([0])
-          })
-
-          const actions = resource.actions;
-          const actionsList: number[] = [];
-
-          // Set the permissions of the action array
-
-          actions.forEach((action) => {
-            actionsList.push(action.id);
-          });
-
-          permissionGroup.get('permission')?.setValue(actionsList);
-
-          this.modulesPermissionControls.push(permissionGroup);
-
-        });
+        let params = new HttpParams();
+        params = params.set('role_id', roleId);
+        getModuleActions = this.roleService.getModuleActions(moduleId, params);
+      } else {
+        getModuleActions = this.roleService.getModuleActions(moduleId);
       }
-      this.showForm = true;
+  
+      getModuleActions.subscribe((response) => {
+  
+        this.tableData = [];
+  
+        console.log("response ", response)
+  
+        this.modulePreviousResource = response.resources;
+        this.setFormData(this.modulePreviousResource);
 
-      console.log("form", this.modulesPermissionForm)
+        setTimeout(() => {
+          this.showTable = true;
+        }, 300);
 
-      // this.tableData = [];
 
-      // response.resources.forEach((modulePermissions, index) => {
-      //   const tableRow = {
-      //     form: modulePermissions.name,
-      //     options: modulePermissions.actions,
-      //     rowIndex: index,
-      //     optionsSelected: [],
-      //   };
+      });
+      
+    } else {
 
-      //   this.tableData.push(tableRow);
-      // });
-    });
+      this.setFormData(this.modulesPermissionsBackup[modulePermissionsModified]
+                           .moduleResource);
+
+      this.showTable = true;
+
+    }
+  }
+
+  show() {
+    console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup)
+    console.log("this.modulesPermissionForm ", this.modulesPermissionForm)
   }
 }
