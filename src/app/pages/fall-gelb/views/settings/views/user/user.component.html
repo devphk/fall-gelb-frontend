@@ -33,9 +33,18 @@
           color="primary"
           aria-label="Eliminar Usuario"
           matTooltip="Eliminar Usuario"
-          (click)="deleteUser()">
+          (click)="deleteUser()"
+          [disabled]="itemsSelected.length > 1">
       <mat-icon>delete</mat-icon>
     </button>
+
+    <button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="refreshUsers()">
+        <mat-icon>refresh</mat-icon>
+      </button>
 
   </div>
 </div>

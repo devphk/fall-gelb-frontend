@@ -16,7 +16,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
 import { MatSelectChange } from '@angular/material/select';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { TableCheckService } from './table-check.service';
 
 @Component({
   selector: 'app-phk-table',

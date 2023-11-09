@@ -232,6 +232,10 @@ i {
   color: var(--textPrimaryColor);
 }
 
+//----------------------- Leaflet ----------------------//
+
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
 //-------------------- Scroll style --------------------//
 
 ::-webkit-scrollbar {

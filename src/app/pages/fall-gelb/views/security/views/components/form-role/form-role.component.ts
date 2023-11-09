@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { RolesService } from '../../roles/roles.service';
@@ -12,13 +12,6 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-  constructor(
-    private _formBuilder: FormBuilder,
-    private roleService: RolesService,
-    private dialogRef: MatDialogRef<FormRoleComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private toastService: ToastService
-  ) {}
 
   title: string = '';
   roleFormGroup = this._formBuilder.group({
@@ -48,8 +41,18 @@ export class FormRoleComponent implements OnInit {
   ];
 
   tableData: any[] = [];
-
   itemsSelected: any[] = [];
+  modulesPermissionForm = this.fb.group({
+    modulesPermission: this.fb.array([])
+  });
+  showForm: boolean = false
+
+  constructor(private _formBuilder: FormBuilder,
+              private roleService: RolesService,
+              private dialogRef: MatDialogRef<FormRoleComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private toastService: ToastService,
+              private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.roleService.getModules().subscribe((response: any) => {
@@ -57,6 +60,22 @@ export class FormRoleComponent implements OnInit {
     });
 
     this.title = this.data.title;
+  }
+
+  get modulesPermissionControls() {
+    return this.modulesPermissionForm.get('modulesPermission') as FormArray;
+  }
+
+  setForm() {
+    const testForm: FormGroup = this.fb.group({
+      selected: this.fb.control(true),
+      // permission: this.fb.control('')
+    });
+    this.modulesPermissionControls.push(testForm)
+    this.modulesPermissionControls.push(testForm)
+    this.modulesPermissionControls.push(testForm)
+    this.showForm = true
+    console.log("modulesPermissionForm ", this.modulesPermissionForm)
   }
 
   selectPermissions(stepper: MatStepper) {
