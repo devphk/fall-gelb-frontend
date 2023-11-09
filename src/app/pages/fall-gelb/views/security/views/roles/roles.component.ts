@@ -3,6 +3,7 @@ import { DialogService, ToastService } from '@core/services';
 import { FormRoleComponent } from '../components';
 import { RolesService } from './roles.service';
 import { Role } from '@shared/models';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-roles',
@@ -23,10 +24,17 @@ export class RolesComponent implements OnInit {
 
   tableData: any[] = [];
   rolesList: any[] = [];
+  testForm: FormGroup = this.fb.group({
+    modulesPermission: this.fb.array([])
+  });
 
+  form = this.fb.group({
+    lessons: this.fb.array([])
+  });    
   constructor(private dialogService: DialogService,
               private roleService: RolesService,
-              private toastService: ToastService) {}
+              private toastService: ToastService,
+              private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.getRoles();
