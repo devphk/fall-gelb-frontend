@@ -1,0 +1,58 @@
+
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
+
+    <h1>Configuraciones</h1>
+
+    <div fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+<button
+  class="crud-button"
+  mat-mini-fab
+  color="primary"
+  aria-label="Registrar Aduana"
+  matTooltip="Registrar Aduana"
+  (click)="processConfigs('Add')"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Aduana"
+      matTooltip="Editar Aduana"
+      (click)="processConfigs('Edit')"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Aduana"
+      matTooltip="Eliminar Aduana"
+      (click)="deleteConfig()"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>delete</mat-icon>
+</button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="refreshConfigs()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
+</div>
+</div>
+
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"
+            [(itemsSelected)]="itemsSelected"></app-phk-table>
