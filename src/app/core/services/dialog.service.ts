@@ -5,6 +5,7 @@ import {
 } from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
 import { PhkDialogComponent } from 'src/app/shared/components/phk-dialog/phk-dialog.component';
+import { PhkConfirmationDialogComponent } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.component';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,24 @@ export class DialogService {
                             }
                           });
 
+    return dialogRef;
+  }
+
+  openConfirmationDialog(title:string, subtitle:string): MatDialogRef<PhkDialogComponent> {
+
+    const dialogRef = this.dialog
+                          .open(PhkDialogComponent, {
+                            width: 'auto',
+                            height: 'auto',
+                            maxWidth: '95vw',
+                            maxHeight: '95vh',
+                            disableClose: true,
+                            data: {
+                              title,
+                              subtitle,
+                              childComponent:PhkConfirmationDialogComponent,
+                            }
+                          });
     return dialogRef;
   }
 

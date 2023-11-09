@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
-import { Customs } from '@shared/models';
+import { Customs, LoadingMessage } from '@shared/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,15 +14,15 @@ export class CustomsService {
     return this.http.get('/customs');
   }
 
-  postCustoms(data: any): Observable<Customs[]> {
-    return this.http.post('/customs', data);
+  createCustom(data: any): Observable<Customs[]> {
+    return this.http.post('/customs', data, undefined, true, LoadingMessage.CREATING_CUSTOM);
   }
 
-  deleteCustoms(id:number) {
-    return this.http.delete(`/customs/${id}`);
+  deleteCustom(id:number) {
+    return this.http.delete(`/customs/${id}`, undefined, true, LoadingMessage.DELETING_CUSTOM);
   }
 
-  putCustom(data: any, id:number) {
+  editCustom(data: any, id:number) {
     return this.http.put(`/customs/${id}`, data)
   }
 }

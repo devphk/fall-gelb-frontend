@@ -1,3 +1,4 @@
+
 <mat-stepper orientation="vertical" #stepper>
   <mat-step [stepControl]="roleFormGroup" [editable]="true">
     <form
@@ -54,12 +55,42 @@
           Selecciona los permisos dentro del módulo
         </span>
 
-        <app-phk-table [columnsTags]="tableColumnsTags"
-                       [columnsToDisplay]="tableColumnsToDisplay"
-                       [(itemsSelected)]="itemsSelected"
-                       [data]="tableData"
-                       class="w-100"
-                       *ngIf="permisionFormGroup.get('modulePermission')?.value !== ''"></app-phk-table>
+        <div *ngIf="showForm"
+             class="w-80 permission-container">
+          <div fxLayout="row"
+               fxLayoutAlign="space-between enter">
+            <h2 fxFlex="calc(50% - 20px)">
+              Módulo
+            </h2>
+            <h2 fxFlex="calc(50% - 20px)">
+              Permisos
+            </h2>
+          </div>
+  
+          <form [formGroup]="modulesPermissionForm">
+            <div formArrayName="modulesPermission">
+              <div *ngFor="let modulePermnission of modulesPermissionControls.controls; let i = index">
+                <div [formGroupName]="i"
+                     fxLayout="row"
+                     fxLayoutAlign="space-between center">
+  
+                  <h3 fxFlex="calc(50% - 20px)">
+                    {{tableData[i].form}}
+                  </h3>
+  
+                  <app-phk-select formControlName="permission"
+                                  [multiple]="true"
+                                  [label]="'Selecciona permisos'"
+                                  fxFlex="calc(50% - 20px)">
+                    <mat-option *ngFor="let option of tableData[i].options"
+                                [value]="option.id">{{option.name}}</mat-option>
+                  </app-phk-select>
+  
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
         <div class="container-button"
              fxFlex="100"
              fxLayout="row"
