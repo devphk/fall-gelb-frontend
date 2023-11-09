@@ -13,17 +13,16 @@ import { Resource } from '@shared/models';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-
   title: string = '';
-  roleFormGroup = this._formBuilder.group({
-    name: this._formBuilder.control(
+  roleFormGroup = this.fb.group({
+    name: this.fb.control(
       this.data.dialogData ? this.data.dialogData.name : '',
       Validators.required
     ),
   });
 
-  permisionFormGroup = this._formBuilder.group({
-    modulePermission: this._formBuilder.control('', [Validators.required]),
+  permisionFormGroup = this.fb.group({
+    modulePermission: this.fb.control('', [Validators.required]),
   });
 
   modulesOptions: any;
@@ -32,7 +31,7 @@ export class FormRoleComponent implements OnInit {
   tableData: any[] = [];
   itemsSelected: any[] = [];
   modulesPermissionForm = this.fb.group({
-    modulesPermission: this.fb.array([])
+    modulesPermission: this.fb.array([]),
   });
   showTable: boolean = false;
   permissionIds: number[] = [];
@@ -40,12 +39,13 @@ export class FormRoleComponent implements OnInit {
   modulePreviousId: number = 0;
   modulePreviousResource: Resource[] = [];
 
-  constructor(private _formBuilder: FormBuilder,
-              private roleService: RolesService,
-              private dialogRef: MatDialogRef<FormRoleComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private toastService: ToastService,
-              private fb: FormBuilder) {}
+  constructor(
+    private roleService: RolesService,
+    private dialogRef: MatDialogRef<FormRoleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private toastService: ToastService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.roleService.getModules().subscribe((response: any) => {
@@ -68,7 +68,6 @@ export class FormRoleComponent implements OnInit {
   }
 
   moduleSelected(moduleId: number) {
-
     if (this.modulePreviousId !== 0) {
       this.setModulePermission(this.modulePreviousId);
     }
@@ -76,56 +75,62 @@ export class FormRoleComponent implements OnInit {
     this.permisionFormGroup.get('modulePermission')?.value;
 
     let roleId = this.data.dialogData ? this.data.dialogData.id : false;
-    console.log("roleId ", roleId)
-    console.log("moduleId ", moduleId)
+    console.log('roleId ', roleId);
+    console.log('moduleId ', moduleId);
     this.getTableData(moduleId, roleId);
-    this.modulePreviousId = moduleId
+    this.modulePreviousId = moduleId;
   }
 
   setModulePermission(moduleId: number) {
     let permissionIds: number[] = [];
 
-    for (let formArrayIndex = 0; formArrayIndex < this.modulesPermissionControls.length; formArrayIndex++) {
-      const formPermissions = this.modulesPermissionControls?.at(formArrayIndex)?.get('permission')?.value;
+    for (
+      let formArrayIndex = 0;
+      formArrayIndex < this.modulesPermissionControls.length;
+      formArrayIndex++
+    ) {
+      const formPermissions = this.modulesPermissionControls
+        ?.at(formArrayIndex)
+        ?.get('permission')?.value;
 
-      if (formPermissions
-          && formPermissions.length > 0) {
+      if (formPermissions && formPermissions.length > 0) {
         permissionIds = [...permissionIds, ...formPermissions];
       }
     }
 
-    let moduleIndexInBackup = this.modulesPermissionsBackup
-                                  .findIndex((module) => {
-      return module.id === moduleId
-    });
+    let moduleIndexInBackup = this.modulesPermissionsBackup.findIndex(
+      (module) => {
+        return module.id === moduleId;
+      }
+    );
 
     const moduleBackup = {
       moduleId,
       permissionIds,
-      moduleResource: this.modulePreviousResource
-    }
+      moduleResource: this.modulePreviousResource,
+    };
 
     if (moduleIndexInBackup === -1) {
-      this.modulesPermissionsBackup.push(moduleBackup)
+      this.modulesPermissionsBackup.push(moduleBackup);
     } else {
-      this.modulesPermissionsBackup[moduleIndexInBackup] = moduleBackup
+      this.modulesPermissionsBackup[moduleIndexInBackup] = moduleBackup;
     }
 
-    console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
-
+    console.log(
+      'this.modulesPermissionsBackup ',
+      this.modulesPermissionsBackup
+    );
   }
 
   setFormData(resources: Resource[]) {
-
     resources.forEach((resource, index) => {
-  
       // Create the formgroup to add
       // In FormArray
 
       const permissionGroup = this.fb.group({
         form: this.fb.control(resource.name),
-        permission: this.fb.control([0])
-      })
+        permission: this.fb.control([0]),
+      });
 
       const actions = resource.actions;
       const actionsList: number[] = [];
@@ -142,11 +147,9 @@ export class FormRoleComponent implements OnInit {
 
       this.setDataRow(resource, index);
     });
-
   }
 
-  setDataRow(resource: Resource, 
-             index: number) {
+  setDataRow(resource: Resource, index: number) {
     const tableRow = {
       form: resource.name,
       options: resource.actions,
@@ -158,16 +161,17 @@ export class FormRoleComponent implements OnInit {
   }
 
   createRole() {
-
-    if (this.roleFormGroup.valid 
-        && this.permisionFormGroup.valid) {
-      
-      let moduleId: any = this.permisionFormGroup.get('modulePermission')?.value;
+    if (this.roleFormGroup.valid && this.permisionFormGroup.valid) {
+      let moduleId: any =
+        this.permisionFormGroup.get('modulePermission')?.value;
       this.setModulePermission(moduleId);
 
-      console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
+      console.log(
+        'this.modulesPermissionsBackup ',
+        this.modulesPermissionsBackup
+      );
 
-      return
+      return;
 
       if (this.title.includes('Editar')) {
         this.roleService
@@ -228,24 +232,22 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  getTableData(moduleId: number, 
-               roleId?: number) {
-
+  getTableData(moduleId: number, roleId?: number) {
     this.modulesPermissionForm = this.fb.group({
-      modulesPermission: this.fb.array([])
+      modulesPermission: this.fb.array([]),
     });
     this.showTable = false;
 
     let getModuleActions;
-    let modulePermissionsModified = this.modulesPermissionsBackup
-                                        .findIndex((module) => {
-      return module.moduleId === moduleId
-    })
+    let modulePermissionsModified = this.modulesPermissionsBackup.findIndex(
+      (module) => {
+        return module.moduleId === moduleId;
+      }
+    );
 
-    console.log("modulePermissionsModified ", modulePermissionsModified)
+    console.log('modulePermissionsModified ', modulePermissionsModified);
 
     if (modulePermissionsModified === -1) {
-
       if (roleId) {
         let params = new HttpParams();
         params = params.set('role_id', roleId);
@@ -253,35 +255,33 @@ export class FormRoleComponent implements OnInit {
       } else {
         getModuleActions = this.roleService.getModuleActions(moduleId);
       }
-  
+
       getModuleActions.subscribe((response) => {
-  
         this.tableData = [];
-  
-        console.log("response ", response)
-  
+
+        console.log('response ', response);
+
         this.modulePreviousResource = response.resources;
         this.setFormData(this.modulePreviousResource);
 
         setTimeout(() => {
           this.showTable = true;
         }, 300);
-
-
       });
-      
     } else {
-
-      this.setFormData(this.modulesPermissionsBackup[modulePermissionsModified]
-                           .moduleResource);
+      this.setFormData(
+        this.modulesPermissionsBackup[modulePermissionsModified].moduleResource
+      );
 
       this.showTable = true;
-
     }
   }
 
   show() {
-    console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup)
-    console.log("this.modulesPermissionForm ", this.modulesPermissionForm)
+    console.log(
+      'this.modulesPermissionsBackup ',
+      this.modulesPermissionsBackup
+    );
+    console.log('this.modulesPermissionForm ', this.modulesPermissionForm);
   }
 }

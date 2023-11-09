@@ -55,4 +55,6 @@ export class RolesService {
   deleteRole(roleId: number): Observable<RoleResponse> {
     return this.http.delete(`/roles/${roleId}`);
   }
+
+  getUserRole() {}
 }
