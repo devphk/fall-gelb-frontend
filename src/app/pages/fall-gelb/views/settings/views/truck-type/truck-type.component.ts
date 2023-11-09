@@ -52,26 +52,55 @@ export class TruckTypeComponent implements OnInit {
   }
 
   processTruck(processType: string) {
-    // this.dialogService
-    //     .openDialog(NewCustomsComponent, 
-    //                 processType === 'Add' ? 'Crear Aduana' : 'Editar Aduana', 
-    //                 '800px', 
-    //                 'auto',
-    //                 processType === 'Add' ? null : this.itemsSelected)
-    //     .afterClosed()
-    //     .subscribe((custom) => {
-    //       console.log("custom ", custom);
-    //     });
+    this.dialogService
+        .openDialog(NewTruckTypeComponent, 
+                    processType === 'Add' ? 'Crear Tipo de Camión' : 'Editar Tipo de Camión', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshTruck();
+          }
+        });
   }
 
   deleteTruck() {
-  //   this.customsService
-  //     .deleteCustoms(this.itemsSelected[0].id)
-  //       .subscribe( (data) => {console.log(data)},
-  //       (error) => {console.log(error)});
-  // }
+    // this.dialogService
+    // .openConfirmationDialog(
+    //         `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
+    //         'Este cambio no se puede revertir')
+    // .afterClosed()
+    // .subscribe((response)=>{
+    //   if (response) {
+    //     this.customsService.deleteCustom(this.itemsSelected[0].id)
+    //     .subscribe((data) => {
+    //       this.toastService.showToaster('Aduana eliminada correctamente!')
+    //       this.refreshCustoms();
+    //     },
+    //       (error) => this.toastService.showToaster(error.error.message, true));
+    //   }
+    // })
 
 }
 
+refreshTruck() {
+  this.tableData = [];
+
+  this.truckTypeService.getTruckType()
+      .subscribe((trucks) => {
+        trucks.forEach((truck) => {
+
+          const truckToInput:truckType = {
+            id: truck.id,
+            name: truck.name
+          };
+
+          this.tableData.push(truckToInput);
+
+        });
+      })
+}
 
 }
