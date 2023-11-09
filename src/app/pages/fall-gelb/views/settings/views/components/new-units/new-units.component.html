@@ -1,19 +1,21 @@
-<div class="newUnits">   
-    <form [formGroup]="newUnitsForm">
-        <div mat-dialog-content 
+<div>   
+    <form [formGroup]="unitsForm">
+        <div mat-dialog-content f
              fxLayout="row wrap" 
              fxLayoutGap="20px"
-             fxLayout.lt.md="column">
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
             <br>
-                <app-phk-input  fxFlex="calc(33% - 20px)"
-                                label="Nombre de Unidad" 
-                                formControlName="name" 
-                                [required]="true">
 
-                </app-phk-input>
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Nombre" 
+                            formControlName="name" 
+                            [required]="true"
+                            [errorMessage]="unitsForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
+            </app-phk-input>
             
-            <button class="w-100" mat-flat-button color="primary">Guardar</button>
-        
-        </div>
+        </div> 
     </form>
+
+    <button class="w-100" mat-flat-button color="primary" (click)="saveUnits()">Enviar</button>
 </div>

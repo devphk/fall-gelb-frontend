@@ -4,16 +4,55 @@
 
     <h1>Aduana</h1>
 
-    <button mat-mini-fab
-            color="primary" 
-            aria-label="Nueva Aduana"
-            matTooltip="Nueva Aduana"
-            (click)="newCustoms()">
-        <mat-icon>add</mat-icon>
-    </button>
+    <div fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+<button
+  class="crud-button"
+  mat-mini-fab
+  color="primary"
+  aria-label="Registrar Aduana"
+  matTooltip="Registrar Aduana"
+  (click)="processCustoms('Add')"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Aduana"
+      matTooltip="Editar Aduana"
+      (click)="processCustoms('Edit')"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Aduana"
+      matTooltip="Eliminar Aduana"
+      (click)="deleteCustoms()"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>delete</mat-icon>
+</button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="refreshCustoms()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
+</div>
 </div>
 
 
 <app-phk-table [columnsTags]="tableColumnsTags"
             [columnsToDisplay]="tableColumnsToDisplay"
-            [data]="tableData"></app-phk-table>
+            [data]="tableData"
+            [(itemsSelected)]="itemsSelected"></app-phk-table>

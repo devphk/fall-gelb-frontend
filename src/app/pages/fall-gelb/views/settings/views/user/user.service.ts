@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
-import { User } from '@shared/models';
+import { LoadingMessage, User } from '@shared/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,19 +14,19 @@ export class UserService {
     return this.http.get('/users');
   }
 
-  postUsers (data:User): Observable<User[]> {
-    return this.http.post('/users', data);
+  createUser (data:any): Observable<User[]> {
+    return this.http.post('/users', data, undefined, true, LoadingMessage.CREATING_USER);
   }
 
   deleteUsers(id:number) {
-    return this.http.delete('/users/'+ id);
+    return this.http.delete('/users/'+ id, undefined, true, LoadingMessage.DELETING_USER);
   }
 
   getUser(id:number){
     return this.http.get('/users/'+ id);
   }
 
-  putUser(data:User, id:number){
+  editUser(data:any, id:number){
     return this.http.put(`/users/${id}`, data);
   }
 }

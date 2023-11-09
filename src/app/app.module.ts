@@ -22,6 +22,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   providers: [
     SessionGuard,
+    TokenService,
     PhkThemeToggleService,
     HttpClient,
     TokenService,

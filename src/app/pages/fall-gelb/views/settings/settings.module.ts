@@ -78,8 +78,8 @@ const routes: Routes = [
     FormBankAccountComponent,
     FormBankComponent,
     FormCurrencyComponent,
-    FormUserComponent
-  ],
+    FormUserComponent,
+    ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -100,7 +100,8 @@ const routes: Routes = [
     PhkConfirmationDialogModule,
     MatCardModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    PhkConfirmationDialogModule
   ]
 })
 export class SettingsModule {}
