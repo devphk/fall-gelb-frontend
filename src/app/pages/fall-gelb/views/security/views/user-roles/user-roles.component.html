@@ -7,12 +7,25 @@
       fxLayout.lt-md="column"
       fxLayoutAlign="start center"
     >
-      <div class="role-content" *ngFor="let role of rolesList">
-        <app-phk-slide-toggle
-          fxFlex.gt-md="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          class="mt-m20"
-        ></app-phk-slide-toggle>
+      <div
+        class="role-content"
+        *ngFor="let role of rolesList"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+      >
+        <mat-checkbox [formControlName]="role.id">{{ role.name }}</mat-checkbox>
+      </div>
+
+      <div fxFlex="100">
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="submitForm()"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </form>
