@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewCustomsComponent } from '../components/new-customs/new-customs.component';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { CustomsService } from './customs.service';
 import { CustomsDataTable } from '@shared/models';
 
@@ -26,7 +26,8 @@ export class CustomsComponent implements OnInit {
 
 
   constructor(private dialogService: DialogService,
-              private customsService:CustomsService) { }
+              private customsService:CustomsService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.getCustoms();
@@ -66,15 +67,50 @@ export class CustomsComponent implements OnInit {
                     processType === 'Add' ? null : this.itemsSelected)
         .afterClosed()
         .subscribe((custom) => {
-          console.log("custom ", custom);
+          if(custom) {
+            this.refreshCustoms();
+          }
         });
   }
 
   deleteCustoms() {
-    this.customsService
-      .deleteCustoms(this.itemsSelected[0].id)
-        .subscribe( (data) => {console.log(data)},
-        (error) => {console.log(error)});
+    this.dialogService
+    .openConfirmationDialog(
+            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
+            'Este cambio no se puede revertir')
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.customsService.deleteCustom(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Aduana eliminada correctamente!')
+          this.refreshCustoms();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
+  }
+
+  refreshCustoms() {
+    this.tableData = [];
+
+    this.customsService.getCustoms()
+        .subscribe((customs) => {
+          customs.forEach((custom) => {
+
+            const customToInput:CustomsDataTable = {
+              id: custom.id,
+              name: custom.name,
+              address: custom.address,
+              transport_types: custom.transport_types,
+              longitude: custom.longitude,
+              latitude:custom.latitude
+            };
+
+            this.tableData.push(customToInput);
+
+          });
+        })
   }
 
 }
