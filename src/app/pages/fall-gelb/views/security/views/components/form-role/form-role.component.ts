@@ -155,6 +155,9 @@ export class FormRoleComponent implements OnInit {
     }
 
     getModuleActions.subscribe((response) => {
+
+      console.log("response ", response)
+
       this.tableData = [];
 
       response.resources.forEach((modulePermissions, index) => {
