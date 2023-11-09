@@ -40,12 +40,13 @@
 </button>
 
 <button mat-mini-fab
-              color="primary"
-              aria-label="Actualizar Tabla"
-              matTooltip="Actualizar Tabla"
-              (click)="refreshTruck()">
-        <mat-icon>refresh</mat-icon>
-      </button>
+        color="primary"
+        aria-label="Actualizar Tabla"
+        matTooltip="Actualizar Tabla"
+        (click)="refreshTruck()"
+        [disabled]="itemsSelected.length > 1">
+  <mat-icon>refresh</mat-icon>
+</button>
 
 </div>
 </div>

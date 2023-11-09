@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewTruckTypeComponent } from '../components/new-truck-type/new-truck-type.component';
 import { TruckTypeService } from './truck-type.service';
 import { truckType } from '@shared/models/truck-type';
@@ -24,7 +24,8 @@ export class TruckTypeComponent implements OnInit {
 
 
   constructor(private dialogService: DialogService,
-              private truckTypeService:TruckTypeService) { }
+              private truckTypeService:TruckTypeService,
+              private toastService:ToastService) { }
 
   ngOnInit(): void {
     this.getTruck();
@@ -67,21 +68,21 @@ export class TruckTypeComponent implements OnInit {
   }
 
   deleteTruck() {
-    // this.dialogService
-    // .openConfirmationDialog(
-    //         `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
-    //         'Este cambio no se puede revertir')
-    // .afterClosed()
-    // .subscribe((response)=>{
-    //   if (response) {
-    //     this.customsService.deleteCustom(this.itemsSelected[0].id)
-    //     .subscribe((data) => {
-    //       this.toastService.showToaster('Aduana eliminada correctamente!')
-    //       this.refreshCustoms();
-    //     },
-    //       (error) => this.toastService.showToaster(error.error.message, true));
-    //   }
-    // })
+    this.dialogService
+    .openConfirmationDialog(
+            `Desea eliminar tipo de camión '${this.itemsSelected[0].name}'`,
+            'Este cambio no se puede revertir')
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.truckTypeService.deleteTruckType(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Tipo de Camión eliminado correctamente!')
+          this.refreshTruck();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
 
 }
 
