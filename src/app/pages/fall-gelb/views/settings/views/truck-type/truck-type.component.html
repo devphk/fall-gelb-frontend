@@ -4,16 +4,46 @@
 
     <h1>Tipos de Camiones</h1>
 
-    <button mat-mini-fab
-            color="primary" 
-            aria-label="Nuevo proveedor"
-            matTooltip="Nuevo Proveedor"
-            (click)="newTruckType()">
-        <mat-icon>add</mat-icon>
-    </button>
+    <div fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+<button
+  class="crud-button"
+  mat-mini-fab
+  color="primary"
+  aria-label="Registrar Tipo de Camión"
+  matTooltip="Registrar Tipo de Camión"
+  (click)="processTruck('Add')"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Tipo de Camión"
+      matTooltip="Editar Tipo de Camión"
+      (click)="processTruck('Edit')"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Tipo de Camión"
+      matTooltip="Eliminar Tipo de Camión"
+      (click)="deleteTruck()">
+  <mat-icon>delete</mat-icon>
+</button>
+
+</div>
 </div>
 
 
 <app-phk-table [columnsTags]="tableColumnsTags"
             [columnsToDisplay]="tableColumnsToDisplay"
-            [data]="tableData"></app-phk-table>
+            [data]="tableData"
+            [(itemsSelected)]="itemsSelected"></app-phk-table>
