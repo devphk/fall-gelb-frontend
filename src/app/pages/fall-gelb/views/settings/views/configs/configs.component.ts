@@ -74,7 +74,7 @@ export class ConfigsComponent implements OnInit {
 
       this.dialogService
         .openConfirmationDialog(
-                `Desea eliminar configuración '${this.itemsSelected[0].name}'`,
+                `Desea eliminar configuración '${this.itemsSelected[0].key}'`,
                 'Este cambio no se puede revertir')
         .afterClosed()
         .subscribe((response)=>{
