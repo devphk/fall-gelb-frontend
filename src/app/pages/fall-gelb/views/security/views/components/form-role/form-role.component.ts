@@ -66,18 +66,6 @@ export class FormRoleComponent implements OnInit {
     return this.modulesPermissionForm.get('modulesPermission') as FormArray;
   }
 
-  setForm() {
-    const testForm: FormGroup = this.fb.group({
-      selected: this.fb.control(true),
-      // permission: this.fb.control('')
-    });
-    this.modulesPermissionControls.push(testForm)
-    this.modulesPermissionControls.push(testForm)
-    this.modulesPermissionControls.push(testForm)
-    this.showForm = true
-    console.log("modulesPermissionForm ", this.modulesPermissionForm)
-  }
-
   selectPermissions(stepper: MatStepper) {
     if (this.roleFormGroup.valid) {
       stepper.next();
@@ -87,8 +75,8 @@ export class FormRoleComponent implements OnInit {
   }
 
   moduleSelected(moduleId: number) {
-    let rol_exits = this.data.dialogData ? this.data.dialogData.id : false;
-    this.getTableData(moduleId, rol_exits);
+    let roleId = this.data.dialogData ? this.data.dialogData.id : false;
+    this.getTableData(moduleId, roleId);
   }
 
   createRole() {
@@ -162,12 +150,12 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  getTableData(moduleId: number, rol_id?: number) {
+  getTableData(moduleId: number, roleId?: number) {
     let getModuleActions;
 
-    if (rol_id) {
+    if (roleId) {
       let params = new HttpParams();
-      params = params.set('role_id', rol_id);
+      params = params.set('role_id', roleId);
       getModuleActions = this.roleService.getModuleActions(moduleId, params);
     } else {
       getModuleActions = this.roleService.getModuleActions(moduleId);
@@ -177,18 +165,48 @@ export class FormRoleComponent implements OnInit {
 
       console.log("response ", response)
 
-      this.tableData = [];
+      if (roleId) {
 
-      response.resources.forEach((modulePermissions, index) => {
-        const tableRow = {
-          form: modulePermissions.name,
-          options: modulePermissions.actions,
-          rowIndex: index,
-          optionsSelected: [],
-        };
+        response.resources.forEach((resource) => {
 
-        this.tableData.push(tableRow);
-      });
+          // Create the formgroup to add
+          // In FormArray
+
+          const permissionGroup = this.fb.group({
+            permission: this.fb.control([0])
+          })
+
+          const actions = resource.actions;
+          const actionsList: number[] = [];
+
+          // Set the permissions of the action array
+
+          actions.forEach((action) => {
+            actionsList.push(action.id);
+          });
+
+          permissionGroup.get('permission')?.setValue(actionsList);
+
+          this.modulesPermissionControls.push(permissionGroup);
+
+        });
+      }
+      this.showForm = true;
+
+      console.log("form", this.modulesPermissionForm)
+
+      // this.tableData = [];
+
+      // response.resources.forEach((modulePermissions, index) => {
+      //   const tableRow = {
+      //     form: modulePermissions.name,
+      //     options: modulePermissions.actions,
+      //     rowIndex: index,
+      //     optionsSelected: [],
+      //   };
+
+      //   this.tableData.push(tableRow);
+      // });
     });
   }
 }

@@ -28,13 +28,13 @@ export class RolesService {
   }
 
   getModuleActions(
-    module_id: number,
-    role_id?: HttpParams
+    moduleId: number,
+    roleId?: HttpParams
   ): Observable<ModuleAction> {
-    if (role_id) {
-      return this.http.get(`/modules/${module_id}`, role_id);
+    if (roleId) {
+      return this.http.get(`/modules/${moduleId}`, roleId);
     } else {
-      return this.http.get(`/modules/${module_id}`);
+      return this.http.get(`/modules/${moduleId}`);
     }
   }
 
