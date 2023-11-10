@@ -35,7 +35,7 @@ export class FormBankComponent implements OnInit {
     });
   }
 
-  saveUser() {
+  saveBank() {
     if (this.banckFrom.valid) {
       if (this.data.title === 'Crear Banco') {
         const bank = {

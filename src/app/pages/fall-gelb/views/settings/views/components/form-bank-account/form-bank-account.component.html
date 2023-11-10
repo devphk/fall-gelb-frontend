@@ -7,48 +7,41 @@
       fxLayout.lt-md="column"
       fxLayoutAlign="start center"
     >
-      <app-phk-select formControlName="bank" [label]="'Banco'">
-        <mat-option *ngFor="let bankOption of bankOptions" [value]="bankOption">
-          {{ bankOption }}
+      <app-phk-select formControlName="bank_id" [label]="'Banco'">
+        <mat-option
+          *ngFor="let bankOption of bankOptions"
+          [value]="bankOption.id"
+        >
+          {{ bankOption.name }}
         </mat-option>
       </app-phk-select>
 
       <app-phk-input
-        formControlName="numberAccount"
+        formControlName="account_number"
         [label]="'Número de cuenta'"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         [required]="true"
       ></app-phk-input>
 
-      <app-phk-select formControlName="currency" [label]="'Moneda'">
+      <app-phk-select formControlName="currency_id" [label]="'Moneda'">
         <mat-option
           *ngFor="let currencyOption of currencyOptions"
-          [value]="currencyOption"
+          [value]="currencyOption.id"
         >
-          {{ currencyOption }}
+          {{ currencyOption.name }}
         </mat-option>
       </app-phk-select>
 
-      <app-phk-input
-        formControlName="priority"
-        [label]="'Prioridad'"
-        fxFlex.gt-md="calc(66% - 20px)"
-        fxFlex.lt-md="calc(100%)"
-        [required]="true"
-      ></app-phk-input>
-
-      <app-phk-slide-toggle
-        (click)="changeisVisible()"
-        formControlName="isVisible"
-        [label]="'¿Quiere que sea visible?'"
-        fxFlex.gt-md="calc(33% - 20px)"
-        fxFlex.lt-md="calc(100%)"
-        class="mt-m20"
-      ></app-phk-slide-toggle>
-
       <div fxFlex="100">
-        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveBankAccount()"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </form>

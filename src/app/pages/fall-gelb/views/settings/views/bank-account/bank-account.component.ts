@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { FormBankAccountComponent } from '../components';
+import { BankAccountDataTable } from '@shared/models/bank-account';
+import { BankAcountService } from './bank-account.service';
 
 @Component({
   selector: 'app-bank-account',
@@ -10,7 +12,7 @@ import { FormBankAccountComponent } from '../components';
 export class BankAccountComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     'ID',
-    'Banco',
+    'Cuenta Bancaria',
     'Número de Cuenta',
     'Moneda',
     'Prioridad',
@@ -22,35 +24,102 @@ export class BankAccountComponent implements OnInit {
     'currency',
     'priority',
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      bank: 'Caja USD',
-      numberAccount: '00',
-      currency: 'DOLAR (USD)	',
-      priority: '5',
-    },
-  ];
+  tableData: any[] = [];
 
-  constructor(private dialogService: DialogService) {}
+  itemsSelected: any[] = [];
+
+  constructor(
+    private dialogService: DialogService,
+    private bankAccountService: BankAcountService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getbanks();
   }
 
-  newBankAccount() {
+  getbanks() {
+    this.bankAccountService.getBankAcounts().subscribe(
+      (response) => {
+        const tableData: BankAccountDataTable[] = [];
+
+        response.forEach((bankAccount: any) => {
+          const bankToInput: BankAccountDataTable = {
+            id: bankAccount.id,
+            bank: bankAccount.pivote.name,
+            numberAccount: bankAccount.id,
+            currency: bankAccount.id,
+            priority: bankAccount.id,
+          };
+
+          tableData.push(bankToInput);
+        });
+
+        this.tableData = tableData;
+      },
+      (error) => {}
+    );
+  }
+
+  processBankAccount(processType: string) {
     this.dialogService
       .openDialog(
         FormBankAccountComponent,
-        'Registrar Cuenta Bancaria',
+        processType === 'Add'
+          ? 'Crear Cuenta Bancaria'
+          : 'Editar Cuenta Bancaria',
         '800px',
-        '460px'
+        'auto',
+        processType === 'Add' ? null : this.itemsSelected
       )
       .afterClosed()
-      .subscribe((data) => {
-        console.log('Data ', data);
+      .subscribe((bankAccount) => {
+        if (bankAccount) {
+          this.refreshBankAccounts();
+        }
       });
+  }
+
+  deleteBankAccount() {
+    this.dialogService
+      .openConfirmationDialog(
+        `Desea eliminar Cuenta Bancaria '${this.itemsSelected[0].name}'`,
+        'Este cambio no se puede revertir'
+      )
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.bankAccountService
+            .deleteBankAcounts(this.itemsSelected[0].id)
+            .subscribe(
+              (data) => {
+                this.toastService.showToaster(
+                  'Cuenta Bancaria eliminado correctamente!'
+                );
+                this.refreshBankAccounts();
+              },
+              (error) =>
+                this.toastService.showToaster(error.error.message, true)
+            );
+        }
+      });
+  }
+
+  refreshBankAccounts() {
+    this.tableData = [];
+
+    this.bankAccountService.getBankAcounts().subscribe((bankAccounts) => {
+      bankAccounts.forEach((bankAccount: any) => {
+        const bankAccountToInput = {
+          id: bankAccount.id,
+          bank: bankAccount.pivote.name,
+          numberAccount: bankAccount.id,
+          currency: bankAccount.id,
+          priority: bankAccount.id,
+        };
+
+        this.tableData.push(bankAccountToInput);
+      });
+    });
   }
 }
