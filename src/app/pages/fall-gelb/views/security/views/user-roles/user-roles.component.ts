@@ -68,7 +68,7 @@ export class UserRolesComponent implements OnInit {
 
   private createForm(roles: Role[], idRolesActive: number[]): void {
     let controls: { [key: number]: boolean[] } = {};
-
+    this.rolesList = [];
     this.rolesList = roles;
 
     roles.map((role) => {
