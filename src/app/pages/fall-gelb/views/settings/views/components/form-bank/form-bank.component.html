@@ -12,6 +12,9 @@
         formControlName="name"
         [required]="true"
         fxFlex="100"
+        [errorMessage]="
+          banckFrom.controls['name'].invalid ? 'Debe ingresar un nombre' : null
+        "
       ></app-phk-input>
       <div
         fxFlex="50"
@@ -21,7 +24,14 @@
         fxFlex.lg="100"
         fxFlex.xl="100"
       >
-        <button class="w-100" mat-flat-button color="primary">Guardar</button>
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveBank()"
+        >
+          Guardar
+        </button>
       </div>
     </div>
   </form>

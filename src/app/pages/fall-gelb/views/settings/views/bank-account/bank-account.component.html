@@ -1,21 +1,58 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Cuentas Bancarias</h1>
 
-  <div fxLayout="row" 
-       fxLayoutAlign="space-between center">
-    <h1>Cuentas Bancarias</h1>
-
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <button
+      class="crud-button"
       mat-mini-fab
       color="primary"
       aria-label="Registrar Cuenta Bancaria"
       matTooltip="Registrar Cuenta Bancaria"
-      (click)="newBankAccount()"
+      (click)="processBankAccount('Add')"
     >
       <mat-icon>add</mat-icon>
     </button>
-  </div>
 
-  <app-phk-table
-    [columnsTags]="tableColumnsTags"
-    [columnsToDisplay]="tableColumnsToDisplay"
-    [data]="tableData"
-  ></app-phk-table>
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Cuenta Bancaria"
+      matTooltip="Editar Cuenta Bancaria"
+      (click)="processBankAccount('Edit')"
+      [disabled]="itemsSelected.length > 1"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Cuenta Bancaria"
+      matTooltip="Eliminar Cuenta Bancaria"
+      (click)="deleteBankAccount()"
+      [disabled]="itemsSelected.length > 1"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Actualizar Tabla"
+      matTooltip="Actualizar Tabla"
+      (click)="refreshBankAccounts()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</div>
+
+<app-phk-table
+  *ngIf="tableData !== []"
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+  [(itemsSelected)]="itemsSelected"
+></app-phk-table>

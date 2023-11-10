@@ -1,5 +1,8 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { BankService } from '../../bank/bank.service';
+import { ToastService } from '@core/services';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-bank',
@@ -7,16 +10,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-bank.component.scss'],
 })
 export class FormBankComponent implements OnInit {
-  constructor(private formBuild: FormBuilder) {}
+  constructor(
+    private formBuild: FormBuilder,
+    private dialogRef: MatDialogRef<FormBankComponent>,
+    private bankService: BankService,
+    private toastService: ToastService,
+    @Inject(MAT_DIALOG_DATA) private data: any
+  ) {}
 
-  banckFrom: FormGroup = this.formBuild.group({
-    name: this.formBuild.control(''),
-  });
+  isEditMode: boolean = false;
 
-  ngOnInit(): void {}
+  banckFrom: FormGroup = new FormGroup({});
 
-  showForm() {
-    console.log('this.form: ', this.banckFrom);
-    console.log('value: ', this.banckFrom.get('control')!.value);
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.banckFrom = this.formBuild.group({
+      name: this.formBuild.control(
+        this.data.dialogData ? this.data.dialogData[0].name : '',
+        [Validators.required]
+      ),
+    });
+  }
+
+  saveBank() {
+    if (this.banckFrom.valid) {
+      if (this.data.title === 'Crear Banco') {
+        const bank = {
+          name: this.banckFrom.get('name')?.value,
+        };
+
+        this.bankService.createBank(bank).subscribe(
+          (data) => {
+            this.toastService.showToaster('Banco Creado Correctamente!');
+            this.dialogRef.close(true);
+          },
+          (error) => this.toastService.showToaster(error.error.message, true)
+        );
+      } else {
+        const bankEdit = {
+          name: this.banckFrom.get('name')?.value,
+        };
+
+        console.log(bankEdit);
+
+        this.bankService
+          .editBank(bankEdit, this.data.dialogData[0].id)
+          .subscribe(
+            (data) => {
+              this.toastService.showToaster('Banco Editado Correctamente!');
+              this.dialogRef.close(true);
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
+      }
+    } else {
+      this.banckFrom.markAllAsTouched();
+    }
   }
 }
