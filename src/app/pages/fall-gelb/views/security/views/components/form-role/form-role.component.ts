@@ -275,7 +275,9 @@ export class FormRoleComponent implements OnInit {
       this.setFormData(this.modulesPermissionsBackup[modulePermissionsModified]
                            .moduleResource);
 
-      this.showTable = true;
+      setTimeout(() => {
+        this.showTable = true;
+      }, 300);
 
     }
   }
