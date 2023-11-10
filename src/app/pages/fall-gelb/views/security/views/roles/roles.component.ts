@@ -11,79 +11,66 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./roles.component.scss'],
 })
 export class RolesComponent implements OnInit {
+  tableColumnsToDisplay: string[] = ['Id', 'Rol'];
 
-  tableColumnsToDisplay: string[] = [
-    'Id', 
-    'Rol'
-  ];
-  
-  tableColumnsTags: string[] = [
-    'id', 
-    'name'
-  ];
+  tableColumnsTags: string[] = ['id', 'name'];
 
   tableData: any[] = [];
   rolesList: any[] = [];
   testForm: FormGroup = this.fb.group({
-    modulesPermission: this.fb.array([])
+    modulesPermission: this.fb.array([]),
   });
 
   form = this.fb.group({
-    lessons: this.fb.array([])
-  });    
-  constructor(private dialogService: DialogService,
-              private roleService: RolesService,
-              private toastService: ToastService,
-              private fb: FormBuilder) {}
+    lessons: this.fb.array([]),
+  });
+  constructor(
+    private dialogService: DialogService,
+    private roleService: RolesService,
+    private toastService: ToastService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.getRoles();
   }
 
   editRegister(role: Role) {
-    
-    console.log("edit event ", role)
+    console.log('edit event ', role);
     this.newRol(role);
   }
 
   getRoles() {
-    
     this.tableData = [];
     this.rolesList = [];
-    this.roleService
-        .getRoles()
-        .subscribe((roles) => {
+    this.roleService.getRoles().subscribe((roles) => {
+      roles.forEach((role) => {
+        const roleToInsert = {
+          id: role.id,
+          name: role.name,
+        };
 
-          roles.forEach((role) => {
-            
-            const roleToInsert =  {
-              id: role.id,
-              name: role.name
-            }
+        this.rolesList.push(roleToInsert);
+      });
 
-            this.rolesList.push(roleToInsert);
-
-          });
-
-          this.tableData = this.rolesList.slice();
-
-        })
+      this.tableData = this.rolesList.slice();
+    });
   }
 
   newRol(roleData: Role | null) {
     this.dialogService
-        .openDialog(FormRoleComponent,
-                    roleData ? `Editar Rol: ${roleData.name}` 
-                             : 'Nuevo Rol', 
-                    '800px', 
-                    'auto',
-                    roleData)
-        .afterClosed()
-        .subscribe((data) => {
-          if (data) {
-            this.getRoles();
-          }
-        });
+      .openDialog(
+        FormRoleComponent,
+        roleData ? `Editar Rol: ${roleData.name}` : 'Nuevo Rol',
+        '800px',
+        'auto',
+        roleData
+      )
+      .afterClosed()
+      .subscribe((data) => {
+        if (data) {
+          this.getRoles();
+        }
+      });
   }
-
 }

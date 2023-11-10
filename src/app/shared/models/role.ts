@@ -1,10 +1,10 @@
 export interface Role {
-  id?: number;
+  id: number;
   name: string;
 }
 
 export interface RoleResponse {
-  name: number;
+  name: string;
   guard_name: string;
   updated_at: string;
   created_at: string;

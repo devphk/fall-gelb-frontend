@@ -36,6 +36,10 @@
         Selecciona el módulo del rol
       </span>
 
+      <button (click)="show()">
+        show()
+      </button>
+
       <div fxLayoutGap="10px"
            fxLayout="column"
            fxLayoutAlign="center start"
@@ -55,7 +59,7 @@
           Selecciona los permisos dentro del módulo
         </span>
 
-        <div *ngIf="showForm"
+        <div *ngIf="showTable"
              class="w-80 permission-container">
           <div fxLayout="row"
                fxLayoutAlign="space-between enter">
