@@ -4,7 +4,6 @@ import { FormRoleComponent } from '../components';
 import { RolesService } from './roles.service';
 import { Role } from '@shared/models';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { UserRolesComponent } from '../user-roles';
 
 @Component({
   selector: 'app-roles',
@@ -61,7 +60,7 @@ export class RolesComponent implements OnInit {
   newRol(roleData: Role | null) {
     this.dialogService
       .openDialog(
-        UserRolesComponent,
+        FormRoleComponent,
         roleData ? `Editar Rol: ${roleData.name}` : 'Nuevo Rol',
         '800px',
         'auto',

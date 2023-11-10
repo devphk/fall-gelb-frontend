@@ -12,7 +12,7 @@
         *ngFor="let role of rolesList"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
-        class="mt-m20"
+        style="margin-bottom: 20px"
       >
         <mat-checkbox [formControlName]="role.id">{{ role.name }}</mat-checkbox>
       </div>
