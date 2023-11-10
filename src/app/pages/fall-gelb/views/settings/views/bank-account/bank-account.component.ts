@@ -49,7 +49,6 @@ export class BankAccountComponent implements OnInit {
             bank: bankAccount.pivote.name,
             numberAccount: bankAccount.id,
             currency: bankAccount.id,
-            priority: bankAccount.id,
           };
 
           tableData.push(bankToInput);
