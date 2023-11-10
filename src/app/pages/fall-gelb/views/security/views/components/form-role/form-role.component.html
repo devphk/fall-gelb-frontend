@@ -47,7 +47,7 @@
 
         <app-phk-select formControlName="modulePermission"
                         [label]="'Módulos'"
-                        (optionSelected)="moduleSelected($event)">
+                        (optionSelected)="moduleChanged($event)">
           <mat-option *ngFor="let modules of modulesOptions"
                       [value]="modules.id">
             {{ modules.name }}
@@ -64,7 +64,7 @@
           <div fxLayout="row"
                fxLayoutAlign="space-between enter">
             <h2 fxFlex="calc(50% - 20px)">
-              Módulo
+              Formulario
             </h2>
             <h2 fxFlex="calc(50% - 20px)">
               Permisos
@@ -79,14 +79,14 @@
                      fxLayoutAlign="space-between center">
   
                   <h3 fxFlex="calc(50% - 20px)">
-                    {{tableData[i].form}}
+                    {{tableData[i].name}}
                   </h3>
   
                   <app-phk-select formControlName="permission"
                                   [multiple]="true"
                                   [label]="'Selecciona permisos'"
                                   fxFlex="calc(50% - 20px)">
-                    <mat-option *ngFor="let option of tableData[i].options"
+                    <mat-option *ngFor="let option of tableData[i].actions"
                                 [value]="option.id">{{option.name}}</mat-option>
                   </app-phk-select>
   

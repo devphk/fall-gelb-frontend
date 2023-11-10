@@ -1,5 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpUtilsService } from '@core/services';
 import { HttpService } from '@core/services/http.service';
 import { ModuleAction } from '@shared/models/module-action';
 import { RolePermissionAdded, RoleResponse } from '@shared/models/role';
@@ -10,7 +11,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RolesService {
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService,
+              private httpUtils: HttpUtilsService) {}
 
   addRolePermissions(
     modulePermission: any,
@@ -29,13 +31,17 @@ export class RolesService {
 
   getModuleActions(
     moduleId: number,
-    roleId?: HttpParams
+    roleId?: number
   ): Observable<ModuleAction> {
-    if (roleId) {
-      return this.http.get(`/modules/${moduleId}`, roleId);
-    } else {
-      return this.http.get(`/modules/${moduleId}`);
+
+    const params = {
+      role_id: roleId
     }
+
+    return this.http
+               .get(`/modules/${moduleId}`, 
+                    roleId ? this.httpUtils.getHttpParams(params) : undefined);
+
   }
 
   createRole(roleName: any): Observable<RoleResponse> {
