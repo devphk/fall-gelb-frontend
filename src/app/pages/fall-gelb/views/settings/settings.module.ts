@@ -97,6 +97,7 @@ const routes: Routes = [
     PhkSelectModule,
     PhkTextAreaModule,
     PhkSlideToggleModule,
+    PhkConfirmationDialogModule,
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,

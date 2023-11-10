@@ -1,6 +1,5 @@
 export enum LoadingMessage {
   DEFAULT = 'Cargando...',
-  CREATING_ROLE = 'Creando rol...',
   CREATING_USER = 'Creando usuario...',
   DELETING_USER = 'Eliminando usuario...',
   CREATING_CUSTOM = 'Creando aduana...',
@@ -11,4 +10,7 @@ export enum LoadingMessage {
   DELETING_BANK = 'DELETING_Bank',
   CREATING_WAREHOUSE = 'Creando Almacén...',
   DELETING_WAREHOUSE = 'Eliminando Almacén...',
+  CREATING_ROLE = 'Creando rol...',
+  CREATING_COMMODITY = 'Creando Tipo de Mercancia...',
+  DELETING_COMMODITY = 'Eliminando Tipo de Mercancia...',
 }
