@@ -6,5 +6,9 @@ export enum LoadingMessage {
   CREATING_CUSTOM = 'Creando aduana...',
   DELETING_CUSTOM = 'Eliminando aduana...',
   CREATING_CONCEPT = 'Creando concepto...',
-  DELETING_CONCEPT = 'Eliminando concepto...'
+  DELETING_CONCEPT = 'Eliminando concepto...',
+  CREATING_UNIT = 'Creando Unidad...',
+  DELETING_UNIT = 'Eliminando Unidad...',
+  CREATING_BANK = 'CREATING_BANK',
+  DELETING_BANK = 'DELETING_Bank',
 }

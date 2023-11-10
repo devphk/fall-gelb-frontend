@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewUnitsComponent } from '../components/new-units/new-units.component';
+import { UnitsService } from './units.service';
+import { Units } from '@shared/models/units';
 
 @Component({
   selector: 'app-units',
@@ -11,51 +13,94 @@ export class UnitsComponent implements OnInit {
 
   tableColumnsToDisplay: string[] = [
     "ID",
-    "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
+    "Nombre"
   ];
   tableColumnsTags: string[] = [
     "id",
-    "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
+    "name"
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+
+  constructor(private dialogService: DialogService,
+              private unitsService: UnitsService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getUnits();
   }
 
-  newUnit() {
+  getUnits() {
+    this.unitsService.getUnits()
+      .subscribe((response) => {
+        const tableData: Units[] = [];
+        
+        response.forEach((units) => {
+          const unitstoInput:Units = {
+            id: units.id,
+            name: units.name,
+          };
+
+          tableData.push(unitstoInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
+  }
+
+  processUnit(processType: string) {
     this.dialogService
-        .openDialog(NewUnitsComponent,
-                    "Nueva Unidad",
-                    "800px",
-                    "250px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+        .openDialog(NewUnitsComponent, 
+                    processType === 'Add' ? 'Crear Unidad' : 'Editar Unidad', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshUnits();
+          }
+        });
+  }
+
+  deleteUnit() {
+    this.dialogService
+    .openConfirmationDialog(
+            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
+            'Este cambio no se puede revertir')
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.unitsService.deleteUnit(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Unidad eliminada correctamente!')
+          this.refreshUnits();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
+  }
+
+  refreshUnits() {
+    this.tableData = [];
+
+    this.unitsService.getUnits()
+        .subscribe((units) => {
+          units.forEach((unit) => {
+
+            const unitToInput:Units = {
+              id: unit.id,
+              name: unit.name,
+            };
+
+            this.tableData.push(unitToInput);
+
+          });
+        })
   }
 
 }

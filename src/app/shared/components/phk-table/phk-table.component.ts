@@ -110,6 +110,7 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   updateCheckedList(event: any, element: any, rowIndex: number) {
+    
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {
