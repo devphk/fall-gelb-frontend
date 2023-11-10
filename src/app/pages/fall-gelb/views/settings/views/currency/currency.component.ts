@@ -2,8 +2,8 @@ import { ToastService } from './../../../../../../core/services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '@core/services';
 import { FormCurrencyComponent } from '../components';
-import { CurrencieService } from './currency.service';
 import { CurrencyDataTable } from '@shared/models/currency';
+import { CurrencyService } from './currency.service';
 
 @Component({
   selector: 'app-currency',
@@ -19,7 +19,7 @@ export class CurrencyComponent implements OnInit {
 
   constructor(
     private dialogService: DialogService,
-    private currenciesService: CurrencieService,
+    private currencyService: CurrencyService,
     private toastService: ToastService
   ) {}
 
@@ -28,7 +28,7 @@ export class CurrencyComponent implements OnInit {
   }
 
   getbanks() {
-    this.currenciesService.getCurrencies().subscribe(
+    this.currencyService.getCurrencies().subscribe(
       (response) => {
         const tableData: CurrencyDataTable[] = [];
 
@@ -75,7 +75,7 @@ export class CurrencyComponent implements OnInit {
       .afterClosed()
       .subscribe((response) => {
         if (response) {
-          this.currenciesService
+          this.currencyService
             .deleteCurrency(this.itemsSelected[0].id)
             .subscribe(
               (data) => {
@@ -94,7 +94,7 @@ export class CurrencyComponent implements OnInit {
   refreshCurrencies() {
     this.tableData = [];
 
-    this.currenciesService.getCurrencies().subscribe((currencies) => {
+    this.currencyService.getCurrencies().subscribe((currencies) => {
       currencies.forEach((currency: any) => {
         const currenciesToInput = {
           id: currency.id,

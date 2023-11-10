@@ -1,7 +1,7 @@
+import { BankAcountResponse } from '@shared/models/bank-account';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { LoadingMessage } from '@shared/models';
-import { BankAcountResponse } from '@shared/models/bank-account';
 import { Observable } from 'rxjs';
 
 @Injectable({

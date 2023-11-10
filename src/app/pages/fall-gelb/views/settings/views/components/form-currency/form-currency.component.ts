@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CurrencieService } from '../../currency/currency.service';
 import { ToastService } from '@core/services';
+import { CurrencyService } from '../../currency/currency.service';
 
 @Component({
   selector: 'app-form-currency',
@@ -13,7 +13,7 @@ export class FormCurrencyComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
     private dialogRef: MatDialogRef<FormCurrencyComponent>,
-    private currencyService: CurrencieService,
+    private currencyService: CurrencyService,
     private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}

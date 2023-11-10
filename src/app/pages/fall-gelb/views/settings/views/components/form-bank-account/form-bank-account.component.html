@@ -26,7 +26,7 @@
 
       <app-phk-select formControlName="currency_id" [label]="'Moneda'">
         <mat-option
-          *ngFor="let currencyOption of currencyOptions"
+          *ngFor="let currencyOption of currenciesOptions"
           [value]="currencyOption.id"
         >
           {{ currencyOption.name }}

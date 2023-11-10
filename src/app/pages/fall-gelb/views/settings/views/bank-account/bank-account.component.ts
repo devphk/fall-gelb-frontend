@@ -15,14 +15,12 @@ export class BankAccountComponent implements OnInit {
     'Cuenta Bancaria',
     'Número de Cuenta',
     'Moneda',
-    'Prioridad',
   ];
   tableColumnsTags: string[] = [
     'id',
-    'bank',
+    'bankName',
     'numberAccount',
-    'currency',
-    'priority',
+    'currencyName',
   ];
   tableData: any[] = [];
 
@@ -46,9 +44,11 @@ export class BankAccountComponent implements OnInit {
         response.forEach((bankAccount: any) => {
           const bankToInput: BankAccountDataTable = {
             id: bankAccount.id,
-            bank: bankAccount.pivote.name,
-            numberAccount: bankAccount.id,
-            currency: bankAccount.id,
+            bankId: bankAccount.bank_id,
+            bankName: bankAccount.bank.name,
+            numberAccount: bankAccount.account_number,
+            currencyId: bankAccount.currency_id,
+            currencyName: bankAccount.currency.name,
           };
 
           tableData.push(bankToInput);
@@ -111,10 +111,11 @@ export class BankAccountComponent implements OnInit {
       bankAccounts.forEach((bankAccount: any) => {
         const bankAccountToInput = {
           id: bankAccount.id,
-          bank: bankAccount.pivote.name,
-          numberAccount: bankAccount.id,
-          currency: bankAccount.id,
-          priority: bankAccount.id,
+          bankId: bankAccount.bank_id,
+          bankName: bankAccount.bank.name,
+          numberAccount: bankAccount.account_number,
+          currencyId: bankAccount.currency_id,
+          currencyName: bankAccount.currency.name,
         };
 
         this.tableData.push(bankAccountToInput);

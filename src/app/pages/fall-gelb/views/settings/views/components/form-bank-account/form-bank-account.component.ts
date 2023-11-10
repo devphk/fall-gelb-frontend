@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { BankService } from '../../bank/bank.service';
 import { SelectOption } from '@shared/models';
 import { BankAcountService } from '../../bank-account/bank-account.service';
+import { CurrencyService } from '../../currency/currency.service';
 
 @Component({
   selector: 'app-form-bank-account',
@@ -16,6 +17,7 @@ export class FormBankAccountComponent implements OnInit {
     private formBuild: FormBuilder,
     private dialogRef: MatDialogRef<FormBankAccountComponent>,
     private bankService: BankService,
+    private currencyService: CurrencyService,
     private bankAccountService: BankAcountService,
     private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) private data: any
@@ -24,7 +26,7 @@ export class FormBankAccountComponent implements OnInit {
   isEditMode: boolean = false;
 
   bankOptions: SelectOption[] = [];
-  currencyOptions: SelectOption[] = [];
+  currenciesOptions: SelectOption[] = [];
 
   ngOnInit(): void {
     this.initializeForm();
@@ -36,20 +38,29 @@ export class FormBankAccountComponent implements OnInit {
         });
       });
     });
+
+    this.currencyService.getCurrencies().subscribe((currencies) => {
+      currencies.map((curreny) => {
+        this.currenciesOptions.push({
+          id: curreny.id,
+          name: curreny.name,
+        });
+      });
+    });
   }
 
   initializeForm() {
     this.bankAccountForm = this.formBuild.group({
       account_number: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].account_number : '',
+        this.data.dialogData ? this.data.dialogData[0].numberAccount : '',
         [Validators.required]
       ),
       bank_id: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].bank_id : '',
+        this.data.dialogData ? this.data.dialogData[0].bankId : '',
         [Validators.required]
       ),
       currency_id: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].currency_id : '',
+        this.data.dialogData ? this.data.dialogData[0].currencyId : '',
         [Validators.required]
       ),
     });
