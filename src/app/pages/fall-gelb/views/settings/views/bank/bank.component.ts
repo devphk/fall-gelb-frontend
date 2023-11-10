@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { FormBankComponent } from '../components';
+import { BankDataTable } from '@shared/models/bank';
+import { BankService } from './bank.service';
 
 @Component({
   selector: 'app-bank',
@@ -10,27 +12,88 @@ import { FormBankComponent } from '../components';
 export class BankComponent implements OnInit {
   tableColumnsToDisplay: string[] = ['ID', 'Nombre'];
   tableColumnsTags: string[] = ['id', 'name'];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'BBVA Provincial',
-    },
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) {}
+  constructor(
+    private dialogService: DialogService,
+    private bankService: BankService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getbanks();
   }
 
-  newBank() {
+  getbanks() {
+    this.bankService.getBanks().subscribe(
+      (response) => {
+        const tableData: BankDataTable[] = [];
+
+        response.forEach((bank) => {
+          const bankToInput: BankDataTable = {
+            id: bank.id,
+            name: bank.name,
+          };
+
+          tableData.push(bankToInput);
+        });
+
+        this.tableData = tableData;
+      },
+      (error) => {}
+    );
+  }
+
+  processBank(processType: string) {
     this.dialogService
-      .openDialog(FormBankComponent, 'Nuevo Banco', '800px', '460px')
+      .openDialog(
+        FormBankComponent,
+        processType === 'Add' ? 'Crear Banco' : 'Editar Banco',
+        '800px',
+        'auto',
+        processType === 'Add' ? null : this.itemsSelected
+      )
       .afterClosed()
-      .subscribe((data) => {
-        console.log('Data ', data);
+      .subscribe((bank) => {
+        if (bank) {
+          this.refreshBanks();
+        }
       });
+  }
+
+  deleteBank() {
+    this.dialogService
+      .openConfirmationDialog(
+        `Desea eliminar Banco '${this.itemsSelected[0].name}'`,
+        'Este cambio no se puede revertir'
+      )
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.bankService.deleteBanks(this.itemsSelected[0].id).subscribe(
+            (data) => {
+              this.toastService.showToaster('Banco eliminado correctamente!');
+              this.refreshBanks();
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
+        }
+      });
+  }
+
+  refreshBanks() {
+    this.tableData = [];
+
+    this.bankService.getBanks().subscribe((banks) => {
+      banks.forEach((bank) => {
+        const bankToInput = {
+          id: bank.id,
+          name: bank.name,
+        };
+
+        this.tableData.push(bankToInput);
+      });
+    });
   }
 }
