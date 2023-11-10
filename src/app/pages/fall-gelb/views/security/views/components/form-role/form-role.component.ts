@@ -76,12 +76,6 @@ export class FormRoleComponent implements OnInit {
 
   moduleChanged(moduleId: number) {
 
-    console.log("moduleId ", moduleId)
-
-    if (this.isFirstModuleSelected) {
-      this.isFirstModuleSelected = false;
-    }
-
     this.showTable = false;
 
     // If module is undefined, i set the module
@@ -93,13 +87,11 @@ export class FormRoleComponent implements OnInit {
         return module.id === this.previousModuleId
       });
 
-      console.log("moduleSelectedIndex ", moduleSelectedIndex)
-
       // Replace the form in the permission list
 
       if (moduleSelectedIndex !== -1) {
 
-        this.modulesSelected[moduleSelectedIndex].formGroup = this.modulesPermissionForm;
+        this.modulesPermissionForm = this.modulesSelected[moduleSelectedIndex].formGroup;
 
       } else {
 
@@ -113,9 +105,12 @@ export class FormRoleComponent implements OnInit {
       }
     }
 
-    this.modulesPermissionForm = this.fb.group({
-      modulesPermission: this.fb.array([])
-    });
+    if (this.isFirstModuleSelected) {
+      this.isFirstModuleSelected = false;
+      this.modulesPermissionForm = this.fb.group({
+        modulesPermission: this.fb.array([])
+      });
+    }
 
     this.getTableData(moduleId, this.isEdit);
     this.previousModuleId = moduleId;
