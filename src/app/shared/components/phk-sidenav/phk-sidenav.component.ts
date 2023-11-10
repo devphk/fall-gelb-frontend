@@ -91,6 +91,10 @@ export class PhkSidenavComponent implements OnInit {
         {
           path: 'warehouse',
           title: 'Almacenes'
+        },
+        {
+          path: 'cargo-type-lcl',
+          title: 'Tipo de Carga LCL'
         }
       ]
 
