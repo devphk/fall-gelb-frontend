@@ -82,27 +82,44 @@ export class FormRoleComponent implements OnInit {
 
     if (this.modulesPermissionForm
         && !this.isFirstModuleSelected) {
-      
-      let moduleSelectedIndex = this.modulesSelected.findIndex((module) => {
+
+      let moduleAlreadySelectedIndex = this.modulesSelected.findIndex((module) => {
+        return module.id === moduleId
+      });
+
+      let modulePreviousSelectedIndex = this.modulesSelected.findIndex((module) => {
         return module.id === this.previousModuleId
       });
 
       // Replace the form in the permission list
 
-      if (moduleSelectedIndex !== -1) {
+      if (modulePreviousSelectedIndex !== -1) {
 
-        this.modulesPermissionForm = this.modulesSelected[moduleSelectedIndex].formGroup;
+        this.modulesPermissionForm = this.modulesSelected[modulePreviousSelectedIndex].formGroup;
 
       } else {
 
         const formSelected = {
-          id: (moduleSelectedIndex !== -1) ? this.modulesSelected[moduleSelectedIndex].id : this.previousModuleId,
+          id: (modulePreviousSelectedIndex !== -1) ? this.modulesSelected[modulePreviousSelectedIndex].id : this.previousModuleId,
           formGroup: this.modulesPermissionForm
         }
         
         this.modulesSelected.push(formSelected);
 
       }
+
+      // Set the form values of module form selected
+
+      if (moduleAlreadySelectedIndex !== -1) {
+
+        const previousModuleForm = this.modulesSelected[moduleAlreadySelectedIndex].formGroup;
+        this.modulesPermissionForm = previousModuleForm
+      
+      }
+
+      this.modulesPermissionForm = this.fb.group({
+        modulesPermission: this.fb.array([])
+      });
     }
 
     if (this.isFirstModuleSelected) {
@@ -115,15 +132,6 @@ export class FormRoleComponent implements OnInit {
     this.getTableData(moduleId, this.isEdit);
     this.previousModuleId = moduleId;
 
-    // if (this.modulePreviousId !== 0) {
-    //   this.setModulePermission(this.modulePreviousId);
-    // }
-
-    // this.permisionFormGroup.get('modulePermission')?.value;
-
-    // let roleId = this.isEdit ? this.data.dialogData.id : false;
-    // this.getTableData(moduleId, roleId);
-    // this.modulePreviousId = moduleId
   }
 
   setModulePermission(moduleId: number) {
@@ -169,7 +177,8 @@ export class FormRoleComponent implements OnInit {
 
       const permissionGroup = this.fb.group({
         form: resource.name,
-        permission: this.fb.control([0])
+        permission: this.fb.control([0]),
+        actions: this.fb.control(resource.actions)
       });
 
       // If is edit i assign the permissions
@@ -284,18 +293,15 @@ export class FormRoleComponent implements OnInit {
   getTableData(moduleId: number, 
                isEdit: boolean) {
 
-    this.modulesPermissionForm = this.fb.group({
-      modulesPermission: this.fb.array([])
-    });
-
     this.roleService
         .getModuleActions(moduleId, 
                           this.roleId)
         .subscribe((response) => {
 
+          this.tableData = [];
           console.log("response ", response)
-          this.tableData = response.resources;
-          this.setFormData(response.resources, this.isEdit);
+          // this.tableData = response.resources.slice();
+          this.setFormData(response.resources.slice(), this.isEdit);
 
         });
     // this.showTable = false;
@@ -359,7 +365,16 @@ export class FormRoleComponent implements OnInit {
     // }
   }
 
+  setFormValues(formArray1: FormArray,
+                formArray2: FormArray) {
+
+                  console.log("form1 ", formArray1)
+                  console.log("form2 ", formArray2)
+  }
+
   show() {
+    const auxiliarForm = this.permisionFormGroup;
+    this.permisionFormGroup = auxiliarForm
     console.log("this.modulesSelected ", this.modulesSelected)
     console.log("this.modulesPermissionForm ", this.modulesPermissionForm)
     console.log("this.tableData ", this.tableData)

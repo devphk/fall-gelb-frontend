@@ -79,15 +79,15 @@
                      fxLayoutAlign="space-between center">
   
                   <h3 fxFlex="calc(50% - 20px)">
-                    {{tableData[i].name}}
+                    {{modulePermnission.get('form')?.value}}
                   </h3>
   
                   <app-phk-select formControlName="permission"
                                   [multiple]="true"
                                   [label]="'Selecciona permisos'"
                                   fxFlex="calc(50% - 20px)">
-                    <mat-option *ngFor="let option of tableData[i].actions"
-                                [value]="option.id">{{option.name}}</mat-option>
+                    <mat-option *ngFor="let action of modulePermnission.get('actions')?.value"
+                                [value]="action.id">{{action.name}}</mat-option>
                   </app-phk-select>
   
                 </div>
