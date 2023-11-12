@@ -6,6 +6,8 @@ import { RolesService } from '../../roles/roles.service';
 import { ToastService } from '@core/services';
 import { HttpParams } from '@angular/common/http';
 import { Resource } from '@shared/models';
+import { MatSelectChange } from '@angular/material/select';
+import { toArray } from 'rxjs';
 
 @Component({
   selector: 'app-form-role',
@@ -22,23 +24,18 @@ export class FormRoleComponent implements OnInit {
     ),
   });
 
-  permisionFormGroup = this._formBuilder.group({
-    modulePermission: this._formBuilder.control('', [Validators.required]),
-  });
-
   modulesOptions: any;
   dataSelect: any[] = [];
-
-  tableData: any[] = [];
   itemsSelected: any[] = [];
   modulesPermissionForm!: FormGroup;
   showTable: boolean = false;
-  permissionIds: number[] = [];
   isEdit: boolean = false;
   previousModuleId: number = 0;
   roleId: number | undefined = 0;
   modulesSelected: any[] = [];
   isFirstModuleSelected: boolean = true;
+  showPermission: boolean = false;
+  currentModuleSelectedId!: number;
 
   constructor(private _formBuilder: FormBuilder,
               private roleService: RolesService,
@@ -49,7 +46,9 @@ export class FormRoleComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.roleService.getModules().subscribe((response: any) => {
+    this.roleService
+        .getModules()
+        .subscribe((response: any) => {
       this.modulesOptions = response;
     });
 
@@ -74,14 +73,18 @@ export class FormRoleComponent implements OnInit {
     }
   }
 
-  moduleChanged(moduleId: number) {
+  moduleChanged(moduleSelected: MatSelectChange) {
 
+    let moduleId = moduleSelected.value;
+    this.currentModuleSelectedId = moduleId;
     this.showTable = false;
 
     // If module is undefined, i set the module
 
     if (this.modulesPermissionForm
         && !this.isFirstModuleSelected) {
+
+      console.log("Hay que actualizar el form")
 
       let moduleAlreadySelectedIndex = this.modulesSelected.findIndex((module) => {
         return module.id === moduleId
@@ -95,7 +98,7 @@ export class FormRoleComponent implements OnInit {
 
       if (modulePreviousSelectedIndex !== -1) {
 
-        this.modulesPermissionForm = this.modulesSelected[modulePreviousSelectedIndex].formGroup;
+        this.modulesSelected[modulePreviousSelectedIndex].formGroup = this.modulesPermissionForm;
 
       } else {
 
@@ -129,46 +132,30 @@ export class FormRoleComponent implements OnInit {
       });
     }
 
-    this.getTableData(moduleId, this.isEdit);
+    // Getting table data
+
+    this.roleService
+        .getModuleActions(moduleId, 
+                          this.roleId)
+        .subscribe((response) => {
+
+          console.log("response ", response)
+          this.setFormData(response.resources.slice(), 
+                           this.isEdit,
+                           moduleId);
+
+        });
+
     this.previousModuleId = moduleId;
-
-  }
-
-  setModulePermission(moduleId: number) {
-    // let permissionIds: number[] = [];
-
-    // for (let formArrayIndex = 0; formArrayIndex < this.modulesPermissionControls.length; formArrayIndex++) {
-    //   const formPermissions = this.modulesPermissionControls?.at(formArrayIndex)?.get('permission')?.value;
-
-    //   if (formPermissions
-    //       && formPermissions.length > 0) {
-    //     permissionIds = [...permissionIds, ...formPermissions];
-    //   }
-    // }
-
-    // let moduleIndexInBackup = this.modulesPermissionsBackup
-    //                               .findIndex((module) => {
-    //   return module.id === moduleId
-    // });
-
-    // const moduleBackup = {
-    //   moduleId,
-    //   permissionIds,
-    //   moduleResource: this.modulePreviousResource
-    // }
-
-    // if (moduleIndexInBackup === -1) {
-    //   this.modulesPermissionsBackup.push(moduleBackup)
-    // } else {
-    //   this.modulesPermissionsBackup[moduleIndexInBackup] = moduleBackup
-    // }
-
-    // console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
-
   }
 
   setFormData(resources: Resource[],
-              isEdit: boolean) {
+              isEdit: boolean,
+              moduleId: number) {
+
+    let moduleAlreadySelectedIndex = this.modulesSelected.findIndex((module) => {
+      return module.id === moduleId
+    });
 
     resources.forEach((resource, index) => {
   
@@ -180,6 +167,15 @@ export class FormRoleComponent implements OnInit {
         permission: this.fb.control([0]),
         actions: this.fb.control(resource.actions)
       });
+
+      if (moduleAlreadySelectedIndex !== -1) {
+        console.log("setting permissions")
+        permissionGroup.get('permission')?.setValue(this.modulesSelected[moduleAlreadySelectedIndex]
+                                                        .formGroup
+                                                        .get('modulesPermission')
+                                                        .value[index]
+                                                        .permission)
+      }
 
       // If is edit i assign the permissions
       // To role in the module
@@ -200,93 +196,73 @@ export class FormRoleComponent implements OnInit {
       }
       
       this.modulesPermissionControls.push(permissionGroup);
-      this.setDataRow(resource, index);
       this.showTable = true;
     });
 
   }
 
-  setDataRow(resource: Resource, 
-             index: number) {
-
-    const tableRow = {
-      form: resource.name,
-      options: resource.actions,
-      rowIndex: index,
-      optionsSelected: [],
-    };
-
-    this.tableData.push(tableRow);
-  }
-
   createRole() {
 
-    if (this.roleFormGroup.valid 
-        && this.permisionFormGroup.valid) {
-      
-      let moduleId: any = this.permisionFormGroup.get('modulePermission')?.value;
-      this.setModulePermission(moduleId);
+    if (this.roleFormGroup.valid) {
 
-      // console.log("this.modulesPermissionsBackup ", this.modulesPermissionsBackup);
+      this.getModulePermissions();
 
-      return
+      // if (this.title.includes('Editar')) {
+      //   this.roleService
+      //     .editRole(
+      //       this.roleFormGroup.get('name')?.value,
+      //       this.data.dialogData.id
+      //     )
+      //     .subscribe(
+      //       (createRoleResponse) => {
+      //         // const modulePermission = {
+      //         //   permission_id: this.permissionIds,
+      //         //   module_id: moduleId,
+      //         // };
 
-      if (this.title.includes('Editar')) {
-        this.roleService
-          .editRole(
-            this.roleFormGroup.get('name')?.value,
-            this.data.dialogData.id
-          )
-          .subscribe(
-            (createRoleResponse) => {
-              const modulePermission = {
-                permission_id: this.permissionIds,
-                module_id: moduleId,
-              };
+      //         this.roleService
+      //           .addRolePermissions(modulePermission, createRoleResponse.id)
+      //           .subscribe(
+      //             (response) => {
+      //               this.toastService.showToaster('Rol editado exitosamente');
+      //               this.dialogRef.close(response);
+      //             },
+      //             (error) => {
+      //               this.toastService.showToaster(error.error.message, true);
+      //             }
+      //           );
+      //       },
+      //       (error) => {
+      //         this.toastService.showToaster(error.error.message, true);
+      //       }
+      //     );
+      // } else {
+      //   this.roleService
+      //     .createRole(this.roleFormGroup.get('name')?.value)
+      //     .subscribe(
+      //       (createRoleResponse) => {
+      //         const modulePermission = {
+      //           permission_id: this.permissionIds,
+      //           module_id: moduleId,
+      //         };
 
-              this.roleService
-                .addRolePermissions(modulePermission, createRoleResponse.id)
-                .subscribe(
-                  (response) => {
-                    this.toastService.showToaster('Rol editado exitosamente');
-                    this.dialogRef.close(response);
-                  },
-                  (error) => {
-                    this.toastService.showToaster(error.error.message, true);
-                  }
-                );
-            },
-            (error) => {
-              this.toastService.showToaster(error.error.message, true);
-            }
-          );
-      } else {
-        this.roleService
-          .createRole(this.roleFormGroup.get('name')?.value)
-          .subscribe(
-            (createRoleResponse) => {
-              const modulePermission = {
-                permission_id: this.permissionIds,
-                module_id: moduleId,
-              };
-
-              this.roleService
-                .addRolePermissions(modulePermission, createRoleResponse.id)
-                .subscribe(
-                  (response) => {
-                    this.toastService.showToaster('Rol creadoo exitosamente');
-                    this.dialogRef.close(response);
-                  },
-                  (error) => {
-                    this.toastService.showToaster(error.error.message, true);
-                  }
-                );
-            },
-            (error) => {
-              this.toastService.showToaster(error.error.message, true);
-            }
-          );
-      }
+      //         this.roleService
+      //           .addRolePermissions(modulePermission, createRoleResponse.id)
+      //           .subscribe(
+      //             (response) => {
+      //               this.toastService.showToaster('Rol creadoo exitosamente');
+      //               this.dialogRef.close(response);
+      //             },
+      //             (error) => {
+      //               this.toastService.showToaster(error.error.message, true);
+      //             }
+      //           );
+      //       },
+      //       (error) => {
+      //         this.toastService.showToaster(error.error.message, true);
+      //       }
+      //     );
+      // }
     }
   }
 
@@ -298,71 +274,10 @@ export class FormRoleComponent implements OnInit {
                           this.roleId)
         .subscribe((response) => {
 
-          this.tableData = [];
           console.log("response ", response)
-          // this.tableData = response.resources.slice();
-          this.setFormData(response.resources.slice(), this.isEdit);
+          // this.setFormData(response.resources.slice(), this.isEdit);
 
         });
-    // this.showTable = false;
-
-    // let getModuleActions;
-    // let modulePermissionsModified = this.modulesPermissionsBackup
-    //                                     .findIndex((module) => {
-    //   return module.moduleId === moduleId
-    // })
-
-    // console.log("modulePermissionsModified ", modulePermissionsModified)
-    // if (roleId) {
-    //   let params = new HttpParams();
-    //   params = params.set('role_id', roleId);
-    //   getModuleActions = this.roleService.getModuleActions(moduleId, params);
-    // } else {
-    //   getModuleActions = this.roleService.getModuleActions(moduleId);
-    // }
-
-    // if (modulePermissionsModified === -1) {
-
-
-    //   if (this.title.includes('Editar')) {
-        
-    //     getModuleActions.subscribe((response) => {
-    
-    //       this.tableData = [];
-    
-    //       console.log("response ", response)
-    
-    //       this.modulePreviousResource = response.resources;
-    //       this.setFormData(this.modulePreviousResource, true);
-  
-    //       setTimeout(() => {
-    //         this.showTable = true;
-    //       }, 300);
-  
-  
-    //     });
-    //   }
-  
-    // } else {
-
-    //   console.log("getting roles")
-
-    //   getModuleActions.subscribe((response) => {
-
-    //     this.tableData = [];
-    
-    //     console.log("response ", response)
-  
-    //     this.modulePreviousResource = response.resources;
-    //     this.setFormData(this.modulePreviousResource, false);
-
-    //     setTimeout(() => {
-    //       this.showTable = true;
-    //     }, 300);
-
-    //   })
-
-    // }
   }
 
   setFormValues(formArray1: FormArray,
@@ -372,11 +287,89 @@ export class FormRoleComponent implements OnInit {
                   console.log("form2 ", formArray2)
   }
 
+  getModulePermissions() {
+    
+    let modulesPermissions: any[] = [];
+
+    const anotherModulesEdited = this.modulesSelected.filter((module) => {
+      return module.id !== this.currentModuleSelectedId
+    });
+
+    if (anotherModulesEdited.length !== 0) {
+
+      // Filtered the array of modules without the actual
+      // Module that the user is editing
+
+
+      anotherModulesEdited.forEach((module) => {
+
+        const moduleFormArray = module.formGroup.get('modulesPermission') as FormArray;
+
+        moduleFormArray.controls
+                       .forEach((form: any) => {
+
+          if (form.get('permission').value.length > 0
+              && form.get('permission').value[0] !== 0) {
+
+            const modulePermissions = {
+              moduleId: module.id,
+              permissions: form.get('permission').value
+            }
+
+            modulesPermissions.push(modulePermissions);
+          }
+
+        });
+
+      });
+
+      // Adding values of the current form edited
+
+      this.modulesPermissionControls
+          .controls
+          .forEach((form: any) => {
+        
+        if (form.get('permission').value.length > 0
+            && form.get('permission').value[0] !== 0) {
+
+          const modulePermissions = {
+            moduleId: this.currentModuleSelectedId,
+            permissions: form.get('permission').value
+          }
+
+          modulesPermissions.push(modulePermissions);
+        }
+
+      });
+      
+    } else if (this.modulesPermissionForm) {
+      
+      this.modulesPermissionControls
+          .controls
+          .forEach((form: any) => {
+        
+        if (form.get('permission').value.length > 0
+            && form.get('permission').value[0] !== 0) {
+
+          const modulePermissions = {
+            moduleId: this.currentModuleSelectedId,
+            permissions: form.get('permission').value
+          }
+
+          modulesPermissions.push(modulePermissions);
+        }
+
+      });
+
+    }
+
+    console.log("modulesPermissions ", modulesPermissions)
+
+  }
+
   show() {
-    const auxiliarForm = this.permisionFormGroup;
-    this.permisionFormGroup = auxiliarForm
     console.log("this.modulesSelected ", this.modulesSelected)
     console.log("this.modulesPermissionForm ", this.modulesPermissionForm)
-    console.log("this.tableData ", this.tableData)
+    // this.permisionFormGroup = this.modulesSelected[0].formGroup;
   }
 }
