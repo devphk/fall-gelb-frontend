@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   urlBase: 'http://fallgelb-api.phoinikel.com/api',
-  oAuthClientId: '9a76c3ea-5f4a-4a34-a55b-52836c9c38a7',
-  oAuthClientToken: 'AqcgWvwnrIYd1fbFvJt6Mn1yvFiUMmHXQXjfALGY'
+  oAuthClientId: '9a9276f5-9274-4afd-9830-b1ca9c54c1b8',
+  oAuthClientToken: 'PJoziPOCifAc9ewn2q9PpMCjcfDA8bTlhpP0lDIf'
 };
 
 /*
