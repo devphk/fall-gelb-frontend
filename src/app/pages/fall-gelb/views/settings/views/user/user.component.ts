@@ -104,16 +104,15 @@ export class UserComponent implements OnInit {
 
   deleteUser() {
     this.dialogService
-      .openConfirmationDialog(
-        `Desea eliminar usuario '${this.itemsSelected[0].name}'`,
-        'Este cambio no se puede revertir'
-      )
-      .afterClosed()
-      .subscribe((response) => {
-        if (response) {
-          this.userService.deleteUsers(this.itemsSelected[0].id).subscribe(
-            (data) => {
-              this.toastService.showToaster('Usuario eliminado correctamente!');
+        .openConfirmationDialog(
+                'Eliminar usuario',
+                `¿Eliminar usuario '${this.itemsSelected[0].name}'?`)
+        .afterClosed()
+        .subscribe((response)=>{
+          if (response) {
+            this.userService.deleteUsers(this.itemsSelected[0].id)
+            .subscribe((data) => {
+              this.toastService.showToaster('Usuario eliminado correctamente!')
               this.refreshUsers();
             },
             (error) => this.toastService.showToaster(error.error.message, true)

@@ -1,4 +1,4 @@
-<div fxLayout="column"
+<!-- <div fxLayout="column"
      fxLayoutAlign="center center"
      >
     <div>
@@ -8,4 +8,45 @@
         <button class="buttons" (click)="dialogRef.close(true)" mat-raised-button>SI</button>
         <button class="buttons" (click)="dialogRef.close(false)" mat-raised-button>NO</button>
     </div>
+</div> -->
+
+
+
+
+<div>
+     
+    <!-- Modal header -->
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+
+        <h3 class="fw-600">
+            {{title}}
+        </h3>
+
+        <button mat-icon-button 
+                mat-dialog-close
+                (click)="dialogRef.close(null)"
+                class="close-button">
+           <mat-icon class="mat-18">close</mat-icon>                 
+        </button>
+
+    </div>
+
+    <p class="text-center">
+        {{subtitle}}
+    </p>
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center">
+        <button (click)="dialogRef.close(true)" 
+                mat-raised-button
+                color="primary"
+                class="confirmation-button">Sí</button>
+        <button (click)="dialogRef.close(false)"
+                mat-raised-button
+                color="primary"
+                class="confirmation-button">No</button>
+    </div>
+    <ng-template #componentContainer></ng-template>
 </div>
+
