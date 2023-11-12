@@ -1,13 +1,18 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, 
+         Inject, 
+         OnInit } from '@angular/core';
+import { FormArray, 
+         FormBuilder, 
+         FormGroup, 
+         Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, 
+         MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { RolesService } from '../../roles/roles.service';
 import { ToastService } from '@core/services';
-import { HttpParams } from '@angular/common/http';
 import { Resource } from '@shared/models';
 import { MatSelectChange } from '@angular/material/select';
-import { Observable, forkJoin, toArray } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-form-role',
