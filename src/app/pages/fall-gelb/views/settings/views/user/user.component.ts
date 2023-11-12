@@ -86,10 +86,13 @@ export class UserComponent implements OnInit {
       });
   }
   processUserRoles() {
+
+    console.log("this.itemsSelected ", this.itemsSelected)
+
     this.dialogService
       .openDialog(
         UserRolesComponent,
-        'Asignar Roles al Usuario',
+        `Asignar Roles a usuario: '${this.itemsSelected[0].username}'`,
         '800px',
         'auto',
         this.itemsSelected
