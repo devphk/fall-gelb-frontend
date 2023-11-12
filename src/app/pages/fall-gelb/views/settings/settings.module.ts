@@ -48,6 +48,8 @@ import {
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
+import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
+import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
 
 const routes: Routes = [
   {
@@ -79,6 +81,8 @@ const routes: Routes = [
     FormBankComponent,
     FormCurrencyComponent,
     FormUserComponent,
+    CargoTypeLclComponent,
+    FormCargoTypeLclComponent,
     ],
   imports: [
     CommonModule,
@@ -97,6 +101,7 @@ const routes: Routes = [
     PhkSelectModule,
     PhkTextAreaModule,
     PhkSlideToggleModule,
+    PhkConfirmationDialogModule,
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,

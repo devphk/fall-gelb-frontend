@@ -13,6 +13,7 @@ import {
   CommodityTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
+  },
+  {
+    path: 'cargo-type-lcl',
+    component: CargoTypeLclComponent,
   },
   {
     path: '**',

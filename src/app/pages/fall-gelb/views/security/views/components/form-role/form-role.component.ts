@@ -15,10 +15,9 @@ import { Observable, forkJoin, toArray } from 'rxjs';
   styleUrls: ['./form-role.component.scss'],
 })
 export class FormRoleComponent implements OnInit {
-
   title: string = '';
-  roleFormGroup = this._formBuilder.group({
-    name: this._formBuilder.control(
+  roleFormGroup = this.fb.group({
+    name: this.fb.control(
       this.data.dialogData ? this.data.dialogData.name : '',
       Validators.required
     ),
@@ -37,12 +36,13 @@ export class FormRoleComponent implements OnInit {
   showPermission: boolean = false;
   currentModuleSelectedId!: number;
 
-  constructor(private _formBuilder: FormBuilder,
-              private roleService: RolesService,
-              private dialogRef: MatDialogRef<FormRoleComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private toastService: ToastService,
-              private fb: FormBuilder) {}
+  constructor(
+    private roleService: RolesService,
+    private dialogRef: MatDialogRef<FormRoleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private toastService: ToastService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
 
@@ -158,7 +158,6 @@ export class FormRoleComponent implements OnInit {
     });
 
     resources.forEach((resource, index) => {
-  
       // Create the formgroup to add
       // In FormArray
 
@@ -203,7 +202,6 @@ export class FormRoleComponent implements OnInit {
       this.modulesPermissionControls.push(permissionGroup);
       this.showTable = true;
     });
-
   }
 
   createRole() {
@@ -403,11 +401,5 @@ export class FormRoleComponent implements OnInit {
     console.log("modulesPermissions ", modulesPermissions)
     return modulesPermissions;
 
-  }
-
-  show() {
-    console.log("this.modulesSelected ", this.modulesSelected)
-    console.log("this.modulesPermissionForm ", this.modulesPermissionForm)
-    // this.permisionFormGroup = this.modulesSelected[0].formGroup;
   }
 }
