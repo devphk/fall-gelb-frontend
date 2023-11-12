@@ -84,8 +84,8 @@ export class UserComponent implements OnInit {
 
     this.dialogService
         .openConfirmationDialog(
-                `Desea eliminar usuario '${this.itemsSelected[0].name}'`,
-                'Este cambio no se puede revertir')
+                'Eliminar usuario',
+                `¿Eliminar usuario '${this.itemsSelected[0].name}'?`)
         .afterClosed()
         .subscribe((response)=>{
           if (response) {
