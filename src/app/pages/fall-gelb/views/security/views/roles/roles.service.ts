@@ -15,10 +15,18 @@ export class RolesService {
               private httpUtils: HttpUtilsService) {}
 
   addRolePermissions(
-    modulePermission: any,
-    roleId: any
+    modulePermission: number[],
+    roleId: number,
+    moduleId: number
   ): Observable<RolePermissionAdded[]> {
-    return this.http.post(`/roles/${roleId}/permissions/`, modulePermission);
+    console.log("modulePermission ", modulePermission)
+
+    const rolePermissions = {
+      permission_id: modulePermission,
+      module_id: moduleId
+    }
+
+    return this.http.post(`/roles/${roleId}/permissions/`, rolePermissions);
   }
 
   getRoles(): Observable<RoleResponse[]> {
