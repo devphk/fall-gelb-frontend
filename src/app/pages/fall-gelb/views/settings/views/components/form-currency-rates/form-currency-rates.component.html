@@ -1,0 +1,65 @@
+<div>   
+    <form [formGroup]="currencyRatesForm">
+        <div mat-dialog-content f
+             fxLayout="row wrap" 
+             fxLayoutGap="20px"
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
+            <br>
+
+            <app-phk-select  fxFlex="calc(33% - 20px)" 
+                            label="Moneda A" 
+                            formControlName="currencyA" 
+                            [required]="true"
+                            class="w-100"
+                            fxFlex.lt-md="calc(100%)"
+                            *ngIf="!isEdit">
+
+                                <mat-option *ngFor="let currency of currencyA" 
+                                            [value]="currency.id">
+                                            {{currency.name}}
+                                </mat-option>
+            </app-phk-select>
+
+            <app-phk-select  fxFlex="calc(33% - 20px)" 
+                            label="Moneda B" 
+                            formControlName="currencyB" 
+                            [required]="true"
+                            class="w-100"
+                            fxFlex.lt-md="calc(100%)"
+                            *ngIf="!isEdit">
+
+                                <mat-option *ngFor="let currency of currencyB" 
+                                            [value]="currency.id">
+                                            {{currency.name}}
+                                </mat-option>
+            </app-phk-select>
+            
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Monto" 
+                            formControlName="amount" 
+                            [required]="true"
+                            class="w-100"
+                            fxFlex.lt-md="calc(100%)"
+                            [errorMessage]="currencyRatesForm.controls['amount'].invalid ? 'Debe ingresar un monto' : null">
+            </app-phk-input>
+
+            <app-phk-select fxFlex="calc(33% - 20px)" 
+                            label="Operación" 
+                            formControlName="operation" 
+                            [required]="true"
+                            class="w-100"
+                            fxFlex.lt-md="calc(100%)"
+                            *ngIf="!isEdit">
+
+                                <mat-option *ngFor="let operation of operations" 
+                                            [value]="operation.value">
+                                            {{operation.name}}
+                                </mat-option>
+            </app-phk-select>
+                        
+        </div> 
+    </form>
+    <span *ngIf="currencyRatesForm.hasError('notSameValue') && !isEdit">Las monedas no deben ser las mismas.</span>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveCurrencyRate()">Enviar</button>
+</div>

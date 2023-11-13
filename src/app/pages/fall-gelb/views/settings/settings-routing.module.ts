@@ -13,6 +13,7 @@ import {
   CommodityTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
+  },
+  {
+    path: 'currency-rates',
+    component: CurrencyRatesComponent,
   },
   {
     path: '**',
