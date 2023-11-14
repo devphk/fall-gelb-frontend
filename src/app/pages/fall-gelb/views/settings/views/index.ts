@@ -6,5 +6,5 @@ export * from './container-type';
 export * from './commodity-type';
 export * from './truck-type';
 export * from './units';
-export * from './user';
+export * from './users';
 export * from './warehouse';
