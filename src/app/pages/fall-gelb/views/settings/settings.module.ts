@@ -42,12 +42,12 @@ import {
   CommodityTypeComponent,
   TruckTypeComponent,
   UnitsComponent,
-  UserComponent,
   WarehouseComponent,
   ContainerTypeComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
+import { UsersComponent } from './views/users';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
 
@@ -71,7 +71,7 @@ const routes: Routes = [
     BankAccountComponent,
     BankComponent,
     CurrencyComponent,
-    UserComponent,
+    UsersComponent,
     UnitsComponent,
     WarehouseComponent,
     CustomsComponent,

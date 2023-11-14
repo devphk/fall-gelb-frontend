@@ -1,7 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {
-  UserComponent,
   BankComponent,
   BankAccountComponent,
   CurrencyComponent,
@@ -13,6 +12,7 @@ import {
   CommodityTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UserComponent,
+    component: UsersComponent,
   },
   {
     path: 'units',
