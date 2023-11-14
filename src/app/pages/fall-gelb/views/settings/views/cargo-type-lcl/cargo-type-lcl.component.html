@@ -1,0 +1,58 @@
+
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
+
+    <h1>Tipo de Carga LCL</h1>
+
+    <div fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+<button
+  class="crud-button"
+  mat-mini-fab
+  color="primary"
+  aria-label="Registrar Tipo de Carga LCL"
+  matTooltip="Registrar Tipo de Carga LCL"
+  (click)="processCargoLCL('Add')"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Tipo de Carga LCL"
+      matTooltip="Editar Tipo de Carga LCL"
+      (click)="processCargoLCL('Edit')"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Tipo de Carga LCL"
+      matTooltip="Eliminar Tipo de Carga LCL"
+      (click)="deleteCargoLCL()"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>delete</mat-icon>
+</button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="refreshCargoLCL()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+
+</div>
+</div>
+
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"
+            [(itemsSelected)]="itemsSelected"></app-phk-table>
