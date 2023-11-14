@@ -14,7 +14,6 @@ export enum LoadingMessage {
   DELETING_CURRENCY = 'Eliminando Moneda...',
   CREATING_WAREHOUSE = 'Creando Almacén...',
   DELETING_WAREHOUSE = 'Eliminando Almacén...',
-  CREATING_ROLE = 'Creando rol...',
   CREATING_TRUCK_TYPE = 'Creando Tipo de Camión...',
   DELETING_TRUCK_TYPE = 'Eliminando Tipo de Camión...',
   CREATING_PROVIDER = 'Creando Proveedor...',
