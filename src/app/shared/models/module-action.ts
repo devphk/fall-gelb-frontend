@@ -4,13 +4,13 @@ export interface ModuleAction {
   resources: Resource[];
 }
 
-interface Resource {
+export interface Resource {
   name: string;
   description: string;
   actions: Action[];
 }
 
-interface Action {
+export interface Action {
   id: number;
   name: string;
   active: boolean;

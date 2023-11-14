@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PhkConfirmationDialogComponent } from './phk-confirmation-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -12,7 +13,8 @@ import { PhkConfirmationDialogComponent } from './phk-confirmation-dialog.compon
   imports: [
     CommonModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatIconModule
   ]
 })
 export class PhkConfirmationDialogModule { }
