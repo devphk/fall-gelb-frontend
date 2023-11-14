@@ -6,6 +6,8 @@ export enum LoadingMessage {
   DELETING_CUSTOM = 'Eliminando aduana...',
   CREATING_UNIT = 'Creando Unidad...',
   DELETING_UNIT = 'Eliminando Unidad...',
+  CREATING_WAREHOUSE = 'Creando Almacén...',
+  DELETING_WAREHOUSE = 'Eliminando Almacén...',
   CREATING_TRUCK_TYPE = 'Creando Tipo de Camión...',
   DELETING_TRUCK_TYPE = 'Eliminando Tipo de Camión...',
   DELETING_UNIT = 'Eliminando Unidad...',

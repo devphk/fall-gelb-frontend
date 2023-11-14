@@ -26,6 +26,7 @@ export class PhkTextAreaComponent implements OnInit {
   @Input() appearance: 'legacy' | 'standard' | 'fill' | 'outline' = 'outline';
   @Input() showHint: boolean = false
   @Input() hintMessage: string = '';
+  @Input() errorMessage: string | null = null;
   inputControl = new FormControl(null);
   ngControl: any;
 
