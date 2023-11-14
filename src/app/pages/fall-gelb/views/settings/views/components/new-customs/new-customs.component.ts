@@ -6,6 +6,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
 import * as L from 'leaflet';
 import { LatLng } from 'leaflet';
+import Geocoder from 'leaflet-control-geocoder';
+import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
 
 @Component({
   selector: 'app-new-customs',
@@ -15,7 +17,8 @@ import { LatLng } from 'leaflet';
 export class NewCustomsComponent implements OnInit{
 
   map!: L.Map;
-  marker!: L.Marker;
+  marker: L.Marker | null = null;
+  geocoderMarker: L.Marker | null = null
   latitudeForm: number = 0;
   longitudeForm: number = 0;
 
@@ -86,7 +89,7 @@ export class NewCustomsComponent implements OnInit{
 
       console.log('Data Existe')
 
-      this.map = L.map('map').setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 14);
+      this.map = L.map('map').setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 11);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; OpenStreetMap contributors'
@@ -94,7 +97,6 @@ export class NewCustomsComponent implements OnInit{
 
       this.map.on('click', (event: L.LeafletMouseEvent) => {
         const { latlng } = event;
-        console.log(`Latitud: ${latlng.lat}, Longitud: ${latlng.lng}`);
         this.latitudeForm = latlng.lat;
         this.longitudeForm = latlng.lng;
 
@@ -107,11 +109,27 @@ export class NewCustomsComponent implements OnInit{
         this.marker = L.marker(newLatLng).addTo(this.map);
       });
 
+      new Geocoder();
+        (L.Control as any).geocoder({
+          defaultMarkGeocode: false,
+          collapse: false,
+          placeholder: 'Ingresa una Dirección...',
+          errorMessage: 'No encontrado'
+        }).on('markgeocode', (e:any) => {
+            this.map.setView(e.geocode.center, 11)
+            this.latitudeForm = e.geocode.properties.lat;          
+            this.longitudeForm = e.geocode.properties.lon; 
+
+            if(this.geocoderMarker) {
+              this.map.removeLayer(this.geocoderMarker)
+            }
+          }).addTo(this.map)
+
     }else{
 
       console.log('Data No Existe')
 
-      this.map = L.map('map').setView([7.721123907246407, -65.67882751949143], 14);
+      this.map = L.map('map').setView([7.721123907246407, -65.67882751949143], 11);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; OpenStreetMap contributors'
@@ -128,7 +146,24 @@ export class NewCustomsComponent implements OnInit{
         }
 
         this.marker = L.marker(latlng).addTo(this.map);
+
       });
+
+      new Geocoder();
+        (L.Control as any).geocoder({
+          defaultMarkGeocode: false,
+          collapse: false,
+          placeholder: 'Ingresa una Dirección...',
+          errorMessage: 'No encontrado'
+        }).on('markgeocode', (e:any) => {
+            this.map.setView(e.geocode.center, 11)
+            this.latitudeForm = e.geocode.properties.lat;          
+            this.longitudeForm = e.geocode.properties.lon; 
+
+            if(this.geocoderMarker) {
+              this.map.removeLayer(this.geocoderMarker)
+            }
+          }).addTo(this.map)
     }
 }
 
@@ -139,7 +174,7 @@ export class NewCustomsComponent implements OnInit{
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           const { latitude, longitude } = position.coords;
-          this.map.setView([latitude, longitude], 14);
+          this.map.setView([latitude, longitude], 11);
           this.latitudeForm = latitude;
           this.longitudeForm = longitude;
           console.log(`Ubicación actual - Latitud: ${latitude}, Longitud: ${longitude}`);
@@ -158,7 +193,7 @@ export class NewCustomsComponent implements OnInit{
 
     }else {
 
-          this.map.setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 14);
+          this.map.setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 11);
           this.latitudeForm = this.data.dialogData[0].latitude;
           this.longitudeForm = this.data.dialogData[0].longitude;
   
