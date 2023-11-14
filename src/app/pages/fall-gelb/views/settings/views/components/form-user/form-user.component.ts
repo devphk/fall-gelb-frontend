@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { matchpassword } from './match-password.validator';
-import { UserService } from '../../user/user.service';
 import { User } from '@shared/models';
 import { ToastService } from '@core/services';
+import { UserService } from '../../users/users.service';
 
 @Component({
   selector: 'app-form-user',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { FormUserComponent } from '../components';
-import { UserService } from './user.service';
+import { UserService } from './users.service';
 import { User, UserDataTable } from '@shared/models';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -9,10 +9,10 @@ import { SettingsModule } from '../../settings.module';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss'],
 })
-export class UserComponent implements OnInit {
+export class UsersComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     'ID',
     'Nombre',

@@ -42,12 +42,12 @@ import {
   CommodityTypeComponent,
   TruckTypeComponent,
   UnitsComponent,
-  UserComponent,
   WarehouseComponent,
   ContainerTypeComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
+import { UsersComponent } from './views/users';
 
 const routes: Routes = [
   {
@@ -69,7 +69,7 @@ const routes: Routes = [
     BankAccountComponent,
     BankComponent,
     CurrencyComponent,
-    UserComponent,
+    UsersComponent,
     UnitsComponent,
     WarehouseComponent,
     CustomsComponent,
