@@ -91,6 +91,10 @@ export class PhkSidenavComponent implements OnInit {
         {
           path: 'warehouse',
           title: 'Almacenes'
+        },
+        {
+          path: 'currency-rates',
+          title: 'Tasas Monetarias'
         }
       ]
 
