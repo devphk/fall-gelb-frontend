@@ -25,7 +25,7 @@
       aria-label="Editar Aduana"
       matTooltip="Editar Aduana"
       (click)="processCustoms('Edit')"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>edit</mat-icon>
 </button>
 
@@ -36,7 +36,7 @@
       aria-label="Eliminar Aduana"
       matTooltip="Eliminar Aduana"
       (click)="deleteCustoms()"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>delete</mat-icon>
 </button>
 

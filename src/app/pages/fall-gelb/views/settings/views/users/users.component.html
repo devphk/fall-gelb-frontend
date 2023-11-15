@@ -20,7 +20,7 @@
       aria-label="Editar Usuario"
       matTooltip="Editar Usuario"
       (click)="processUser('Edit')"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>edit</mat-icon>
     </button>
@@ -31,7 +31,7 @@
       aria-label="Asignar Roles a Usuario"
       matTooltip="Asignar Roles a Usuario"
       (click)="processUserRoles()"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>key</mat-icon>
     </button>
@@ -43,7 +43,7 @@
       aria-label="Eliminar Usuario"
       matTooltip="Eliminar Usuario"
       (click)="deleteUser()"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>delete</mat-icon>
     </button>
