@@ -82,8 +82,8 @@ export class BankAccountComponent implements OnInit {
   deleteBankAccount() {
     this.dialogService
       .openConfirmationDialog(
-        `Desea eliminar Cuenta Bancaria '${this.itemsSelected[0].name}'`,
-        'Este cambio no se puede revertir'
+        `Eliminar Cuenta Bancaria`,
+        `¿Desea eliminar cuenta bancaria '${this.itemsSelected[0].bankName}' ?`
       )
       .afterClosed()
       .subscribe((response) => {

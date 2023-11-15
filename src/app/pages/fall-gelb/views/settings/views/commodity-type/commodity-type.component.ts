@@ -70,8 +70,8 @@ export class CommodityTypeComponent implements OnInit {
   deleteCommodities() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Tipo de Mercancia',
+            `¿Desea eliminar tipo de mercancia '${this.itemsSelected[0].name}'?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {
