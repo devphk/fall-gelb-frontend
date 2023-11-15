@@ -21,6 +21,7 @@ export class NewDriverComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}
 
+  private transportTypeId: number = 3;
   isEditMode: boolean = false;
   providers: SelectOption[] = [];
 
@@ -29,16 +30,18 @@ export class NewDriverComponent implements OnInit {
   ngOnInit(): void {
     this.initializeForm();
 
-    this.providerService.getProviders().subscribe((providers) => {
-      providers.map((provider) => {
-        this.providers.push({
-          id: provider.id,
-          name: provider.entity.name,
+    this.providerService
+      .getProviders(this.transportTypeId)
+      .subscribe((providers) => {
+        providers.map((provider) => {
+          this.providers.push({
+            id: provider.id,
+            name: provider.entity.name,
+          });
         });
-      });
 
-      console.log(this.providers);
-    });
+        console.log(this.providers);
+      });
   }
 
   initializeForm() {

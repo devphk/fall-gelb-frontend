@@ -18,7 +18,7 @@ export interface ProviderResponse {
   person_type_id: number;
   provider_type_id: number;
   is_national: boolean;
-  provider_transport_type_id?: any;
+  provider_transport_type_id?: number;
   entity: Entity;
 }
 
@@ -45,4 +45,5 @@ export interface ProviderDataTabla {
   person_type_id: number;
   provider_type_id: number;
   is_national: boolean;
+  provider_transport_type_id?: number;
 }
