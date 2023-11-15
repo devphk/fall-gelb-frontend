@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class PhkConfirmationDialogComponent implements OnInit {
 
+  headerTitle: string = '';
   title:string = '';
   subtitle: string = '';
 
@@ -15,7 +16,9 @@ export class PhkConfirmationDialogComponent implements OnInit {
               public dialogRef:MatDialogRef<PhkConfirmationDialogComponent>) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.headerTitle = this.data.headerTitle;
+    this.title = this.data.title;
+    this.subtitle = this.data.subtitle;
   }
 
 }

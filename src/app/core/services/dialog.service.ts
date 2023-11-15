@@ -37,19 +37,19 @@ export class DialogService {
     return dialogRef;
   }
 
-  openConfirmationDialog(title:string, subtitle:string): MatDialogRef<PhkDialogComponent> {
+  openConfirmationDialog(title:string, 
+                         subtitle:string): MatDialogRef<PhkConfirmationDialogComponent> {
 
     const dialogRef = this.dialog
-                          .open(PhkDialogComponent, {
-                            width: 'auto',
+                          .open(PhkConfirmationDialogComponent, {
+                            width: '300px',
                             height: 'auto',
                             maxWidth: '95vw',
                             maxHeight: '95vh',
                             disableClose: true,
                             data: {
                               title,
-                              subtitle,
-                              childComponent:PhkConfirmationDialogComponent,
+                              subtitle
                             }
                           });
     return dialogRef;

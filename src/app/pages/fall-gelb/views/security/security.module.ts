@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SecurityComponent } from './security.component';
 import { Routes, RouterModule } from '@angular/router';
-import { RolesComponent } from './views/roles/roles.component';
-import { FormRoleComponent } from './views/components/form-role/form-role.component';
+import { RolesComponent, UserRolesComponent } from './views/';
+import { FormRoleComponent } from './views/components';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import {
   PhkInputModule,
   PhkSelectModule,
+  PhkSlideToggleModule,
   PhkTableModule,
 } from '@shared/components';
 import { MatOptionModule } from '@angular/material/core';
@@ -31,7 +32,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SecurityComponent, RolesComponent, FormRoleComponent],
+  declarations: [
+    SecurityComponent,
+    RolesComponent,
+    FormRoleComponent,
+    UserRolesComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -41,17 +47,15 @@ const routes: Routes = [
     MatButtonModule,
     PhkInputModule,
     PhkSelectModule,
+    PhkSlideToggleModule,
     MatOptionModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
     MatStepperModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
-  providers: [
-    MatSnackBar,
-    ToastService
-  ]
+  providers: [MatSnackBar, ToastService],
 })
 export class SecurityModule {}

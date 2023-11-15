@@ -1,18 +1,20 @@
 <div>   
     <form [formGroup]="commodityTypeForm">
-        <div mat-dialog-content 
+        <div mat-dialog-content f
              fxLayout="row wrap" 
              fxLayoutGap="20px"
-             fxLayout.lt-md="column">
-                <br>
-                <app-phk-input  fxFlex="calc(33% - 20px)" 
-                                label="Nombre de Tipo de Mercancía" 
-                                formControlName="name" 
-                                [required]="true">
-                </app-phk-input>
-                
-                <button class="w-100" mat-flat-button color="primary">Guardar</button>
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
+            <br>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Nombre de Tipo de Mercancia" 
+                            formControlName="name" 
+                            [required]="true"
+                            [errorMessage]="commodityTypeForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
+            </app-phk-input>
             
-        </div>
+        </div> 
     </form>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveCommodity()">Enviar</button>
 </div>

@@ -20,7 +20,7 @@ export class BankAcountService {
       data,
       undefined,
       true,
-      LoadingMessage.CREATING_BANK
+      LoadingMessage.CREATING_BANK_ACCOUNT
     );
   }
 
@@ -29,7 +29,7 @@ export class BankAcountService {
       '/bank-accounts/' + id,
       undefined,
       true,
-      LoadingMessage.DELETING_BANK
+      LoadingMessage.DELETING_BANK_ACCOUNT
     );
   }
 

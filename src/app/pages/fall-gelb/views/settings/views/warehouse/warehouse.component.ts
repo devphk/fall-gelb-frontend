@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewWarehouseComponent } from '../components/new-warehouse/new-warehouse.component';
+import { WarehouseService } from './warehouse.service';
+import { Warehouse } from '@shared/models/warehouse';
 
 @Component({
   selector: 'app-warehouse',
@@ -12,50 +14,98 @@ export class WarehouseComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
+    "Dirección",
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
+    "address",
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+
+  constructor(private dialogService: DialogService,
+              private warehouseService:WarehouseService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getWarehouses();
   }
 
-  newWarehouse() {
+  getWarehouses() {
+    this.warehouseService.getWarehouses()
+      .subscribe((response) => {
+        const tableData: Warehouse[] = [];
+        
+        response.forEach((warehouses) => {
+          const warehouseToInput: Warehouse = {
+            id: warehouses.id,
+            name: warehouses.name,
+            address: warehouses.address
+          };
+
+          tableData.push(warehouseToInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
+  }
+
+  processWarehouse(processType: string) {
     this.dialogService
-        .openDialog(NewWarehouseComponent,
-                    "Nuevo Almacén",
-                    "800px",
-                    "300px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+        .openDialog(NewWarehouseComponent, 
+                    processType === 'Add' ? 'Crear Almacén' : 'Editar Almacén', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshWarehouses();
+          }
+        });
+  }
+
+  deleteWarehouse() {
+    this.dialogService
+    .openConfirmationDialog(
+            `Desea eliminar almacén '${this.itemsSelected[0].name}'`,
+            'Este cambio no se puede revertir')
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.warehouseService.deleteWarehouse(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Almacén eliminado correctamente!')
+          this.refreshWarehouses();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
+  }
+
+  refreshWarehouses() {
+    this.tableData = [];
+
+    this.warehouseService.getWarehouses()
+        .subscribe((warehouses) => {
+          warehouses.forEach((warehouse) => {
+
+            const warehouseToInput:Warehouse = {
+              id: warehouse.id,
+              name: warehouse.name,
+              address: warehouse.address,
+            };
+
+            this.tableData.push(warehouseToInput);
+
+          });
+        })
   }
 
 }
+

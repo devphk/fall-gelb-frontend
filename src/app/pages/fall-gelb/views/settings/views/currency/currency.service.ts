@@ -20,7 +20,7 @@ export class CurrencyService {
       data,
       undefined,
       true,
-      LoadingMessage.CREATING_BANK
+      LoadingMessage.CREATING_CURRENCY
     );
   }
 
@@ -29,7 +29,7 @@ export class CurrencyService {
       '/currencies/' + id,
       undefined,
       true,
-      LoadingMessage.DELETING_BANK
+      LoadingMessage.DELETING_CURRENCY
     );
   }
 

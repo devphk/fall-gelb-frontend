@@ -1,7 +1,6 @@
 <mat-form-field [color]="ngControl.invalid 
                          && ngControl.touched ? 'warn' : 'primary'" [appearance]="appearance"
-                [hideRequiredMarker]="!requiredMarker" 
-                class="phk-input-field">
+                [hideRequiredMarker]="!requiredMarker">
     <mat-label>
         {{label}}
     </mat-label>
@@ -19,11 +18,6 @@
         <ng-content select="[suffix]">
         </ng-content>
     </div>
-    <!-- <div *ngIf="ngControl.touched">
-        <ng-content select="[error]"></ng-content>
-    </div> -->
-    <div >
-        <mat-error *ngIf="ngControl.touched && errorMessage">{{ errorMessage }}</mat-error>
-    </div>
+    <mat-error *ngIf="ngControl.touched && errorMessage">{{ errorMessage }}</mat-error>
 
 </mat-form-field>

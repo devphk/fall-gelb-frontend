@@ -1,103 +1,113 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  Location,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phk-sidenav',
   templateUrl: './phk-sidenav.component.html',
-  styleUrls: ['./phk-sidenav.component.scss']
+  styleUrls: ['./phk-sidenav.component.scss'],
 })
 export class PhkSidenavComponent implements OnInit {
-
   @Input() menuItems: any[] = [
-    { 
-      path: 'dashboard', 
-      title: 'Inicio',  
+    {
+      path: 'dashboard',
+      title: 'Inicio',
       icon: 'dashboard',
-      childrenLinks: []
+      childrenLinks: [],
     },
-    { 
-      path: 'entities', 
-      title: 'Entidades',  
-      icon:'person',
+    {
+      path: 'entities',
+      title: 'Entidades',
+      icon: 'person',
       childrenLinks: [
         {
           path: 'providers',
-          title: 'Proveedores'
+          title: 'Proveedores',
         },
         {
           path: 'customers',
-          title: 'Clientes'
+          title: 'Clientes',
         },
         {
           path: 'shipping-companies',
-          title: 'Navieras'
+          title: 'Navieras',
         },
         {
           path: 'air-consolidators',
-          title: 'Consolidador aéreo'
+          title: 'Consolidador Aéreo',
         },
         {
           path: 'airlines',
-          title: 'Aerolíneas'
+          title: 'Aerolíneas',
         },
         {
           path: 'terrestrials',
-          title: 'Terrestre'
+          title: 'Terrestre',
         },
         {
           path: 'drivers',
-          title: 'Choferes'
-        }
-      ]
+          title: 'Choferes',
+        },
+      ],
     },
-    { 
-      path: 'settings', 
-      title: 'Configuración',  
-      icon:'settings',
+    {
+      path: 'settings',
+      title: 'Configuración',
+      icon: 'settings',
       childrenLinks: [
         {
           path: 'users',
-          title: 'Usuarios'
+          title: 'Usuarios',
+        },
+        {
+          path: 'banks',
+          title: 'Banco',
         },
         {
           path: 'bank-accounts',
-          title: 'Cuentas bancarias'
+          title: 'Cuentas Bancarias',
         },
         {
           path: 'currencies',
-          title: 'Monedas'
+          title: 'Monedas',
         },
         {
           path: 'units',
-          title: 'Unidades'
+          title: 'Unidades',
         },
         {
           path: 'container-type',
-          title: 'Tipos de contenedor'
+          title: 'Tipos de Contenedor',
         },
         {
           path: 'customs',
-          title: 'Aduanas'
+          title: 'Aduanas',
         },
         {
           path: 'truck-type',
-          title: 'Tipos de camiones'
+          title: 'Tipos de Camiones',
         },
         {
           path: 'commodity-type',
-          title: 'Tipos de Mercancia'
+          title: 'Tipos de Mercancia',
         },
         {
           path: 'warehouse',
-          title: 'Almacenes'
+          title: 'Almacenes',
+        },
+        {
+          path: 'cargo-type-lcl',
+          title: 'Tipo de Carga LCL',
         },
         {
           path: 'currency-rates',
           title: 'Tasas Monetarias'
-        }
-      ]
-
+        },
+      ],
     },
     {
       path: 'security',
@@ -106,10 +116,10 @@ export class PhkSidenavComponent implements OnInit {
       childrenLinks: [
         {
           path: 'roles',
-          title: 'Roles'
-        }
-      ]
-    }
+          title: 'Roles',
+        },
+      ],
+    },
   ];
 
   location: Location;
@@ -117,30 +127,28 @@ export class PhkSidenavComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  constructor(location: Location, private element: ElementRef, private router: Router) {
+  constructor(
+    location: Location,
+    private element: ElementRef,
+    private router: Router
+  ) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   navigate(paths: string[]) {
-    console.log("path ", paths)
+    console.log('path ', paths);
 
     let pathArray: string[] = ['fall-gelb'];
     for (let index = 0; index < paths.length; index++) {
       pathArray.push(paths[index]);
     }
     this.router.navigate(pathArray);
-    
   }
 
   isActive(path: string): boolean {
-
     return this.router.url.includes(path) ? true : false;
-
   }
-  
-
 }

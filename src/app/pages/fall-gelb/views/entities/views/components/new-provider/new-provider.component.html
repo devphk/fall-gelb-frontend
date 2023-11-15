@@ -1,83 +1,113 @@
-<div>   
-    <form [formGroup]="providerForm">
-        <div mat-dialog-content 
-             fxLayout="row wrap"
-             fxLayoutGap="20px"
-             fxLayout.lt-md="column"
-             fxLayoutAlign="start center">
+<div>
+  <form [formGroup]="providerForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      ></app-phk-input>
 
-            <app-phk-input label="Nombre" 
-                            formControlName="name"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+      <app-phk-input
+        label="Email"
+        formControlName="email"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      ></app-phk-input>
 
-            <app-phk-input label="Teléfono" 
-                           formControlName="phone"
-                           fxFlex.gt-md="calc(33% - 20px)"
-                           fxFlex.lt-md="calc(100%)"></app-phk-input>
-            
-            <app-phk-slide-toggle (click)="changeNational()" 
-                                    formControlName="national"
-                                    [label]="'¿Es Nacional?'"
-                                    fxFlex.gt-md="calc(33% - 20px)"
-                                    fxFlex.lt-md="calc(100%)"
-                                    class="mt-m20"></app-phk-slide-toggle>
+      <app-phk-input
+        label="Teléfono"
+        formControlName="phone"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      ></app-phk-input>
 
-            <app-phk-text-area label="Ingrese la dirección fiscal" 
-                                formControlName="address"
-                                fxFlex.gt-md="calc(66% - 20px)"></app-phk-text-area> 
+      <app-phk-slide-toggle
+        formControlName="is_national"
+        [label]="'¿Es Nacional?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+        [required]="true"
+      ></app-phk-slide-toggle>
 
-            <app-phk-slide-toggle formControlName="active"
-                                    [label]="'¿Se encuentra activo?'"
-                                    fxFlex.gt-md="calc(33% - 20px)"
-                                    class="mt-m20"></app-phk-slide-toggle>
+      <app-phk-text-area
+        label="Ingrese la dirección fiscal"
+        formControlName="address"
+        fxFlex.gt-md="calc(66% - 20px)"
+        [required]="true"
+      ></app-phk-text-area>
 
-            <app-phk-select formControlName="specialTaxpayer"
-                            [label]="'Contribuyente especial'">
+      <app-phk-slide-toggle
+        formControlName="active"
+        [label]="'¿Se encuentra activo?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        class="mt-m20"
+      ></app-phk-slide-toggle>
 
-                <mat-option *ngFor="let yesNoOption of yesNoOptions" 
-                            [value]="yesNoOption">
-                    {{yesNoOption}}
-                </mat-option>
+      <app-phk-select
+        formControlName="special_tax_payer"
+        [label]="'Contribuyente especial'"
+      >
+        <mat-option
+          *ngFor="let yesNoOption of yesNoOptions"
+          [value]="yesNoOption == 'Si' ? true : false"
+        >
+          {{ yesNoOption }}
+        </mat-option>
+      </app-phk-select>
 
-            </app-phk-select>
+      <app-phk-input
+        formControlName="iva_retention"
+        [label]="'Retención IVA'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
 
-            <app-phk-input formControlName="iva"
-                           [label]="'Retención IVA'"
-                           fxFlex.gt-md="calc(33% - 20px)"
-                           fxFlex.lt-md="calc(100%)"></app-phk-input>
+      <app-phk-select
+        formControlName="person_type_id"
+        [label]="'Tipo de contribuyente'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let personType of personTypeOptions"
+          [value]="personType.id"
+        >
+          {{ personType.name }}
+        </mat-option>
+      </app-phk-select>
 
-            <app-phk-select formControlName="taxpayerType"
-                            [label]="'Tipo de contribuyente'"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)">
+      <app-phk-select
+        label="Tipo de proveedor"
+        formControlName="provider_type_id"
+        fxFlexAlign="start start"
+      >
+        <mat-option
+          *ngFor="let providerType of providerOptions"
+          [value]="providerType.id"
+        >
+          {{ providerType.name }}
+        </mat-option>
+      </app-phk-select>
 
-                <mat-option *ngFor="let taxPayerType of taxpayerTypeOptions" 
-                            [value]="taxPayerType">
-                    {{taxPayerType}}
-                </mat-option>
-
-            </app-phk-select>
-
-            <app-phk-select label="Tipo de proveedor" 
-                            formControlName="providerType"
-                            fxFlexAlign="start start">
-                <mat-option *ngFor="let providerType of providerTypeOptions"
-                            [value]="providerType">
-                    {{providerType}}
-                </mat-option>
-            </app-phk-select>
-
-            <div *ngIf="!nationaltrigger">
-
-                <app-phk-input formControlName="rif"
-                               fxFlex.gt-md="calc(33% - 20px)"
-                               fxFlex.lt-md="calc(100%)"></app-phk-input>
-
-            </div>
-
-            <button class="w-100" mat-flat-button color="primary">Guardar</button>
-            
-        </div>
-    </form>
+      <button
+        class="w-100"
+        mat-flat-button
+        color="primary"
+        (click)="saveNewProvider()"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
 </div>
