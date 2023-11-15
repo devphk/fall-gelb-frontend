@@ -29,9 +29,9 @@ export class FormWithholdingConceptsComponent implements OnInit {
 
     this.conceptForm = this.formBuild.group({
       name: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
-      naturalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].natural_person : 0, [Validators.required]),
+      naturalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].natural_person : '', [Validators.required]),
       naturalPersonCode: this.formBuild.control(''),
-      legalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].legal_person : 0, [Validators.required]),
+      legalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].legal_person : '', [Validators.required]),
       legalPersonCode: this.formBuild.control(''),
 
     });
@@ -86,17 +86,6 @@ export class FormWithholdingConceptsComponent implements OnInit {
       this.conceptForm.markAllAsTouched();
       
     } 
-  }
-
-  validatePercent(control:string) {
-      let errorMessage = '';
-      if(this.conceptForm.get(control)?.hasError('required')) {
-        return errorMessage = 'El valor es requerido.'
-      }else if(this.conceptForm.get(control)?.hasError('max')){
-        return errorMessage = 'El valor no debe exceder 100'
-      }
-      return null;
-      
   }
 
 }
