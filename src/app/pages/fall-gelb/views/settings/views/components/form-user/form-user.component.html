@@ -1,3 +1,4 @@
+
 <div>
   <form [formGroup]="userForm">
     <div
@@ -14,7 +15,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
-        [errorMessage]="userForm.controls['lastname'].invalid ? 'Debe ingresar un nombre' : null"
+        [errorMessage]="userForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null"
       ></app-phk-input>
       
       <app-phk-input
@@ -34,7 +35,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
-        [errorMessage]="userForm.controls['email'].invalid ? 'Correo inválido' : null"
+        [errorMessage]="validateEmail('email')"
       ></app-phk-input>
       
       <app-phk-input
@@ -44,7 +45,7 @@
         fxFlex="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="w-100"
-        [errorMessage]="userForm.controls['lastname'].invalid ? 'Debe ingresar un nombre de usuario' : null"
+        [errorMessage]="userForm.get('username')?.errors?.['required'] ? 'Nombre de usuario requerido' : null"
       ></app-phk-input>
 
 
