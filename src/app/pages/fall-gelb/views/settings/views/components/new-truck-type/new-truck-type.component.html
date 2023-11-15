@@ -1,18 +1,21 @@
 <div>   
     <form [formGroup]="truckTypeForm">
-        <div mat-dialog-content 
+        <div mat-dialog-content f
              fxLayout="row wrap" 
-             fxLayoutGap="20px" 
-             fxLayout.lt-md="column">
+             fxLayoutGap="20px"
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
             <br>
+
             <app-phk-input  fxFlex="calc(33% - 20px)" 
                             label="Nombre" 
                             formControlName="name" 
-                            [required]="true">
+                            [required]="true"
+                            [errorMessage]="truckTypeForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
             </app-phk-input>
-            
-            <button class="w-100" mat-flat-button color="primary">Guardar</button>
             
         </div> 
     </form>
+    <div id="map"></div>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveTrucks()">Enviar</button>
 </div>

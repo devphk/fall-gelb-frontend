@@ -1,0 +1,69 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Usuarios</h1>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Registrar Usuario"
+      matTooltip="Registrar Usuario"
+      (click)="processUser('Add')"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Usuario"
+      matTooltip="Editar Usuario"
+      (click)="processUser('Edit')"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Asignar Roles a Usuario"
+      matTooltip="Asignar Roles a Usuario"
+      (click)="processUserRoles()"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>key</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Usuario"
+      matTooltip="Eliminar Usuario"
+      (click)="deleteUser()"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Actualizar Tabla"
+      matTooltip="Actualizar Tabla"
+      (click)="refreshUsers()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</div>
+
+<app-phk-table
+  *ngIf="tableData !== []"
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+  [(itemsSelected)]="itemsSelected"
+></app-phk-table>

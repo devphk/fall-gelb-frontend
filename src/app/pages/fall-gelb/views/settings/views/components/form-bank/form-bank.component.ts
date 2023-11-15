@@ -54,8 +54,6 @@ export class FormBankComponent implements OnInit {
           name: this.banckFrom.get('name')?.value,
         };
 
-        console.log(bankEdit);
-
         this.bankService
           .editBank(bankEdit, this.data.dialogData[0].id)
           .subscribe(

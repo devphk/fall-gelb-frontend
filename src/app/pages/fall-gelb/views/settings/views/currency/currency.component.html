@@ -20,7 +20,7 @@
       aria-label="Editar Moneda"
       matTooltip="Editar Moneda"
       (click)="processCurrency('Edit')"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>edit</mat-icon>
     </button>
@@ -32,7 +32,7 @@
       aria-label="Eliminar Moneda"
       matTooltip="Eliminar Moneda"
       (click)="deleteCurrency()"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>delete</mat-icon>
     </button>

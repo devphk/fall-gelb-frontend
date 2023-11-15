@@ -1,25 +1,26 @@
 <div>   
     <form [formGroup]="warehouseForm">
-        <div mat-dialog-content 
+        <div mat-dialog-content f
              fxLayout="row wrap" 
-             fxLayoutGap="20px">
+             fxLayoutGap="20px"
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
             <br>
-            <app-phk-input  fxFlex="calc(33% - 20px)"
-                            label="Nombre del Almacén" 
+
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Nombre" 
                             formControlName="name" 
-                            [required]="true">
+                            [required]="true"
+                            [errorMessage]="warehouseForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
             </app-phk-input>
 
-            <app-phk-text-area  fxFlex="calc(33% - 20px)" 
-                                label="Dirección del Almacén" 
-                                formControlName="address" 
-                                [required]="true">
-            </app-phk-text-area>
-
-            <button class="w-100" 
-                    mat-flat-button color="primary">
-                    Enviar
-            </button>
-        </div>
+            <app-phk-text-area  label="Ingrese la dirección" 
+                                fxFlex="calc(33% - 20px)"
+                                formControlName="address"
+                                [errorMessage]="warehouseForm.controls['address'].invalid ? 'Debe ingresar una dirección' : null">
+            </app-phk-text-area> 
+            
+        </div> 
     </form>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveWarehouse()">Enviar</button>
 </div>

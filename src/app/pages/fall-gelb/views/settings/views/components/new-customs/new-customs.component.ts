@@ -1,11 +1,13 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomsService } from '../../customs/customs.service';
 import { Transporttype } from '@shared/models';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
-import { Map, Marker, marker, popup, tileLayer } from 'leaflet';
-import { DialogData } from '../../../../../../../core/models/dialog';
+import * as L from 'leaflet';
+import { LatLng } from 'leaflet';
+import Geocoder from 'leaflet-control-geocoder';
+import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
 
 @Component({
   selector: 'app-new-customs',
@@ -14,6 +16,11 @@ import { DialogData } from '../../../../../../../core/models/dialog';
 })
 export class NewCustomsComponent implements OnInit{
 
+  map!: L.Map;
+  marker: L.Marker | null = null;
+  geocoderMarker: L.Marker | null = null
+  latitudeForm: number = 0;
+  longitudeForm: number = 0;
 
   customsForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
@@ -22,10 +29,7 @@ export class NewCustomsComponent implements OnInit{
   })
   transportType: Transporttype[] = [];
   selectedTypes: Transporttype[] = [];
-  mapLongitude: number = 0;
-  mapLatitude: number = 0;
-  mapActualLongitude: number = 0;
-  mapActualLatitude: number = 0;
+
 
   customForm: FormControl = new FormControl();
 
@@ -41,8 +45,8 @@ export class NewCustomsComponent implements OnInit{
   ngOnInit(): void {
     this.getTranspTypes();
     this.getSelectedTransType();
+    this.initializeMap();
     this.getCurrentLocation();
-    console.log('DATA: ', this.data);
   }
 
   getTranspTypes() {
@@ -63,7 +67,7 @@ export class NewCustomsComponent implements OnInit{
             }
           });
       });
-    });
+    }, (error) => console.log('Error', error));
   }
 
   getSelectedTransType() {
@@ -80,81 +84,128 @@ export class NewCustomsComponent implements OnInit{
     this.customForm = new FormControl(this.selectedTypes);
   }
 
-    getCurrentLocation(): void {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          this.mapActualLatitude = position.coords.latitude;
-          this.mapActualLongitude = position.coords.longitude;
-          console.log(this.mapActualLatitude)
-          console.log(this.mapActualLongitude)
-          this.showMapWithMarker();
-        },
-        (error) => {
-          console.error('Error getting current location:', error);
-        }
-      );
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  }
+  initializeMap() {
+    if(this.data.dialogData){
 
-  showMapWithMarker(): void {
-    if(this.data.dialogData === null) {
-      
-      console.log('Latitude',this.mapActualLatitude);
-      console.log('Longitude', this.mapActualLongitude);
-      const map = new Map('map').setView([this.mapActualLatitude, this.mapActualLongitude], 13);
-      tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    
-      const marker = new Marker([this.mapActualLatitude, this.mapActualLongitude]).addTo(map);
+      console.log('Data Existe')
+
+      this.map = L.map('map').setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 11);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; OpenStreetMap contributors'
+      }).addTo(this.map);
+
+      this.map.on('click', (event: L.LeafletMouseEvent) => {
+        const { latlng } = event;
+        this.latitudeForm = latlng.lat;
+        this.longitudeForm = latlng.lng;
+
+        if (this.marker) {
+          this.map.removeLayer(this.marker);
+        }
+
+        const newLatLng = new LatLng(this.latitudeForm, this.longitudeForm)
+
+        this.marker = L.marker(newLatLng).addTo(this.map);
+      });
+
+      new Geocoder();
+        (L.Control as any).geocoder({
+          defaultMarkGeocode: false,
+          collapse: false,
+          placeholder: 'Ingresa una Dirección...',
+          errorMessage: 'No encontrado'
+        }).on('markgeocode', (e:any) => {
+            this.map.setView(e.geocode.center, 11)
+            this.latitudeForm = e.geocode.properties.lat;          
+            this.longitudeForm = e.geocode.properties.lon; 
+
+            if(this.geocoderMarker) {
+              this.map.removeLayer(this.geocoderMarker)
+            }
+          }).addTo(this.map)
 
     }else{
 
-      console.log('Latitude', this.data.dialogData[0].latitude);
-      console.log('Longitude', this.data.dialogData[0].longitude);
-      const map = new Map('map').setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 8);
-      tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-    
-      const marker = new Marker([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude]).addTo(map);
+      console.log('Data No Existe')
+
+      this.map = L.map('map').setView([7.721123907246407, -65.67882751949143], 11);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; OpenStreetMap contributors'
+      }).addTo(this.map);
+
+      this.map.on('click', (event: L.LeafletMouseEvent) => {
+        const { latlng } = event;
+        console.log(`Latitud: ${latlng.lat}, Longitud: ${latlng.lng}`);
+        this.latitudeForm = latlng.lat;
+        this.longitudeForm = latlng.lng;
+
+        if (this.marker) {
+          this.map.removeLayer(this.marker);
+        }
+
+        this.marker = L.marker(latlng).addTo(this.map);
+
+      });
+
+      new Geocoder();
+        (L.Control as any).geocoder({
+          defaultMarkGeocode: false,
+          collapse: false,
+          placeholder: 'Ingresa una Dirección...',
+          errorMessage: 'No encontrado'
+        }).on('markgeocode', (e:any) => {
+            this.map.setView(e.geocode.center, 11)
+            this.latitudeForm = e.geocode.properties.lat;          
+            this.longitudeForm = e.geocode.properties.lon; 
+
+            if(this.geocoderMarker) {
+              this.map.removeLayer(this.geocoderMarker)
+            }
+          }).addTo(this.map)
+    }
+}
+
+  
+  getCurrentLocation() {
+    if(!this.data.dialogData) {
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const { latitude, longitude } = position.coords;
+          this.map.setView([latitude, longitude], 11);
+          this.latitudeForm = latitude;
+          this.longitudeForm = longitude;
+          console.log(`Ubicación actual - Latitud: ${latitude}, Longitud: ${longitude}`);
+  
+          if (this.marker) {
+            this.map.removeLayer(this.marker);
+          }
+  
+          this.marker = L.marker([this.latitudeForm, this.longitudeForm]).addTo(this.map);
+        }, (error) => {
+          console.error('Error al obtener la ubicación', error);
+        });
+      } else {
+        console.error('Geolocalización no soportada');
+      }
+
+    }else {
+
+          this.map.setView([this.data.dialogData[0].latitude, this.data.dialogData[0].longitude], 11);
+          this.latitudeForm = this.data.dialogData[0].latitude;
+          this.longitudeForm = this.data.dialogData[0].longitude;
+  
+          if (this.marker) {
+            this.map.removeLayer(this.marker);
+          }
+  
+          this.marker = L.marker([this.latitudeForm, this.longitudeForm]).addTo(this.map);
 
     }
     
   }
-  
-  //Click on map to change location code
-  // ngAfterViewInit(): void {
-
-  //   const map = new Map('map').setView([7.721123907246407, -65.67882751949143], 5);
-  //   tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     maxZoom: 19,
-  //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  //   }).addTo(map);
-
-  //   let previousMarker: Marker | null = null;
-
-  //   map.on('click', (event) => {
-  //     const latLng = event.latlng;
-  //     this.mapLatitude = latLng.lat;
-  //     this.mapLongitude = latLng.lng;
-  //     console.log('Latitud:', this.mapLatitude, 'Longitud:', this.mapLongitude);
-
-  //     if(previousMarker) {
-  //       previousMarker.remove();
-  //     }
-
-  //     const newMarker = marker([this.mapLatitude, this.mapLongitude]).addTo(map);
-
-  //     previousMarker = newMarker;
-      
-  //   });
-  // }
   
   saveCustoms() {
     if (this.customsForm.valid) {
@@ -163,8 +214,8 @@ export class NewCustomsComponent implements OnInit{
         const custom = {
           name: this.customsForm.get('name')?.value, 
           address: this.customsForm.get('address')?.value, 
-          latitude: this.mapActualLatitude,
-          longitude: this.mapActualLongitude,
+          latitude: this.latitudeForm,
+          longitude: this.longitudeForm,
           transport_types: this.customForm.value,  
         }
           console.log('Custom: ', custom)
@@ -173,38 +224,31 @@ export class NewCustomsComponent implements OnInit{
             this.toastService.showToaster("Aduana Creada Correctamente!")
             this.dialogRef.close(true);
           },
-                     (error) => console.error('ERROR! :', error))
+          (error) => console.error('ERROR! :', error))
 
       }else{
 
         const customEdit = {
           name: this.customsForm.get('name')?.value, 
           address: this.customsForm.get('address')?.value, 
-          latitude: this.data.DialogData[0].latitude,
-          longitude: this.data.DialogData[0].longitude,
+          latitude: this.latitudeForm,
+          longitude: this.longitudeForm,
           transport_types: this.customForm.value,
    
         }
+        console.log('customEdit: ', customEdit)
   
         this.customsService.editCustom(customEdit, this.data.dialogData[0].id)
           .subscribe((data) => {
             this.toastService.showToaster("Aduana Editada Correctamente!")
             this.dialogRef.close(true);
           },
-                     (error) => this.toastService.showToaster(error.error.message, true))
-
+          (error) => this.toastService.showToaster(error.error.message, true))
       }
-
     } else{
-      this.customForm.markAllAsTouched();
-
+        this.customForm.markAllAsTouched();
     }
   }
-
-
-
-
-
 }
 
 

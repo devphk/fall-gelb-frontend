@@ -26,9 +26,8 @@
     </form>
   </mat-step>
 
-  <mat-step [stepControl]="permisionFormGroup" [editable]="true">
-    <form [formGroup]="permisionFormGroup"
-          fxLayout="column"
+  <mat-step [editable]="true">
+    <div fxLayout="column"
           fxLayoutAlign="space-around center">
       <ng-template matStepLabel>Asignar permisos a rol </ng-template>
 
@@ -41,26 +40,27 @@
            fxLayoutAlign="center start"
            class="w-100">
 
-        <app-phk-select formControlName="modulePermission"
-                        [label]="'Módulos'"
-                        (optionSelected)="moduleSelected($event)">
-          <mat-option *ngFor="let modules of modulesOptions"
-                      [value]="modules.id">
-            {{ modules.name }}
-          </mat-option>
-        </app-phk-select>
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Selecciona un módulo"
+                      label="'Módulos'"
+                      (selectionChange)="moduleChanged($event)">
+              <mat-option *ngFor="let modules of modulesOptions"
+                          [value]="modules.id">{{modules.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
 
         <span class="fs-07 text-start mt-m20"
-              *ngIf="tableData.length > 0">
+              *ngIf="showTable">
           Selecciona los permisos dentro del módulo
         </span>
 
-        <div *ngIf="showForm"
+        <div *ngIf="showTable"
              class="w-80 permission-container">
           <div fxLayout="row"
                fxLayoutAlign="space-between enter">
             <h2 fxFlex="calc(50% - 20px)">
-              Módulo
+              Formulario
             </h2>
             <h2 fxFlex="calc(50% - 20px)">
               Permisos
@@ -69,21 +69,21 @@
   
           <form [formGroup]="modulesPermissionForm">
             <div formArrayName="modulesPermission">
-              <div *ngFor="let modulePermnission of modulesPermissionControls.controls; let i = index">
+              <div *ngFor="let modulePermission of modulesPermissionControls.controls; let i = index">
                 <div [formGroupName]="i"
                      fxLayout="row"
                      fxLayoutAlign="space-between center">
   
                   <h3 fxFlex="calc(50% - 20px)">
-                    {{tableData[i].form}}
+                    {{modulePermission.get('form')?.value}}
                   </h3>
   
                   <app-phk-select formControlName="permission"
                                   [multiple]="true"
                                   [label]="'Selecciona permisos'"
                                   fxFlex="calc(50% - 20px)">
-                    <mat-option *ngFor="let option of tableData[i].options"
-                                [value]="option.id">{{option.name}}</mat-option>
+                    <mat-option *ngFor="let action of modulePermission.get('actions')?.value"
+                                [value]="action.id">{{action.name}}</mat-option>
                   </app-phk-select>
   
                 </div>
@@ -108,6 +108,6 @@
           </button>
         </div>
       </div>
-    </form>
+    </div>
   </mat-step>
 </mat-stepper>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewCommodityTypeComponent } from '../components/new-commodity-type/new-commodity-type.component';
+import { CommodityTypeService } from './commodity-type.service';
+import { Commodities } from '@shared/models/commodities';
 
 @Component({
   selector: 'app-commodity-type',
@@ -12,49 +14,92 @@ export class CommodityTypeComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+
+  constructor(private dialogService: DialogService,
+              private commoditiesService:CommodityTypeService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getCommodities();
   }
 
-  newGoodsType() {
+  getCommodities() {
+    this.commoditiesService.getCommodities()
+      .subscribe((response) => {
+        const tableData: Commodities[] = [];
+        
+        response.forEach((commodity) => {
+          const customtoInput:Commodities = {
+            id: commodity.id,
+            name: commodity.name,
+          };
+
+          tableData.push(customtoInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
+  }
+
+  processCommodities(processType: string) {
     this.dialogService
-        .openDialog(NewCommodityTypeComponent,
-                    "Nuevo Tipo de Mercancia",
-                    "800px",
-                    "250px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+        .openDialog(NewCommodityTypeComponent, 
+                    processType === 'Add' ? 'Crear Tipo de Mercancia' : 'Editar Tipo de Mercancia', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshCommodities();
+          }
+        });
+  }
+
+  deleteCommodities() {
+    this.dialogService
+    .openConfirmationDialog(
+            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
+            'Este cambio no se puede revertir')
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.commoditiesService.deleteCommodity(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Tipo de mercancia eliminada correctamente!')
+          this.refreshCommodities();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
+  }
+
+  refreshCommodities() {
+    this.tableData = [];
+
+    this.commoditiesService.getCommodities()
+        .subscribe((commodities) => {
+          commodities.forEach((commodity) => {
+
+            const commodityToInput:Commodities = {
+              id: commodity.id,
+              name: commodity.name
+            };
+
+            this.tableData.push(commodityToInput);
+
+          });
+        })
   }
 }

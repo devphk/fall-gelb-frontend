@@ -1,0 +1,30 @@
+<div>
+  <form [formGroup]="userRolForm"
+        fxLayout="column">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="10px"
+      fxLayoutAlign="start center"
+      class="p-20 w-100"
+    >
+      <mat-checkbox class="mb-20"
+                    *ngFor="let role of rolesList"
+                    fxFlex.gt-md="calc(25% - 20px)"
+                    fxFlex.lt-md="calc(33% - 20px)"
+                    fxFlex.lt-sm="calc(50% - 20px)" 
+                    [formControlName]="role.id">
+                    {{ role.name }}
+      </mat-checkbox>
+
+    </div>
+    <button
+      class="w-100"
+      mat-raised-button
+      color="primary"
+      (click)="submitForm()"
+    >
+      Guardar
+    </button>
+  </form>
+</div>
