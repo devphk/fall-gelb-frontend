@@ -15,7 +15,8 @@ export class FormUserComponent implements OnInit {
 
   isEditMode: boolean = false;
 
-  userForm: FormGroup = new FormGroup({})
+  userForm: FormGroup = new FormGroup({});
+  emailErrorMessage: string | null = null;
 
   constructor(private formBuild: FormBuilder,
               private dialogRef:MatDialogRef<FormUserComponent>,
@@ -95,6 +96,27 @@ export class FormUserComponent implements OnInit {
       this.userForm.markAllAsTouched();
       
     } 
+  }
+
+  validateEmail(formControl: string) {
+
+    let errors: any = this.userForm.get(formControl)?.errors;
+
+    if (errors) {
+      
+      if (errors.email) {
+        this.emailErrorMessage = 'Correo inválido'; 
+      } else if (errors.required) {
+        this.emailErrorMessage = 'Correo es necesario';
+      } else {
+        this.emailErrorMessage = null;
+      }
+
+    } else {
+      this.emailErrorMessage = null;
+    }
+
+    return this.emailErrorMessage;
   }
 
 }

@@ -69,8 +69,8 @@ export class CurrencyComponent implements OnInit {
   deleteCurrency() {
     this.dialogService
       .openConfirmationDialog(
-        `Desea eliminar Moneda '${this.itemsSelected[0].name}'`,
-        'Este cambio no se puede revertir'
+        'Eliminar Moneda',
+        `¿Desea eliminar moneda '${this.itemsSelected[0].name}' ?`
       )
       .afterClosed()
       .subscribe((response) => {

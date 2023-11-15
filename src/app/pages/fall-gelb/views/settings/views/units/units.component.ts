@@ -70,8 +70,8 @@ export class UnitsComponent implements OnInit {
   deleteUnit() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Unidad',
+            `¿Desea eliminar unidad '${this.itemsSelected[0].name}' ?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {

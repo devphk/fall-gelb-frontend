@@ -4,7 +4,19 @@
     <mat-label>
         {{label}}
     </mat-label>
-    <input (blur)="onTouch()" 
+    <input *ngIf="mask === ''"
+           (blur)="onTouch()" 
+           [readonly]="readOnly" 
+           [disabled]="disabled" 
+           [formControl]="inputControl"
+           [maxLength]="maxLength" 
+           [minLength]="minLength" 
+           [type]="type"
+           [required]="required"
+           matInput />
+
+    <input *ngIf="mask !== ''"
+           (blur)="onTouch()" 
            [readonly]="readOnly" 
            [disabled]="disabled" 
            [formControl]="inputControl"
@@ -14,13 +26,11 @@
            [mask]="mask"
            [required]="required"
            matInput />
-           <mat-hint>
-            {{hint}}
-           </mat-hint>
+
     <div matSuffix>
         <ng-content select="[suffix]">
         </ng-content>
     </div>
-    <mat-error *ngIf="ngControl.touched && errorMessage">{{ errorMessage }}</mat-error>
+    <mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
 
 </mat-form-field>

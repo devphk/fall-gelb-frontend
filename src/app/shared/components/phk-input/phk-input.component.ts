@@ -1,16 +1,13 @@
-import {
-  Component,
-  forwardRef,
-  Injector,
-  Input,
-  OnInit
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  UntypedFormControl,
-  NG_VALUE_ACCESSOR,
-  NgControl
-} from '@angular/forms';
+import { Component, 
+         forwardRef, 
+         Injector, 
+         Input, 
+         OnInit,
+         ChangeDetectorRef } from '@angular/core';
+import { ControlValueAccessor, 
+         FormControl, 
+         NG_VALUE_ACCESSOR, 
+         NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-phk-input',
@@ -24,28 +21,30 @@ import {
     }
   ]
 })
-export class PhkInputComponent implements OnInit, ControlValueAccessor {
+export class PhkInputComponent implements OnInit, 
+                                          ControlValueAccessor {
   @Input() label!: string;
-  @Input() type: 'number' | 'text' | 'password' = 'text' ;
+  @Input() type: 'number' | 'text' | 'password' = 'text';
   @Input() disabled = false;
   @Input() readOnly = false;
-  @Input() hint:string = '';
-  @Input() mask:string = '';
   @Input() requiredMarker = false;
   @Input() required = false;
   @Input() minLength = 1;
   @Input() maxLength = 100;
   @Input() appearance: 'legacy' | 'standard' | 'fill' | 'outline' = 'outline';
   @Input() errorMessage: string | null = null;
-  inputControl = new UntypedFormControl(null);
-  ngControl!: any;
+  @Input() mask: string = '';
+  inputControl = new FormControl();
+  ngControl!: NgControl;
 
-  constructor(public injector: Injector) {
-  }
+  constructor(public injector: Injector,
+              private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.ngControl = this.injector.get(NgControl);
-    this.inputControl.valueChanges.subscribe(value => this.propagateChange(value));
+    this.inputControl.valueChanges.subscribe(value => {
+      this.propagateChange(value);
+    });
   }
 
   onTouch() {
@@ -66,11 +65,14 @@ export class PhkInputComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    if (isDisabled) {
+      this.inputControl.disable();
+    } else {
+      this.inputControl.enable();
+    }
   }
 
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
 
-  propagateTouch = () => {
-  }
+  propagateTouch = () => {};
 }
