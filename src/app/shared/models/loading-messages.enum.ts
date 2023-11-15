@@ -18,4 +18,9 @@ export enum LoadingMessage {
   DELETING_TRUCK_TYPE = 'Eliminando Tipo de Camión...',
   CREATING_PROVIDER = 'Creando Proveedor...',
   DELETING_PROVIDER = 'Eliminando Proveedor...',
+  CREATING_LCL_CARGO = 'Creando Carga LCL...',
+  DELETING_LCL_CARGO = 'Eliminando Carga LCL...',
+  CREATING_ROLE = 'Creando rol...',
+  CREATING_COMMODITY = 'Creando Tipo de Mercancia...',
+  DELETING_COMMODITY = 'Eliminando Tipo de Mercancia...',
 }
