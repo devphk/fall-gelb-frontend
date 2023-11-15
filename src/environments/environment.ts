@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://fallgelb-api.phoinikel.com/api',
+  urlBase: 'https://fallgelb-api.phoinikel.com/api',
   oAuthClientId: '9a9276f5-9274-4afd-9830-b1ca9c54c1b8',
   oAuthClientToken: 'PJoziPOCifAc9ewn2q9PpMCjcfDA8bTlhpP0lDIf'
 };
