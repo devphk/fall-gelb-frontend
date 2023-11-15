@@ -17,6 +17,9 @@ export class ProviderService {
   getProviderTypes(): Observable<SelectOption[]> {
     return this.http.get('/provider-types');
   }
+  getProviderTransportTypes(): Observable<SelectOption[]> {
+    return this.http.get('/provider-transport-types');
+  }
 
   getProviders(): Observable<ProviderResponse[]> {
     return this.http.get('/providers');
