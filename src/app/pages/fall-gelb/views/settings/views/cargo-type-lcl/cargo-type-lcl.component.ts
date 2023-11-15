@@ -70,8 +70,8 @@ export class CargoTypeLclComponent implements OnInit {
   deleteCargoLCL() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar tipo de carga lcl '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Tipo de Carga LCL',
+            `¿Desea eliminar tipo de carga LCL '${this.itemsSelected[0].name}'?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {

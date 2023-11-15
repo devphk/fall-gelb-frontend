@@ -25,7 +25,7 @@
       aria-label="Editar Tipo de Carga LCL"
       matTooltip="Editar Tipo de Carga LCL"
       (click)="processCargoLCL('Edit')"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>edit</mat-icon>
 </button>
 
@@ -36,7 +36,7 @@
       aria-label="Eliminar Tipo de Carga LCL"
       matTooltip="Eliminar Tipo de Carga LCL"
       (click)="deleteCargoLCL()"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>delete</mat-icon>
 </button>
 

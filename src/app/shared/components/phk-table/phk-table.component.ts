@@ -109,12 +109,15 @@ export class PhkTableComponent implements OnInit, DoCheck {
     }
   }
 
-  updateCheckedList(event: any, element: any, rowIndex: number) {
+  updateCheckedList(event: any, element: any, elementIndex: number) {
+
+    console.log("element ", element)
+    console.log("elementIndex ", elementIndex)
     
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {
-      this.itemsSelected.splice(rowIndex, 1);
+      this.itemsSelected.splice(elementIndex, 1);
     }
 
   }
@@ -123,10 +126,21 @@ export class PhkTableComponent implements OnInit, DoCheck {
             rowElement: any,
             rowIndex: number) {
 
+    console.log("checkboxChange ", checkboxChange)
+    console.log("rowElement ", rowElement)
+    console.log("rowIndex ", rowIndex)
+
     if (checkboxChange) {
 
+      // If the item exist in the selected items array
+      // I search the item index
+
+      let itemIndex = this.itemsSelected.findIndex((item) => {
+        item.id === rowElement.id
+      });
+
       this.selection.toggle(rowElement);
-      this.updateCheckedList(checkboxChange, rowElement, rowIndex);
+      this.updateCheckedList(checkboxChange, rowElement, itemIndex);
 
       // I check the first option of multiselect options
 
@@ -141,6 +155,8 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
       }
     }
+
+    console.log("this.itemsSelected ", this.itemsSelected)
               
   }
 

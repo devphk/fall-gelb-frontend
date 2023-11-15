@@ -25,7 +25,7 @@
       aria-label="Editar Tipo de Mercancia"
       matTooltip="Editar Tipo de Mercancia"
       (click)="processCommodities('Edit')"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>edit</mat-icon>
 </button>
 
@@ -36,7 +36,7 @@
       aria-label="Eliminar Tipo de Mercancia"
       matTooltip="Eliminar Tipo de Mercancia"
       (click)="deleteCommodities()"
-      [disabled]="itemsSelected.length > 1">
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
   <mat-icon>delete</mat-icon>
 </button>
 

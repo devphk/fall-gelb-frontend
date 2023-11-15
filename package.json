@@ -25,6 +25,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "chart.js": "^4.4.0",
     "leaflet": "^1.9.4",
+    "leaflet-control-geocoder": "^2.4.0",
     "moment": "^2.29.4",
     "ng2-charts": "^4.1.1",
     "ngx-avatar": "^4.1.0",

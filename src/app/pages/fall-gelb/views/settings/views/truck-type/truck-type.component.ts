@@ -70,8 +70,8 @@ export class TruckTypeComponent implements OnInit {
   deleteTruck() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar tipo de camión '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Tipo de Camión',
+            `¿Desea eliminar tipo de camión '${this.itemsSelected[0].name}?'`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {

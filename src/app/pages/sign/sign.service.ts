@@ -22,6 +22,6 @@ export class SignService {
       password: password
     }
 
-    return this.httpService.postLogin("http://fallgelb-api.phoinikel.com/oauth/token", body);
+    return this.httpService.postLogin(environment.urlOAuth, body);
   }
 }

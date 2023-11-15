@@ -20,7 +20,7 @@
       aria-label="Editar Cuenta Bancaria"
       matTooltip="Editar Cuenta Bancaria"
       (click)="processBankAccount('Edit')"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>edit</mat-icon>
     </button>
@@ -32,7 +32,7 @@
       aria-label="Eliminar Cuenta Bancaria"
       matTooltip="Eliminar Cuenta Bancaria"
       (click)="deleteBankAccount()"
-      [disabled]="itemsSelected.length > 1"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>delete</mat-icon>
     </button>

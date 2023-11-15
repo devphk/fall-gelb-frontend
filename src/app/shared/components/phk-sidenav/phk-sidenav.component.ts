@@ -38,7 +38,7 @@ export class PhkSidenavComponent implements OnInit {
         },
         {
           path: 'air-consolidators',
-          title: 'Consolidador aéreo',
+          title: 'Consolidador Aéreo',
         },
         {
           path: 'airlines',
@@ -69,7 +69,7 @@ export class PhkSidenavComponent implements OnInit {
         },
         {
           path: 'bank-accounts',
-          title: 'Cuentas bancarias',
+          title: 'Cuentas Bancarias',
         },
         {
           path: 'currencies',
@@ -81,7 +81,7 @@ export class PhkSidenavComponent implements OnInit {
         },
         {
           path: 'container-type',
-          title: 'Tipos de contenedor',
+          title: 'Tipos de Contenedor',
         },
         {
           path: 'customs',
@@ -89,7 +89,7 @@ export class PhkSidenavComponent implements OnInit {
         },
         {
           path: 'truck-type',
-          title: 'Tipos de camiones',
+          title: 'Tipos de Camiones',
         },
         {
           path: 'commodity-type',

@@ -76,8 +76,8 @@ export class CustomsComponent implements OnInit {
   deleteCustoms() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Aduana',
+            `¿Desea eliminar aduana '${this.itemsSelected[0].name}'?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {
