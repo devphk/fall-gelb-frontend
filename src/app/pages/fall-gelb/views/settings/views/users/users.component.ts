@@ -92,7 +92,7 @@ export class UsersComponent implements OnInit {
     this.dialogService
       .openDialog(
         UserRolesComponent,
-        `Asignar Roles a usuario: '${this.itemsSelected[0].username}'`,
+        `Asignar Roles a Usuario: '${this.itemsSelected[0].username}'`,
         '800px',
         'auto',
         this.itemsSelected
