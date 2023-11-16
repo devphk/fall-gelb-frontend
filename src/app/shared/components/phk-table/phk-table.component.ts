@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild,
   ChangeDetectorRef,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -24,7 +24,6 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
   animations: [fadeAnimation],
 })
 export class PhkTableComponent implements OnInit, DoCheck {
-
   @ViewChild('multipleSelect') multipleSelect!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,10 +35,11 @@ export class PhkTableComponent implements OnInit, DoCheck {
   @Input() data: any[] = [];
   @Input() skeletonRowNumber: number = 12;
   @Input() showSelectColumn: boolean = true;
-  @Input() showEditIcon: boolean = false;
+  @Input() showActionIcon: boolean = false;
 
   //Table output
 
+  @Output() deleteRegister = new EventEmitter<any>();
   @Output() editRegister = new EventEmitter<any>();
 
   // Two binding of items selected
@@ -60,11 +60,10 @@ export class PhkTableComponent implements OnInit, DoCheck {
       this.columnsToDisplay.unshift('select');
     }
     this.setData();
-    if (this.showEditIcon) {
-      this.columnsTags.push('edit');
-      this.columnsToDisplay.push('edit');
+    if (this.showActionIcon) {
+      this.columnsTags.push('actions');
+      this.columnsToDisplay.push('actions');
     }
-
   }
 
   ngDoCheck(): void {
@@ -76,6 +75,9 @@ export class PhkTableComponent implements OnInit, DoCheck {
 
   editRow(index: number) {
     this.editRegister.emit(this.data[index]);
+  }
+  deleteRow(index: number) {
+    this.deleteRegister.emit(this.data[index]);
   }
 
   setData() {
@@ -110,33 +112,31 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   updateCheckedList(event: any, element: any, elementIndex: number) {
+    console.log('element ', element);
+    console.log('elementIndex ', elementIndex);
 
-    console.log("element ", element)
-    console.log("elementIndex ", elementIndex)
-    
     if (event.checked) {
       this.itemsSelected.push(element);
     } else {
       this.itemsSelected.splice(elementIndex, 1);
     }
-
   }
 
-  selectRow(checkboxChange: MatCheckboxChange,
-            rowElement: any,
-            rowIndex: number) {
-
-    console.log("checkboxChange ", checkboxChange)
-    console.log("rowElement ", rowElement)
-    console.log("rowIndex ", rowIndex)
+  selectRow(
+    checkboxChange: MatCheckboxChange,
+    rowElement: any,
+    rowIndex: number
+  ) {
+    console.log('checkboxChange ', checkboxChange);
+    console.log('rowElement ', rowElement);
+    console.log('rowIndex ', rowIndex);
 
     if (checkboxChange) {
-
       // If the item exist in the selected items array
       // I search the item index
 
       let itemIndex = this.itemsSelected.findIndex((item) => {
-        item.id === rowElement.id
+        item.id === rowElement.id;
       });
 
       this.selection.toggle(rowElement);
@@ -145,19 +145,16 @@ export class PhkTableComponent implements OnInit, DoCheck {
       // I check the first option of multiselect options
 
       if (this.data[rowIndex].options) {
-
         let itemSelectedIndex = this.itemsSelected.findIndex((item) => {
-          return item.rowIndex === rowIndex
-        })
-        this.itemsSelected[itemSelectedIndex]
-            .optionsSelected
-            .push(this.itemsSelected[itemSelectedIndex].options[0]);
-
+          return item.rowIndex === rowIndex;
+        });
+        this.itemsSelected[itemSelectedIndex].optionsSelected.push(
+          this.itemsSelected[itemSelectedIndex].options[0]
+        );
       }
     }
 
-    console.log("this.itemsSelected ", this.itemsSelected)
-              
+    console.log('this.itemsSelected ', this.itemsSelected);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -168,44 +165,40 @@ export class PhkTableComponent implements OnInit, DoCheck {
   }
 
   getType(variable: any) {
-
     if (Array.isArray(variable)) {
       return 'array';
     } else {
       return typeof variable;
     }
-
   }
 
-  selectionChange(rowElement: any, 
-                  selectEvent: MatSelectChange, 
-                  rowIndex: number) {
-
+  selectionChange(
+    rowElement: any,
+    selectEvent: MatSelectChange,
+    rowIndex: number
+  ) {
     let event = {
-      checked: selectEvent.value.length > 0 ? true : false
-    }
+      checked: selectEvent.value.length > 0 ? true : false,
+    };
 
     // First i check if the item exist in the selected
     // Items attay
 
     let existIndex = this.itemsSelected.findIndex((item) => {
-      return item.rowIndex === rowIndex
+      return item.rowIndex === rowIndex;
     });
 
-    if (selectEvent.value.length === 0
-        || existIndex === -1) {
+    if (selectEvent.value.length === 0 || existIndex === -1) {
       this.selection.toggle(rowElement);
       this.updateCheckedList(event, this.data[rowIndex], rowIndex);
     }
 
     let itemIndex = this.itemsSelected.findIndex((item) => {
-      return item.rowIndex === rowIndex
+      return item.rowIndex === rowIndex;
     });
 
     if (itemIndex !== -1) {
       this.itemsSelected[itemIndex].optionsSelected = selectEvent.value;
     }
-
   }
-
 }
