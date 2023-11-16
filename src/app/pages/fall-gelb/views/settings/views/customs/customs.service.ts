@@ -25,4 +25,8 @@ export class CustomsService {
   editCustom(data: any, id:number) {
     return this.http.put(`/customs/${id}`, data)
   }
+
+  getTransportTypes() {
+    return this.http.get('/transport-types');
+  }
 }
