@@ -77,6 +77,14 @@
                         </mat-option>
                     </mat-select>
                   </span>
+                  <span *ngSwitchCase="'number'">
+                    <ng-container *ngIf="columnsTags[columnIndex] === 'natural_person' || columnsTags[columnIndex] === 'legal_person'; else defaultContent">
+                      {{ element[columnsTags[columnIndex]] | percent }}
+                    </ng-container>
+                    <ng-template #defaultContent>
+                      {{ element[columnsTags[columnIndex]] }}
+                    </ng-template>
+                  </span>
                   <span *ngSwitchDefault>
                     {{element[columnsTags[columnIndex]]}}
                   </span>

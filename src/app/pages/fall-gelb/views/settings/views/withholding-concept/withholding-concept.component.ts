@@ -44,8 +44,8 @@ export class WithholdingConceptComponent implements OnInit {
         const conceptToInput: WithholdingConceptTableData = {
           id: concept.id,
           name: concept.name,
-          natural_person: concept.natural_person,
-          legal_person: concept.legal_person
+          natural_person: concept.natural_person / 100,
+          legal_person: concept.legal_person / 100
         };
 
         tableData.push(conceptToInput);
@@ -94,21 +94,7 @@ export class WithholdingConceptComponent implements OnInit {
   refreshConcepts() {
     this.tableData = [];
 
-    this.conceptsService.getConcepts()
-        .subscribe((concepts) => {
-          concepts.forEach((concept) => {
-
-            const conceptToInput = {
-              id: concept.id,
-              name: concept.name,
-              natural_person: concept.natural_person,
-              legal_person: concept.legal_person,             
-            };
-
-            this.tableData.push(conceptToInput);
-
-          });
-        })
+    this.getConcepts();
   }
 
 }

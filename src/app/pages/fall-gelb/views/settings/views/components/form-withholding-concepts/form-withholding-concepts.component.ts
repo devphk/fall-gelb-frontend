@@ -53,12 +53,12 @@ export class FormWithholdingConceptsComponent implements OnInit {
         }
         console.log(concept);
   
-        // this.conceptsService.createConcept(concept)
-        //   .subscribe((data) => {
-        //     this.toastService.showToaster("Concepto Creado Correctamente!")
-        //     this.dialogRef.close(true);
-        //   },
-        //     (error) => this.toastService.showToaster(error.error.message, true))
+        this.conceptsService.createConcept(concept)
+          .subscribe((data) => {
+            this.toastService.showToaster("Concepto Creado Correctamente!")
+            this.dialogRef.close(true);
+          },
+            (error) => this.toastService.showToaster(error.error.message, true))
 
       }else {
 
