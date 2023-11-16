@@ -89,21 +89,21 @@ export class CurrencyRatesComponent implements OnInit {
   }
 
   deleteCurrencyRate() {
-    // this.dialogService
-    // .openConfirmationDialog(
-    //         `Desea eliminar aduana '${this.itemsSelected[0].name}'`,
-    //         'Este cambio no se puede revertir')
-    // .afterClosed()
-    // .subscribe((response)=>{
-    //   if (response) {
-    //     this.customsService.deleteCustom(this.itemsSelected[0].id)
-    //     .subscribe((data) => {
-    //       this.toastService.showToaster('Aduana eliminada correctamente!')
-    //       this.refreshCustoms();
-    //     },
-    //       (error) => this.toastService.showToaster(error.error.message, true));
-    //   }
-    // })
+    this.dialogService
+    .openConfirmationDialog(
+            'Eliminar tasa monetaria',
+            `¿Eliminar tasa monetaria '${this.itemsSelected[0].currencyNameA}' a '${this.itemsSelected[0].currencyNameB}'?`)
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.currencyRateService.deleteCurrencyRate(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Aduana eliminada correctamente!')
+          this.refreshCurrencyRates();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
   }
 
   refreshCurrencyRates() {
