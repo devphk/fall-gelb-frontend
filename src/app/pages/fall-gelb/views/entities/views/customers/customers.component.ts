@@ -50,7 +50,7 @@ export class CustomersComponent implements OnInit {
           const tableData: CustomersDataTable[] = [];
           response.forEach((customers) => {
             const customerToInput: CustomersDataTable = {
-              id: customers.entity.id,
+              id: customers.id,
               name: customers.entity.name,
               phone: customers.entity.phone,
               address: customers.entity.address,
