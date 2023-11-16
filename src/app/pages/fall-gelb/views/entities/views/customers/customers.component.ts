@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewCustomerComponent } from '../components/new-customer/new-customer.component';
+import { CustomersService } from './customers.service';
+import { CustomersDataTable } from '@shared/models/customers';
 
 @Component({
   selector: 'app-customers',
@@ -12,50 +14,97 @@ export class CustomersComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
+    "Telefono",
+    "Dirección Fiscal",
+    "Facturador",
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
     "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
+    "address",
+    "biller",
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
+  billers = []
 
-  constructor(private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService,
+              private customersService:CustomersService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getCustomers();
   }
 
-  newCustomer() {
+  getCustomers() {
+    this.customersService.getBillers()
+    .subscribe((billers) => {
+      const billersMap: { [id: number]: string } = {};
+      billers.forEach((biller: any) => {
+        billersMap[biller.id] = biller.name;  
+      });
+
+      this.customersService.getCustomers()
+        .subscribe((response) => {
+          const tableData: CustomersDataTable[] = [];
+          response.forEach((customers) => {
+            const customerToInput: CustomersDataTable = {
+              id: customers.entity.id,
+              name: customers.entity.name,
+              phone: customers.entity.phone,
+              address: customers.entity.address,
+              biller: billersMap[customers.biller_id],
+              email: customers.entity.email,
+              active: customers.entity.active,
+              biller_id: customers.biller_id,
+              special_tax_payer : customers.special_tax_payer
+            };
+            tableData.push(customerToInput);
+          })
+
+            this.tableData = tableData;
+        })
+    })
+  }
+
+
+  processCustomers(processType: string) {
     this.dialogService
-        .openDialog(NewCustomerComponent,
-                    "Nuevo Cliente",
-                    "800px",
-                    "400px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+        .openDialog(NewCustomerComponent, 
+                    processType === 'Add' ? 'Crear Cliente' : 'Editar Cliente', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshCustomers();
+          }
+        });
+  }
+
+  deleteCustomers() {
+    // this.dialogService
+    // .openConfirmationDialog(
+    //         'Eliminar Aduana',
+    //         `¿Desea eliminar aduana '${this.itemsSelected[0].name}'?`)
+    // .afterClosed()
+    // .subscribe((response)=>{
+    //   if (response) {
+    //     this.customsService.deleteCustom(this.itemsSelected[0].id)
+    //     .subscribe((data) => {
+    //       this.toastService.showToaster('Aduana eliminada correctamente!')
+    //       this.refreshCustoms();
+    //     },
+    //       (error) => this.toastService.showToaster(error.error.message, true));
+    //   }
+    // })
+  }
+
+  refreshCustomers() {
+    this.tableData = [];
+    this.getCustomers();
   }
 
 }
