@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProviderService } from '../../providers/provider.service';
 import { ToastService } from '@core/services';
@@ -34,6 +34,7 @@ export class NewProviderComponent implements OnInit {
   isEditMode: boolean = false;
 
   providerOptions: SelectOption[] = [];
+  providerTransportTypeOptions: SelectOption[] = [];
   personTypeOptions: SelectOption[] = [];
 
   ngOnInit(): void {
@@ -56,40 +57,65 @@ export class NewProviderComponent implements OnInit {
         });
       });
     });
+    this.providerService
+      .getProviderTransportTypes()
+      .subscribe((providerTransportTypes) => {
+        providerTransportTypes.map((providerTransportType) => {
+          this.providerTransportTypeOptions.push({
+            id: providerTransportType.id,
+            name: providerTransportType.name,
+          });
+        });
+      });
   }
 
   initializeForm() {
     this.providerForm = this.fb.group({
       name: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].name : ''
+        this.data.dialogData ? this.data.dialogData[0].name : '',
+        [Validators.required]
       ),
       phone: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].phone : ''
+        this.data.dialogData ? this.data.dialogData[0].phone : '',
+        [Validators.required]
       ),
       email: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].email : ''
+        this.data.dialogData ? this.data.dialogData[0].email : '',
+        [Validators.required]
       ),
       active: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].active : ''
+        this.data.dialogData ? this.data.dialogData[0].active : '',
+        [Validators.required]
       ),
       address: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].address : ''
+        this.data.dialogData ? this.data.dialogData[0].address : '',
+        [Validators.required]
       ),
       special_tax_payer: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].special_tax_payer : ''
+        this.data.dialogData ? this.data.dialogData[0].special_tax_payer : '',
+        [Validators.required]
       ),
       iva_retention: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].iva_retention : ''
+        this.data.dialogData ? this.data.dialogData[0].iva_retention : '',
+        [Validators.required]
       ),
       person_type_id: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].person_type_id : ''
+        this.data.dialogData ? this.data.dialogData[0].person_type_id : '',
+        [Validators.required]
       ),
       provider_type_id: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].provider_type_id : ''
+        this.data.dialogData ? this.data.dialogData[0].provider_type_id : '',
+        [Validators.required]
       ),
 
       is_national: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].is_national : ''
+        this.data.dialogData ? this.data.dialogData[0].is_national : '',
+        [Validators.required]
+      ),
+      provider_transport_type_id: this.fb.control(
+        this.data.dialogData
+          ? this.data.dialogData[0].provider_transport_type_id
+          : ''
       ),
     });
   }
@@ -107,6 +133,9 @@ export class NewProviderComponent implements OnInit {
         person_type_id: this.providerForm.get('person_type_id')?.value,
         provider_type_id: this.providerForm.get('provider_type_id')?.value,
         is_national: this.providerForm.get('is_national')?.value,
+        provider_transport_type_id: this.providerForm.get(
+          'provider_transport_type_id'
+        )?.value,
       };
 
       if (this.data.title === 'Crear Proveedor') {

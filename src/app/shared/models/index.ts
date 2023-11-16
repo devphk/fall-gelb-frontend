@@ -7,3 +7,4 @@ export * from './table';
 export * from './theme-mode.enum';
 export * from './user';
 export * from './withholding-concepts';
+export * from './driver';

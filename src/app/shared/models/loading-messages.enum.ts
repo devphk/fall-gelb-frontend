@@ -23,6 +23,8 @@ export enum LoadingMessage {
   CREATING_ROLE = 'Creando rol...',
   CREATING_COMMODITY = 'Creando Tipo de Mercancia...',
   DELETING_COMMODITY = 'Eliminando Tipo de Mercancia...',
+  CREATING_DRIVER = 'Creando Chofer...',
+  DELETING_DRIVER = 'Eliminando Chofer...',
   CREATING_CUSTOMER = 'Creando Cliente...',
   DELETING_CUSTOMER = 'Eliminando Cliente...'
 }

@@ -1,61 +1,111 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewDriverComponent } from '../components/new-driver/new-driver.component';
+import { DriversService } from './drivers.service';
+import { DriverDataTable } from '@shared/models';
 
 @Component({
   selector: 'app-drivers',
   templateUrl: './drivers.component.html',
-  styleUrls: ['./drivers.component.scss']
+  styleUrls: ['./drivers.component.scss'],
 })
 export class DriversComponent implements OnInit {
+  tableColumnsToDisplay: string[] = ['ID', 'Nombre'];
+  tableColumnsTags: string[] = ['id', 'name'];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  tableColumnsToDisplay: string[] = [
-    "ID",
-    "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
-  ];
-  tableColumnsTags: string[] = [
-    "id",
-    "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
-  ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
-
-  constructor(private dialogService: DialogService) { }
+  constructor(
+    private dialogService: DialogService,
+    private driverService: DriversService,
+    private toastService: ToastService
+  ) {}
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getdrivers();
   }
 
-  newDriver() {
+  getdrivers() {
+    this.driverService.getDrivers().subscribe(
+      (response) => {
+        const tableData: DriverDataTable[] = [];
+
+        response.forEach((driver) => {
+          const driverToInput: DriverDataTable = {
+            id: driver.id,
+            name: driver.name,
+            phone: driver.phone,
+            email: driver.email,
+            active: driver.active,
+            address: driver.address,
+            is_self_employed: driver.is_self_employed,
+            provider_id: driver.provider_id,
+          };
+
+          tableData.push(driverToInput);
+        });
+
+        this.tableData = tableData;
+      },
+      (error) => {}
+    );
+  }
+
+  processDriver(processType: string) {
     this.dialogService
-        .openDialog(NewDriverComponent,
-                    "Nuevo Chofer",
-                    "800px",
-                    "auto").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+      .openDialog(
+        NewDriverComponent,
+        processType === 'Add' ? 'Crear Chofer' : 'Editar Chofer',
+        '800px',
+        'auto',
+        processType === 'Add' ? null : this.itemsSelected
+      )
+      .afterClosed()
+      .subscribe((driver) => {
+        if (driver) {
+          this.refreshDrivers();
+        }
+      });
   }
 
+  deleteDriver() {
+    this.dialogService
+      .openConfirmationDialog(
+        `Desea eliminar Chofer '${this.itemsSelected[0].name}'`,
+        'Este cambio no se puede revertir'
+      )
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.driverService.deleteDrivers(this.itemsSelected[0].id).subscribe(
+            (data) => {
+              this.toastService.showToaster('Chofer eliminado correctamente!');
+              this.refreshDrivers();
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
+        }
+      });
+  }
+
+  refreshDrivers() {
+    this.tableData = [];
+
+    this.driverService.getDrivers().subscribe((drivers) => {
+      drivers.forEach((driver) => {
+        const driverToInput = {
+          id: driver.id,
+          name: driver.name,
+          phone: driver.phone,
+          email: driver.email,
+          active: driver.active,
+          address: driver.address,
+          is_self_employed: driver.is_self_employed,
+          provider_id: driver.provider_id,
+        };
+
+        this.tableData.push(driverToInput);
+      });
+    });
+  }
 }
