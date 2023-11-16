@@ -85,21 +85,21 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomers() {
-    // this.dialogService
-    // .openConfirmationDialog(
-    //         'Eliminar Aduana',
-    //         `¿Desea eliminar aduana '${this.itemsSelected[0].name}'?`)
-    // .afterClosed()
-    // .subscribe((response)=>{
-    //   if (response) {
-    //     this.customsService.deleteCustom(this.itemsSelected[0].id)
-    //     .subscribe((data) => {
-    //       this.toastService.showToaster('Aduana eliminada correctamente!')
-    //       this.refreshCustoms();
-    //     },
-    //       (error) => this.toastService.showToaster(error.error.message, true));
-    //   }
-    // })
+    this.dialogService
+    .openConfirmationDialog(
+            'Eliminar Cliente',
+            `¿Desea eliminar cliente '${this.itemsSelected[0].name}'?`)
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.customersService.deleteCustomer(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Cliente eliminado correctamente!')
+          this.refreshCustomers();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
   }
 
   refreshCustomers() {
