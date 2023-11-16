@@ -46,12 +46,12 @@ export class NewContainerTypeComponent implements OnInit {
           name: this.containerTypeForm.get('name')?.value, 
         }
   
-        // this.containerTypeService.editContainerType(editContainer, this.data.dialogData[0].id)
-        //   .subscribe((data) => {
-        //     this.toastService.showToaster("Tipo de Container Editado Correctamente!")
-        //     this.dialogRef.close(true);
-        //   },
-        //              (error) => this.toastService.showToaster(error.error.message, true))
+        this.containerTypeService.editContainerType(editContainer, this.data.dialogData[0].id)
+          .subscribe((data) => {
+            this.toastService.showToaster("Tipo de Container Editado Correctamente!")
+            this.dialogRef.close(true);
+          },
+                     (error) => this.toastService.showToaster(error.error.message, true))
 
       }
 
