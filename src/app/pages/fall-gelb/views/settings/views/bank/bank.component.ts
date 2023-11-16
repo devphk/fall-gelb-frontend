@@ -65,8 +65,8 @@ export class BankComponent implements OnInit {
   deleteBank() {
     this.dialogService
       .openConfirmationDialog(
-        `Desea eliminar Banco '${this.itemsSelected[0].name}'`,
-        'Este cambio no se puede revertir'
+        `Eliminar Banco`,
+        `¿Desea eliminar banco '${this.itemsSelected[0].name}'?`
       )
       .afterClosed()
       .subscribe((response) => {

@@ -73,8 +73,8 @@ export class WarehouseComponent implements OnInit {
   deleteWarehouse() {
     this.dialogService
     .openConfirmationDialog(
-            `Desea eliminar almacén '${this.itemsSelected[0].name}'`,
-            'Este cambio no se puede revertir')
+            'Eliminar Almacén',
+            `¿Desea eliminar almacén '${this.itemsSelected[0].name}'?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {

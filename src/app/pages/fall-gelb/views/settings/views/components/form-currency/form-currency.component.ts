@@ -20,14 +20,14 @@ export class FormCurrencyComponent implements OnInit {
 
   isEditMode: boolean = false;
 
-  currencyFrom: FormGroup = new FormGroup({});
+  currencyForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
     this.initializeForm();
   }
 
   initializeForm() {
-    this.currencyFrom = this.formBuild.group({
+    this.currencyForm = this.formBuild.group({
       name: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].name : '',
         [Validators.required]
@@ -44,12 +44,12 @@ export class FormCurrencyComponent implements OnInit {
   }
 
   saveCurrency() {
-    if (this.currencyFrom.valid) {
+    if (this.currencyForm.valid) {
       if (this.data.title === 'Crear Moneda') {
         const bank = {
-          name: this.currencyFrom.get('name')?.value,
-          code: this.currencyFrom.get('code')?.value,
-          decimals: this.currencyFrom.get('decimals')?.value,
+          name: this.currencyForm.get('name')?.value,
+          code: this.currencyForm.get('code')?.value,
+          decimals: this.currencyForm.get('decimals')?.value,
         };
 
         this.currencyService.createCurrency(bank).subscribe(
@@ -61,9 +61,9 @@ export class FormCurrencyComponent implements OnInit {
         );
       } else {
         const bankEdit = {
-          name: this.currencyFrom.get('name')?.value,
-          code: this.currencyFrom.get('code')?.value,
-          decimals: this.currencyFrom.get('decimals')?.value,
+          name: this.currencyForm.get('name')?.value,
+          code: this.currencyForm.get('code')?.value,
+          decimals: this.currencyForm.get('decimals')?.value,
         };
 
         console.log(bankEdit);
@@ -79,7 +79,7 @@ export class FormCurrencyComponent implements OnInit {
           );
       }
     } else {
-      this.currencyFrom.markAllAsTouched();
+      this.currencyForm.markAllAsTouched();
     }
   }
 }
