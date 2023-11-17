@@ -2,7 +2,7 @@ export interface CurrencyRates {
   id: number;
   currency_a_id: number;
   currency_b_id: number;
-  amount: string;
+  amount: number;
   operation: string;
   datetime: string;
   active: boolean;
@@ -25,7 +25,10 @@ export interface CurrencyRatesDataTable {
     id: number;
     currencyIdA: number;
     currencyIdB: number;
-    amount: string;
+    amount: {
+      value: number,
+      mask: string
+    };
     operation: string;
     datetime: string;
     active: boolean;

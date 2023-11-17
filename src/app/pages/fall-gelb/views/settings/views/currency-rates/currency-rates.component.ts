@@ -5,6 +5,7 @@ import { CurrencyDataTable } from '@shared/models/currency';
 import { CurrencyRatesDataTable } from '@shared/models/currency-rates';
 import { FormCurrencyComponent } from '../components/form-currency/form-currency.component';
 import { FormCurrencyRatesComponent } from '../components/form-currency-rates/form-currency-rates.component';
+import { UtilsService } from '@core/services/utils-service.service';
 
 @Component({
   selector: 'app-currency-rates',
@@ -33,7 +34,8 @@ export class CurrencyRatesComponent implements OnInit {
 
   constructor(private dialogService: DialogService,
               private currencyRateService:CurrencyRatesService,
-              private toastService: ToastService) { }
+              private toastService: ToastService,
+              private utilsService:UtilsService) { }
 
   ngOnInit(): void {
     this.getCurrencyRates();
@@ -52,7 +54,10 @@ export class CurrencyRatesComponent implements OnInit {
             id: currency.id,
             currencyIdA: currency.currency_a_id,
             currencyIdB: currency.currency_b_id,
-            amount: currency.amount,
+            amount: {
+              value: currency.amount,
+              mask: '00.00'
+            },
             operation: result,
             datetime: currency.datetime,
             active: currency.active,
@@ -119,7 +124,10 @@ export class CurrencyRatesComponent implements OnInit {
               id: currency.id,
               currencyIdA: currency.currency_a_id,
               currencyIdB: currency.currency_b_id,
-              amount: currency.amount,
+              amount: {
+                value: currency.amount,
+                mask: this.utilsService.generateCurrencyMask(currency.currency_b.name, currency.amount)
+              },
               operation: result,
               datetime: currency.datetime,
               active: currency.active,

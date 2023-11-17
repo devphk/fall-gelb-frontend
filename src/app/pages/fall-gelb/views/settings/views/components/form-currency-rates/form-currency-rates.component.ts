@@ -64,11 +64,13 @@ export class FormCurrencyRatesComponent implements OnInit {
     if (this.currencyRatesForm.valid) {
     if(this.data.title === 'Crear Tasa Monetaria'){
 
+      const currencyAmount = parseInt(this.currencyRatesForm.get('amount')?.value.toString().replace
+      ('.', ''))
 
         const currency = {
           currency_a_id: this.currencyRatesForm.get('currencyA')?.value, 
           currency_b_id: this.currencyRatesForm.get('currencyB')?.value,  
-          amount: this.currencyRatesForm.get('amount')?.value,  
+          amount: currencyAmount, 
           operation: this.currencyRatesForm.get('operation')?.value,  
         }
           console.log('Currency: ', currency)

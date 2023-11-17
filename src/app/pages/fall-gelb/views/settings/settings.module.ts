@@ -88,7 +88,7 @@ const routes: Routes = [
     CargoTypeLclComponent,
     FormCargoTypeLclComponent,
     WithholdingConceptComponent,
-    FormWithholdingConceptsComponent
+    FormWithholdingConceptsComponent,
     CurrencyRatesComponent,
     FormCurrencyRatesComponent,
     ],
