@@ -54,7 +54,6 @@ export class NewCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBillers();
-    console.log('dialogData: ', this.data.dialogData[0].special_tax_payer === true ? 1 : 2);
   }
 
   getBillers() {
