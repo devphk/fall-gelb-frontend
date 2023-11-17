@@ -15,9 +15,10 @@ import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-lis
 import { AvatarModule } from 'ngx-avatar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
+import { ConceptsComponent } from './views/concepts/concepts.component';
 
 @NgModule({
-  declarations: [FallGelbComponent],
+  declarations: [FallGelbComponent, ConceptsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

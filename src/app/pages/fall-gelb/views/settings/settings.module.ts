@@ -50,6 +50,7 @@ import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation
 import { UsersComponent } from './views/users';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
+import { ConceptsComponent } from './views/concepts/concepts.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,7 @@ const routes: Routes = [
     FormUserComponent,
     CargoTypeLclComponent,
     FormCargoTypeLclComponent,
+    ConceptsComponent,
     ],
   imports: [
     CommonModule,
