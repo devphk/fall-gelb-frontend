@@ -26,4 +26,14 @@ export class UtilsService {
       return '000.00';
     }
   }
+
+  parsePercentToValue (value: number) {
+    if (value > 100 && value < 10000) {
+      return value / 100;
+    } else if (value >= 10000 && value < 100000) {
+      return value / 1000;
+    } else {
+      return value / 10000;
+    }
+  }
 }

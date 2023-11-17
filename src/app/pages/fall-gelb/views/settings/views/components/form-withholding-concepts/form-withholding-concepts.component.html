@@ -24,6 +24,7 @@
           formControlName="naturalPerson"
           fxFlex="calc(33% - 20px)"
           fxFlex.lt-md="calc(100%)"
+          [min]="0"
           class="w-100"
           [errorMessage]="conceptForm.controls['naturalPerson'].invalid ? 'La tarifa es requerida' : null"
         ></app-phk-input>
@@ -44,6 +45,7 @@
           formControlName="legalPerson"
           fxFlex="calc(33% - 20px)"
           fxFlex.lt-md="calc(100%)"
+          [min]="0"
           class="w-100"
           [errorMessage]="conceptForm.controls['legalPerson'].invalid ? 'La tarifa es requerida' : null"
         ></app-phk-input>

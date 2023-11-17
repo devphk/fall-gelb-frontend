@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { WithholdingConceptComponent } from '../../withholding-concept/withholding-concept.component';
 import { WithholdingConceptsService } from '../../withholding-concept/withholding-concept.service';
 import { ToastService } from '@core/services';
+import { UtilsService } from '@core/services/utils-service.service';
 
 @Component({
   selector: 'app-form-withholding-concepts',
@@ -18,6 +19,7 @@ export class FormWithholdingConceptsComponent implements OnInit {
               private dialogRef:MatDialogRef<FormWithholdingConceptsComponent>,
               private conceptsService:WithholdingConceptsService,
               private toastService:ToastService,
+              private utilsService:UtilsService,
               @Inject(MAT_DIALOG_DATA) private data: any) {}
 
   ngOnInit(): void {
@@ -29,9 +31,9 @@ export class FormWithholdingConceptsComponent implements OnInit {
 
     this.conceptForm = this.formBuild.group({
       name: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
-      naturalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].natural_person : '', [Validators.required]),
+      naturalPerson: this.formBuild.control(this.data.dialogData ? this.utilsService.parsePercentToValue(this.data.dialogData[0].natural_person.value) : '', [Validators.required]),
       naturalPersonCode: this.formBuild.control(''),
-      legalPerson: this.formBuild.control(this.data.dialogData ? this.data.dialogData[0].legal_person : '', [Validators.required]),
+      legalPerson: this.formBuild.control(this.data.dialogData ? this.utilsService.parsePercentToValue(this.data.dialogData[0].legal_person.value) : '', [Validators.required]),
       legalPersonCode: this.formBuild.control(''),
 
     });
@@ -51,7 +53,6 @@ export class FormWithholdingConceptsComponent implements OnInit {
           legal_person_code: this.conceptForm.get('legalPersonCode')?.value,
  
         }
-        console.log(concept);
   
         this.conceptsService.createConcept(concept)
           .subscribe((data) => {
@@ -70,15 +71,13 @@ export class FormWithholdingConceptsComponent implements OnInit {
           legal_person_code: this.conceptForm.get('legalPersonCode')?.value,
  
         }
-  
-        console.log(editConcept)
-  
-          // this.conceptsService.editConcept(editConcept, this.data.dialogData[0].id)
-          // .subscribe((data) =>{
-          //   this.toastService.showToaster("Concepto Editado Correctamente!")
-          //   this.dialogRef.close(true);
-          // },
-          //   (error) => this.toastService.showToaster(error.error.message, true))
+    
+          this.conceptsService.editConcept(editConcept, this.data.dialogData[0].id)
+          .subscribe((data) =>{
+            this.toastService.showToaster("Concepto Editado Correctamente!")
+            this.dialogRef.close(true);
+          },
+            (error) => this.toastService.showToaster(error.error.message, true))
                      
       }
 

@@ -23,7 +23,7 @@ export class WithholdingConceptsService {
   }
   
   editConcept(data:any, id:number) {
-    return this.http.put(`/withholdings-concepts/${id}`, data)
+    return this.http.put(`/withholding-concepts/${id}`, data)
   }
 
 }

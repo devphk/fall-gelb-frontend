@@ -52,13 +52,11 @@ export class WithholdingConceptComponent implements OnInit {
             suffix: '%'
           },
           legal_person: {
-            value: this.utilsService.parseValueToPercent(concept.natural_person).toString(),
+            value: this.utilsService.parseValueToPercent(concept.legal_person).toString(),
             mask: this.utilsService.generateMask(concept.natural_person),
             suffix: '%'
           },
         };
-        console.log('natural_person:', conceptToInput.natural_person.value, 'legal_person:', conceptToInput.legal_person)
-
         tableData.push(conceptToInput);
       });
 
@@ -88,8 +86,8 @@ export class WithholdingConceptComponent implements OnInit {
 
     this.dialogService
         .openConfirmationDialog(
-                `Desea eliminar concepto '${this.itemsSelected[0].name}'`,
-                'Este cambio no se puede revertir')
+                'Eliminar Concepto',
+                `¿Eliminar concepto '${this.itemsSelected[0].name}'?`)
         .afterClosed()
         .subscribe((response)=>{
           if (response) {
