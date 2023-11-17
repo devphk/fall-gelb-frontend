@@ -17,7 +17,8 @@ tableDataTest: any[] = [
     {
       number: {
         value: '1245',
-        mask: '00.00'
+        mask: '00.00',
+        suffix: '%'
       },
     }
   ];

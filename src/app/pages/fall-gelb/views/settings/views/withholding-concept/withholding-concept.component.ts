@@ -3,6 +3,7 @@ import { DialogService, ToastService } from '@core/services';
 import { WithholdingConceptsService } from './withholding-concept.service';
 import { WithholdingConceptTableData } from '@shared/models/withholding-concepts';
 import { FormWithholdingConceptsComponent } from '../components/form-withholding-concepts/form-withholding-concepts.component';
+import { UtilsService } from '@core/services/utils-service.service';
 
 @Component({
   selector: 'app-withholding-concept',
@@ -26,7 +27,8 @@ export class WithholdingConceptComponent implements OnInit {
   constructor(
     private dialogService: DialogService,
     private conceptsService: WithholdingConceptsService,
-    private toastService:ToastService  ) {}
+    private toastService:ToastService,
+    private utilsService:UtilsService  ) {}
 
   ngOnInit(): void {
     this.getConcepts();
@@ -44,9 +46,18 @@ export class WithholdingConceptComponent implements OnInit {
         const conceptToInput: WithholdingConceptTableData = {
           id: concept.id,
           name: concept.name,
-          natural_person: concept.natural_person / 100,
-          legal_person: concept.legal_person / 100
+          natural_person: {
+            value: this.utilsService.parseValueToPercent(concept.natural_person).toString(),
+            mask: this.utilsService.generateMask(concept.natural_person),
+            suffix: '%'
+          },
+          legal_person: {
+            value: this.utilsService.parseValueToPercent(concept.natural_person).toString(),
+            mask: this.utilsService.generateMask(concept.natural_person),
+            suffix: '%'
+          },
         };
+        console.log('natural_person:', conceptToInput.natural_person.value, 'legal_person:', conceptToInput.legal_person)
 
         tableData.push(conceptToInput);
       });

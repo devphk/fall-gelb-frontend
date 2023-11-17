@@ -80,7 +80,7 @@
                   <span *ngSwitchDefault>
                     <!-- {{element[columnsTags[columnIndex]]}} -->
                     <ng-container *ngIf="element[columnsTags[columnIndex]].mask; else defaultContent">
-                      {{ maskService.applyMask(element[columnsTags[columnIndex]].value, element[columnsTags[columnIndex]].mask)}}
+                      {{ maskService.applyMask(element[columnsTags[columnIndex]].value, element[columnsTags[columnIndex]].mask) }} {{element[columnsTags[columnIndex]].suffix}}
                     </ng-container>
                     <ng-template #defaultContent>
                       {{ element[columnsTags[columnIndex]] }}
