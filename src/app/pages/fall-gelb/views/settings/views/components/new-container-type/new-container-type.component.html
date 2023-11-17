@@ -1,19 +1,21 @@
-<div>
+<div>   
   <form [formGroup]="containerTypeForm">
-  <div
-    mat-dialog-content
-    fxLayout="row wrap"
-    fxLayoutGap="20px"
-    fxLayout.lt-md="column"
-  >
-    <br />
-    <app-phk-input  fxFlex="calc(33% - 20px)" 
-                            label="Nombre" 
-                            formControlName="name" 
-                            [required]="true">
-            </app-phk-input>
+      <div mat-dialog-content f
+           fxLayout="row wrap" 
+           fxLayoutGap="20px"
+           fxFlex.lt-md="column"
+           fxLayoutAlign="start center">
+          <br>
 
-    <button class="w-100" mat-flat-button color="primary">Guardar</button>
-  </div>
+          <app-phk-input  fxFlex="calc(33% - 20px)" 
+                          label="Nombre" 
+                          formControlName="name" 
+                          [required]="true"
+                          [errorMessage]="containerTypeForm.controls['name'].invalid ? 'El nombre es requerido' : null">
+          </app-phk-input>
+          
+      </div> 
   </form>
+
+  <button class="w-100" mat-flat-button color="primary" (click)="saveContainerType()">Guardar</button>
 </div>
