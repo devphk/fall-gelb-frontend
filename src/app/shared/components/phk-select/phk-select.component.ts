@@ -37,10 +37,16 @@ export class PhkSelectComponent implements OnInit,
   @Input() showExtraField = false;
   @Input() appearance: 'fill' | 'outline' = 'outline';
   @ContentChildren(MatOption) queryOptions!: QueryList<MatOption>;
-  options!: { value: any, viewValue: any, disabled: boolean }[];
+  options!: { 
+    value: any, 
+    viewValue: any, 
+    disabled: boolean 
+  }[];
   @Input() disabled = false;
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
   @Output() extraField: EventEmitter<string> = new EventEmitter();
+  @Input() errorMessage: string | null = null;
+
   ngControl!: any;
   extraFieldInput: string = '';
 

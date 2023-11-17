@@ -1,0 +1,89 @@
+
+
+<div [formGroup]="conceptOptionForm"
+     fxLayout="column">
+
+     <app-phk-input formControlName="name"
+                    [label]="'Nombre del concepto'"
+                    fxFlex="calc(33% - 20px)"
+                    [required]="true"
+                    [errorMessage]="conceptOptionForm.get('name')
+                                                     ?.errors
+                                                     ?.['required'] ? 'Nombre es requerido' : null">
+
+     </app-phk-input>
+    
+     <app-phk-select formControlName="conceptType"
+                     [label]="'Tipo de concepto'"
+                     fxFlex="calc(33% - 20px)"
+                     (optionSelected)="changeConceptType($event)"
+                     [required]="true"
+                     [errorMessage]="conceptOptionForm.get('conceptType')
+                                                      ?.errors
+                                                      ?.['required'] ? 'Tipo de concepto requerido' : null">
+        
+        <mat-option *ngFor="let conceptType of conceptTypes" 
+                    [value]="conceptType.value">
+            {{conceptType.viewValue}}
+        </mat-option>
+
+     </app-phk-select>
+
+</div>
+
+<div fxLayout="row wrap"
+     [formGroup]="conceptForm"
+     fxLayoutGap="20px">
+
+     <app-phk-select formControlName="withholdingConcept"
+                     [label]="'Concepto de retención'"
+                     fxFlex="calc(33% - 20px)">
+
+        <mat-option *ngFor="let withholdingConcept of withholdingConcepts" 
+                    [value]="withholdingConcept.id">
+            {{withholdingConcept.name}}
+        </mat-option>
+
+     </app-phk-select>
+
+     <app-phk-select formControlName="forSale"
+                     [label]="'¿De venta?'"
+                     fxFlex="calc(33% - 20px)"
+                     [required]="true"
+                     [errorMessage]="conceptForm.get('forSale')
+                                                ?.errors
+                                                ?.['required'] ? 'Campo requerido' : null">
+
+        <mat-option [value]="true">
+            Sí
+        </mat-option>
+        <mat-option [value]="false">
+            No
+        </mat-option>
+
+     </app-phk-select>
+
+     <app-phk-select formControlName="forPurchase"
+                     [label]="'¿De compra?'"
+                     fxFlex="calc(33% - 40px)"
+                     [required]="true"
+                     [errorMessage]="conceptForm.get('forPurchase')
+                                                ?.errors
+                                                ?.['required'] ? 'Campo requerido' : null">
+        <mat-option [value]="true">
+            Sí
+        </mat-option>
+        <mat-option [value]="false">
+            No
+        </mat-option>
+     </app-phk-select>
+
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveConcept()"
+        >
+          Guardar
+        </button>
+</div>

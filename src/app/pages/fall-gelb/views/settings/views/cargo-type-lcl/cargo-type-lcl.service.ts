@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { LoadingMessage } from '@shared/models';
-import { CargoTypeLCL } from '@shared/models/cargo-type-lcl';
+import { CargoTypeLCL } from '@shared/models/cargo';
 import { Observable } from 'rxjs';
 
 @Injectable({

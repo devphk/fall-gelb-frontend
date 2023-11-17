@@ -14,6 +14,7 @@ import {
 import { SettingsComponent } from './settings.component';
 import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
+import { ConceptsComponent } from './views/concepts/concepts.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path: 'cargo-type-lcl',
     component: CargoTypeLclComponent,
+  },
+  {
+    path: 'concepts',
+    component: ConceptsComponent,
   },
   {
     path: '**',

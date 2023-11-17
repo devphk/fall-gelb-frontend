@@ -1,1 +1,59 @@
-<p>concepts works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h1>Bancos</h1>
+  
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Registrar Banco"
+        matTooltip="Registrar Banco"
+        (click)="processConcept('Add')"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+  
+      <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Editar Banco"
+        matTooltip="Editar Banco"
+        (click)="processConcept('Edit')"
+        [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+  
+      <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Eliminar Banco"
+        matTooltip="Eliminar Banco"
+        (click)="deleteConcept()"
+        [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+  
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Actualizar Tabla"
+        matTooltip="Actualizar Tabla"
+        (click)="getConcepts()"
+      >
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  <!-- <app-phk-table
+    *ngIf="tableData !== []"
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+    [(itemsSelected)]="itemsSelected"
+  ></app-phk-table> -->
+  
