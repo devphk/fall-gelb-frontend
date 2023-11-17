@@ -16,6 +16,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { fadeAnimation } from '../../animations';
 import { MatSelectChange } from '@angular/material/select';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { NgxMaskService } from 'ngx-mask';
 
 @Component({
   selector: 'app-phk-table',
@@ -52,7 +53,8 @@ export class PhkTableComponent implements OnInit, DoCheck {
   backupData: any[] = [];
   showSkeleton: boolean = true;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef,
+              public maskService: NgxMaskService) {}
 
   ngOnInit(): void {
     if (this.showSelectColumn) {
@@ -64,7 +66,6 @@ export class PhkTableComponent implements OnInit, DoCheck {
       this.columnsTags.push('edit');
       this.columnsToDisplay.push('edit');
     }
-
   }
 
   ngDoCheck(): void {

@@ -34,6 +34,7 @@ export class PhkInputComponent implements OnInit,
   @Input() appearance: 'legacy' | 'standard' | 'fill' | 'outline' = 'outline';
   @Input() errorMessage: string | null = null;
   @Input() mask: string = '';
+  @Input() min: number = -999999999;
   inputControl = new FormControl();
   ngControl!: NgControl;
 

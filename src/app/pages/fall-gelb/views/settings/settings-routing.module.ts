@@ -14,6 +14,7 @@ import {
 import { SettingsComponent } from './settings.component';
 import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
+import { WithholdingConceptComponent } from './views/withholding-concept/withholding-concept.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path: 'cargo-type-lcl',
     component: CargoTypeLclComponent,
+  },
+  {
+    path: 'withholding-concepts',
+    component: WithholdingConceptComponent,
   },
   {
     path: '**',
