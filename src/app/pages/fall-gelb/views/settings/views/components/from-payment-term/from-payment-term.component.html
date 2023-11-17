@@ -34,15 +34,19 @@
           fxLayoutAlign="start center"
         >
           <app-phk-input
+            [type]="'number'"
             formControlName="days"
             [label]="'Dias'"
             fxFlex="calc(33% - 20px)"
+            [required]="true"
           >
           </app-phk-input>
           <app-phk-input
+            [type]="'number'"
             formControlName="percentage"
             [label]="'porcentaje'"
             fxFlex="calc(33% - 20px)"
+            [required]="true"
           >
           </app-phk-input>
 
@@ -71,7 +75,13 @@
         >
           Añadir
         </button>
-        <button class="w-50" mat-flat-button color="primary" aria-label="save">
+        <button
+          class="w-50"
+          mat-flat-button
+          color="primary"
+          aria-label="save"
+          (click)="savePaymentTerm()"
+        >
           Guardar
         </button>
       </div>

@@ -1,13 +1,13 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
-  <h1>Bancos</h1>
+  <h1>Terminos de Pago</h1>
 
   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <button
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Registrar Banco"
-      matTooltip="Registrar Banco"
+      aria-label="Registrar Terminos de Pago"
+      matTooltip="Registrar Terminos de Pago"
       (click)="processPaymenTerm('Add')"
     >
       <mat-icon>add</mat-icon>
@@ -17,8 +17,8 @@
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Editar Banco"
-      matTooltip="Editar Banco"
+      aria-label="Editar Terminos de Pago"
+      matTooltip="Editar Terminos de Pago"
       (click)="processPaymenTerm('Edit')"
       [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
@@ -29,8 +29,8 @@
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Eliminar Banco"
-      matTooltip="Eliminar Banco"
+      aria-label="Eliminar Terminos de Pago"
+      matTooltip="Eliminar Terminos de Pago"
       (click)="deletePaymenTerm()"
       [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >

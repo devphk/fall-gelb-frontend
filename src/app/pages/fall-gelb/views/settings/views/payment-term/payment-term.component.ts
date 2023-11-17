@@ -49,7 +49,9 @@ export class PaymentTermComponent implements OnInit {
     this.dialogService
       .openDialog(
         FromPaymentTermComponent,
-        processType === 'Add' ? 'Crear Banco' : 'Editar Banco',
+        processType === 'Add'
+          ? 'Crear Terminos de Pago'
+          : 'Editar Terminos de Pago',
         '800px',
         'auto',
         processType === 'Add' ? null : this.itemsSelected
@@ -65,8 +67,8 @@ export class PaymentTermComponent implements OnInit {
   deletePaymenTerm() {
     this.dialogService
       .openConfirmationDialog(
-        `Eliminar Banco`,
-        `¿Desea eliminar banco '${this.itemsSelected[0].name}'?`
+        `Eliminar Terminos de Pago`,
+        `¿Desea eliminar el Terminos de Pago '${this.itemsSelected[0].name}'?`
       )
       .afterClosed()
       .subscribe((response) => {
@@ -75,7 +77,9 @@ export class PaymentTermComponent implements OnInit {
             .deletePaymenTerms(this.itemsSelected[0].id)
             .subscribe(
               (data) => {
-                this.toastService.showToaster('Banco eliminado correctamente!');
+                this.toastService.showToaster(
+                  'Terminos de Pago eliminado correctamente!'
+                );
                 this.refreshPaymenTerms();
               },
               (error) =>

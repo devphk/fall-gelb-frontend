@@ -49,33 +49,31 @@ export class FromPaymentTermComponent implements OnInit {
       days: this.fb.control('', [Validators.required]),
       percentage: this.fb.control('', [Validators.required]),
     });
-
-    this.paymentTermControls.push(paymentTermItemForm);
-    console.log(this.paymentTermControls.length);
-    console.log(
-      this.paymentTermControls.controls[
-        this.paymentTermControls.length - 1
-      ].getRawValue().day
-    );
+    if (this.getTotalPercent() < 100) {
+      this.paymentTermControls.push(paymentTermItemForm);
+    } else {
+    }
   }
 
   deletePaymentTermItem(paymentTermIndex: number) {
-    if (this.paymentTermControls.length == 1) {
-    } else {
+    if (this.paymentTermControls.length !== 1) {
       this.paymentTermControls.removeAt(paymentTermIndex);
     }
   }
 
   savePaymentTerm() {
-    if (this.paymentTermForm.valid) {
-      if (this.data.title === 'Crear Banco') {
+    if (this.paymentTermForm.valid && this.getTotalPercent() === 100) {
+      if (this.data.title === 'Crear Terminos de Pago') {
         const paymentTerm = {
           name: this.paymentTermForm.get('name')?.value,
+          items: this.paymentTermControls.getRawValue(),
         };
-
+        console.log(paymentTerm);
         this.paymentTermService.createPaymenTerm(paymentTerm).subscribe(
           (data) => {
-            this.toastService.showToaster('Banco Creado Correctamente!');
+            this.toastService.showToaster(
+              'Terminos de Pago Creado Correctamente!'
+            );
             this.dialogRef.close(true);
           },
           (error) => this.toastService.showToaster(error.error.message, true)
@@ -89,14 +87,31 @@ export class FromPaymentTermComponent implements OnInit {
           .editPaymenTerm(paymentTermEdit, this.data.dialogData[0].id)
           .subscribe(
             (data) => {
-              this.toastService.showToaster('Banco Editado Correctamente!');
+              this.toastService.showToaster(
+                'Terminos de Pago Editado Correctamente!'
+              );
               this.dialogRef.close(true);
             },
             (error) => this.toastService.showToaster(error.error.message, true)
           );
       }
     } else {
-      this.paymentTermForm.markAllAsTouched();
+      if (this.paymentTermForm.valid && this.getTotalPercent() < 100) {
+        this.toastService.showToaster(
+          'El porcentage no completa el 100%',
+          true
+        );
+      } else if (this.paymentTermForm.valid && this.getTotalPercent() > 100) {
+        this.toastService.showToaster('El porcentage supera el 100%', true);
+      }
     }
+  }
+  getTotalPercent() {
+    let percent: number = 0;
+    this.paymentTermControls.getRawValue().map((dataPayentTerm: any) => {
+      percent = Number(dataPayentTerm.percentage) + percent;
+    });
+
+    return percent;
   }
 }
