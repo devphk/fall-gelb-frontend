@@ -96,5 +96,4 @@ export class WithholdingConceptComponent implements OnInit {
 
     this.getConcepts();
   }
-
 }

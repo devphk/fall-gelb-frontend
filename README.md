@@ -10,3 +10,16 @@ a input [type] when is already using the mask. Example:
                     [mask]="'000-000-000'"></app-phk-input>
 
 "This input allow only numbers values"
+
+2.- When using mask in table is neccessary to respect this type of data: 
+
+tableDataTest: any[] = [
+    {
+      number: {
+        value: '1245',
+        mask: '00.00'
+      },
+    }
+  ];
+
+  IMPORTANT: The value has to be string

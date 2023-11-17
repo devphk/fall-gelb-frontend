@@ -77,16 +77,14 @@
                         </mat-option>
                     </mat-select>
                   </span>
-                  <span *ngSwitchCase="'number'">
-                    <ng-container *ngIf="columnsTags[columnIndex] === 'natural_person' || columnsTags[columnIndex] === 'legal_person'; else defaultContent">
-                      {{ element[columnsTags[columnIndex]] | percent }}
+                  <span *ngSwitchDefault>
+                    <!-- {{element[columnsTags[columnIndex]]}} -->
+                    <ng-container *ngIf="element[columnsTags[columnIndex]].mask; else defaultContent">
+                      {{ maskService.applyMask(element[columnsTags[columnIndex]].value, element[columnsTags[columnIndex]].mask)}}
                     </ng-container>
                     <ng-template #defaultContent>
                       {{ element[columnsTags[columnIndex]] }}
                     </ng-template>
-                  </span>
-                  <span *ngSwitchDefault>
-                    {{element[columnsTags[columnIndex]]}}
                   </span>
                 </div>
               </td>
