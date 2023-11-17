@@ -1,6 +1,6 @@
 import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -114,6 +114,7 @@ const routes: Routes = [
     MatSelectModule,
     MatSnackBarModule,
     PhkConfirmationDialogModule
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class SettingsModule {}

@@ -47,7 +47,7 @@ export class UtilsService {
     }else if (currency === 'Pesos Colombianos' && amount >= 10000){
       return '00.000'
     }else {
-      return '000000';
+      return '000.000.000';
     }
   }
 }

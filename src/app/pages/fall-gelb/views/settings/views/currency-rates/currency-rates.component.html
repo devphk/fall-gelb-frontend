@@ -33,7 +33,7 @@
               color="primary"
               aria-label="Actualizar Tabla"
               matTooltip="Actualizar Tabla"
-              (click)="refreshCurrencyRates()">
+              (click)="getCurrencyRates()">
         <mat-icon>refresh</mat-icon>
       </button>
 
@@ -47,7 +47,6 @@
 
 </div>
 </div>
-
 
 <app-phk-table [columnsTags]="tableColumnsTags"
             [columnsToDisplay]="tableColumnsToDisplay"
