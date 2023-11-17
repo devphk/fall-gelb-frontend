@@ -104,8 +104,12 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Tipo de Carga LCL',
         },
         {
+          path: 'payment-terms',
+          title: 'Terminos de Pago',
+        },
+        {
           path: 'withholding-concepts',
-          title: 'Conceptos de Retención'
+          title: 'Conceptos de Retención',
         },
       ],
     },

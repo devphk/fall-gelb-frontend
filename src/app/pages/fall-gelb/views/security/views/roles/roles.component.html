@@ -1,31 +1,36 @@
 <div class="table-container">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1 class="">Roles y Permisos</h1>    
-    
-    <div fxLayout="row"
-         fxLayoutGap="5px">
-      <button mat-mini-fab
-              color="primary"
-              aria-label="Nuevo roles y permisos"
-              matTooltip="Nuevo roles y permisos"
-              (click)="getRoles()">
+    <h1 class="">Roles y Permisos</h1>
+
+    <div fxLayout="row" fxLayoutGap="5px">
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Nuevo roles y permisos"
+        matTooltip="Nuevo roles y permisos"
+        (click)="getRoles()"
+      >
         <mat-icon>refresh</mat-icon>
       </button>
-      <button mat-mini-fab
-              color="primary"
-              aria-label="Nuevo roles y permisos"
-              matTooltip="Nuevo roles y permisos"
-              (click)="newRol(null)">
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Nuevo roles y permisos"
+        matTooltip="Nuevo roles y permisos"
+        (click)="newRol(null)"
+      >
         <mat-icon>add</mat-icon>
       </button>
     </div>
-
   </div>
 
-  <app-phk-table [columnsTags]="tableColumnsTags"
-                 [columnsToDisplay]="tableColumnsToDisplay"
-                 [data]="tableData"
-                 [showSelectColumn]="false"
-                 [showEditIcon]="true"
-                 (editRegister)="editRegister($event)"></app-phk-table>
+  <app-phk-table
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+    [showActionIcon]="true"
+    [showSelectColumn]="false"
+    (editRegister)="editRegister($event)"
+    (deleteRegister)="deleteRegister($event)"
+  ></app-phk-table>
 </div>

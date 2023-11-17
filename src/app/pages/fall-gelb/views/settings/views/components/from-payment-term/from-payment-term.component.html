@@ -1,0 +1,90 @@
+<div>
+  <form [formGroup]="paymentTermForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+        fxFlex="100"
+        [errorMessage]="
+          paymentTermForm.controls['name'].invalid
+            ? 'Debe ingresar un nombre'
+            : null
+        "
+      ></app-phk-input>
+    </div>
+  </form>
+  <form [formGroup]="paymentTermItemForm">
+    <div formArrayName="paymentTerm">
+      <div
+        *ngFor="let paymentTerm of paymentTermControls.controls; let i = index"
+      >
+        <div
+          [formGroupName]="i"
+          mat-dialog-content
+          fxLayout="row wrap"
+          fxLayoutGap="20px"
+          fxLayout.lt-md="column"
+          fxLayoutAlign="start center"
+        >
+          <app-phk-input
+            [type]="'number'"
+            formControlName="days"
+            [label]="'Dias'"
+            fxFlex="calc(33% - 20px)"
+            [required]="true"
+          >
+          </app-phk-input>
+          <app-phk-input
+            [type]="'number'"
+            formControlName="percentage"
+            [label]="'porcentaje'"
+            fxFlex="calc(33% - 20px)"
+            [required]="true"
+          >
+          </app-phk-input>
+
+          <button
+            class="crud-button"
+            mat-mini-fab
+            color="warn"
+            aria-label="Remover"
+            (click)="deletePaymentTermItem(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div
+        fxLayoutGap="20px"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="start center"
+      >
+        <button
+          class="w-50"
+          mat-flat-button
+          color="accent"
+          aria-label="Add"
+          (click)="addPaymentTermItem()"
+        >
+          Añadir
+        </button>
+        <button
+          class="w-50"
+          mat-flat-button
+          color="primary"
+          aria-label="save"
+          (click)="savePaymentTerm()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
