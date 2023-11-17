@@ -16,6 +16,7 @@ import { SettingsComponent } from './settings.component';
 import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FromPaymentTermComponent } from './views/components';
+import { WithholdingConceptComponent } from './views/withholding-concept/withholding-concept.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: 'payment-terms',
     component: PaymentTermComponent,
+  },
+  {
+    path: 'withholding-concepts',
+    component: WithholdingConceptComponent,
   },
   {
     path: '**',
