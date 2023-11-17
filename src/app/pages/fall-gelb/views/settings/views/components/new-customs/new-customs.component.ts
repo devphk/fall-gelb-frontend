@@ -50,24 +50,10 @@ export class NewCustomsComponent implements OnInit{
   }
 
   getTranspTypes() {
-    this.customsService
-      .getCustoms()
-        .subscribe((resp) => {
-          resp.map((resp) => {
-            resp.transport_types.map((transport_type) => {
-
-              const index = this.transportType.findIndex(obj => obj.id === transport_type.id);
-              
-              if (index === -1) {
-                this.transportType.push({
-                  id: transport_type.id,
-                  name: transport_type.name,
-                  code: transport_type.code
-              });
-            }
-          });
-      });
-    }, (error) => console.log('Error', error));
+    this.customsService.getTransportTypes()
+      .subscribe((types) => {
+        this.transportType = types;
+      })
   }
 
   getSelectedTransType() {

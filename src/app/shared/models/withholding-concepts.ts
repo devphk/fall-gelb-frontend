@@ -11,6 +11,14 @@ export interface WithholdingConcept {
 export interface WithholdingConceptTableData {
   id: number;
   name: string;
-  natural_person: number;
-  legal_person: number;
+  natural_person: {
+    value:string,
+    mask: string,
+    suffix: string;
+  };
+  legal_person: {
+    value:string,
+    mask: string,
+    suffix: string;
+  };
 }

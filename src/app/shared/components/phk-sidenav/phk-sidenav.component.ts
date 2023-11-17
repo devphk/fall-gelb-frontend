@@ -104,6 +104,10 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Tipo de Carga LCL',
         },
         {
+          path: 'withholding-concepts',
+          title: 'Conceptos de Retención'
+        },
+        {
           path: 'currency-rates',
           title: 'Tasas Monetarias'
         },

@@ -50,6 +50,8 @@ import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation
 import { UsersComponent } from './views/users';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
+import { WithholdingConceptComponent } from './views/withholding-concept/withholding-concept.component';
+import { FormWithholdingConceptsComponent } from './views/components/form-withholding-concepts/form-withholding-concepts.component';
 import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
 import { FormCurrencyRatesComponent } from './views/components/form-currency-rates/form-currency-rates.component';
 
@@ -85,6 +87,8 @@ const routes: Routes = [
     FormUserComponent,
     CargoTypeLclComponent,
     FormCargoTypeLclComponent,
+    WithholdingConceptComponent,
+    FormWithholdingConceptsComponent
     CurrencyRatesComponent,
     FormCurrencyRatesComponent,
     ],
