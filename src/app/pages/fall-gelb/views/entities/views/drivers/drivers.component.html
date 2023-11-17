@@ -1,19 +1,58 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h1>Choferes</h1>
 
-<div fxLayout="row"
-    fxLayoutAlign="space-between center">
-
-    <h1>Choferes</h1>
-
-    <button mat-mini-fab
-            color="primary" 
-            aria-label="Nuevo chofer"
-            matTooltip="Nuevo Chofer"
-            (click)="newDriver()">
-        <mat-icon>add</mat-icon>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Registrar chofer"
+      matTooltip="Registrar chofer"
+      (click)="processDriver('Add')"
+    >
+      <mat-icon>add</mat-icon>
     </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar chofer"
+      matTooltip="Editar chofer"
+      (click)="processDriver('Edit')"
+      [disabled]="itemsSelected.length > 1"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar chofer"
+      matTooltip="Eliminar chofer"
+      (click)="deleteDriver()"
+      [disabled]="itemsSelected.length > 1"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Actualizar Tabla"
+      matTooltip="Actualizar Tabla"
+      (click)="refreshDrivers()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
 </div>
 
-
-<app-phk-table [columnsTags]="tableColumnsTags"
-                [columnsToDisplay]="tableColumnsToDisplay"
-                [data]="tableData"></app-phk-table>
+<app-phk-table
+  *ngIf="tableData !== []"
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+  [(itemsSelected)]="itemsSelected"
+></app-phk-table>

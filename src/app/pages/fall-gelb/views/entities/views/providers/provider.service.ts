@@ -1,3 +1,5 @@
+import { HttpUtilsService } from '@core/services';
+import { TransportType } from './../../../../../../shared/models/customs';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { LoadingMessage, SelectOption } from '@shared/models';
@@ -8,7 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProviderService {
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private httpUtils: HttpUtilsService) {}
 
   getPersonTypes(): Observable<SelectOption[]> {
     return this.http.get('/person-types');
@@ -17,9 +19,18 @@ export class ProviderService {
   getProviderTypes(): Observable<SelectOption[]> {
     return this.http.get('/provider-types');
   }
+  getProviderTransportTypes(): Observable<SelectOption[]> {
+    return this.http.get('/provider-transport-types');
+  }
 
-  getProviders(): Observable<ProviderResponse[]> {
-    return this.http.get('/providers');
+  getProviders(TransportType?: string): Observable<ProviderResponse[]> {
+    const params = {
+      transport_type_id: TransportType,
+    };
+    return this.http.get(
+      '/providers',
+      TransportType ? this.httpUtils.getHttpParams(params) : undefined
+    );
   }
 
   createProvider(data: ProviderPost): Observable<ProviderResponse[]> {
