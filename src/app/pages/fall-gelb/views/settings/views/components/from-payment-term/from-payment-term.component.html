@@ -1,5 +1,26 @@
 <div>
   <form [formGroup]="paymentTermForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+        fxFlex="100"
+        [errorMessage]="
+          paymentTermForm.controls['name'].invalid
+            ? 'Debe ingresar un nombre'
+            : null
+        "
+      ></app-phk-input>
+    </div>
+  </form>
+  <form [formGroup]="paymentTermItemForm">
     <div formArrayName="paymentTerm">
       <div
         *ngFor="let paymentTerm of paymentTermControls.controls; let i = index"
@@ -30,7 +51,7 @@
             mat-mini-fab
             color="warn"
             aria-label="Remover"
-            (click)="deletePaymentTerm(i)"
+            (click)="deletePaymentTermItem(i)"
           >
             <mat-icon>delete</mat-icon>
           </button>
@@ -46,7 +67,7 @@
           mat-flat-button
           color="accent"
           aria-label="Add"
-          (click)="addPaymentTerm()"
+          (click)="addPaymentTermItem()"
         >
           Añadir
         </button>

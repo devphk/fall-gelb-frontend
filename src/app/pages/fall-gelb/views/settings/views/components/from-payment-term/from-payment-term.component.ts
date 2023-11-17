@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
+import { PaymentTermService } from '../../payment-term/payment-term.service';
 
 @Component({
   selector: 'app-from-payment-term',
@@ -9,28 +10,47 @@ import { ToastService } from '@core/services';
   styleUrls: ['./from-payment-term.component.scss'],
 })
 export class FromPaymentTermComponent implements OnInit {
-  paymentTermForm!: FormGroup;
+  paymentTermItemForm: FormGroup = new FormGroup({});
+  paymentTermForm: FormGroup = new FormGroup({});
   isEditMode: boolean = false;
 
-  banckFrom: FormGroup = new FormGroup({});
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FromPaymentTermComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private paymentTermService: PaymentTermService
   ) {}
 
   get paymentTermControls(): FormArray {
-    return this.paymentTermForm.get('paymentTerm') as FormArray;
+    return this.paymentTermItemForm.get('paymentTerm') as FormArray;
   }
 
-  addPaymentTerm() {
-    const paymentTermForm = this.fb.group({
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.paymentTermItemForm = this.fb.group({
+      paymentTerm: this.fb.array([]),
+    });
+    this.paymentTermForm = this.fb.group({
+      name: this.fb.control(
+        this.data.dialogData ? this.data.dialogData[0].name : '',
+        [Validators.required]
+      ),
+    });
+
+    this.addPaymentTermItem(this.data.dialogData);
+  }
+
+  addPaymentTermItem(dataEdit?: []) {
+    const paymentTermItemForm = this.fb.group({
       days: this.fb.control('', [Validators.required]),
       percentage: this.fb.control('', [Validators.required]),
     });
 
-    this.paymentTermControls.push(paymentTermForm);
+    this.paymentTermControls.push(paymentTermItemForm);
     console.log(this.paymentTermControls.length);
     console.log(
       this.paymentTermControls.controls[
@@ -39,23 +59,44 @@ export class FromPaymentTermComponent implements OnInit {
     );
   }
 
-  deletePaymentTerm(paymentTermIndex: number) {
-    this.paymentTermControls.removeAt(paymentTermIndex);
+  deletePaymentTermItem(paymentTermIndex: number) {
+    if (this.paymentTermControls.length == 1) {
+    } else {
+      this.paymentTermControls.removeAt(paymentTermIndex);
+    }
   }
 
-  initializeForm() {
-    this.banckFrom = this.fb.group({
-      name: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].name : '',
-        [Validators.required]
-      ),
-    });
-  }
-  ngOnInit(): void {
-    this.paymentTermForm = this.fb.group({
-      paymentTerm: this.fb.array([]),
-    });
-    this.addPaymentTerm();
-    this.initializeForm();
+  savePaymentTerm() {
+    if (this.paymentTermForm.valid) {
+      if (this.data.title === 'Crear Banco') {
+        const paymentTerm = {
+          name: this.paymentTermForm.get('name')?.value,
+        };
+
+        this.paymentTermService.createPaymenTerm(paymentTerm).subscribe(
+          (data) => {
+            this.toastService.showToaster('Banco Creado Correctamente!');
+            this.dialogRef.close(true);
+          },
+          (error) => this.toastService.showToaster(error.error.message, true)
+        );
+      } else {
+        const paymentTermEdit = {
+          name: this.paymentTermForm.get('name')?.value,
+        };
+
+        this.paymentTermService
+          .editPaymenTerm(paymentTermEdit, this.data.dialogData[0].id)
+          .subscribe(
+            (data) => {
+              this.toastService.showToaster('Banco Editado Correctamente!');
+              this.dialogRef.close(true);
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
+      }
+    } else {
+      this.paymentTermForm.markAllAsTouched();
+    }
   }
 }
