@@ -32,6 +32,7 @@ import {
   NewTruckTypeComponent,
   NewContainerTypeComponent,
   NewCommodityTypeComponent,
+  FromPaymentTermComponent,
 } from './views/components';
 
 import {
@@ -44,6 +45,7 @@ import {
   UnitsComponent,
   WarehouseComponent,
   ContainerTypeComponent,
+  PaymentTermComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
@@ -83,7 +85,9 @@ const routes: Routes = [
     FormUserComponent,
     CargoTypeLclComponent,
     FormCargoTypeLclComponent,
-    ],
+    PaymentTermComponent,
+    FromPaymentTermComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -105,7 +109,7 @@ const routes: Routes = [
     MatCardModule,
     MatSelectModule,
     MatSnackBarModule,
-    PhkConfirmationDialogModule
-  ]
+    PhkConfirmationDialogModule,
+  ],
 })
 export class SettingsModule {}

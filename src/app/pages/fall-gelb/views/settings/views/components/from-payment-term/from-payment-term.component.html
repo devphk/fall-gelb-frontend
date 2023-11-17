@@ -1,0 +1,59 @@
+<div>
+  <form [formGroup]="paymentTermForm">
+    <div formArrayName="paymentTerm">
+      <div
+        *ngFor="let paymentTerm of paymentTermControls.controls; let i = index"
+      >
+        <div
+          [formGroupName]="i"
+          mat-dialog-content
+          fxLayout="row wrap"
+          fxLayoutGap="20px"
+          fxLayout.lt-md="column"
+          fxLayoutAlign="start center"
+        >
+          <app-phk-input
+            formControlName="days"
+            [label]="'Dias'"
+            fxFlex="calc(33% - 20px)"
+          >
+          </app-phk-input>
+          <app-phk-input
+            formControlName="percentage"
+            [label]="'porcentaje'"
+            fxFlex="calc(33% - 20px)"
+          >
+          </app-phk-input>
+
+          <button
+            class="crud-button"
+            mat-mini-fab
+            color="warn"
+            aria-label="Remover"
+            (click)="deletePaymentTerm(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div
+        fxLayoutGap="20px"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="start center"
+      >
+        <button
+          class="w-50"
+          mat-flat-button
+          color="accent"
+          aria-label="Add"
+          (click)="addPaymentTerm()"
+        >
+          Añadir
+        </button>
+        <button class="w-50" mat-flat-button color="primary" aria-label="save">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

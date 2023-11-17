@@ -8,3 +8,4 @@ export * from './truck-type';
 export * from './units';
 export * from './users';
 export * from './warehouse';
+export * from './payment-term';
