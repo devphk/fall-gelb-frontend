@@ -5,7 +5,7 @@ import { SessionGuard } from './core/guards/guards/session.guard';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'sign',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
     { 
