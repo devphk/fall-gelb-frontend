@@ -72,7 +72,7 @@ export class FormCurrencyRatesComponent implements OnInit {
       
       const actualDate = new Date();
 
-      const formattedDate = this.datePipe.transform( actualDate, 'yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZ')
+      const formattedDate = this.datePipe.transform( actualDate, 'yyyy-MM-dd HH:mm:ss')
 
       const currencyAmount = parseInt(this.currencyRatesForm.get('amount')?.value.toString().replace
       ('.', ''))
@@ -82,7 +82,7 @@ export class FormCurrencyRatesComponent implements OnInit {
           currency_b_id: this.currencyRatesForm.get('currencyB')?.value,  
           amount: currencyAmount, 
           operation: this.currencyRatesForm.get('operation')?.value,  
-          // datetime: formattedDate,
+          datetime: formattedDate,
         }
           console.log('Currency: ', currency)
         this.currencyRateService.createCurrencyRate(currency)
@@ -96,11 +96,13 @@ export class FormCurrencyRatesComponent implements OnInit {
 
         const actualDate = new Date();
 
-        const formattedDate = this.datePipe.transform( actualDate, 'yyyy-MM-dd\'T\'HH:mm:ss.SSSSSSZ')
+        const formattedDate = this.datePipe.transform( actualDate, 'yyyy-MM-dd HH:mm:ss')
+
+        const currencyAmount = parseInt(this.currencyRatesForm.get('amount')?.value.toString().replace('.', ''))
 
         const editCurrencyRate = {
-          amount: this.currencyRatesForm.get('amount')?.value,
-          // datetime: formattedDate,
+          amount: currencyAmount,
+          datetime: formattedDate,
         }
         console.log('editCurrencyRate: ', editCurrencyRate)
         this.currencyRateService.editCurrencyRate(editCurrencyRate, this.data.dialogData[0].id)
