@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services';
 import { LoadingMessage } from '@shared/models';
-import { PaymenTermResponse } from '@shared/models/payment-term';
+import {
+  PaymenTermResponse,
+  PaymenTermTable,
+} from '@shared/models/payment-term';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,7 +13,7 @@ import { Observable } from 'rxjs';
 export class PaymentTermService {
   constructor(private http: HttpService) {}
 
-  getPaymenTerms(): Observable<PaymenTermResponse[]> {
+  getPaymenTerms(): Observable<PaymenTermTable[]> {
     return this.http.get('/payment-terms');
   }
 
@@ -33,7 +36,7 @@ export class PaymentTermService {
     );
   }
 
-  getPaymenTerm(id: number) {
+  getPaymenTerm(id: number): Observable<PaymenTermResponse> {
     return this.http.get('/payment-terms/' + id);
   }
 

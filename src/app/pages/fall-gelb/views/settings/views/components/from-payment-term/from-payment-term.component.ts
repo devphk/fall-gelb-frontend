@@ -3,6 +3,10 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
 import { PaymentTermService } from '../../payment-term/payment-term.service';
+import {
+  PaymenTermResponse,
+  PaymentTermPost,
+} from '@shared/models/payment-term';
 
 @Component({
   selector: 'app-from-payment-term',
@@ -40,18 +44,38 @@ export class FromPaymentTermComponent implements OnInit {
         [Validators.required]
       ),
     });
-
-    this.addPaymentTermItem(this.data.dialogData);
+    this.addPaymentTermItem(
+      this.data.dialogData ? this.data.dialogData[0].id : null
+    );
   }
 
-  addPaymentTermItem(dataEdit?: []) {
-    const paymentTermItemForm = this.fb.group({
-      days: this.fb.control('', [Validators.required]),
-      percentage: this.fb.control('', [Validators.required]),
-    });
-    if (this.getTotalPercent() < 100) {
-      this.paymentTermControls.push(paymentTermItemForm);
+  addPaymentTermItem(dataEdit?: number) {
+    let paymentTermItemForm;
+    if (dataEdit) {
+      this.paymentTermService
+        .getPaymenTerm(dataEdit)
+        .subscribe((paymenTermResponse) => {
+          paymenTermResponse.payment_term_items.map((payment_term_item) => {
+            paymentTermItemForm = this.fb.group({
+              days: this.fb.control(payment_term_item.days, [
+                Validators.required,
+              ]),
+              percentage: this.fb.control(payment_term_item.percentage, [
+                Validators.required,
+              ]),
+            });
+            this.paymentTermControls.push(paymentTermItemForm);
+          });
+        });
     } else {
+      paymentTermItemForm = this.fb.group({
+        days: this.fb.control('', [Validators.required]),
+        percentage: this.fb.control('', [Validators.required]),
+      });
+
+      if (this.getTotalPercent() < 100) {
+        this.paymentTermControls.push(paymentTermItemForm);
+      }
     }
   }
 
@@ -64,11 +88,10 @@ export class FromPaymentTermComponent implements OnInit {
   savePaymentTerm() {
     if (this.paymentTermForm.valid && this.getTotalPercent() === 100) {
       if (this.data.title === 'Crear Terminos de Pago') {
-        const paymentTerm = {
+        const paymentTerm: PaymentTermPost = {
           name: this.paymentTermForm.get('name')?.value,
           items: this.paymentTermControls.getRawValue(),
         };
-        console.log(paymentTerm);
         this.paymentTermService.createPaymenTerm(paymentTerm).subscribe(
           (data) => {
             this.toastService.showToaster(
@@ -81,6 +104,7 @@ export class FromPaymentTermComponent implements OnInit {
       } else {
         const paymentTermEdit = {
           name: this.paymentTermForm.get('name')?.value,
+          items: this.paymentTermControls.getRawValue(),
         };
 
         this.paymentTermService
