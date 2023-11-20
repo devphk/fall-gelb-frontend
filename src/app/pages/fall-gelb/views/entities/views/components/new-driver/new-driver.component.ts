@@ -21,7 +21,7 @@ export class NewDriverComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}
 
-  private transportTypeId: string = 'Ground - transportation';
+  private transportTypeId: string = 'Ground-transportation';
   isEditMode: boolean = false;
   providers: SelectOption[] = [];
 
