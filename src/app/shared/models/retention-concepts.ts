@@ -1,4 +1,4 @@
-export interface WithholdingConcept {
+export interface RetentionConcept {
   id: number;
   name: string;
   natural_person: number;
@@ -8,7 +8,7 @@ export interface WithholdingConcept {
   natural_person_code?: any;
   legal_person_code?: any;
 }
-export interface WithholdingConceptTableData {
+export interface RetentionConceptTableData {
   id: number;
   name: string;
   natural_person: {

@@ -1,23 +1,22 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { WithholdingConceptComponent } from '../../withholding-concept/withholding-concept.component';
-import { WithholdingConceptsService } from '../../withholding-concept/withholding-concept.service';
+import { RetentionConceptsService } from '../../retention-concept/retention-concept.service';
 import { ToastService } from '@core/services';
 import { UtilsService } from '@core/services/utils-service.service';
 
 @Component({
-  selector: 'app-form-withholding-concepts',
-  templateUrl: './form-withholding-concepts.component.html',
-  styleUrls: ['./form-withholding-concepts.component.scss']
+  selector: 'app-form-retention-concepts',
+  templateUrl: './form-retention-concepts.component.html',
+  styleUrls: ['./form-retention-concepts.component.scss']
 })
-export class FormWithholdingConceptsComponent implements OnInit {
+export class FormRetentionConceptsComponent implements OnInit {
 
   conceptForm: FormGroup = new FormGroup({})
 
   constructor(private formBuild: FormBuilder,
-              private dialogRef:MatDialogRef<FormWithholdingConceptsComponent>,
-              private conceptsService:WithholdingConceptsService,
+              private dialogRef:MatDialogRef<FormRetentionConceptsComponent>,
+              private conceptsService:RetentionConceptsService,
               private toastService:ToastService,
               private utilsService:UtilsService,
               @Inject(MAT_DIALOG_DATA) private data: any) {}

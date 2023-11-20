@@ -108,7 +108,7 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Terminos de Pago',
         },
         {
-          path: 'withholding-concepts',
+          path: 'retention-concepts',
           title: 'Conceptos de Retención',
         },
       ],

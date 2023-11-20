@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { WithholdingConceptsService } from './withholding-concept.service';
-import { WithholdingConceptTableData } from '@shared/models/withholding-concepts';
-import { FormWithholdingConceptsComponent } from '../components/form-withholding-concepts/form-withholding-concepts.component';
+import { RetentionConceptsService } from './retention-concept.service';
+import { RetentionConceptTableData } from '@shared/models/retention-concepts';
+import { FormRetentionConceptsComponent } from '../components/form-retention-concepts/form-retention-concepts.component';
 import { UtilsService } from '@core/services/utils-service.service';
 
 @Component({
-  selector: 'app-withholding-concept',
-  templateUrl: './withholding-concept.component.html',
-  styleUrls: ['./withholding-concept.component.scss']
+  selector: 'app-retention-concept',
+  templateUrl: './retention-concept.component.html',
+  styleUrls: ['./retention-concept.component.scss']
 })
-export class WithholdingConceptComponent implements OnInit {
+export class RetentionConceptComponent implements OnInit {
 
   
   tableColumnsToDisplay: string[] = [
@@ -26,7 +26,7 @@ export class WithholdingConceptComponent implements OnInit {
 
   constructor(
     private dialogService: DialogService,
-    private conceptsService: WithholdingConceptsService,
+    private conceptsService: RetentionConceptsService,
     private toastService:ToastService,
     private utilsService:UtilsService  ) {}
 
@@ -40,10 +40,10 @@ export class WithholdingConceptComponent implements OnInit {
         .getConcepts()
         .subscribe((response) => {
 
-      const tableData: WithholdingConceptTableData[] = [];
+      const tableData: RetentionConceptTableData[] = [];
 
       response.forEach((concept) => {
-        const conceptToInput: WithholdingConceptTableData = {
+        const conceptToInput: RetentionConceptTableData = {
           id: concept.id,
           name: concept.name,
           natural_person: {
@@ -69,7 +69,7 @@ export class WithholdingConceptComponent implements OnInit {
 
   processConcept(processType: string) {
     this.dialogService
-        .openDialog(FormWithholdingConceptsComponent, 
+        .openDialog(FormRetentionConceptsComponent, 
                     processType === 'Add' ? 'Crear Concepto de Retención' : 'Editar Concepto de Retención', 
                     '800px', 
                     'auto',
