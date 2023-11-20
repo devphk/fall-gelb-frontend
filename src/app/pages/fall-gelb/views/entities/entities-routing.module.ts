@@ -9,6 +9,7 @@ import {
   ShippingCompaniesComponent,
   TerrestrialsComponent,
 } from './views';
+import { ViewProviderComponent } from './views/components/view-provider/view-provider.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'drivers',
     component: DriversComponent,
+  },
+  {
+    path: 'providers/view/:id/:name',
+    component: ViewProviderComponent,
   },
   {
     path: '**',

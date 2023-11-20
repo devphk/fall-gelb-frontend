@@ -1,0 +1,89 @@
+<div>
+    <form [formGroup]="providerServiceForm">
+      <div
+        mat-dialog-content
+        fxLayout="row wrap"
+        fxLayoutGap="20px"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="start center"
+      >
+        <app-phk-select
+        formControlName="concept"
+        label="Concepto"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        >
+            <mat-option
+                *ngFor="let concept of conceptTypes"
+                [value]="concept.id"
+            >
+                {{ concept.name }}
+            </mat-option>
+        </app-phk-select>
+  
+        <app-phk-input
+            label="Monto"
+            formControlName="amount"
+            fxFlex.gt-md="calc(33% - 20px)"
+            fxFlex.lt-md="calc(100%)"
+            [required]="true"
+        ></app-phk-input>
+  
+        <app-phk-select
+        formControlName="unit"
+        label="Unidad"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        >
+            <mat-option
+                *ngFor="let units of unitsTypes"
+                [value]="units.id"
+            >
+                {{ units.name }}
+            </mat-option>
+        </app-phk-select>
+  
+        <app-phk-select
+        formControlName="paymentTerms"
+        label="Condiciones de Pago"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        >
+            <mat-option
+                *ngFor="let payment of paymentTerms"
+                [value]="payment.id"
+            >
+                {{ payment.name }}
+            </mat-option>
+        </app-phk-select>
+  
+        <app-phk-select
+        formControlName="currency"
+        label="Moneda"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        >
+            <mat-option
+                *ngFor="let currency of currencyTypes"
+                [value]="currency.id"
+            >
+                {{ currency.name }}
+            </mat-option>
+        </app-phk-select>
+        <app-phk-date-picker
+        label="Fecha del Anticipo*"
+        formControlName="validityDate"
+        [required]="true"
+        ></app-phk-date-picker>
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveNewProvider()"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -59,4 +59,8 @@ export class ProviderService {
   editProvider(data: any, id: number) {
     return this.http.put(`/providers/${id}`, data);
   }
+
+  getProviderServices(id:number) {
+    return this.http.get(`/providers/${id}/services`);
+  }
 }

@@ -26,6 +26,8 @@ import { NewDriverComponent } from './views/components/new-driver/new-driver.com
 import { NewGroundtransportComponent } from './views/components/new-groundtransport/new-groundtransport.component';
 import { NewShippingcompanyComponent } from './views/components/new-shippingcompany/new-shippingcompany.component';
 import { NewCustomerComponent } from './views/components/new-customer/new-customer.component';
+import { ViewProviderComponent } from './views/components/view-provider/view-provider.component';
+import { FormProviderServicesComponent } from './views/components/form-provider-services/form-provider-services.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
     NewDriverComponent,
     NewGroundtransportComponent,
     NewShippingcompanyComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    ViewProviderComponent,
+    FormProviderServicesComponent
   ],
   imports: [
     CommonModule,

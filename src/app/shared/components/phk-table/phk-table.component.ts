@@ -37,11 +37,13 @@ export class PhkTableComponent implements OnInit, DoCheck {
   @Input() skeletonRowNumber: number = 12;
   @Input() showSelectColumn: boolean = true;
   @Input() showActionIcon: boolean = false;
+  @Input() showViewIcon: boolean = false;
 
-  //Table output
+  //Table output|
 
   @Output() deleteRegister = new EventEmitter<any>();
   @Output() editRegister = new EventEmitter<any>();
+  @Output() seeRegister = new EventEmitter<any>();
 
   // Two binding of items selected
 
@@ -66,6 +68,11 @@ export class PhkTableComponent implements OnInit, DoCheck {
       this.columnsTags.push('actions');
       this.columnsToDisplay.push('actions');
     }
+
+    if (this.showViewIcon) {
+      this.columnsTags.push('view');
+      this.columnsToDisplay.push('view');
+    }
   }
 
   ngDoCheck(): void {
@@ -73,6 +80,10 @@ export class PhkTableComponent implements OnInit, DoCheck {
       this.changeDetectorRef.detectChanges();
       this.setData();
     }
+  }
+
+  seeRow(index: number) {
+    this.seeRegister.emit(this.data[index]);
   }
 
   editRow(index: number) {

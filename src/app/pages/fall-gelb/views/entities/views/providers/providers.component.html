@@ -53,6 +53,8 @@
   *ngIf="tableData !== []"
   [columnsTags]="tableColumnsTags"
   [columnsToDisplay]="tableColumnsToDisplay"
+  [showViewIcon]="true"
   [data]="tableData"
+  (seeRegister)="seeRegister($event)"
   [(itemsSelected)]="itemsSelected"
 ></app-phk-table>
