@@ -99,7 +99,18 @@
           {{ providerType.name }}
         </mat-option>
       </app-phk-select>
-
+      <app-phk-select
+        label="Tipo de transporte"
+        formControlName="provider_transport_type_id"
+        fxFlexAlign="start start"
+      >
+        <mat-option
+          *ngFor="let providerTransportType of providerTransportTypeOptions"
+          [value]="providerTransportType.id"
+        >
+          {{ providerTransportType.name }}
+        </mat-option>
+      </app-phk-select>
       <button
         class="w-100"
         mat-flat-button

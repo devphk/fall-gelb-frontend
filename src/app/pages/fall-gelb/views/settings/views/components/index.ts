@@ -8,3 +8,4 @@ export * from './new-commodity-type';
 export * from './new-truck-type';
 export * from './new-units';
 export * from './new-warehouse';
+export * from './from-payment-term';

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '@core/services';
+import { DialogService, ToastService } from '@core/services';
 import { NewContainerTypeComponent } from '../components/new-container-type/new-container-type.component';
+import { ContainerTypeService } from './container-type.service';
+import { ContainerType } from '@shared/models/container-type';
 
 @Component({
   selector: 'app-container-type',
@@ -12,50 +14,81 @@ export class ContainerTypeComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     "ID",
     "Nombre",
-    "Teléfono",
-    "Rif",
-    "Dirección fiscal",
-    "Contribuyente",
-    "Servicios"
   ];
   tableColumnsTags: string[] = [
     "id",
     "name",
-    "phone",
-    "rif",
-    "fiscalAddress",
-    "taxpayer",
-    "services"
   ];
-  tableData: any[] = [
-    {
-      id: 1,
-      name: 'Albert Tuarez',
-      phone: '04127527692',
-      rif: 'V-244.498.096',
-      fiscalAddress: 'Calle plaza, casa 13-34',
-      taxpayer: "No",
-      services: 'Gastos de vehículos'
-    }
-  ];
+  tableData: any[] = [];
+  itemsSelected: any[] = [];
 
-  constructor(private dialogService: DialogService) { }
+
+  constructor(private dialogService: DialogService,
+              private containerTypeService:ContainerTypeService,
+              private toastService: ToastService) { }
 
   ngOnInit(): void {
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
-    this.tableData.push(this.tableData[0]);
+    this.getContainerTypes();
   }
 
-  newContainerType() {
-    this.dialogService
-        .openDialog(NewContainerTypeComponent,
-                    "Nuevo Tipo de Contenedor",
-                    "800px",
-                    "250px").afterClosed()
-                            .subscribe((data) => {
-                              console.log("Data ", data)
-                            });
+  getContainerTypes() {
+    this.containerTypeService.getContainerTypes()
+      .subscribe((response) => {
+        const tableData: ContainerType[] = [];
+        
+        response.forEach((container) => {
+          const containerToInput:ContainerType = {
+            id: container.id,
+            name: container.name,
+          };
+
+          tableData.push(containerToInput);
+        })
+
+            this.tableData = tableData;
+      
+      }, (error) => {
+
+      });
   }
+
+  processContainerType(processType: string) {
+    this.dialogService
+        .openDialog(NewContainerTypeComponent, 
+                    processType === 'Add' ? 'Crear Tipo de Contenedor' : 'Editar Tipo de Contenedor', 
+                    '800px', 
+                    'auto',
+                    processType === 'Add' ? null : this.itemsSelected)
+        .afterClosed()
+        .subscribe((custom) => {
+          if(custom) {
+            this.refreshContainerTypes();
+          }
+        });
+  }
+
+  deleteContainerType() {
+    this.dialogService
+    .openConfirmationDialog(
+            'Eliminar Tipo de Contenedor',
+            `¿Desea eliminar tipo de contenedor '${this.itemsSelected[0].name}'?`)
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.containerTypeService.deleteContainerType(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Tipo de Contenedor eliminado correctamente!')
+          this.refreshContainerTypes();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
+  }
+
+  refreshContainerTypes() {
+    this.tableData = [];
+    this.getContainerTypes();
+  }
+
 
 }

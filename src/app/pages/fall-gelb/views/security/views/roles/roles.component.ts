@@ -39,6 +39,10 @@ export class RolesComponent implements OnInit {
     console.log('edit event ', role);
     this.newRol(role);
   }
+  deleteRegister(role: Role) {
+    console.log('delete event ', role);
+    this.deleteBank(role);
+  }
 
   getRoles() {
     this.tableData = [];
@@ -70,6 +74,26 @@ export class RolesComponent implements OnInit {
       .subscribe((data) => {
         if (data) {
           this.getRoles();
+        }
+      });
+  }
+
+  deleteBank(roleData: Role) {
+    this.dialogService
+      .openConfirmationDialog(
+        `Eliminar Rol`,
+        `¿Desea eliminar Rol '${roleData.name}'?`
+      )
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.roleService.deleteRole(roleData.id).subscribe(
+            (data) => {
+              this.toastService.showToaster('Rol eliminado correctamente!');
+              this.getRoles();
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
         }
       });
   }

@@ -1,14 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
-  <h1>Choferes</h1>
+  <h1>Terminos de Pago</h1>
 
   <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <button
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Registrar chofer"
-      matTooltip="Registrar chofer"
-      (click)="processDriver('Add')"
+      aria-label="Registrar Terminos de Pago"
+      matTooltip="Registrar Terminos de Pago"
+      (click)="processPaymenTerm('Add')"
     >
       <mat-icon>add</mat-icon>
     </button>
@@ -17,10 +17,10 @@
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Editar chofer"
-      matTooltip="Editar chofer"
-      (click)="processDriver('Edit')"
-      [disabled]="itemsSelected.length > 1"
+      aria-label="Editar Terminos de Pago"
+      matTooltip="Editar Terminos de Pago"
+      (click)="processPaymenTerm('Edit')"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>edit</mat-icon>
     </button>
@@ -29,10 +29,10 @@
       class="crud-button"
       mat-mini-fab
       color="primary"
-      aria-label="Eliminar chofer"
-      matTooltip="Eliminar chofer"
-      (click)="deleteDriver()"
-      [disabled]="itemsSelected.length > 1"
+      aria-label="Eliminar Terminos de Pago"
+      matTooltip="Eliminar Terminos de Pago"
+      (click)="deletePaymenTerm()"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
     >
       <mat-icon>delete</mat-icon>
     </button>
@@ -42,7 +42,7 @@
       color="primary"
       aria-label="Actualizar Tabla"
       matTooltip="Actualizar Tabla"
-      (click)="refreshDrivers()"
+      (click)="refreshPaymenTerms()"
     >
       <mat-icon>refresh</mat-icon>
     </button>

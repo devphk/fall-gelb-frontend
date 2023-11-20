@@ -59,6 +59,7 @@ export class ProvidersComponent implements OnInit {
             person_type_id: provider.person_type_id,
             provider_type_id: provider.provider_type_id,
             is_national: provider.is_national,
+            provider_transport_type_id: provider.provider_transport_type_id,
           };
 
           tableData.push(providerToInput);
