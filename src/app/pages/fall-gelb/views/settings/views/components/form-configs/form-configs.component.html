@@ -1,0 +1,32 @@
+<div>   
+    <form [formGroup]="configForm">
+        <div mat-dialog-content f
+             fxLayout="row wrap" 
+             fxLayoutGap="20px"
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
+            <br>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Llave" 
+                            formControlName="key" 
+                            [required]="true"
+                            [errorMessage]="configForm.controls['key'].invalid ? 'Debe ingresar una llave' : null">
+            </app-phk-input>
+            
+            <app-phk-input  fxFlex="calc(33% - 20px)" 
+                            label="Valor" 
+                            formControlName="value"
+                            [required]="true"
+                            [errorMessage]="configForm.controls['value'].invalid ? 'Debe ingresar un valor' : null">
+            </app-phk-input>
+
+            <app-phk-slide-toggle  fxFlex="calc(33% - 20px)" 
+                                   label="Eliminable" 
+                                   formControlName="slide">
+            </app-phk-slide-toggle>
+            
+        </div> 
+    </form>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveConfigs()">Enviar</button>
+</div>

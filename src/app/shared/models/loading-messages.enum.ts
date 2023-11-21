@@ -8,6 +8,8 @@ export enum LoadingMessage {
   DELETING_CONCEPT = 'Eliminando concepto...',
   CREATING_UNIT = 'Creando Unidad...',
   DELETING_UNIT = 'Eliminando Unidad...',
+  CREATING_CONFIG = 'Creando Configuración...',
+  DELETING_CONFIG = 'Eliminando Configuración...',
   CREATING_BANK = 'Creando Banco...',
   DELETING_BANK = 'Eliminando Banco...',
   CREATING_BANK_ACCOUNT = 'Creando Cuenta Bancaria...',

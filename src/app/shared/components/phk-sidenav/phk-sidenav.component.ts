@@ -111,6 +111,10 @@ export class PhkSidenavComponent implements OnInit {
           path: 'retention-concepts',
           title: 'Conceptos de Retención',
         },
+        {
+          path: 'configs',
+          title: 'Configuraciones'
+        },
       ],
     },
     {

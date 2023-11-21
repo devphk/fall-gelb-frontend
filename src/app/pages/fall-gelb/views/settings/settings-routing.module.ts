@@ -13,6 +13,7 @@ import {
   PaymentTermComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
+import { ConfigsComponent } from './views/configs/configs.component';
 import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FromPaymentTermComponent } from './views/components';
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
+  },
+  {
+    path: 'configs',
+    component: ConfigsComponent,
   },
   {
     path: 'cargo-type-lcl',
