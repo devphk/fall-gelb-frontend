@@ -15,7 +15,7 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntitiesComponent } from './entities.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NewProviderComponent } from './views/components/new-provider/new-provider.component';
-import { PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
+import { PhkDatePickerModule, PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -65,7 +65,8 @@ import { FormProviderServicesComponent } from './views/components/form-provider-
     PhkSlideToggleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    PhkDatePickerModule
   ]
 })
 export class EntitiesModule { }

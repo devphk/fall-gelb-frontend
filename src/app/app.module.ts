@@ -23,6 +23,10 @@ import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +43,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgChartsModule,
     HttpClientModule,
     MatTooltipModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatMomentDateModule,
+    MatNativeDateModule,
+    MatDatepickerModule 
   ],
   providers: [
     SessionGuard,
@@ -51,6 +58,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       provide: MODE_STORAGE_SERVICE,
       useClass: PhkThemeStorageService,
     },
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DialogService, ToastService } from '@core/services';
 import { ProviderService } from '../../providers/provider.service';
-import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
+import { ProviderServicesDataTable } from '@shared/models/provider';
 import { FormProviderServicesComponent } from '../form-provider-services/form-provider-services.component';
 
 @Component({
@@ -18,15 +18,15 @@ export class ViewProviderComponent implements OnInit {
     'Fecha de Validez',
   ];
   tableColumnsTags: string[] = [
-    'name',
-    'phone',
-    'address',
+    'concept_name',
+    'amount',
+    'validity_date',
   ];
   tableData: any[] = [];
 
   itemsSelected: any[] = [];
 
-  selectedId: number = 0;
+  providerId: number = 0;
   selectedName: string = '';
 
   constructor(
@@ -39,34 +39,38 @@ export class ViewProviderComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.subscribe( params => {
-      this.selectedId = params['id'];
+      this.providerId = params['id'];
       this.selectedName = params['name'];
       this.getProviderServices();
     })
   }
 
   getProviderServices() {
-    this.providerService.getProviderServices(this.selectedId)
-    .subscribe((response) => {
-        const tableData: ProviderDataTabla[] = [];
+    this.tableData = [];
 
-        response.forEach((provider: ProviderResponse) => {
-          const providerServiceToInput: ProviderDataTabla = {
-            id: provider.id,
-            name: provider.entity.name,
-            phone: provider.entity.phone,
-            address: provider.entity.address,
-            special_tax_payer: provider.special_tax_payer,
-            iva_retention: provider.iva_retention,
-            email: provider.entity.email,
-            active: provider.entity.active,
-            person_type_id: provider.person_type_id,
-            provider_type_id: provider.provider_type_id,
-            is_national: provider.is_national,
-            provider_transport_type_id: provider.provider_transport_type_id,
+    this.providerService.getProviderServices(this.providerId)
+    .subscribe((response) => {
+        const tableData: ProviderServicesDataTable[] = [];
+
+        response.forEach((provider: ProviderServicesDataTable) => {
+          const providerServiceToInput: ProviderServicesDataTable = {
+            id:provider.id,
+            amount: provider.amount,
+            validity_date: provider.validity_date,
+            concept_id: provider.concept_id,
+            unit_id: provider.unit_id,
+            currency_id: provider.currency_id,
+            iva: provider.iva,
+            payment_term_id: provider.payment_term_id,
+            providerId: this.providerId
           };
 
-          tableData.push(providerServiceToInput);
+          this.providerService.getConcept(provider.concept_id)
+            .subscribe((concept) => {
+              providerServiceToInput.concept_name = concept.name;
+
+              tableData.push(providerServiceToInput);
+            })
         });
 
         this.tableData = tableData;
@@ -82,58 +86,41 @@ export class ViewProviderComponent implements OnInit {
         processType === 'Add' ? 'Crear Servicio de Proveedor' : 'Editar Servicio de Proveedor',
         '800px',
         'auto',
-        processType === 'Add' ? null : this.itemsSelected
+        processType === 'Add' ? this.providerId : this.itemsSelected
       )
       .afterClosed()
       .subscribe((provider) => {
         if (provider) {
-          this.refreshProviders();
+          this.getProviderServices();
         }
       });
   }
 
   deleteProvider() {
-    // this.dialogService
-    //   .openConfirmationDialog(
-    //     `Desea eliminar Proveedor '${this.itemsSelected[0].name}'`,
-    //     'Este cambio no se puede revertir'
-    //   )
-    //   .afterClosed()
-    //   .subscribe((response) => {
-    //     if (response) {
-    //       this.providerService
-    //         .deleteProviders(this.itemsSelected[0].id)
-    //         .subscribe(
-    //           (data) => {
-    //             this.toastService.showToaster(
-    //               'Proveedor eliminado correctamente!'
-    //             );
-    //             this.refreshProviders();
-    //           },
-    //           (error) =>
-    //             this.toastService.showToaster(error.error.message, true)
-    //         );
-    //     }
-    //   });
-  }
 
-  refreshProviders() {
-    // this.tableData = [];
-
-    // this.providerService.getProviders().subscribe((providers) => {
-    //   providers.forEach((provider: any) => {
-    //     const providerToInput = {
-    //       id: provider.id,
-    //       providerId: provider,
-    //       providerName: provider,
-    //       numberAccount: provider,
-    //       currencyId: provider,
-    //       currencyName: provider.name,
-    //     };
-
-    //     this.tableData.push(providerToInput);
-    //   });
-    // });
+    console.log('Servicio:',this.itemsSelected[0].id, 'Proveedor:', this.providerId)
+    this.dialogService
+      .openConfirmationDialog(
+        `Desea eliminar Servicio '${this.itemsSelected[0].concept_name}'`,
+        'Este cambio no se puede revertir'
+      )
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.providerService
+            .deleteProviderService(this.providerId, this.itemsSelected[0].id)
+            .subscribe(
+              (data) => {
+                this.toastService.showToaster(
+                  'Servicio eliminado correctamente!'
+                );
+                this.getProviderServices();
+              },
+              (error) =>
+                this.toastService.showToaster(error.error.message, true)
+            );
+        }
+      });
   }
 
 }

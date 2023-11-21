@@ -3,7 +3,7 @@ import { TransportType } from './../../../../../../shared/models/customs';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { LoadingMessage, SelectOption } from '@shared/models';
-import { ProviderPost, ProviderResponse } from '@shared/models/provider';
+import { ProviderPost, ProviderResponse, ProviderServiceData } from '@shared/models/provider';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -62,5 +62,24 @@ export class ProviderService {
 
   getProviderServices(id:number) {
     return this.http.get(`/providers/${id}/services`);
+  }
+
+  createProviderService(data:ProviderServiceData, id: number) {
+    return this.http.post(`/providers/${id}/services`, data);
+  }
+
+  editProviderService(data:ProviderServiceData, idProvider:number, idService:number) {
+    return this.http.put(`/providers/${idProvider}/services/${idService}`, data);
+  }
+
+  deleteProviderService(idProvider:number, idService:number) {
+    return this.http.delete(`/providers/${idProvider}/services/${idService}`)
+  }
+
+  getConcept(id:number){
+    return this.http.get(`/concepts/${id}`);
+  }
+  getConcepts():Observable<SelectOption[]>{
+    return this.http.get('/concepts');
   }
 }

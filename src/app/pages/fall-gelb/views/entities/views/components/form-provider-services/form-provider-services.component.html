@@ -70,11 +70,23 @@
                 {{ currency.name }}
             </mat-option>
         </app-phk-select>
+        
+        <app-phk-slide-toggle
+        formControlName="iva"
+        label="IVA"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+        ></app-phk-slide-toggle>
+
         <app-phk-date-picker
-        label="Fecha del Anticipo*"
-        formControlName="validityDate"
-        [required]="true"
+        formControlName="date"
+        label="Fecha de Validez"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
         ></app-phk-date-picker>
+
         <button
           class="w-100"
           mat-flat-button
