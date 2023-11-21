@@ -23,6 +23,7 @@ import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,6 +52,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       provide: MODE_STORAGE_SERVICE,
       useClass: PhkThemeStorageService,
     },
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })

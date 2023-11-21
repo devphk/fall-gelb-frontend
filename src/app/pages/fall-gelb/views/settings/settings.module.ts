@@ -1,6 +1,6 @@
 import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -56,6 +56,8 @@ import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.com
 import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
 import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
 import { FormRetentionConceptsComponent } from './views/components/form-retention-concepts/form-retention-concepts.component';
+import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
+import { FormCurrencyRatesComponent } from './views/components/form-currency-rates/form-currency-rates.component';
 
 const routes: Routes = [
   {
@@ -95,6 +97,8 @@ const routes: Routes = [
     FromPaymentTermComponent,
     RetentionConceptComponent,
     FormRetentionConceptsComponent,
+    CurrencyRatesComponent,
+    FormCurrencyRatesComponent,,
   ],
   imports: [
     CommonModule,
@@ -119,5 +123,6 @@ const routes: Routes = [
     MatSnackBarModule,
     PhkConfirmationDialogModule,
   ],
+  providers: [DatePipe],
 })
 export class SettingsModule {}

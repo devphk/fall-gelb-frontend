@@ -18,6 +18,7 @@ import { UsersComponent } from './views/users/users.component';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FromPaymentTermComponent } from './views/components';
 import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
+import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,14 @@ const routes: Routes = [
   {
     path: 'retention-concepts',
     component: RetentionConceptComponent,
+  },
+  {
+    path: 'currency-rates',
+    component: CurrencyRatesComponent,
+  },
+  {
+    path: 'currency-rates',
+    component: CurrencyRatesComponent,
   },
   {
     path: '**',

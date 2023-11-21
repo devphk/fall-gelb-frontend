@@ -115,6 +115,10 @@ export class PhkSidenavComponent implements OnInit {
           path: 'configs',
           title: 'Configuraciones'
         },
+        {
+          path: 'currency-rates',
+          title: 'Tasas Monetarias'
+        },
       ],
     },
     {

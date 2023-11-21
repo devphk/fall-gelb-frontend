@@ -36,4 +36,18 @@ export class UtilsService {
       return value / 10000;
     }
   }
+
+  //Currency Rates Functions
+
+  generateCurrencyMask(currency: string, amount: number) {
+    if (currency === 'Bolivar') {
+      return '00.00';
+    }else if (currency === 'Pesos Colombianos' && amount >= 1000 && amount < 10000){
+      return '0.000'
+    }else if (currency === 'Pesos Colombianos' && amount >= 10000){
+      return '00.000'
+    }else {
+      return '000.000.000';
+    }
+  }
 }
