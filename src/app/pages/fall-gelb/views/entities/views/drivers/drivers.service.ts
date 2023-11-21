@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
-import {
-  DriverDataTable,
-  DriverResponse,
-  LoadingMessage,
-} from '@shared/models';
+import { DriverDataPost, DriverResponse, LoadingMessage } from '@shared/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,11 +9,11 @@ import { Observable } from 'rxjs';
 export class DriversService {
   constructor(private http: HttpService) {}
 
-  getDrivers(): Observable<DriverDataTable[]> {
+  getDrivers(): Observable<DriverResponse[]> {
     return this.http.get('/drivers');
   }
 
-  createDriver(data: DriverResponse): Observable<DriverResponse[]> {
+  createDriver(data: DriverDataPost): Observable<DriverDataPost[]> {
     return this.http.post(
       '/drivers',
       data,

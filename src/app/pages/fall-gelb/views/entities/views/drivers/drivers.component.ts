@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { NewDriverComponent } from '../components/new-driver/new-driver.component';
 import { DriversService } from './drivers.service';
-import { DriverDataTable } from '@shared/models';
+import { DriverDataTable, DriverResponse } from '@shared/models';
 
 @Component({
   selector: 'app-drivers',
@@ -33,11 +33,11 @@ export class DriversComponent implements OnInit {
         response.forEach((driver) => {
           const driverToInput: DriverDataTable = {
             id: driver.id,
-            name: driver.name,
-            phone: driver.phone,
-            email: driver.email,
-            active: driver.active,
-            address: driver.address,
+            name: driver.entity.name,
+            phone: driver.entity.phone,
+            email: driver.entity.email,
+            active: driver.entity.active,
+            address: driver.entity.address,
             is_self_employed: driver.is_self_employed,
             provider_id: driver.provider_id,
           };
@@ -95,11 +95,11 @@ export class DriversComponent implements OnInit {
       drivers.forEach((driver) => {
         const driverToInput = {
           id: driver.id,
-          name: driver.name,
-          phone: driver.phone,
-          email: driver.email,
-          active: driver.active,
-          address: driver.address,
+          name: driver.entity.name,
+          phone: driver.entity.phone,
+          email: driver.entity.email,
+          active: driver.entity.active,
+          address: driver.entity.address,
           is_self_employed: driver.is_self_employed,
           provider_id: driver.provider_id,
         };

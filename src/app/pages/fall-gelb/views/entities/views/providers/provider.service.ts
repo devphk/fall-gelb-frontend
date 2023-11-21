@@ -25,7 +25,7 @@ export class ProviderService {
 
   getProviders(TransportType?: string): Observable<ProviderResponse[]> {
     const params = {
-      transport_type_id: TransportType,
+      provider_transport_type: TransportType,
     };
     return this.http.get(
       '/providers',
