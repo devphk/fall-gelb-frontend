@@ -98,7 +98,7 @@ const routes: Routes = [
     RetentionConceptComponent,
     FormRetentionConceptsComponent,
     CurrencyRatesComponent,
-    FormCurrencyRatesComponent,,
+    FormCurrencyRatesComponent,
   ],
   imports: [
     CommonModule,
