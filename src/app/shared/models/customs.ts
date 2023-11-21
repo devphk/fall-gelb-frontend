@@ -1,4 +1,4 @@
-export interface Customs {
+export interface Custom {
   id: number;
   name: string;
   address: string;

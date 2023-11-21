@@ -3,7 +3,7 @@ import { ConceptsService } from './concepts.service';
 import { DialogService, ToastService } from '@core/services';
 import { FormConceptsComponent } from '../components';
 import { ConceptType } from '@shared/models/concept';
-import { WithholdingConcept } from '@shared/models';
+import { RetentionConcept } from '@shared/models';
 import { Observable,
          forkJoin } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class ConceptsComponent implements OnInit {
   tableData: any[] = [];
   itemsSelected: any[] = [];
   conceptTypes: ConceptType[] = [];
-  withholdingConcepts: WithholdingConcept[] = [];
+  retentionConcepts: RetentionConcept[] = [];
 
   constructor(private conceptService: ConceptsService,
               private dialogService: DialogService,
@@ -51,13 +51,13 @@ export class ConceptsComponent implements OnInit {
 
   }
 
-  getWithholdingConcepts() {
+  getretentionConcepts() {
 
-    this.withholdingConcepts = [];
+    this.retentionConcepts = [];
     this.conceptService
-        .getWithholdingConcepts()
+        .getRetentionConcepts()
         .subscribe((response) => {
-          this.withholdingConcepts = response
+          this.retentionConcepts = response
         }, (error) => {
           this.toastService.showToaster('Error obteniendo conceptos de retención', true);
         });
@@ -67,26 +67,26 @@ export class ConceptsComponent implements OnInit {
   processConcept(processType: string) {
 
     if (this.conceptTypes.length === 0
-        || this.withholdingConcepts.length === 0) {
+        || this.retentionConcepts.length === 0) {
       
       let requestArray: Observable<any>[] = [];
-      requestArray.push(this.conceptService.getWithholdingConcepts());
+      requestArray.push(this.conceptService.getRetentionConcepts());
       requestArray.push(this.conceptService.getConceptTypes());
 
       forkJoin(requestArray).subscribe((responses) => {
         
-        // this.withholdingConcepts = responses[0];
+        // this.retentionConcepts = responses[0];
         // this.conceptTypes = responses[1];
 
-        const withholdingConceptsResponse = responses[0];
+        const retentionConceptsResponse = responses[0];
         const conceptTypesResponse = responses[1];
       
-        // Utiliza withholdingConceptsResponse y conceptTypesResponse según sea necesario
+        // Utiliza retentionConceptsResponse y conceptTypesResponse según sea necesario
       
-        this.withholdingConcepts = withholdingConceptsResponse;
+        this.retentionConcepts = retentionConceptsResponse;
         this.conceptTypes = conceptTypesResponse;
 
-        console.log("this.withholdingConcepts ", this.withholdingConcepts)
+        console.log("this.retentionConcepts ", this.retentionConcepts)
         console.log("this.conceptTypes ", this.conceptTypes)
 
         this.openModal(processType);
@@ -105,7 +105,7 @@ export class ConceptsComponent implements OnInit {
   openModal(processType: string) {
 
     let dialogData = {
-      withholdingConcepts: this.withholdingConcepts,
+      retentionConcepts: this.retentionConcepts,
       conceptTypes: this.conceptTypes,
       itemsSelected: this.itemsSelected
     }
