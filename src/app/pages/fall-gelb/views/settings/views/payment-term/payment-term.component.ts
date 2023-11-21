@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentTermService } from './payment-term.service';
 import { DialogService, ToastService } from '@core/services';
-import { PaymenTermResponse } from '@shared/models/payment-term';
+import {
+  PaymenTermResponse,
+  PaymenTermTable,
+} from '@shared/models/payment-term';
 import { FromPaymentTermComponent } from '../components';
 
 @Component({
@@ -28,7 +31,7 @@ export class PaymentTermComponent implements OnInit {
   getpaymenTerms() {
     this.paymenTermService.getPaymenTerms().subscribe(
       (response) => {
-        const tableData: PaymenTermResponse[] = [];
+        const tableData: PaymenTermTable[] = [];
 
         response.forEach((paymenTerm) => {
           const paymenTermToInput = {
