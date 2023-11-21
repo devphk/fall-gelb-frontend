@@ -15,15 +15,15 @@ export class PhkUserAccountButtonsComponent implements OnInit {
   appsList: any[] = [
     {
       appName: 'Truck',
-      appLogo: 'src/assets/icons/Recurso 12@4x.png',
+      appLogo: 'assets/icons/Truck.png',
     },
     {
       appName: 'Customs',
-      appLogo: 'src/assets/icons/Recurso 13@4x.png'
+      appLogo: 'assets/icons/Recurso 13@4x.png'
     },
     {
       appName: 'Express',
-      appLogo: 'src/assets/icons/Recurso 14@4x.png'
+      appLogo: 'assets/icons/Recurso 14@4x.png'
     }
   ];
 
