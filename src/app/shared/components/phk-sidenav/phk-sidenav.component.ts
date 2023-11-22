@@ -52,6 +52,14 @@ export class PhkSidenavComponent implements OnInit {
           path: 'drivers',
           title: 'Choferes',
         },
+        {
+          path: 'employees',
+          title: 'Empleados',
+        },
+        {
+          path: 'drivers',
+          title: 'Choferes',
+        },
       ],
     },
     {

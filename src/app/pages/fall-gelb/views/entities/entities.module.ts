@@ -15,7 +15,7 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntitiesComponent } from './entities.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NewProviderComponent } from './views/components/new-provider/new-provider.component';
-import { PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
+import { PhkDatePickerModule, PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,8 @@ import { NewDriverComponent } from './views/components/new-driver/new-driver.com
 import { NewGroundtransportComponent } from './views/components/new-groundtransport/new-groundtransport.component';
 import { NewShippingcompanyComponent } from './views/components/new-shippingcompany/new-shippingcompany.component';
 import { NewCustomerComponent } from './views/components/new-customer/new-customer.component';
+import { EmployeesComponent } from './views/employees/employees.component';
+import { NewEmployeeComponent } from './views/components/new-employee/new-employee.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
     NewDriverComponent,
     NewGroundtransportComponent,
     NewShippingcompanyComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    EmployeesComponent,
+    NewEmployeeComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +65,8 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
     PhkSlideToggleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    PhkDatePickerModule
   ]
 })
 export class EntitiesModule { }

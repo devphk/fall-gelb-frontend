@@ -34,5 +34,7 @@ export enum LoadingMessage {
   CREATING_CUSTOMER = 'Creando Cliente...',
   DELETING_CUSTOMER = 'Eliminando Cliente...',
   CREATING_CONTAINER_TYPE = 'Creando Tipo de Contenedor...',
-  DELETING_CONTAINER_TYPE = 'Eliminando Tipo de Contenedor...'
+  DELETING_CONTAINER_TYPE = 'Eliminando Tipo de Contenedor...',
+  CREATING_EMPLOYEE = 'Creando Empleado...',
+  DELETING_EMPLOYEE = 'Eliminando Empleado...'
 }
