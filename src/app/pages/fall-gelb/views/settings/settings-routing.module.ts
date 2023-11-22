@@ -19,6 +19,7 @@ import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.com
 import { FromPaymentTermComponent } from './views/components';
 import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
 import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
+import { DepartmentComponent } from './views/department/department.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,10 @@ const routes: Routes = [
     path: '**',
     component: SettingsComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'department',
+    component: DepartmentComponent,
   },
 ];
 
