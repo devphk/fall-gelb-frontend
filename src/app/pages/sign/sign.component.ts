@@ -21,11 +21,16 @@ export class SignComponent implements OnInit {
   hidePassword = true;
   openSpinner = false;
   year: number = 0;
+  file: any;
 
   constructor(private fb: FormBuilder,
               private signInService: SignService,
               private router: Router,
               private toastService: ToastService) { }
+
+  show() {
+    console.log("file ", this.file)
+  }
 
   ngOnInit(): void {
 

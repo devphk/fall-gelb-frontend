@@ -1,0 +1,45 @@
+
+<div class="drop-files-container"
+     fxLayout="column"
+     fxLayoutAlign="center center">
+    <div (mouseOver)="isMouseOver($event)"
+         (fileDropped)="fileDropped($event)"
+         DragAndDropFiles
+         fxLayout="column"
+         fxLayoutAlign="center center"
+         fxLayoutGap="15px"
+         [ngClass.gt-md]="{'w-50': true}"
+         [ngClass.lt-sm]="{'w-100': true}">
+    
+        <input type="file" 
+               #fileInput 
+               style="display:none;" 
+               (change)="onFileSelected($event)">
+        
+        <img src="assets/icons/download.svg"
+             class="file-icon">
+    
+        <p class="drop-file-title">
+            <strong>Arrastra tu documento aquí</strong>
+        </p>
+    
+        <div fxLayout="row"
+             fxLayoutGap="20px"
+             fxLayoutAlign="center center"
+             class="w-100">
+    
+             <div class="line"></div>
+             <span class="fw-800">Ó</span>
+             <div class="line"></div>
+    
+        </div>
+    
+        <button (click)="selectFile()" 
+                class="browse-file-button">
+            <span>
+                Selecciona archivo
+            </span>
+        </button>
+    
+    </div>
+</div>

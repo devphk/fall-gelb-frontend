@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "init": "ng serve -o --port=1200"
+    "init": "ng serve --port=1200"
   },
   "private": true,
   "dependencies": {
