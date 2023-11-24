@@ -1,45 +1,100 @@
 
-<div class="drop-files-container"
-     fxLayout="column"
-     fxLayoutAlign="center center">
-    <div (mouseOver)="isMouseOver($event)"
-         (fileDropped)="fileDropped($event)"
-         DragAndDropFiles
+<div class="p-relative"
+     (mouseOver)="isMouseOver($event)"
+     (fileDropped)="fileDropped($event)"
+     DragAndDropFiles>
+
+    <div class="drop-files-container"
+         [ngClass]="{'opacity-04': dragFile}"
          fxLayout="column"
-         fxLayoutAlign="center center"
-         fxLayoutGap="15px"
-         [ngClass.gt-md]="{'w-50': true}"
-         [ngClass.lt-sm]="{'w-100': true}">
+         fxLayoutAlign="center center">
+        <div [ngClass.gt-md]="{'w-50': true}"
+             [ngClass.lt-sm]="{'w-100': true}">
     
-        <input type="file" 
-               #fileInput 
-               style="display:none;" 
-               (change)="onFileSelected($event)">
-        
-        <img src="assets/icons/download.svg"
-             class="file-icon">
+            <!-- No file loaded container -->
     
-        <p class="drop-file-title">
-            <strong>Arrastra tu documento aquí</strong>
-        </p>
+            <div [ngClass]="{'d-none': inputFile,
+                             'd-flex': !inputFile}"
+                 fxLayout="column"
+                 fxLayoutAlign="center center"
+                 fxLayoutGap="15px">
     
-        <div fxLayout="row"
-             fxLayoutGap="20px"
-             fxLayoutAlign="center center"
-             class="w-100">
+                <input type="file" 
+                       #fileInput
+                       style="display:none;" 
+                       (change)="onFileSelected($event)">
+                
+                <img src="assets/icons/download.svg"
+                     class="file-icon">
+            
+                <p class="drop-file-title">
+                    <strong>Arrastra tu documento aquí</strong>
+                </p>
+            
+                <div fxLayout="row"
+                     fxLayoutGap="20px"
+                     fxLayoutAlign="center center"
+                     class="w-100">
+            
+                     <div class="line"></div>
+                     <span class="fw-800">ó</span>
+                     <div class="line"></div>
+            
+                </div>
+            
+                <button (click)="selectFile()" 
+                        class="browse-file-button">
+                    <span>
+                        Selecciona archivo
+                    </span>
+                </button>
+            </div>
     
-             <div class="line"></div>
-             <span class="fw-800">Ó</span>
-             <div class="line"></div>
+            <!-- File loaded container -->
+    
+            <div [ngClass]="{'d-none': !inputFile,
+                             'd-flex': inputFile}"
+                 fxLayout="column"
+                 fxLayoutAlign="center center"
+                 fxLayoutGap="15px"
+                 class="file-input-container">
+    
+                <div fxLayout="column"
+                     fxLayoutAlign="center center">
+    
+                     <p class="fs-20">
+                         Archivo:
+                     </p>
+    
+                     <strong>'{{fileName}}'</strong>
+                     
+                </div>
+    
+                <div fxLayout="row"
+                     fxLayoutAlign="center center">
+    
+                     <p class="m-0 fs-15">
+                         ¿Eliminar archivo?
+                     </p>
+                     
+                     <img src="assets/icons/delete.svg"
+                          class="pointer grow delete-button"
+                          (click)="deleteFile()"
+                          matTooltip="Eliminar">
+    
+                </div>
+    
+            </div>   
     
         </div>
-    
-        <button (click)="selectFile()" 
-                class="browse-file-button">
-            <span>
-                Selecciona archivo
-            </span>
-        </button>
-    
     </div>
+    
+    <!-- File hover container -->
+
+    <div class="drag-file-container text-center lh-1-0 disable-events fs-3em w-100"
+         ngClass.gt-md="fs-5em">
+         <strong [ngClass]="{'d-none': !dragFile}"
+                 class="pulse z-0">¡Suelta el archivo!</strong>
+    </div>
+    
 </div>
