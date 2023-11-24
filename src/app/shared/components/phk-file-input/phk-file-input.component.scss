@@ -1,11 +1,15 @@
 
-
-.drop-files-container {
+.files-container {
+    position: relative;
+    overflow-y: scroll;
     background-color: #f6f6f6;
     padding: 20px;
     border-radius: 5px;
     border: 2px #bebebe solid;
-    min-height: 320px;
+    max-height: 320px;
+}
+
+.drop-files-container {
     pointer-events: none;
 
     img {
@@ -54,6 +58,8 @@
 
 .file-input-container {
 
+    width: 250px;
+
     img {
         width: 35px;
     }
@@ -67,4 +73,9 @@
     strong {
         width: 200px;
     }
+}
+
+.drop-files-message {
+    padding: 10px;
+    border-radius: 10px;
 }

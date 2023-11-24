@@ -1,5 +1,5 @@
 
-<div class="p-relative"
+<div class="files-container"
      (mouseOver)="isMouseOver($event)"
      (fileDropped)="fileDropped($event)"
      DragAndDropFiles>
@@ -13,8 +13,8 @@
     
             <!-- No file loaded container -->
     
-            <div [ngClass]="{'d-none': inputFile,
-                             'd-flex': !inputFile}"
+            <div [ngClass]="{'d-none': filesControl,
+                             'd-flex': !filesControl}"
                  fxLayout="column"
                  fxLayoutAlign="center center"
                  fxLayoutGap="15px">
@@ -57,7 +57,8 @@
                  fxLayout="column"
                  fxLayoutAlign="center center"
                  fxLayoutGap="15px"
-                 class="file-input-container">
+                 class="file-input-container"
+                 *ngIf="!multiple">
     
                 <div fxLayout="column"
                      fxLayoutAlign="center center">
@@ -66,7 +67,7 @@
                          Archivo:
                      </p>
     
-                     <strong>'{{fileName}}'</strong>
+                     <strong>{{fileName | ellipsis:25}}</strong>
                      
                 </div>
     
@@ -80,12 +81,55 @@
                      <img src="assets/icons/delete.svg"
                           class="pointer grow delete-button"
                           (click)="deleteFile()"
-                          matTooltip="Eliminar">
+                          matTooltip="Eliminar"
+                          draggable="false"
+                          ondragstart="return false;">
     
                 </div>
     
-            </div>   
+            </div>
+
+            <div *ngIf="multiple"
+                 [ngClass]="{'d-none': !fileList || fileList.length === 0,
+                             'd-flex': fileList && fileList.length > 0}"
+                 fxLayout="column"
+                 fxLayoutAlign="center start"
+                 fxLayoutGap="15px"
+                 class="file-input-container">
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center"
+                     class="w-100">
+
+                    <p class="fs-20 m-0">   
+                        Archivos:
+                    </p>
+
+                    <img src="assets/icons/delete-all.svg"
+                         class="pointer grow delete-button"
+                         (click)="deleteAllFiles()"
+                         matTooltip="Eliminar Archivos"
+                         draggable="false"
+                         ondragstart="return false;">
+
+                </div>
+
+                <div fxLayout="row"
+                     fxLayoutAlign="space-between center"
+                     class="w-100"
+                     *ngFor="let file of fileList; let index=index">
     
+                     <strong>{{file.name | ellipsis:25}}</strong>
+                     
+                     <img src="assets/icons/delete.svg"
+                          class="pointer grow delete-button"
+                          (click)="deleteFile(index)"
+                          matTooltip="Eliminar"
+                          draggable="false"
+                          ondragstart="return false;">            
+                </div>
+    
+            </div>    
         </div>
     </div>
     
@@ -94,7 +138,7 @@
     <div class="drag-file-container text-center lh-1-0 disable-events fs-3em w-100"
          ngClass.gt-md="fs-5em">
          <strong [ngClass]="{'d-none': !dragFile}"
-                 class="pulse z-0">¡Suelta el archivo!</strong>
+                 class="pulse z-0 drop-files-message">¡Suelta el archivo!</strong>
     </div>
     
 </div>

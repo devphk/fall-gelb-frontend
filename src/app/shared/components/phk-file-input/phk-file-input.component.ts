@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragAndDropFilesModule } from '@shared/directives/drag-and-drop-files/drag-and-drop-files.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { EllipsisPipeModule } from '@shared/pipes/ellipsis/ellipsis-pipe.module';
 
 @Component({
   selector: 'app-phk-file-input',
@@ -19,7 +20,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     DragAndDropFilesModule,
     FlexLayoutModule,
-    MatTooltipModule
+    MatTooltipModule,
+    EllipsisPipeModule
   ],
   templateUrl: './phk-file-input.component.html',
   styleUrls: ['./phk-file-input.component.scss']
@@ -31,11 +33,15 @@ export class PhkFileInputComponent implements OnInit {
   //Inputs
 
   @Input() inputFile: File | undefined = undefined;
+  @Input() fileList: File[] | undefined = undefined;
+  @Input() multiple: boolean = false;
   @Output() inputFileChange = new EventEmitter<File | undefined>();
+  @Output() fileListChange = new EventEmitter<File[] | undefined>();
 
   fileOver: boolean = false;
   fileName: string | undefined = '';
   dragFile: boolean = false;
+  filesControl: File | File[] | undefined;
 
   constructor() { }
 
@@ -46,7 +52,6 @@ export class PhkFileInputComponent implements OnInit {
 
     if (this.fileOver !== mouseOver) {
       this.fileOver = mouseOver;
-      console.log("this.fileOver ", this.fileOver)
     }
 
     if (this.fileOver && !this.inputFile) {
@@ -58,17 +63,52 @@ export class PhkFileInputComponent implements OnInit {
   }
 
   fileDropped(files: File[]) {
-    this.inputFile = files[0];
-    this.inputFileChange.emit(this.inputFile);
-    this.fileName = this.inputFile.name;
+
+    if (this.multiple) {
+
+      if (this.fileList 
+          && this.fileList?.length > 0) {
+
+        this.fileList = [...this.fileList, ...files];
+        
+      } else {
+
+        this.fileList = files;      
+
+      }
+
+      this.fileListChange.emit(this.fileList);
+      this.filesControl = this.fileList;
+    } else {
+      this.inputFile = files[0];
+      this.fileName = this.inputFile.name;
+      this.inputFileChange.emit(this.inputFile);
+      this.filesControl = this.inputFile;
+    }
+
   }
 
   onFileSelected(event: any) {
 
     if (event.target.files) {
-      this.inputFile = event.target.files[0];
-      this.inputFileChange.emit(this.inputFile);
-      this.fileName = this.inputFile?.name;
+
+      let files: File[] = event.target.files;
+
+      if (this.multiple) {
+
+        this.fileList = files;
+        this.fileListChange.emit(this.fileList);
+        this.filesControl = this.fileList;
+
+      } else {
+
+        this.inputFile = files[0];
+        this.fileName = this.inputFile?.name;
+        this.inputFileChange.emit(this.inputFile);
+        this.filesControl = this.inputFile;
+
+      }
+
     }
 
   }
@@ -78,9 +118,55 @@ export class PhkFileInputComponent implements OnInit {
     fileInput.click();
   }
 
-  deleteFile() {
-    this.inputFile = undefined;
-    this.inputFileChange.emit(this.inputFile);  
+  deleteFile(fileIndex: number = -1) {
+
+    if (fileIndex !== -1) {
+
+      this.deleteFileInArray(fileIndex)   
+      this.fileListChange.emit(this.fileList);   
+
+      if (this.fileList?.length === 0) {
+        this.fileList = undefined;
+        this.filesControl = this.fileList;
+      }
+
+    } else {
+
+      this.inputFile = undefined;
+      this.inputFileChange.emit(this.inputFile);  
+      this.filesControl = this.inputFile;
+
+    }
+
+  }
+
+  deleteAllFiles() {
+   
+    this.fileList = undefined;
+    this.filesControl = undefined;
+    
+  }
+
+  deleteFileInArray(fileIndex: number) {
+
+    if (this.fileList) {
+
+      let fileArray: File[] = [];
+      
+      for (let index = 0; index < this.fileList?.length; index++) {
+  
+        const file = this.fileList[index];
+
+        if (index !== fileIndex) {
+          fileArray.push(file);
+        }
+        
+      }
+
+      this.fileList = fileArray.slice();
+
+    }
+
   }
 
 }
