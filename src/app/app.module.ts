@@ -23,7 +23,6 @@ import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { DatePipe } from '@angular/common';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -59,7 +58,6 @@ import { DatePipe } from '@angular/common';
       provide: MODE_STORAGE_SERVICE,
       useClass: PhkThemeStorageService,
     },
-    DatePipe
     DatePipe
   ],
   bootstrap: [AppComponent],
