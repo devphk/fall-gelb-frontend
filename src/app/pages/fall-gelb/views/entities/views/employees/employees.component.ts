@@ -54,6 +54,17 @@ export class EmployeesComponent implements OnInit {
             phone:employee.entity.phone,
             email:employee.entity.email,
             address:employee.entity.address,
+            currency_id: employee.currency_id,
+            basic_salary: employee.basic_salary,
+            identification_card: employee.identification_card,
+            employee_status_id: employee.employee_status_id,
+            departament_id: employee.departament_id,
+            schedule_start_time: employee.schedule_start_time,
+            schedule_end_time: employee.schedule_end_time,
+            admission_date: employee.admission_date,
+            payment_frequency: employee.payment_frequency_id,
+            contract_type: employee.contract_type_id,
+            active: employee.entity.active
           }
           tableData.push(employeeToInput); 
         })
@@ -82,22 +93,21 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmployee() {
-    // this.dialogService
-    //   .openConfirmationDialog(
-    //     `Desea eliminar Chofer '${this.itemsSelected[0].name}'`,
-    //     'Este cambio no se puede revertir'
-    //   )
-    //   .afterClosed()
-    //   .subscribe((response) => {
-    //     if (response) {
-    //       this.driverService.deleteDrivers(this.itemsSelected[0].id).subscribe(
-    //         (data) => {
-    //           this.toastService.showToaster('Chofer eliminado correctamente!');
-    //           this.refreshDrivers();
-    //         },
-    //         (error) => this.toastService.showToaster(error.error.message, true)
-    //       );
-    //     }
-    //   });
+    this.dialogService
+      .openConfirmationDialog(
+        'Eliminar empleado',
+        `¿Desea eliminar empleado '${this.itemsSelected[0].name}'?`)
+      .afterClosed()
+      .subscribe((response) => {
+        if (response) {
+          this.employeesService.deleteEmployee(this.itemsSelected[0].id).subscribe(
+            (data) => {
+              this.toastService.showToaster('Empleado eliminado correctamente!');
+              this.getEmployees();
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
+        }
+      });
   }
 }

@@ -561,3 +561,11 @@ i {
   width: 70%;
   margin: 0 auto;
 }
+
+.timepicker-overlay {
+  z-index: 1100 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1100 !important;
+}

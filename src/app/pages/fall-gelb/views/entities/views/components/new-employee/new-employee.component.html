@@ -19,7 +19,7 @@
                             fxFlex.lt-md="calc(100%)"
                             label="Telefono" 
                             formControlName="phone"
-                            [type]="'number'" 
+                            [mask]="'(0000)-000-0000'"
                             [required]="true"
                             [errorMessage]="employeeForm.controls['phone'].invalid ? 'Debe ingresar un telefono' : null">
             </app-phk-input>
@@ -96,19 +96,21 @@
                             [errorMessage]="employeeForm.controls['name'].invalid ? 'Debe ingresar un salario' : null">
             </app-phk-input>
 
-            <app-phk-date-picker fxFlex="calc(33% - 20px)"
-                                fxFlex.lt-md="calc(100%)"
-                                label="Fecha Inicio Estipulada" 
-                                formControlName="startDate" 
-                                [required]="true">
-            </app-phk-date-picker>
-
-            <app-phk-date-picker fxFlex="calc(33% - 20px)"
-                                fxFlex.lt-md="calc(100%)"
-                                label="Fecha Final Estipulada" 
-                                formControlName="endDate" 
-                                [required]="true">
-            </app-phk-date-picker>
+            <mat-form-field appearance="outline">
+                <input  matInput [ngxTimepicker]="picker"
+                        formControlName="startTime"
+                        placeholder="Hora Entrada"
+                        [format]="24">
+                <ngx-material-timepicker #picker></ngx-material-timepicker>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <input  matInput [ngxTimepicker]="picker2"
+                        formControlName="endTime"
+                        placeholder="Hora Salida"
+                        [format]="24">
+                <ngx-material-timepicker #picker2></ngx-material-timepicker>
+            </mat-form-field>
 
             <app-phk-select fxFlex="calc(33% - 20px)"
                             fxFlex.lt-md="calc(100%)" 

@@ -29,6 +29,9 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
 import { EmployeesComponent } from './views/employees/employees.component';
 import { NewEmployeeComponent } from './views/components/new-employee/new-employee.component';
 
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     ProvidersComponent,
@@ -66,7 +69,9 @@ import { NewEmployeeComponent } from './views/components/new-employee/new-employ
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
-    PhkDatePickerModule
+    PhkDatePickerModule,
+    NgxMaterialTimepickerModule,
+    MatInputModule
   ]
 })
 export class EntitiesModule { }

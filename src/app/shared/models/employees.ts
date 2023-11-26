@@ -65,6 +65,17 @@ export interface EmployeeDataTable {
   phone:string;
   email:string;
   address:string;
+  currency_id: number;
+  basic_salary: number;
+  identification_card: string;
+  employee_status_id: number;
+  departament_id: number;
+  schedule_start_time: string;
+  schedule_end_time: string;
+  admission_date: string;
+  payment_frequency: number;
+  contract_type: number;
+  active: boolean;
 }
 
 export interface EmployeePost {

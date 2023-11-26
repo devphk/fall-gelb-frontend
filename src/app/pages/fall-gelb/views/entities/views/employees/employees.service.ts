@@ -23,6 +23,10 @@ export class EmployeesService {
     return this.http.delete(`/employees/${id}`, undefined, true, LoadingMessage.DELETING_EMPLOYEE);
   }
 
+  editEmployee(id:number, data:any) {
+    return this.http.put(`/employees/${id}`, data);
+  }
+
   getDepartments() {
     return this.http.get('/departaments');
   }
