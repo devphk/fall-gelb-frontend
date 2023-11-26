@@ -227,6 +227,18 @@ i {
   color: var(--textPrimaryColor);
 }
 
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
 //----------------------- Leaflet ----------------------//
 
 @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
@@ -295,32 +307,54 @@ i {
   margin: 0 auto !important;
 }
 
+// Position styles
+
+.p-relative {
+  position: relative !important;
+}
+
 // Pointer styles
 
 .pointer {
   cursor: pointer !important;
 }
 
+.disable-events {
+  pointer-events: none !important;
+}
+
 // Global font-sizes
 
-.fs-40 {
-  font-size: 40px !important;
-}
-
-.fs-30 {
-  font-size: 30px !important;
-}
-
-.fs-20 {
-  font-size: 20px !important;
+.fs-15 {
+  font-size: 15px !important;
 }
 
 .fs-18 {
   font-size: 18px !important;
 }
 
-.fs-15 {
-  font-size: 15px !important;
+.fs-20 {
+  font-size: 20px !important;
+}
+
+.fs-30 {
+  font-size: 30px !important;
+}
+
+.fs-40 {
+  font-size: 40px !important;
+}
+
+.fs-50 {
+  font-size: 50px !important;
+}
+
+.fs-5em {
+  font-size: 5em !important;
+}
+
+.fs-3em {
+  font-size: 3em !important;
 }
 
 .fs-09 {
@@ -353,12 +387,22 @@ i {
   line-height: 0.8 !important;
 }
 
+.lh-1-0 {
+  line-height: 1.0 !important;
+}
+
 .lh-1-2 {
   line-height: 1.2 !important;
 }
 
 .lh-1-5 {
   line-height: 1.5 !important;
+}
+
+// Opacity styles
+
+.opacity-04 {
+  opacity: 0.4 !important;
 }
 
 // Global Margins
@@ -560,4 +604,42 @@ i {
   height: calc(100vh - 150px);
   width: 70%;
   margin: 0 auto;
+}
+
+// ---------------- Hover CSS -----------------
+
+.grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.grow:hover, .grow:focus, .grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+// Pulse animation
+
+.pulse {
+  animation: pulse-animation 1s infinite;
+}
+
+// Animations styles
+
+// Pulse style
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
 }

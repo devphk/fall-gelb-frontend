@@ -21,30 +21,29 @@ export class NewDriverComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any
   ) {}
 
-  private transportTypeId: string = 'Ground - transportation';
+  private transportTypeId: string = 'Ground-transportation';
   isEditMode: boolean = false;
   providers: SelectOption[] = [];
 
   driverForm: FormGroup = new FormGroup({});
 
   ngOnInit(): void {
-    this.initializeForm();
-
     this.providerService
       .getProviders(this.transportTypeId)
       .subscribe((providers) => {
         providers.map((provider) => {
           this.providers.push({
-            id: provider.id,
+            id: provider.entity.id,
             name: provider.entity.name,
           });
         });
-
-        console.log(this.providers);
       });
+
+    this.initializeForm();
   }
 
   initializeForm() {
+    this.isEditMode = this.data.dialogData ? true : false;
     this.driverForm = this.formBuild.group({
       name: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].name : '',
@@ -59,20 +58,17 @@ export class NewDriverComponent implements OnInit {
         [Validators.required]
       ),
       active: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].active : '',
-        [Validators.required]
+        this.data.dialogData ? this.data.dialogData[0].active : true
       ),
       address: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].address : '',
         [Validators.required]
       ),
       is_self_employed: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].is_self_employed : '',
-        [Validators.required]
+        this.data.dialogData ? this.data.dialogData[0].is_self_employed : ''
       ),
       provider_id: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].provider_id : '',
-        [Validators.required]
+        this.data.dialogData ? this.data.dialogData[0].provider_id : undefined
       ),
     });
   }
@@ -87,11 +83,11 @@ export class NewDriverComponent implements OnInit {
           active: this.driverForm.get('active')?.value,
           address: this.driverForm.get('address')?.value,
           is_self_employed: this.driverForm.get('is_self_employed')?.value,
-          provider_id: Number(this.driverForm.get('provider_id')?.value),
+          provider_id: this.driverForm.get('provider_id')?.value ?? undefined,
         };
 
         this.driverService.createDriver(driver).subscribe(
-          (data: DriverResponse[]) => {
+          (data: DriverDataPost[]) => {
             this.toastService.showToaster('Chofer Creado Correctamente!');
             this.dialogRef.close(true);
           },
@@ -105,7 +101,7 @@ export class NewDriverComponent implements OnInit {
           active: this.driverForm.get('active')?.value,
           address: this.driverForm.get('address')?.value,
           is_self_employed: this.driverForm.get('is_self_employed')?.value,
-          provider_id: Number(this.driverForm.get('provider_id')?.value),
+          provider_id: this.driverForm.get('provider_id')?.value ?? undefined,
         };
 
         this.driverService

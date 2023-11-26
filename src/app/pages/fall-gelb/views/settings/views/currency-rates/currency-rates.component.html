@@ -1,0 +1,54 @@
+
+<div fxLayout="row"
+    fxLayoutAlign="space-between center">
+
+    <h1>Tasas Monetarias</h1>
+
+    <div fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+<button
+  class="crud-button"
+  mat-mini-fab
+  color="primary"
+  aria-label="Registrar Tasa Monetaria"
+  matTooltip="Registrar Tasa Monetaria"
+  (click)="processCurrencyRate('Add')"
+>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button 
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Tasa Monetaria"
+      matTooltip="Editar Tasa Monetaria"
+      (click)="processCurrencyRate('Edit')"
+      [disabled]="itemsSelected.length > 1">
+  <mat-icon>edit</mat-icon>
+</button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Actualizar Tabla"
+              matTooltip="Actualizar Tabla"
+              (click)="getCurrencyRates()">
+        <mat-icon>refresh</mat-icon>
+</button>
+
+<button mat-mini-fab
+              color="primary"
+              aria-label="Eliminar Tasa Monetaria"
+              matTooltip="Eliminar Tasa Monetaria"
+              (click)="deleteCurrencyRate()">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+</div>
+</div>
+
+<app-phk-table [columnsTags]="tableColumnsTags"
+            [columnsToDisplay]="tableColumnsToDisplay"
+            [data]="tableData"
+            [(itemsSelected)]="itemsSelected"></app-phk-table>

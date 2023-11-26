@@ -1,6 +1,6 @@
 import { SettingsComponent } from './settings.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -49,11 +49,15 @@ import {
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
+import { ConfigsComponent } from './views/configs/configs.component';
+import { FormConfigsComponent } from './views/components/form-configs/form-configs.component';
 import { UsersComponent } from './views/users';
 import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
 import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
 import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
 import { FormRetentionConceptsComponent } from './views/components/form-retention-concepts/form-retention-concepts.component';
+import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
+import { FormCurrencyRatesComponent } from './views/components/form-currency-rates/form-currency-rates.component';
 
 const routes: Routes = [
   {
@@ -85,12 +89,16 @@ const routes: Routes = [
     FormBankComponent,
     FormCurrencyComponent,
     FormUserComponent,
+    ConfigsComponent,
+    FormConfigsComponent,
     CargoTypeLclComponent,
     FormCargoTypeLclComponent,
     PaymentTermComponent,
     FromPaymentTermComponent,
     RetentionConceptComponent,
     FormRetentionConceptsComponent,
+    CurrencyRatesComponent,
+    FormCurrencyRatesComponent,
   ],
   imports: [
     CommonModule,
@@ -115,5 +123,6 @@ const routes: Routes = [
     MatSnackBarModule,
     PhkConfirmationDialogModule,
   ],
+  providers: [DatePipe],
 })
 export class SettingsModule {}

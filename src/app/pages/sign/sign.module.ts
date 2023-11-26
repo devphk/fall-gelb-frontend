@@ -13,6 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { SignService } from './sign.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PhkSelectModule } from '@shared/components';
+import { MatOptionModule } from '@angular/material/core';
+import { PhkFileInputComponent } from '@shared/components/phk-file-input/phk-file-input.component';
 
 const routes: Routes = [
   {
@@ -23,7 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    SignComponent
+    SignComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    PhkSelectModule,
+    MatOptionModule,
+    PhkFileInputComponent
   ],
   providers: [
     SignService

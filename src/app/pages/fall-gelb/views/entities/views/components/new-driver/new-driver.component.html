@@ -11,7 +11,7 @@
         label="Nombre"
         formControlName="name"
         [required]="true"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(44% - 20px)"
         fxFlex.lt-md="calc(100%)"
         [errorMessage]="
           driverForm.controls['name'].invalid ? 'Debe ingresar un Nombre' : null
@@ -20,9 +20,11 @@
 
       <app-phk-input
         label="Teléfono"
+        [mask]="'(0000)-0000-000'"
         formControlName="phone"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(44% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        [required]="true"
         [errorMessage]="
           driverForm.controls['phone'].invalid
             ? 'Debe ingresar un Teléfono'
@@ -33,8 +35,9 @@
       <app-phk-input
         label="Dirección de Correo"
         formControlName="email"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(44% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        [required]="true"
         [errorMessage]="
           driverForm.controls['email'].invalid
             ? 'Debe ingresar una Dirección de Correo'
@@ -43,47 +46,46 @@
       ></app-phk-input>
 
       <app-phk-slide-toggle
+        *ngIf="isEditMode"
         formControlName="active"
         [label]="'¿Activo?'"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(20% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="mt-m20"
-        [required]="true"
       ></app-phk-slide-toggle>
 
       <app-phk-slide-toggle
         formControlName="is_self_employed"
         [label]="'¿Es autónomo?'"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(20% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="mt-m20"
-        [required]="true"
       ></app-phk-slide-toggle>
 
+      <app-phk-text-area
+        label="Ingrese la Dirección"
+        formControlName="address"
+        fxFlex.gt-md="calc(44% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [errorMessage]="
+          driverForm.controls['address'].invalid
+            ? 'Debe ingresar la Dirección'
+            : null
+        "
+        [required]="true"
+      ></app-phk-text-area>
+
       <app-phk-select
+        *ngIf="!driverForm.controls['is_self_employed'].value"
         formControlName="provider_id"
         [label]="'Proveedores'"
-        [required]="true"
-        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.gt-md="calc(44% - 20px)"
         fxFlex.lt-md="calc(100%)"
       >
         <mat-option *ngFor="let provider of providers" [value]="provider.id">
           {{ provider.name }}
         </mat-option>
       </app-phk-select>
-
-      <app-phk-text-area
-        label="Ingrese la Dirección"
-        formControlName="address"
-        fxFlex.gt-md="calc(66% - 20px)"
-        fxFlex.lt-md="calc(100%)"
-        [errorMessage]="
-          driverForm.controls['name'].invalid
-            ? 'Debe ingresar la Dirección'
-            : null
-        "
-        [required]="true"
-      ></app-phk-text-area>
 
       <div
         fxFlex="50"
