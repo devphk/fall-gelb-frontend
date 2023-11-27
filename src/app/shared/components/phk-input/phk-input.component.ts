@@ -1,13 +1,17 @@
-import { Component, 
-         forwardRef, 
-         Injector, 
-         Input, 
-         OnInit,
-         ChangeDetectorRef } from '@angular/core';
-import { ControlValueAccessor, 
-         FormControl, 
-         NG_VALUE_ACCESSOR, 
-         NgControl } from '@angular/forms';
+import {
+  Component,
+  forwardRef,
+  Injector,
+  Input,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-phk-input',
@@ -17,12 +21,11 @@ import { ControlValueAccessor,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => PhkInputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class PhkInputComponent implements OnInit, 
-                                          ControlValueAccessor {
+export class PhkInputComponent implements OnInit, ControlValueAccessor {
   @Input() label!: string;
   @Input() type: 'number' | 'text' | 'password' = 'text';
   @Input() disabled = false;
@@ -38,12 +41,11 @@ export class PhkInputComponent implements OnInit,
   inputControl = new FormControl();
   ngControl!: NgControl;
 
-  constructor(public injector: Injector,
-              private cdr: ChangeDetectorRef) {}
+  constructor(public injector: Injector, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.ngControl = this.injector.get(NgControl);
-    this.inputControl.valueChanges.subscribe(value => {
+    this.inputControl.valueChanges.subscribe((value) => {
       this.propagateChange(value);
     });
   }

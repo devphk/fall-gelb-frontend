@@ -8,3 +8,4 @@ export * from './theme-mode.enum';
 export * from './user';
 export * from './retention-concepts';
 export * from './driver';
+export * from './department';

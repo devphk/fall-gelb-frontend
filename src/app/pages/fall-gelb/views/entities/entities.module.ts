@@ -15,7 +15,13 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntitiesComponent } from './entities.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NewProviderComponent } from './views/components/new-provider/new-provider.component';
-import { PhkDatePickerModule, PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
+import {
+  PhkDatePickerModule,
+  PhkInputModule,
+  PhkSelectModule,
+  PhkSlideToggleModule,
+  PhkTextAreaModule,
+} from '@shared/components';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +35,7 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
 import { EmployeesComponent } from './views/employees/employees.component';
 import { NewEmployeeComponent } from './views/components/new-employee/new-employee.component';
 
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
@@ -51,7 +57,7 @@ import { MatInputModule } from '@angular/material/input';
     NewShippingcompanyComponent,
     NewCustomerComponent,
     EmployeesComponent,
-    NewEmployeeComponent
+    NewEmployeeComponent,
   ],
   imports: [
     CommonModule,
@@ -71,7 +77,7 @@ import { MatInputModule } from '@angular/material/input';
     FlexLayoutModule,
     PhkDatePickerModule,
     NgxMaterialTimepickerModule,
-    MatInputModule
-  ]
+    MatInputModule,
+  ],
 })
-export class EntitiesModule { }
+export class EntitiesModule {}
