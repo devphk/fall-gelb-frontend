@@ -10,11 +10,12 @@
                 [disabled]="disabled"
                 [value]="value"
                 [required]="required">
+      <mat-option *ngIf="showNoSelect">No seleccionado</mat-option>
       <mat-option *ngFor="let option of options"
                   [disabled]="option.disabled" 
                   [value]="option.value">
         {{ option.viewValue }}
-      </mat-option>  
+      </mat-option>
     </mat-select>
     <mat-select (blur)="onTouch()" 
                 (selectionChange)="onSelect($event)"

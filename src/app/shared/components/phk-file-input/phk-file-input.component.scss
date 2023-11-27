@@ -1,0 +1,81 @@
+
+.files-container {
+    position: relative;
+    overflow-y: scroll;
+    background-color: #f6f6f6;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px #bebebe solid;
+    max-height: 320px;
+}
+
+.drop-files-container {
+    pointer-events: none;
+
+    img {
+        width: 80px;
+    }
+
+    p, 
+    strong,
+    span {
+        color: #2a2a2a;
+    }
+
+    button,
+    .delete-button {
+        pointer-events: all;
+    }
+
+}
+
+.drop-files-events {
+    pointer-events: none;
+}
+
+.browse-file-button {
+    outline: none;
+    padding: 15px;
+    border: none;
+    background-color: #e3e3e3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    span {
+        font-weight: bold;
+    }
+}
+
+.browse-file-button:hover {
+    background-color: #bfbfbf;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #bebebe;
+}
+
+.file-input-container {
+
+    width: 250px;
+
+    img {
+        width: 35px;
+    }
+}
+
+.drag-file-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    strong {
+        width: 200px;
+    }
+}
+
+.drop-files-message {
+    padding: 10px;
+    border-radius: 10px;
+}

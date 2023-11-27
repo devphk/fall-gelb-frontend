@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 import {MatOption} from '@angular/material/core';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-phk-select',
@@ -39,9 +40,11 @@ export class PhkSelectComponent implements OnInit,
   @ContentChildren(MatOption) queryOptions!: QueryList<MatOption>;
   options!: { value: any, viewValue: any, disabled: boolean }[];
   @Input() disabled = false;
+  @Input() showNoSelect: boolean = false;
+
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
   @Output() extraField: EventEmitter<string> = new EventEmitter();
-  ngControl!: any;
+  ngControl!: NgControl;
   extraFieldInput: string = '';
 
   constructor(public injector: Injector) {
@@ -55,10 +58,8 @@ export class PhkSelectComponent implements OnInit,
   }
 
   set value(value) {
-    if (value) {
-      this._value = value;
-      this.propagateChange(this._value);
-    }
+    this._value = value;
+    this.propagateChange(this._value);
   }
 
   ngOnInit(): void {
@@ -82,15 +83,19 @@ export class PhkSelectComponent implements OnInit,
 
   setOptions() {
     this.options = [];
-    setTimeout(() =>
+
+    setTimeout(() => {
+
       this.options = this.queryOptions.toArray().map(option => ({
         value: option.value,
         viewValue: option.viewValue,
         disabled: option.disabled
-      })), 0);
+      }));
+
+    }, 0);
   }
 
-  onSelect(event: any) {
+  onSelect(event: MatSelectChange) {
     this.value = event.value;
     this.optionSelected.emit(this.value);
   }
