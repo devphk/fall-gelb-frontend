@@ -37,6 +37,11 @@
         formControlName="purchase_order"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        [errorMessage]="
+          certificationForm.controls['purchase_order'].invalid
+            ? 'Debe ingresar una OC'
+            : null
+        "
       ></app-phk-input>
       <!-- <app-phk-date-picker
     label="Fecha del Anticipo*"
@@ -49,6 +54,11 @@
         formControlName="advance_payment"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        [errorMessage]="
+          certificationForm.controls['advance_payment'].invalid
+            ? 'Debe ingresar Monto del Anticipo'
+            : null
+        "
       ></app-phk-input>
       <app-phk-input
         label="Número del Anticipo*"
@@ -56,6 +66,11 @@
         formControlName="advance_payment_number"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
+        [errorMessage]="
+          certificationForm.controls['advance_payment_number'].invalid
+            ? 'Debe ingresar Número del Anticipo'
+            : null
+        "
       ></app-phk-input>
       <div
         fxFlex="50"

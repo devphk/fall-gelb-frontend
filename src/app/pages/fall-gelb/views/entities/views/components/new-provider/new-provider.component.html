@@ -13,6 +13,11 @@
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         [required]="true"
+        [errorMessage]="
+          providerForm.controls['name'].invalid
+            ? 'Debe ingresar un Nombre'
+            : null
+        "
       ></app-phk-input>
 
       <app-phk-input
@@ -21,14 +26,25 @@
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         [required]="true"
+        [errorMessage]="
+          providerForm.controls['name'].invalid
+            ? 'Debe ingresar un Email'
+            : null
+        "
       ></app-phk-input>
 
       <app-phk-input
         label="Teléfono"
         formControlName="phone"
+        [mask]="'(0000)-0000-000'"
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         [required]="true"
+        [errorMessage]="
+          providerForm.controls['phone'].invalid
+            ? 'Debe ingresar un Teléfono'
+            : null
+        "
       ></app-phk-input>
 
       <app-phk-slide-toggle
@@ -37,7 +53,6 @@
         fxFlex.gt-md="calc(33% - 20px)"
         fxFlex.lt-md="calc(100%)"
         class="mt-m20"
-        [required]="true"
       ></app-phk-slide-toggle>
 
       <app-phk-text-area
@@ -45,6 +60,11 @@
         formControlName="address"
         fxFlex.gt-md="calc(66% - 20px)"
         [required]="true"
+        [errorMessage]="
+          providerForm.controls['name'].invalid
+            ? 'Debe ingresar una Dirección Fiscal'
+            : null
+        "
       ></app-phk-text-area>
 
       <app-phk-slide-toggle
