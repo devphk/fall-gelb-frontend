@@ -49,7 +49,7 @@ export class DepartmentComponent implements OnInit {
     this.dialogService
       .openDialog(
         NewDepartmentComponent,
-        processType === 'Add' ? 'Crear Banco' : 'Editar Banco',
+        processType === 'Add' ? 'Crear Departamento' : 'Editar Departamento',
         '800px',
         'auto',
         processType === 'Add' ? null : this.itemsSelected
@@ -65,8 +65,8 @@ export class DepartmentComponent implements OnInit {
   deleteDepartment() {
     this.dialogService
       .openConfirmationDialog(
-        `Eliminar Banco`,
-        `¿Desea eliminar banco '${this.itemsSelected[0].name}'?`
+        `Eliminar Departamento`,
+        `¿Desea eliminar departamento '${this.itemsSelected[0].name}'?`
       )
       .afterClosed()
       .subscribe((response) => {
@@ -75,7 +75,9 @@ export class DepartmentComponent implements OnInit {
             .deleteDepartments(this.itemsSelected[0].id)
             .subscribe(
               (data) => {
-                this.toastService.showToaster('Banco eliminado correctamente!');
+                this.toastService.showToaster(
+                  'Departamento eliminado correctamente!'
+                );
                 this.refreshDepartments();
               },
               (error) =>

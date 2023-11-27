@@ -92,13 +92,13 @@ const routes: Routes = [
     component: CurrencyRatesComponent,
   },
   {
+    path: 'department',
+    component: DepartmentComponent,
+  },
+  {
     path: '**',
     component: SettingsComponent,
     pathMatch: 'full',
-  },
-  {
-    path: 'department',
-    component: DepartmentComponent,
   },
 ];
 

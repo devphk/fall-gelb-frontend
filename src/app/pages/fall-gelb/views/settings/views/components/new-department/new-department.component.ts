@@ -34,6 +34,9 @@ export class NewDepartmentComponent implements OnInit {
         this.data.dialogData ? this.data.dialogData[0].name : '',
         [Validators.required]
       ),
+      departament_id: this.formBuild.control(
+        this.data.dialogData ? this.data.dialogData[0].departament_id : ''
+      ),
     });
 
     this.departmentService.getDepartments().subscribe((departments) => {
@@ -51,6 +54,7 @@ export class NewDepartmentComponent implements OnInit {
       if (this.data.title === 'Crear Departamento') {
         const department = {
           name: this.departmentFrom.get('name')?.value,
+          departament_id: this.departmentFrom.get('departament_id')?.value,
         };
 
         this.departmentService.createDepartment(department).subscribe(
@@ -63,6 +67,7 @@ export class NewDepartmentComponent implements OnInit {
       } else {
         const departmentEdit = {
           name: this.departmentFrom.get('name')?.value,
+          departament_id: this.departmentFrom.get('departament_id')?.value,
         };
 
         this.departmentService
