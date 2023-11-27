@@ -24,6 +24,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DatePipe } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +42,9 @@ import { DatePipe } from '@angular/common';
     NgChartsModule,
     HttpClientModule,
     MatTooltipModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     SessionGuard,

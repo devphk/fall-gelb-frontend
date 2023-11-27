@@ -606,6 +606,14 @@ i {
   margin: 0 auto;
 }
 
+.timepicker-overlay {
+  z-index: 1100 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1100 !important;
+}
+
 // ---------------- Hover CSS -----------------
 
 .grow {

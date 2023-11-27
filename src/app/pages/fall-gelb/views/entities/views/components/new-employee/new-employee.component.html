@@ -1,0 +1,143 @@
+<div>   
+    <form [formGroup]="employeeForm">
+        <div mat-dialog-content f
+             fxLayout="row wrap" 
+             fxLayoutGap="20px"
+             fxFlex.lt-md="column"
+             fxLayoutAlign="start center">
+            <br>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"
+                            label="Nombre" 
+                            formControlName="name" 
+                            [required]="true"
+                            [errorMessage]="employeeForm.controls['name'].invalid ? 'Debe ingresar un nombre' : null">
+            </app-phk-input>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"
+                            label="Telefono" 
+                            formControlName="phone"
+                            [mask]="'(0000)-000-0000'"
+                            [required]="true"
+                            [errorMessage]="employeeForm.controls['phone'].invalid ? 'Debe ingresar un telefono' : null">
+            </app-phk-input>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"
+                            label="Email" 
+                            formControlName="email" 
+                            [required]="true"
+                            [errorMessage]="employeeForm.controls['email'].invalid ? 'Debe ingresar un correo' : null">
+            </app-phk-input>
+
+            <app-phk-slide-toggle
+                    formControlName="isActive"
+                    [label]="'¿Se encuentra activo?'"
+                    fxFlex.gt-md="calc(33% - 20px)"
+                    fxFlex.lt-md="calc(100%)"
+                    class="mt-m20"
+                    [required]="true"
+            ></app-phk-slide-toggle>
+
+            <app-phk-text-area  fxFlex="calc(33% - 20px)"
+                                fxFlex.lt-md="calc(100%)" 
+                                label="Dirección" 
+                                formControlName="address">
+            </app-phk-text-area>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"
+                            label="Carta de Identificacion" 
+                            formControlName="idCard" 
+                            [required]="true"
+                            [type]="'number'"
+                            [errorMessage]="employeeForm.controls['idCard'].invalid ? 'Debe ingresar una identificacion' : null">
+            </app-phk-input>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione un Departamento..." 
+                            formControlName="department">
+
+                <mat-option *ngFor="let department of departmentTypes" 
+                            [value]="department.id">
+                            {{department.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+
+            <app-phk-date-picker fxFlex="calc(33% - 20px)"
+                                fxFlex.lt-md="calc(100%)"
+                                label="Fecha de Admision" 
+                                formControlName="admissionDate" 
+                                [required]="true">
+            </app-phk-date-picker>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione Tipo de Contrato..." 
+                            formControlName="contractType">
+
+                <mat-option *ngFor="let contract of contractTypes" 
+                            [value]="contract.id">
+                            {{contract.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+
+            <app-phk-input  fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)"
+                            label="Salario Basico" 
+                            formControlName="basicSalary" 
+                            [required]="true"
+                            [type]="'number'"
+                            [errorMessage]="employeeForm.controls['name'].invalid ? 'Debe ingresar un salario' : null">
+            </app-phk-input>
+
+            <mat-form-field appearance="outline">
+                <input  matInput [ngxTimepicker]="picker"
+                        formControlName="startTime"
+                        placeholder="Hora Entrada"
+                        [format]="24">
+                <ngx-material-timepicker #picker></ngx-material-timepicker>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <input  matInput [ngxTimepicker]="picker2"
+                        formControlName="endTime"
+                        placeholder="Hora Salida"
+                        [format]="24">
+                <ngx-material-timepicker #picker2></ngx-material-timepicker>
+            </mat-form-field>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione Estatus del Empleado..." 
+                            formControlName="employeeStatus">
+
+                <mat-option *ngFor="let employee of employeeStatuses" 
+                            [value]="employee.id">
+                            {{employee.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione la Frecuencia de Pago..." 
+                            formControlName="paymentFrecuency">
+
+                <mat-option *ngFor="let payment of paymentFrequencies" 
+                            [value]="payment.id">
+                            {{payment.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+            
+        </div> 
+    </form>
+    <div id="map"></div>
+    <button class="w-100" mat-flat-button color="primary" (click)="saveEmployee()">Enviar</button>
+</div>
