@@ -33,6 +33,7 @@ import {
   NewContainerTypeComponent,
   NewCommodityTypeComponent,
   FromPaymentTermComponent,
+  NewDepartmentComponent,
 } from './views/components';
 
 import {
@@ -46,6 +47,7 @@ import {
   WarehouseComponent,
   ContainerTypeComponent,
   PaymentTermComponent,
+  DepartmentComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
@@ -99,6 +101,8 @@ const routes: Routes = [
     FormRetentionConceptsComponent,
     CurrencyRatesComponent,
     FormCurrencyRatesComponent,
+    DepartmentComponent,
+    NewDepartmentComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,54 @@
+<div>
+  <form [formGroup]="departmentFrom">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+        fxFlex="100"
+        [errorMessage]="
+          departmentFrom.controls['name'].invalid
+            ? 'Debe ingresar un nombre'
+            : null
+        "
+      ></app-phk-input>
+
+      <app-phk-select
+        formControlName="departament_id"
+        [label]="'Departamento aosciado'"
+        fxFlex.gt-md="calc(44% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      >
+        <mat-option
+          *ngFor="let department of departmentsOption"
+          [value]="department.id"
+        >
+          {{ department.name }}
+        </mat-option>
+      </app-phk-select>
+      <div
+        fxFlex="50"
+        fxFlex.xs="100"
+        fxFlex.sm="100"
+        fxFlex.md="100"
+        fxFlex.lg="100"
+        fxFlex.xl="100"
+      >
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveDepartment()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

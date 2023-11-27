@@ -39,14 +39,24 @@
             [label]="'Dias'"
             fxFlex="calc(33% - 20px)"
             [required]="true"
+            [errorMessage]="
+              paymentTermForm.controls['days'].invalid
+                ? 'Debe ingresar Dias'
+                : null
+            "
           >
           </app-phk-input>
           <app-phk-input
             [type]="'number'"
             formControlName="percentage"
-            [label]="'porcentaje'"
+            [label]="'Porcentaje'"
             fxFlex="calc(33% - 20px)"
             [required]="true"
+            [errorMessage]="
+              paymentTermForm.controls['percentage'].invalid
+                ? 'Debe ingresar Porcentaje'
+                : null
+            "
           >
           </app-phk-input>
 
