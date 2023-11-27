@@ -38,6 +38,7 @@ export class NewProviderComponent implements OnInit {
   personTypeOptions: SelectOption[] = [];
 
   ngOnInit(): void {
+    console.log('DATA: ', this.data)
     this.initializeForm();
 
     this.providerService.getProviderTypes().subscribe((providerTypes) => {

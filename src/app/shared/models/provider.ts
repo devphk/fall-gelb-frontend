@@ -65,7 +65,6 @@ export interface ProviderServicesDataTable {
   validity_date: string;
   concept_id: number;
   concept_name?: string;
-  providerId?: number;
   unit_id?: number;
   currency_id?: number;
   iva?: boolean;

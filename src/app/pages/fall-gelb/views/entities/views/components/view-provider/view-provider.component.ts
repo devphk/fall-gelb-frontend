@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DialogService, ToastService } from '@core/services';
 import { ProviderService } from '../../providers/provider.service';
 import { ProviderServicesDataTable } from '@shared/models/provider';
 import { FormProviderServicesComponent } from '../form-provider-services/form-provider-services.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../../../../../../../core/models/dialog';
 
 @Component({
   selector: 'app-view-provider',
@@ -33,22 +35,20 @@ export class ViewProviderComponent implements OnInit {
     private dialogService: DialogService,
     private toastService: ToastService,
     private route: ActivatedRoute,
-    private providerService: ProviderService
+    private providerService: ProviderService,
+    @Inject(MAT_DIALOG_DATA) private data: any,
   ) {}
 
   ngOnInit(): void {
-
-    this.route.params.subscribe( params => {
-      this.providerId = params['id'];
-      this.selectedName = params['name'];
-      this.getProviderServices();
-    })
+    this.selectedName = this.data.dialogData[0].name;
+    this.providerId =  this.data.dialogData[0].id;
+    this.getProviderServices();
   }
 
   getProviderServices() {
     this.tableData = [];
 
-    this.providerService.getProviderServices(this.providerId)
+    this.providerService.getProviderServices(this.data.dialogData[0].id)
     .subscribe((response) => {
         const tableData: ProviderServicesDataTable[] = [];
 
@@ -62,7 +62,6 @@ export class ViewProviderComponent implements OnInit {
             currency_id: provider.currency_id,
             iva: provider.iva,
             payment_term_id: provider.payment_term_id,
-            providerId: this.providerId
           };
 
           this.providerService.getConcept(provider.concept_id)
@@ -80,13 +79,14 @@ export class ViewProviderComponent implements OnInit {
   }
 
   processProvider(processType: string) {
+    this.itemsSelected.push(this.providerId);
     this.dialogService
       .openDialog(
         FormProviderServicesComponent,
         processType === 'Add' ? 'Crear Servicio de Proveedor' : 'Editar Servicio de Proveedor',
         '800px',
         'auto',
-        processType === 'Add' ? this.providerId : this.itemsSelected
+        processType === 'Add' ? this.data.dialogData[0] : this.itemsSelected
       )
       .afterClosed()
       .subscribe((provider) => {
@@ -98,7 +98,6 @@ export class ViewProviderComponent implements OnInit {
 
   deleteProvider() {
 
-    console.log('Servicio:',this.itemsSelected[0].id, 'Proveedor:', this.providerId)
     this.dialogService
       .openConfirmationDialog(
         `Desea eliminar Servicio '${this.itemsSelected[0].concept_name}'`,

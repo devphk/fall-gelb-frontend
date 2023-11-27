@@ -9,6 +9,7 @@ import { PaymentTermService } from '../../../../settings/views/payment-term/paym
 import { SelectOption } from '@shared/models';
 import { ProviderServiceData } from '@shared/models/provider';
 import { DatePipe } from '@angular/common';
+import { DialogData } from '../../../../../../../core/models/dialog';
 
 @Component({
   selector: 'app-form-provider-services',
@@ -37,12 +38,12 @@ export class FormProviderServicesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.initializeForm();
     this.getUnits();
     this.getCurrencies();
     this.getPaymentTerms();
     this.getConcepts(); 
-    console.log('DATA DATE: ',this.data.dialogData[0].validity_date);
+    console.log('Data: ', this.data)
+    this.initializeForm();
   }
 
   getUnits() {
@@ -92,40 +93,59 @@ export class FormProviderServicesComponent implements OnInit {
 
   initializeForm() {
 
-    const timezoneOffset = new Date().getTimezoneOffset();
-        const fechaAjustada = new Date(this.data.dialogData[0].validity_date);
-            fechaAjustada.setMinutes(fechaAjustada.getMinutes() + timezoneOffset);
+    let selectedDate
 
-        const fechaSeleccionada = fechaAjustada
-    this.providerServiceForm = this.fb.group({
-      concept: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].concept_id : '',
-        [Validators.required]
-      ),
-      amount: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].amount : '',
-        [Validators.required]
-      ),
-      unit: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].unit_id : '',
-        [Validators.required]
-      ),
-      paymentTerms: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].payment_term_id
-        : '',
-        [Validators.required]
-      ),
-      currency: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].currency_id : '',
-        [Validators.required]
-      ),
-      iva: this.fb.control(
-        this.data.dialogData[0].iva === true ? this.data.dialogData[0].iva : false,
-      ),
-      date: this.fb.control(
-        this.data.dialogData ? fechaSeleccionada : '',
-      ),
-    });
+    if(!this.data.title.includes('Crear')) {
+      const timezoneOffset = new Date().getTimezoneOffset();
+      const ajustedDate = new Date(this.data.dialogData[0].validity_date);
+      
+      ajustedDate.setMinutes(ajustedDate.getMinutes() + timezoneOffset);
+      selectedDate = ajustedDate
+
+      this.providerServiceForm = this.fb.group({
+        concept: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].concept_id : '',
+          [Validators.required]
+        ),
+        amount: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].amount : '',
+          [Validators.required]
+        ),
+        unit: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].unit_id : '',
+          [Validators.required]
+        ),
+        paymentTerms: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].payment_term_id
+          : '',
+          [Validators.required]
+        ),
+        currency: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].currency_id : '',
+          [Validators.required]
+        ),
+        iva: this.fb.control(
+          this.data.dialogData ? this.data.dialogData[0].iva : false,
+        ),
+        date: this.fb.control(
+          this.data.dialogData ? selectedDate : '',
+        ),
+      });
+    }else {
+      
+      this.providerServiceForm = this.fb.group({
+        concept: this.fb.control('', [Validators.required]),
+        amount: this.fb.control('', [Validators.required]),
+        unit: this.fb.control('', [Validators.required]),
+        paymentTerms: this.fb.control('', [Validators.required]),
+        currency: this.fb.control('', [Validators.required]),
+        iva: this.fb.control(false,),
+        date: this.fb.control('',
+        ),
+      });
+    }
+    
+    
   }
 
   saveNewProvider() {
@@ -142,7 +162,7 @@ export class FormProviderServicesComponent implements OnInit {
       };
 
       if (this.data.title === 'Crear Servicio de Proveedor') {
-        this.providerService.createProviderService(providerServiceData, this.data.dialogData).subscribe(
+        this.providerService.createProviderService(providerServiceData, this.data.dialogData.id).subscribe(
           (data) => {
             this.toastService.showToaster('Servicio de Proveedor Creado Correctamente!');
             this.dialogRef.close(true);
@@ -151,17 +171,32 @@ export class FormProviderServicesComponent implements OnInit {
         );
       } else {
 
-        const editProviderServiceData: ProviderServiceData = {
-          concept_id: this.providerServiceForm.get('concept')?.value,
-          amount: this.providerServiceForm.get('amount')?.value,
-          unit_id: this.providerServiceForm.get('unit')?.value,
-          payment_term_id: this.providerServiceForm.get('paymentTerms')?.value,
-          currency_id: this.providerServiceForm.get('currency')?.value,
-          iva: this.providerServiceForm.get('iva')?.value,
-          validity_date: this.providerServiceForm.get('date')?.value,
-        };
+      
+
+      let selectedDate;
+      
+      const timezoneOffset = new Date().getTimezoneOffset();
+      const ajustedDate = new Date(this.providerServiceForm.get('date')?.value);
+
+      ajustedDate.setMinutes(ajustedDate.getMinutes() + timezoneOffset);
+      selectedDate = ajustedDate
+
+      const convertedDate = new Date(selectedDate).toISOString().slice(0, 10);
+
+      const editProviderServiceData: ProviderServiceData = {
+        concept_id: this.providerServiceForm.get('concept')?.value,
+        amount: this.providerServiceForm.get('amount')?.value,
+        unit_id: this.providerServiceForm.get('unit')?.value,
+        payment_term_id: this.providerServiceForm.get('paymentTerms')?.value,
+        currency_id: this.providerServiceForm.get('currency')?.value,
+        iva: this.providerServiceForm.get('iva')?.value,
+        validity_date: convertedDate
+      };
+
+      console.log('editProviderServiceData: ', editProviderServiceData)
+
         this.providerService
-          .editProviderService(editProviderServiceData, this.data.dialogData[0].providerId ,this.data.dialogData[0].id)
+          .editProviderService(editProviderServiceData, this.data.dialogData[1], this.data.dialogData[0].id)
           .subscribe(
             (data) => {
               this.toastService.showToaster('Proveedor Editada Correctamente!');
@@ -175,5 +210,4 @@ export class FormProviderServicesComponent implements OnInit {
       this.providerServiceForm.markAllAsTouched();
     }
   }
-
 }

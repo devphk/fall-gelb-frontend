@@ -5,6 +5,7 @@ import { NewProviderComponent } from '../components';
 import { ProviderService } from './provider.service';
 import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
 import { Router } from '@angular/router';
+import { ViewProviderComponent } from '../components/view-provider/view-provider.component';
 
 @Component({
   selector: 'app-providers',
@@ -31,6 +32,8 @@ export class ProvidersComponent implements OnInit {
   tableData: any[] = [];
 
   itemsSelected: any[] = [];
+
+  viewSelected: any[] = [];
 
   constructor(
     private dialogService: DialogService,
@@ -134,10 +137,21 @@ export class ProvidersComponent implements OnInit {
     });
   }
 
-  seeRegister( selected: any) {
-    console.log(selected.id)
-    const selectedID = selected.id;
-    const selectedName = selected.name
-    this.router.navigate(['fall-gelb/entities/providers/view/', selectedID, selectedName]);
+  seeRegister( selected: ProviderDataTabla) {
+    this.viewSelected.pop();
+    this.viewSelected.push(selected);
+    console.log(selected);
+
+    this.dialogService
+      .openDialog(
+        ViewProviderComponent,
+        ``, '1000px', 'auto', this.viewSelected
+      )
+      .afterClosed()
+      .subscribe((provider) => {
+        if (provider) {
+          this.refreshProviders();
+        }
+      });
   }
 }
