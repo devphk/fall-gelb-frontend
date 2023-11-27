@@ -62,7 +62,10 @@ export interface Entity {
 export interface EmployeeDataTable {
   id:number;
   name:string;
-  phone:string;
+  phone:{
+    value:string;
+    mask:string;
+  }
   email:string;
   address:string;
   currency_id: number;

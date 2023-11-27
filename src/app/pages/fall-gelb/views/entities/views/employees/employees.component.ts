@@ -51,7 +51,10 @@ export class EmployeesComponent implements OnInit {
           const employeeToInput:EmployeeDataTable = {
             id:employee.id,
             name:employee.entity.name,
-            phone:employee.entity.phone,
+            phone:{
+              value:employee.entity.phone,
+              mask: '(0000)-000-0000'
+            },
             email:employee.entity.email,
             address:employee.entity.address,
             currency_id: employee.currency_id,

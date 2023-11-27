@@ -100,7 +100,9 @@
                 <input  matInput [ngxTimepicker]="picker"
                         formControlName="startTime"
                         placeholder="Hora Entrada"
-                        [format]="24">
+                        [format]="24"> 
+
+                <mat-error *ngIf="employeeForm.controls['startTime'].invalid">Debe ingresar una fecha</mat-error>
                 <ngx-material-timepicker #picker></ngx-material-timepicker>
             </mat-form-field>
             
@@ -109,6 +111,7 @@
                         formControlName="endTime"
                         placeholder="Hora Salida"
                         [format]="24">
+                <mat-error *ngIf="employeeForm.controls['endTime'].invalid">Debe ingresar una fecha</mat-error>
                 <ngx-material-timepicker #picker2></ngx-material-timepicker>
             </mat-form-field>
 
