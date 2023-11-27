@@ -38,10 +38,13 @@ export class ProvidersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getproviders();
+    this.getProviders();
   }
 
-  getproviders() {
+  getProviders() {
+
+    this.tableData = [];
+
     this.providerService.getProviders().subscribe(
       (response) => {
         const tableData: ProviderDataTabla[] = [];
@@ -83,7 +86,7 @@ export class ProvidersComponent implements OnInit {
       .afterClosed()
       .subscribe((provider) => {
         if (provider) {
-          this.refreshProviders();
+          this.getProviders();
         }
       });
   }
@@ -104,31 +107,12 @@ export class ProvidersComponent implements OnInit {
                 this.toastService.showToaster(
                   'Proveedor eliminado correctamente!'
                 );
-                this.refreshProviders();
+                this.getProviders();
               },
               (error) =>
                 this.toastService.showToaster(error.error.message, true)
             );
         }
       });
-  }
-
-  refreshProviders() {
-    this.tableData = [];
-
-    this.providerService.getProviders().subscribe((providers) => {
-      providers.forEach((provider: any) => {
-        const providerToInput = {
-          id: provider.id,
-          providerId: provider,
-          providerName: provider,
-          numberAccount: provider,
-          currencyId: provider,
-          currencyName: provider.name,
-        };
-
-        this.tableData.push(providerToInput);
-      });
-    });
   }
 }
