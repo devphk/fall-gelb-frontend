@@ -13,4 +13,5 @@ export interface DepartmentPost {
 export interface DepartmentDataTable {
   id: number;
   name: string;
+  departament_id?: any;
 }

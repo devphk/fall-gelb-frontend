@@ -34,6 +34,7 @@ export class DepartmentComponent implements OnInit {
           const departmentToInput: DepartmentDataTable = {
             id: department.id,
             name: department.name,
+            departament_id: department.departament_id,
           };
 
           tableData.push(departmentToInput);
@@ -95,6 +96,7 @@ export class DepartmentComponent implements OnInit {
         const departmentToInput = {
           id: department.id,
           name: department.name,
+          departament_id: department.departament_id,
         };
 
         this.tableData.push(departmentToInput);
