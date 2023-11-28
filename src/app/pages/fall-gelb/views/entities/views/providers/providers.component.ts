@@ -4,6 +4,8 @@ import { defaultTableColumnsToDisplay } from '@shared/models/table';
 import { NewProviderComponent } from '../components';
 import { ProviderService } from './provider.service';
 import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
+import { Router } from '@angular/router';
+import { ViewProviderComponent } from '../components/view-provider/view-provider.component';
 
 @Component({
   selector: 'app-providers',
@@ -31,10 +33,13 @@ export class ProvidersComponent implements OnInit {
 
   itemsSelected: any[] = [];
 
+  viewSelected: any[] = [];
+
   constructor(
     private dialogService: DialogService,
     private providerService: ProviderService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {

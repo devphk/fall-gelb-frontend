@@ -33,7 +33,7 @@
 
         <!-- Another columns -->
 
-        <div *ngIf="column !== 'select' && column !== 'actions'">
+        <div *ngIf="column !== 'select' && column !== 'actions' && column !== 'view'">
           <th mat-header-cell *matHeaderCellDef>
             <div>
               <span mat-sort-header>
@@ -98,6 +98,23 @@
             </button>
             <button mat-icon-button (click)="deleteRow(index)">
               <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </div>
+
+        <div *ngIf="column === 'view'">
+          <th mat-header-cell *matHeaderCellDef>
+            <div>
+              <span mat-sort-header> </span>
+            </div>
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element; let index = index"
+            style="text-align: end"
+          >
+            <button mat-icon-button (click)="seeRow(index)">
+              <mat-icon class="mat-18">visibility</mat-icon>
             </button>
           </td>
         </div>

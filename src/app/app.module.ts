@@ -23,6 +23,9 @@ import { TokenService } from '@core/services/token.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -43,8 +46,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     HttpClientModule,
     MatTooltipModule,
     NgxSpinnerModule,
-    MatDatepickerModule,
+    MatMomentDateModule,
     MatNativeDateModule,
+    MatDatepickerModule 
   ],
   providers: [
     SessionGuard,

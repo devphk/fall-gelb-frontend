@@ -47,3 +47,37 @@ export interface ProviderDataTabla {
   is_national: boolean;
   provider_transport_type_id?: number;
 }
+
+export interface ProviderServices {
+  id: number;
+  provider_id: number;
+  concept_id: number;
+  amount: number;
+  unit_id: number;
+  payment_term_id: number;
+  currency_id: number;
+  validity_date: string;
+  iva: boolean;
+}
+export interface ProviderServicesDataTable {
+  id: number;
+  amount: number;
+  validity_date: string;
+  concept_id: number;
+  concept_name?: string;
+  unit_id?: number;
+  currency_id?: number;
+  iva?: boolean;
+  payment_term_id?: number;
+
+}
+
+export interface ProviderServiceData {
+  concept_id: number;
+  amount: number;
+  unit_id: number;
+  payment_term_id: number;
+  currency_id: number;
+  validity_date: string | null;
+  iva: boolean;
+}
