@@ -121,7 +121,21 @@ export class ProvidersComponent implements OnInit {
       });
   }
 
-  seeRegister(event:any) {
-    console.log(event)
+  seeRegister( selected: ProviderDataTabla) {
+    this.viewSelected.pop();
+    this.viewSelected.push(selected);
+    console.log(selected);
+
+    this.dialogService
+      .openDialog(
+        ViewProviderComponent,
+        ``, '1000px', 'auto', this.viewSelected
+      )
+      .afterClosed()
+      .subscribe((provider) => {
+        if (provider) {
+          this.getProviders();
+        }
+      });
   }
 }
