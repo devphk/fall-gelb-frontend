@@ -39,6 +39,7 @@ import { NewEmployeeComponent } from './views/components/new-employee/new-employ
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatInputModule } from '@angular/material/input';
+import { DocumentValidationsComponent } from './views/document-validations';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatInputModule } from '@angular/material/input';
     FormProviderServicesComponent,
     EmployeesComponent,
     NewEmployeeComponent,
+    DocumentValidationsComponent,
   ],
   imports: [
     CommonModule,

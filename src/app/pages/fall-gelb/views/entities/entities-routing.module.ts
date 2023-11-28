@@ -10,6 +10,7 @@ import {
   TerrestrialsComponent,
 } from './views';
 import { EmployeesComponent } from './views/employees/employees.component';
+import { DocumentValidationsComponent } from './views/document-validations';
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'employees',
     component: EmployeesComponent,
+  },
+  {
+    path: 'document-validations',
+    component: DocumentValidationsComponent,
   },
   {
     path: '**',

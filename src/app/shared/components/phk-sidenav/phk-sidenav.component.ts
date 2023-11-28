@@ -57,8 +57,8 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Empleados',
         },
         {
-          path: 'drivers',
-          title: 'Choferes',
+          path: 'document-validations',
+          title: 'Validacion de Documentos',
         },
       ],
     },
