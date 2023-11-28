@@ -120,4 +120,8 @@ export class ProvidersComponent implements OnInit {
         }
       });
   }
+
+  seeRegister(event:any) {
+    console.log(event)
+  }
 }
