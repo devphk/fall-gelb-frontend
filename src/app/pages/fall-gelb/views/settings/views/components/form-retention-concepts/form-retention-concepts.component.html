@@ -1,69 +1,81 @@
 <div>
-    <form [formGroup]="conceptForm">
-      <div
-        mat-dialog-content
-        fxLayout="row wrap"
-        fxLayoutGap="20px"
-        fxLayout.lt-md="column"
-        fxLayoutAlign="start center"
+  <form [formGroup]="conceptForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-input
+        [required]="true"
+        label="Nombre del Concepto"
+        formControlName="name"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="w-100"
+        [errorMessage]="
+          conceptForm.controls['name'].invalid ? 'El nombre es requerido' : null
+        "
+      ></app-phk-input>
+
+      <app-phk-input
+        [type]="'number'"
+        [required]="true"
+        label="Tarifa Persona Natural %"
+        formControlName="naturalPerson"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [min]="0"
+        class="w-100"
+        [errorMessage]="
+          conceptForm.controls['naturalPerson'].invalid
+            ? 'La tarifa es requerida'
+            : null
+        "
+      ></app-phk-input>
+
+      <app-phk-input
+        label="Codigo Persona Natural"
+        formControlName="naturalPersonCode"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="w-100"
+      ></app-phk-input>
+
+      <app-phk-input
+        [type]="'number'"
+        [maxLength]="5"
+        [required]="true"
+        label="Tarifa Persona Juridica %"
+        formControlName="legalPerson"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [min]="0"
+        class="w-100"
+        [errorMessage]="
+          conceptForm.controls['legalPerson'].invalid
+            ? 'La tarifa es requerida'
+            : null
+        "
+      ></app-phk-input>
+
+      <app-phk-input
+        label="Codigo Persona Juridica"
+        formControlName="legalPersonCode"
+        fxFlex="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="w-100"
+      ></app-phk-input>
+
+      <button
+        class="w-100"
+        mat-flat-button
+        color="primary"
+        (click)="saveConcept()"
       >
-        <app-phk-input
-          [required]="true"
-          label="Nombre del Concepto"
-          formControlName="name"
-          fxFlex="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          class="w-100"
-          [errorMessage]="conceptForm.controls['name'].invalid ? 'El nombre es requerido' : null"
-        ></app-phk-input>
-        
-        <app-phk-input
-          [type]="'number'"
-          [required]="true"
-          label="Tarifa Persona Natural %"
-          formControlName="naturalPerson"
-          fxFlex="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          [min]="0"
-          class="w-100"
-          [errorMessage]="conceptForm.controls['naturalPerson'].invalid ? 'La tarifa es requerida' : null"
-        ></app-phk-input>
-        
-        <app-phk-input
-          label="Codigo Persona Natural"
-          formControlName="naturalPersonCode"
-          fxFlex="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          class="w-100"
-        ></app-phk-input>
-        
-        <app-phk-input
-          [type]="'number'"
-          [maxLength]="5"
-          [required]="true"
-          label="Tarifa Persona Juridica %"
-          formControlName="legalPerson"
-          fxFlex="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          [min]="0"
-          class="w-100"
-          [errorMessage]="conceptForm.controls['legalPerson'].invalid ? 'La tarifa es requerida' : null"
-        ></app-phk-input>
-  
-  
-        <app-phk-input
-          label="Codigo Persona Juridica"
-          formControlName="legalPersonCode"
-          fxFlex="calc(33% - 20px)"
-          fxFlex.lt-md="calc(100%)"
-          class="w-100"
-        ></app-phk-input>
-  
-          <button class="w-100" 
-                  mat-flat-button 
-                  color="primary"
-                  (click)="saveConcept()">Guardar</button>
-      </div>
-    </form>
-  </div>
-  
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

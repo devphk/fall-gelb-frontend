@@ -9,3 +9,4 @@ export * from './new-truck-type';
 export * from './new-units';
 export * from './new-warehouse';
 export * from './from-payment-term';
+export * from './new-department';

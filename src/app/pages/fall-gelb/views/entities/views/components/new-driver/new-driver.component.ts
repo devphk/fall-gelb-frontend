@@ -55,7 +55,7 @@ export class NewDriverComponent implements OnInit {
       ),
       email: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].email : '',
-        [Validators.required]
+        [Validators.required, Validators.email]
       ),
       active: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].active : true

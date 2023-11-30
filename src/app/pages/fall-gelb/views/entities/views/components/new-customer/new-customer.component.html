@@ -1,74 +1,92 @@
-<div>   
-    <form [formGroup]="customerForm">
-        <div mat-dialog-content 
-             fxLayout="row wrap" 
-             fxLayoutGap="20px"
-             fxLayout.lt-md="column"
-             fxLayoutAlign="start center">
-            <br>
+<div>
+  <form [formGroup]="customerForm">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <br />
 
-            <app-phk-input  label="Nombre" 
-                            formControlName="name" 
-                            [required]="true"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"
-                            [errorMessage]="customerForm.get('name')?.errors?.['required'] ? 'El nombre es requerido' : null">
-            </app-phk-input>
+      <app-phk-input
+        label="Nombre"
+        formControlName="name"
+        [required]="true"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [errorMessage]="customerForm.get('name')?.errors?.['required'] ? 'El nombre es requerido' : null"
+      >
+      </app-phk-input>
 
-            <app-phk-input  label="Email" 
-                            formControlName="email" 
-                            [required]="true"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"
-                            [errorMessage]="customerForm.get('email')?.errors?.['required'] ? 'El email es requerido' : null">
-            </app-phk-input>
+      <app-phk-input
+        label="Email"
+        formControlName="email"
+        [required]="true"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [errorMessage]="customerForm.get('email')?.errors?.['required'] ? 'El email es requerido' : null"
+      >
+      </app-phk-input>
 
-            <app-phk-input  label="Teléfono" 
-                            formControlName="phone"
-                            [type]="'number'"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"></app-phk-input>
+      <app-phk-input
+        label="Teléfono"
+        formControlName="phone"
+        [mask]="'(0000)-0000-000'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+      ></app-phk-input>
 
-            <app-phk-text-area  label="Dirección Fiscal"
-                                formControlName="address"
-                                fxFlex.gt-md="calc(33% - 20px)"
-                                fxFlex.lt-md="calc(100%)"
-                                [errorMessage]="customerForm.get('address')?.errors?.['required'] ? 'La dirección es requerida' : null">
-            </app-phk-text-area>
+      <app-phk-text-area
+        label="Dirección Fiscal"
+        formControlName="address"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [errorMessage]="customerForm.get('address')?.errors?.['required'] ? 'La dirección es requerida' : null"
+      >
+      </app-phk-text-area>
 
-            <app-phk-slide-toggle
-                    formControlName="isActive"
-                    [label]="'¿Se encuentra activo?'"
-                    fxFlex.gt-md="calc(33% - 20px)"
-                    fxFlex.lt-md="calc(100%)"
-                    class="mt-m20"
-                    [required]="true"
-            ></app-phk-slide-toggle>
-            
-            <app-phk-select label="Contribuyente Especial"
-                            formControlName="taxpayer"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"
-                            [required]="true">
-                            <mat-option *ngFor="let tax of taxpayerOptions"
-                                        [value]="tax.value">
-                                        {{tax.name}}
-                            </mat-option>
-            </app-phk-select>
-            
-            <app-phk-select label="Facturador"
-                            formControlName="biller"
-                            fxFlex.gt-md="calc(33% - 20px)"
-                            fxFlex.lt-md="calc(100%)"
-                            [required]="true">
-                            <mat-option *ngFor="let bill of billerOptions"
-                                        [value]="bill.id">
-                                        {{bill.name}}
-                            </mat-option>
-            </app-phk-select>
-            
-            <button class="w-100" mat-flat-button color="primary" (click)="saveCustomers()">Guardar</button>
-    
-        </div>
-    </form>
+      <app-phk-slide-toggle
+        formControlName="isActive"
+        [label]="'¿Se encuentra activo?'"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        class="mt-m20"
+        [required]="true"
+      ></app-phk-slide-toggle>
+
+      <app-phk-select
+        label="Contribuyente Especial"
+        formControlName="taxpayer"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      >
+        <mat-option *ngFor="let tax of taxpayerOptions" [value]="tax.value">
+          {{ tax.name }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-select
+        label="Facturador"
+        formControlName="biller"
+        fxFlex.gt-md="calc(33% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="true"
+      >
+        <mat-option *ngFor="let bill of billerOptions" [value]="bill.id">
+          {{ bill.name }}
+        </mat-option>
+      </app-phk-select>
+
+      <button
+        class="w-100"
+        mat-flat-button
+        color="primary"
+        (click)="saveCustomers()"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
 </div>

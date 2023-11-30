@@ -38,6 +38,7 @@ export class NewProviderComponent implements OnInit {
   personTypeOptions: SelectOption[] = [];
 
   ngOnInit(): void {
+    console.log('DATA: ', this.data)
     this.initializeForm();
 
     this.providerService.getProviderTypes().subscribe((providerTypes) => {
@@ -81,7 +82,7 @@ export class NewProviderComponent implements OnInit {
       ),
       email: this.fb.control(
         this.data.dialogData ? this.data.dialogData[0].email : '',
-        [Validators.required]
+        [Validators.required, Validators.email]
       ),
       active: this.fb.control(
         this.data.dialogData ? this.data.dialogData[0].active : '',

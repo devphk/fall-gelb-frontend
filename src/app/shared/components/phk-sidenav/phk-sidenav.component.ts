@@ -52,6 +52,14 @@ export class PhkSidenavComponent implements OnInit {
           path: 'drivers',
           title: 'Choferes',
         },
+        {
+          path: 'employees',
+          title: 'Empleados',
+        },
+        {
+          path: 'document-validations',
+          title: 'Validacion de Documentos',
+        },
       ],
     },
     {
@@ -113,11 +121,15 @@ export class PhkSidenavComponent implements OnInit {
         },
         {
           path: 'configs',
-          title: 'Configuraciones'
+          title: 'Configuraciones',
         },
         {
           path: 'currency-rates',
-          title: 'Tasas Monetarias'
+          title: 'Tasas Monetarias',
+        },
+        {
+          path: 'department',
+          title: 'Departamentos',
         },
       ],
     },

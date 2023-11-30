@@ -1,0 +1,44 @@
+<div>
+  <form [formGroup]="documentValidationFrom">
+    <div
+      mat-dialog-content
+      fxLayout="row wrap"
+      fxLayoutGap="20px"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="start center"
+    >
+      <app-phk-select formControlName="status" [label]="'Estado del documento'">
+        <mat-option
+          *ngFor="let statuOption of statuOptions"
+          [value]="statuOption.value"
+        >
+          {{ statuOption.name }}
+        </mat-option>
+      </app-phk-select>
+
+      <app-phk-input
+        formControlName="observations"
+        [label]="'Observacion'"
+        fxFlex.gt-md="calc(66% - 20px)"
+        fxFlex.lt-md="calc(100%)"
+        [required]="
+          documentValidationFrom.get('status')?.value === 'rejected'
+            ? true
+            : false
+        "
+        [errorMessage]="documentValidationFrom.get('observations')?.errors?.['required'] ? 'La Observacion es requerida' : null"
+      ></app-phk-input>
+
+      <div fxFlex="100">
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveDocumentValidations()"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

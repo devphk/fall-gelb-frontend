@@ -4,6 +4,8 @@ import { defaultTableColumnsToDisplay } from '@shared/models/table';
 import { NewProviderComponent } from '../components';
 import { ProviderService } from './provider.service';
 import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
+import { Router } from '@angular/router';
+import { ViewProviderComponent } from '../components/view-provider/view-provider.component';
 
 @Component({
   selector: 'app-providers',
@@ -31,17 +33,23 @@ export class ProvidersComponent implements OnInit {
 
   itemsSelected: any[] = [];
 
+  viewSelected: any[] = [];
+
   constructor(
     private dialogService: DialogService,
     private providerService: ProviderService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
-    this.getproviders();
+    this.getProviders();
   }
 
-  getproviders() {
+  getProviders() {
+
+    this.tableData = [];
+
     this.providerService.getProviders().subscribe(
       (response) => {
         const tableData: ProviderDataTabla[] = [];
@@ -83,7 +91,7 @@ export class ProvidersComponent implements OnInit {
       .afterClosed()
       .subscribe((provider) => {
         if (provider) {
-          this.refreshProviders();
+          this.getProviders();
         }
       });
   }
@@ -104,7 +112,7 @@ export class ProvidersComponent implements OnInit {
                 this.toastService.showToaster(
                   'Proveedor eliminado correctamente!'
                 );
-                this.refreshProviders();
+                this.getProviders();
               },
               (error) =>
                 this.toastService.showToaster(error.error.message, true)
@@ -113,22 +121,21 @@ export class ProvidersComponent implements OnInit {
       });
   }
 
-  refreshProviders() {
-    this.tableData = [];
+  seeRegister( selected: ProviderDataTabla) {
+    this.viewSelected.pop();
+    this.viewSelected.push(selected);
+    console.log(selected);
 
-    this.providerService.getProviders().subscribe((providers) => {
-      providers.forEach((provider: any) => {
-        const providerToInput = {
-          id: provider.id,
-          providerId: provider,
-          providerName: provider,
-          numberAccount: provider,
-          currencyId: provider,
-          currencyName: provider.name,
-        };
-
-        this.tableData.push(providerToInput);
+    this.dialogService
+      .openDialog(
+        ViewProviderComponent,
+        ``, '1000px', 'auto', this.viewSelected
+      )
+      .afterClosed()
+      .subscribe((provider) => {
+        if (provider) {
+          this.getProviders();
+        }
       });
-    });
   }
 }

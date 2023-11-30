@@ -15,7 +15,13 @@ import { EntitiesRoutingModule } from './entities-routing.module';
 import { EntitiesComponent } from './entities.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NewProviderComponent } from './views/components/new-provider/new-provider.component';
-import { PhkInputModule, PhkSelectModule, PhkSlideToggleModule, PhkTextAreaModule } from '@shared/components';
+import {
+  PhkDatePickerModule,
+  PhkInputModule,
+  PhkSelectModule,
+  PhkSlideToggleModule,
+  PhkTextAreaModule,
+} from '@shared/components';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +32,15 @@ import { NewDriverComponent } from './views/components/new-driver/new-driver.com
 import { NewGroundtransportComponent } from './views/components/new-groundtransport/new-groundtransport.component';
 import { NewShippingcompanyComponent } from './views/components/new-shippingcompany/new-shippingcompany.component';
 import { NewCustomerComponent } from './views/components/new-customer/new-customer.component';
+import { ViewProviderComponent } from './views/components/view-provider/view-provider.component';
+import { FormProviderServicesComponent } from './views/components/form-provider-services/form-provider-services.component';
+import { EmployeesComponent } from './views/employees/employees.component';
+import { NewEmployeeComponent } from './views/components/new-employee/new-employee.component';
+
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatInputModule } from '@angular/material/input';
+import { DocumentValidationsComponent } from './views/document-validations';
+import { FormDocumentValidationsComponent } from './views/components/form-document-validations/form-document-validations.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +59,13 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
     NewDriverComponent,
     NewGroundtransportComponent,
     NewShippingcompanyComponent,
-    NewCustomerComponent
+    NewCustomerComponent,
+    ViewProviderComponent,
+    FormProviderServicesComponent,
+    EmployeesComponent,
+    NewEmployeeComponent,
+    DocumentValidationsComponent,
+    FormDocumentValidationsComponent,
   ],
   imports: [
     CommonModule,
@@ -61,7 +82,11 @@ import { NewCustomerComponent } from './views/components/new-customer/new-custom
     PhkSlideToggleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+    PhkDatePickerModule,
+    PhkDatePickerModule,
+    NgxMaterialTimepickerModule,
+    MatInputModule,
+  ],
 })
-export class EntitiesModule { }
+export class EntitiesModule {}
