@@ -40,6 +40,7 @@ import { NewEmployeeComponent } from './views/components/new-employee/new-employ
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatInputModule } from '@angular/material/input';
 import { DocumentValidationsComponent } from './views/document-validations';
+import { FormDocumentValidationsComponent } from './views/components/form-document-validations/form-document-validations.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DocumentValidationsComponent } from './views/document-validations';
     EmployeesComponent,
     NewEmployeeComponent,
     DocumentValidationsComponent,
+    FormDocumentValidationsComponent,
   ],
   imports: [
     CommonModule,

@@ -33,7 +33,11 @@
 
         <!-- Another columns -->
 
-        <div *ngIf="column !== 'select' && column !== 'actions' && column !== 'view'">
+        <div
+          *ngIf="
+            column !== 'select' && column !== 'actions' && column !== 'view'
+          "
+        >
           <th mat-header-cell *matHeaderCellDef>
             <div>
               <span mat-sort-header>
@@ -71,8 +75,19 @@
               </span>
               <span *ngSwitchDefault>
                 <!-- {{element[columnsTags[columnIndex]]}} -->
-                <ng-container *ngIf="element[columnsTags[columnIndex]].mask; else defaultContent">
-                  {{ maskService.applyMask(element[columnsTags[columnIndex]].value, element[columnsTags[columnIndex]].mask) }} {{element[columnsTags[columnIndex]].suffix}}
+                <ng-container
+                  *ngIf="
+                    element[columnsTags[columnIndex]]?.mask;
+                    else defaultContent
+                  "
+                >
+                  {{
+                    maskService.applyMask(
+                      element[columnsTags[columnIndex]].value,
+                      element[columnsTags[columnIndex]].mask
+                    )
+                  }}
+                  {{ element[columnsTags[columnIndex]].suffix }}
                 </ng-container>
                 <ng-template #defaultContent>
                   {{ element[columnsTags[columnIndex]] }}

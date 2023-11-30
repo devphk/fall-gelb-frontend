@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentValidationsService } from './document-validations.service';
 import { DialogService, ToastService } from '@core/services';
 import { EntityDocumentValidateDataTable } from '@shared/models/entity-document-validate';
+import { FormDocumentValidationsComponent } from '../components/form-document-validations/form-document-validations.component';
 
 @Component({
   selector: 'app-document-validations',
@@ -32,31 +33,33 @@ export class DocumentValidationsComponent implements OnInit {
         response.forEach((documentValidations) => {
           const documentValidationToInput: any = {
             id: documentValidations.id,
+            observations: documentValidations.observations
+              ? documentValidations.observations
+              : 'N/A',
             status: documentValidations.status,
-            observations: documentValidations.observations,
           };
           tableData.push(documentValidationToInput);
         });
-
+        console.log(tableData);
         this.tableData = tableData;
       });
   }
 
-  processDocumentValidations(processType: string) {
-    // this.dialogService
-    //   .openDialog(
-    //     NewCustomerComponent,
-    //     'Editar Cliente',
-    //     '800px',
-    //     'auto',
-    //     this.itemsSelected
-    //   )
-    //   .afterClosed()
-    //   .subscribe((custom) => {
-    //     if (custom) {
-    //       this.refreshDocumentValidations();
-    //     }
-    //   });
+  processDocumentValidations() {
+    this.dialogService
+      .openDialog(
+        FormDocumentValidationsComponent,
+        'Validar Documento',
+        '800px',
+        'auto',
+        this.itemsSelected
+      )
+      .afterClosed()
+      .subscribe((custom) => {
+        if (custom) {
+          this.refreshDocumentValidations();
+        }
+      });
   }
 
   refreshDocumentValidations() {

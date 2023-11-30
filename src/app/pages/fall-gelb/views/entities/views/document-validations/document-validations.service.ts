@@ -21,13 +21,10 @@ export class DocumentValidationsService {
       entity_type: filterparams?.entity_type,
       status: filterparams?.status,
     };
-    return this.http.get(
-      '/entity-document-validations',
-      filterparams ? this.httpUtils.getHttpParams(params) : undefined
-    );
+    return this.http.get('/entity-document-validations');
   }
 
-  editDocumentValidate(data: any, id: number) {
+  editStatusDocumentValidate(data: any, id: number) {
     return this.http.put(`/entity-document-validations/${id}`, data);
   }
 }
