@@ -19,11 +19,11 @@ export class PhkUserAccountButtonsComponent implements OnInit {
     },
     {
       appName: 'Customs',
-      appLogo: 'assets/icons/Recurso 13@4x.png'
+      appLogo: 'assets/icons/Customs.png'
     },
     {
       appName: 'Express',
-      appLogo: 'assets/icons/Recurso 14@4x.png'
+      appLogo: 'assets/icons/Express.png'
     }
   ];
 
