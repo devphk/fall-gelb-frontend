@@ -11,15 +11,15 @@ import {
   WarehouseComponent,
   CommodityTypeComponent,
   PaymentTermComponent,
+  UsersComponent,
+  CargoTypeLclComponent,
+  RetentionConceptComponent,
+  CurrencyRatesComponent,
+  DepartmentComponent,
+  ContractTypeComponent,
 } from './views';
 import { SettingsComponent } from './settings.component';
 import { ConfigsComponent } from './views/configs/configs.component';
-import { UsersComponent } from './views/users/users.component';
-import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
-import { FromPaymentTermComponent } from './views/components';
-import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
-import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
-import { DepartmentComponent } from './views/department/department.component';
 
 const routes: Routes = [
   {
@@ -94,6 +94,10 @@ const routes: Routes = [
   {
     path: 'department',
     component: DepartmentComponent,
+  },
+  {
+    path: 'contract-types',
+    component: ContractTypeComponent,
   },
   {
     path: '**',

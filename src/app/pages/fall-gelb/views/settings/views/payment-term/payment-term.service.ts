@@ -23,7 +23,7 @@ export class PaymentTermService {
       data,
       undefined,
       true,
-      LoadingMessage.CREATING_BANK
+      LoadingMessage.CREATING_PAYMENT_TERM
     );
   }
 
@@ -32,7 +32,7 @@ export class PaymentTermService {
       '/payment-terms/' + id,
       undefined,
       true,
-      LoadingMessage.DELETING_BANK
+      LoadingMessage.DELETING_PAYMENT_TERM
     );
   }
 

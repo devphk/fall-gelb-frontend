@@ -39,4 +39,8 @@ export enum LoadingMessage {
   DELETING_DEPARMENT = 'Eliminando departamentos...',
   CREATING_EMPLOYEE = 'Creando Empleado...',
   DELETING_EMPLOYEE = 'Eliminando Empleado...',
+  CREATING_PAYMENT_TERM = 'Creando Termino de pago...',
+  DELETING_PAYMENT_TERM = 'Eliminando Termino de pago...',
+  CREATING_CONTRAT_TYPE = 'Creando Tipo de Contrato...',
+  DELETING_CONTRAT_TYPE = 'Eliminando Tipo de Contrato...',
 }

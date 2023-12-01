@@ -10,7 +10,6 @@ export * from './currency';
 export * from './currency-rates';
 export * from './customs';
 export * from './department';
-export * from './document-validations';
 export * from './payment-term';
 export * from './retention-concept';
 export * from './truck-type';

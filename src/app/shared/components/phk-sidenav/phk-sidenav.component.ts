@@ -33,22 +33,6 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Clientes',
         },
         {
-          path: 'shipping-companies',
-          title: 'Navieras',
-        },
-        {
-          path: 'air-consolidators',
-          title: 'Consolidador Aéreo',
-        },
-        {
-          path: 'airlines',
-          title: 'Aerolíneas',
-        },
-        {
-          path: 'terrestrials',
-          title: 'Terrestre',
-        },
-        {
           path: 'drivers',
           title: 'Choferes',
         },
@@ -130,6 +114,10 @@ export class PhkSidenavComponent implements OnInit {
         {
           path: 'department',
           title: 'Departamentos',
+        },
+        {
+          path: 'contract-types',
+          title: 'Typo de Contratos',
         },
       ],
     },
