@@ -19,6 +19,7 @@ import {
   PhkSelectModule,
   PhkTextAreaModule,
   PhkSlideToggleModule,
+  PhkConfirmationDialogModule,
 } from '@shared/components';
 
 import {
@@ -34,6 +35,11 @@ import {
   NewCommodityTypeComponent,
   FromPaymentTermComponent,
   NewDepartmentComponent,
+  FormConfigsComponent,
+  FormCargoTypeLclComponent,
+  FormRetentionConceptsComponent,
+  FormCurrencyRatesComponent,
+  FromContractTypeComponent,
 } from './views/components';
 
 import {
@@ -48,18 +54,14 @@ import {
   ContainerTypeComponent,
   PaymentTermComponent,
   DepartmentComponent,
+  UsersComponent,
+  CargoTypeLclComponent,
+  RetentionConceptComponent,
+  CurrencyRatesComponent,
+  ContractTypeComponent,
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { PhkConfirmationDialogModule } from '@shared/components/phk-confirmation-dialog/phk-confirmation-dialog.module';
 import { ConfigsComponent } from './views/configs/configs.component';
-import { FormConfigsComponent } from './views/components/form-configs/form-configs.component';
-import { UsersComponent } from './views/users';
-import { CargoTypeLclComponent } from './views/cargo-type-lcl/cargo-type-lcl.component';
-import { FormCargoTypeLclComponent } from './views/components/form-cargo-type-lcl/form-cargo-type-lcl.component';
-import { RetentionConceptComponent } from './views/retention-concept/retention-concept.component';
-import { FormRetentionConceptsComponent } from './views/components/form-retention-concepts/form-retention-concepts.component';
-import { CurrencyRatesComponent } from './views/currency-rates/currency-rates.component';
-import { FormCurrencyRatesComponent } from './views/components/form-currency-rates/form-currency-rates.component';
 
 const routes: Routes = [
   {
@@ -103,6 +105,8 @@ const routes: Routes = [
     FormCurrencyRatesComponent,
     DepartmentComponent,
     NewDepartmentComponent,
+    ContractTypeComponent,
+    FromContractTypeComponent,
   ],
   imports: [
     CommonModule,
