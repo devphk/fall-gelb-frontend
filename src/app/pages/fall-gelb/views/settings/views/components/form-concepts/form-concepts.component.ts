@@ -4,7 +4,7 @@ import { Component,
 import { FormBuilder, 
          FormGroup, 
          Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CargoType, 
          ConceptType, 
          Custom, 
@@ -25,7 +25,6 @@ export class FormConceptsComponent implements OnInit {
   conceptTypes: ConceptType[] = [];
   retentionConcepts: any[] = [];
   conceptOptionForm: FormGroup = this.fb.group({
-    name: this.fb.control('', [Validators.required]),
     conceptType: this.fb.control('', [Validators.required]),
   });
 
@@ -54,7 +53,8 @@ export class FormConceptsComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,
               private fb: FormBuilder,
               private conceptService: ConceptsService,
-              private toastService: ToastService) { }
+              private toastService: ToastService,
+              private dialogRef: MatDialogRef<FormConceptsComponent>) { }
 
   ngOnInit(): void {
 
@@ -80,8 +80,8 @@ export class FormConceptsComponent implements OnInit {
           this.customTypesOptions = responses[0];
           this.customsOptions = responses[1];
           this.retentionConceptOptions = responses[2];
-          this.conceptForm.addControl('conceptCustomType', this.fb.control('', [Validators.required]));
-          this.conceptForm.addControl('conceptCustom', this.fb.control('', [Validators.required]));
+          this.conceptForm.addControl('customType', this.fb.control('', [Validators.required]));
+          this.conceptForm.addControl('custom', this.fb.control('', [Validators.required]));
           this.conceptForm.addControl('retentionConcept', this.fb.control('', [Validators.required]));
           this.showCustomOptions = true;
 
@@ -103,9 +103,9 @@ export class FormConceptsComponent implements OnInit {
               
               // This type only need origin and destination
                   
+              this.conceptForm.addControl('retentionConcept', this.fb.control('', [Validators.required]));
               this.conceptForm.addControl('conceptOrigin', this.fb.control('', [Validators.required]));
               this.conceptForm.addControl('conceptDestination', this.fb.control('', [Validators.required]));
-              this.conceptForm.addControl('retentionConcept', this.fb.control('', [Validators.required]));
       
               this.showGroundFreightOptions = true;
 
@@ -124,7 +124,7 @@ export class FormConceptsComponent implements OnInit {
         forkJoin(internationalFreightRequests).subscribe((responses) => {
 
           this.transportTypesOptions = responses[0];
-          this.retentionConceptOptions = responses[0];
+          this.retentionConceptOptions = responses[1];
           this.conceptForm.addControl('conceptTransportType', this.fb.control('', [Validators.required]));
           this.conceptForm.addControl('retentionConcept', this.fb.control('', [Validators.required]));
           this.conceptForm.addControl('conceptOrigin', this.fb.control('', [Validators.required]));
@@ -152,6 +152,7 @@ export class FormConceptsComponent implements OnInit {
           this.customTypesOptions = responses[0];
           this.cargoTypesOptions = responses[1];
 
+          this.conceptForm.addControl('customType', this.fb.control('', [Validators.required]));
           this.conceptForm.addControl('conceptCargoType', this.fb.control('', [Validators.required]));
           this.conceptForm.addControl('conceptRegion', this.fb.control('', [Validators.required]));
           this.showStorageOptions = true;
@@ -165,7 +166,20 @@ export class FormConceptsComponent implements OnInit {
       case 'other':
 
         this.resetFormExtraControls();
-        this.showOtherOptions = true;
+
+        this.conceptService
+            .getRetentionConcepts()
+            .subscribe((response) => {
+              this.retentionConceptOptions = response;
+              this.conceptForm.addControl('name', this.fb.control('', [Validators.required]));
+              this.conceptForm.addControl('retentionConcept', this.fb.control('', [Validators.required]));
+      
+              this.showOtherOptions = true;
+
+            }, (error) => {
+              this.toastService.showToaster('Error obteniendo opciones de concepto', true);
+            })
+
         
         break;        
 
@@ -177,11 +191,12 @@ export class FormConceptsComponent implements OnInit {
 
   resetFormExtraControls() {
 
+    this.conceptForm.removeControl('name');
     this.conceptForm.removeControl('conceptCargoType');
     this.conceptForm.removeControl('conceptRegion');
     this.conceptForm.removeControl('conceptTransportType');
-    this.conceptForm.removeControl('conceptCustomType');
-    this.conceptForm.removeControl('conceptCustom');
+    this.conceptForm.removeControl('customType');
+    this.conceptForm.removeControl('custom');
     this.conceptForm.removeControl('conceptOrigin');
     this.conceptForm.removeControl('conceptDestination');
     this.conceptForm.removeControl('retentionConcept');
@@ -196,18 +211,24 @@ export class FormConceptsComponent implements OnInit {
 
   saveConcept() {
 
+    console.log("this.conceptForm ", this.conceptForm)
+
     if (this.conceptForm.valid) {
       
       if (this.showCustomOptions) {
 
+        let conceptCode = this.conceptOptionForm.get('conceptType')?.value;
+
+        let conceptSelected = this.conceptTypes.find((concept) => {
+          return concept.code === conceptCode
+        });
+
         let retentionConceptId = this.conceptForm.get('retentionConcept')?.value;
-        let conceptTypeId = this.conceptForm.get('conceptType')?.value;
-        let customId = this.conceptForm.get('conceptCustom')?.value;
-        let customTypeId = this.conceptForm.get('conceptCustomType')?.value;
+        let conceptTypeId: any = conceptSelected?.id;
+        let customId = this.conceptForm.get('custom')?.value;
+        let customTypeId = this.conceptForm.get('customType')?.value;
         let forSale = this.conceptForm.get('forSale')?.value;
         let forPurchase = this.conceptForm.get('forPurchase')?.value;
-
-        console.log("conceptTypeId ", conceptTypeId)
 
         this.conceptService
             .createCustomConcept(retentionConceptId,
@@ -218,17 +239,126 @@ export class FormConceptsComponent implements OnInit {
                                  forPurchase)
             .subscribe((response => {
               this.toastService.showToaster("Concepto creado existosamente");
+              this.dialogRef.close(true);
             }), (error) => {
               this.toastService.showToaster("Error creando concepto", true);
-            })
+            });
         
       } else if (this.showGroundFreightOptions) {
 
+        let conceptCode = this.conceptOptionForm.get('conceptType')?.value;
+
+        let conceptSelected = this.conceptTypes.find((concept) => {
+          return concept.code === conceptCode
+        });
+
+        let retentionConceptId = this.conceptForm.get('retentionConcept')?.value;
+        let conceptTypeId: any = conceptSelected?.id;
+        let origin = this.conceptForm.get('conceptOrigin')?.value;
+        let destination = this.conceptForm.get('conceptDestination')?.value;
+        let forSale = this.conceptForm.get('forSale')?.value;
+        let forPurchase = this.conceptForm.get('forPurchase')?.value;
+
+        this.conceptService
+            .createGroundFreightConcept(retentionConceptId,
+                                        conceptTypeId,
+                                        origin,
+                                        destination,
+                                        forSale,
+                                        forPurchase)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto creado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error creando concepto", true);
+            });
+
       } else if (this.internationalFreightOptions) {
+
+        let conceptCode = this.conceptOptionForm.get('conceptType')?.value;
+
+        let conceptSelected = this.conceptTypes.find((concept) => {
+          return concept.code === conceptCode
+        });
+
+        let retentionConceptId = this.conceptForm.get('retentionConcept')?.value;
+        let conceptTypeId: any = conceptSelected?.id;
+        let origin = this.conceptForm.get('conceptOrigin')?.value;
+        let destination = this.conceptForm.get('conceptDestination')?.value;
+        let forSale = this.conceptForm.get('forSale')?.value;
+        let forPurchase = this.conceptForm.get('forPurchase')?.value;
+        let transportType = this.conceptForm.get('conceptTransportType')?.value;
+
+        this.conceptService
+            .createInternationalFreightConcept(retentionConceptId,
+                                                conceptTypeId,
+                                                origin,
+                                                destination,
+                                                transportType,
+                                                forSale,
+                                                forPurchase)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto creado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error creando concepto", true);
+            });
 
       } else if (this.showStorageOptions) {
 
+        let conceptCode = this.conceptOptionForm.get('conceptType')?.value;
+
+        let conceptSelected = this.conceptTypes.find((concept) => {
+          return concept.code === conceptCode
+        });
+
+        let customTypeId = this.conceptForm.get('customType')?.value;
+        let conceptTypeId: any = conceptSelected?.id;
+        let cargoType = this.conceptForm.get('conceptCargoType')?.value;
+        let region = this.conceptForm.get('conceptRegion')?.value;
+        let forSale = this.conceptForm.get('forSale')?.value;
+        let forPurchase = this.conceptForm.get('forPurchase')?.value;
+
+        this.conceptService
+            .createStorageConcept(conceptTypeId,
+                                  customTypeId,
+                                  cargoType,
+                                  region,
+                                  forSale,
+                                  forPurchase)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto creado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error creando concepto", true);
+            });
+
       } else if (this.showOtherOptions) {
+
+        let conceptCode = this.conceptOptionForm.get('conceptType')?.value;
+
+        let conceptSelected = this.conceptTypes.find((concept) => {
+          return concept.code === conceptCode
+        });
+
+        let conceptTypeId: any = conceptSelected?.id;
+        let name = this.conceptForm.get('name')?.value;
+        let retentionConceptId = this.conceptForm.get('retentionConcept')?.value;
+        let forSale = this.conceptForm.get('forSale')?.value;
+        let forPurchase = this.conceptForm.get('forPurchase')?.value;
+
+        this.conceptService
+            .createConceptOther(name,
+                                retentionConceptId,
+                                conceptTypeId,
+                                forSale,
+                                forPurchase)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto creado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error creando concepto", true);
+            });
 
       }
 

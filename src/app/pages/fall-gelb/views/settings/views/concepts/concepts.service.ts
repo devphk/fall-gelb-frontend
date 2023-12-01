@@ -134,4 +134,24 @@ export class ConceptsService {
 
   }
 
+  createConceptOther(name: string,
+                     retentionConceptId: number,
+                     conceptTypeId: number,
+                     forSale: boolean,
+                     forPurchase: boolean) {
+
+    const body = {
+      name,
+      withholding_concept_id: retentionConceptId,
+      concept_type_id: conceptTypeId,
+      for_sale: forSale,
+      for_purchase: forPurchase
+    }
+
+    return this.http.post('/concepts',
+                          body);
+
+  }
+
+
 }
