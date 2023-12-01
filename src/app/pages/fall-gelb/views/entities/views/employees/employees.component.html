@@ -1,59 +1,58 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Empleados</h1>
-  
-    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-      <button
-        class="crud-button"
-        mat-mini-fab
-        color="primary"
-        aria-label="Registrar chofer"
-        matTooltip="Registrar chofer"
-        (click)="processEmployee('Add')"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-  
-      <button
-        class="crud-button"
-        mat-mini-fab
-        color="primary"
-        aria-label="Editar chofer"
-        matTooltip="Editar chofer"
-        (click)="processEmployee('Edit')"
-        [disabled]="itemsSelected.length > 1"
-      >
-        <mat-icon>edit</mat-icon>
-      </button>
-  
-      <button
-        class="crud-button"
-        mat-mini-fab
-        color="primary"
-        aria-label="Eliminar chofer"
-        matTooltip="Eliminar chofer"
-        (click)="deleteEmployee()"
-        [disabled]="itemsSelected.length > 1"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-  
-      <button
-        mat-mini-fab
-        color="primary"
-        aria-label="Actualizar Tabla"
-        matTooltip="Actualizar Tabla"
-        (click)="getEmployees()"
-      >
-        <mat-icon>refresh</mat-icon>
-      </button>
-    </div>
+  <h1>Empleados</h1>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Registrar chofer"
+      matTooltip="Registrar chofer"
+      (click)="processEmployee('Add')"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar chofer"
+      matTooltip="Editar chofer"
+      (click)="processEmployee('Edit')"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar chofer"
+      matTooltip="Eliminar chofer"
+      (click)="deleteEmployee()"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="Actualizar Tabla"
+      matTooltip="Actualizar Tabla"
+      (click)="getEmployees()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
   </div>
-  
-  <app-phk-table
-    *ngIf="tableData !== []"
-    [columnsTags]="tableColumnsTags"
-    [columnsToDisplay]="tableColumnsToDisplay"
-    [data]="tableData"
-    [(itemsSelected)]="itemsSelected"
-  ></app-phk-table>
-  
+</div>
+
+<app-phk-table
+  *ngIf="tableData !== []"
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+  [(itemsSelected)]="itemsSelected"
+></app-phk-table>

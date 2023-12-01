@@ -1,57 +1,59 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Conceptos de Retención</h1>
-  
-    <div fxLayout="row"
-          fxLayoutAlign="center center"
-          fxLayoutGap="10px">
-      <button
-        class="crud-button"
-        mat-mini-fab
-        color="primary"
-        aria-label="Registrar Concepto"
-        matTooltip="Registrar Concepto"
-        (click)="processConcept('Add')"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-  
-      <button 
-            class="crud-button"
-            mat-mini-fab
-            color="primary"
-            aria-label="Editar Concepto"
-            matTooltip="Editar Concepto"
-            (click)="processConcept('Edit')"
-            [disabled]="itemsSelected.length > 1">
-        <mat-icon>edit</mat-icon>
-      </button>
-      
-      <button 
-            class="crud-button"
-            mat-mini-fab
-            color="primary"
-            aria-label="Eliminar Concepto"
-            matTooltip="Eliminar Concepto"
-            (click)="deleteConcept()"
-            [disabled]="itemsSelected.length > 1">
-        <mat-icon>delete</mat-icon>
-      </button>
+  <h1>Conceptos de Retención</h1>
 
-      <button 
-            class="crud-button"
-            mat-mini-fab
-            color="primary"
-            aria-label="Refrescar Tabla"
-            matTooltip="Refrescar Tabla"
-            (click)="refreshConcepts()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-  
-    </div>
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Registrar Concepto"
+      matTooltip="Registrar Concepto"
+      (click)="processConcept('Add')"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Editar Concepto"
+      matTooltip="Editar Concepto"
+      (click)="processConcept('Edit')"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Eliminar Concepto"
+      matTooltip="Eliminar Concepto"
+      (click)="deleteConcept()"
+      [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button
+      class="crud-button"
+      mat-mini-fab
+      color="primary"
+      aria-label="Refrescar Tabla"
+      matTooltip="Refrescar Tabla"
+      (click)="refreshConcepts()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
   </div>
-  
-  <app-phk-table *ngIf="tableData !== []"
-                  [columnsTags]="tableColumnsTags"
-                  [columnsToDisplay]="tableColumnsToDisplay"
-                  [data]="tableData"
-                  [(itemsSelected)]="itemsSelected"></app-phk-table>
+</div>
+
+<app-phk-table
+  *ngIf="tableData !== []"
+  [columnsTags]="tableColumnsTags"
+  [columnsToDisplay]="tableColumnsToDisplay"
+  [data]="tableData"
+  [(itemsSelected)]="itemsSelected"
+></app-phk-table>
