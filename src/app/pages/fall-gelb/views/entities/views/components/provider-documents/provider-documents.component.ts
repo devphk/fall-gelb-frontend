@@ -117,35 +117,35 @@ export class ProviderDocumentsComponent implements OnInit {
       });
   }
 
-  deleteProvider() {
+  // deleteProvider() {
 
-    console.log('itemsSelected: ', this.itemsSelected[0]);
-    console.log('dialogData: ', this.data.dialogData);
-    console.log('documentID: ', this.itemsSelected[0].documentID);
+  //   console.log('itemsSelected: ', this.itemsSelected[0]);
+  //   console.log('dialogData: ', this.data.dialogData);
+  //   console.log('documentID: ', this.itemsSelected[0].documentID);
 
-    this.dialogService
-      .openConfirmationDialog(
-        `Desea eliminar Documento '${this.itemsSelected[0].name}'`,
-        'Este cambio no se puede revertir'
-      )
-      .afterClosed()
-      .subscribe((response) => {
-        if (response) {
-          this.providerService
-            .deleteProviderDocument(this.itemsSelected[0].documentID)
-            .subscribe(
-              (data) => {
-                this.toastService.showToaster(
-                  'Documento eliminado correctamente!'
-                );
-                this.getProviderDocuments();
-              },
-              (error) =>
-                this.toastService.showToaster(error.error.message, true)
-            );
-        }
-      });
-  }
+  //   this.dialogService
+  //     .openConfirmationDialog(
+  //       `Desea eliminar Documento '${this.itemsSelected[0].name}'`,
+  //       'Este cambio no se puede revertir'
+  //     )
+  //     .afterClosed()
+  //     .subscribe((response) => {
+  //       if (response) {
+  //         this.providerService
+  //           .deleteProviderDocument(this.itemsSelected[0].documentID)
+  //           .subscribe(
+  //             (data) => {
+  //               this.toastService.showToaster(
+  //                 'Documento eliminado correctamente!'
+  //               );
+  //               this.getProviderDocuments();
+  //             },
+  //             (error) =>
+  //               this.toastService.showToaster(error.error.message, true)
+  //           );
+  //       }
+  //     });
+  // }
 
   seeRegister(select:any) {
     console.log(select)
