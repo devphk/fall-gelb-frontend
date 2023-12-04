@@ -38,6 +38,7 @@ export class PhkInputComponent implements OnInit, ControlValueAccessor {
   @Input() errorMessage: string | null = null;
   @Input() mask: string = '';
   @Input() min: number = -999999999;
+  @Input() max: number = 999999999;
   inputControl = new FormControl();
   ngControl!: NgControl;
 

@@ -3,7 +3,7 @@ import { TransportType } from './../../../../../../shared/models/customs';
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
 import { LoadingMessage, SelectOption } from '@shared/models';
-import { ProviderPost, ProviderResponse, ProviderServiceData } from '@shared/models/provider';
+import { EditProviderDocumentPost, ProviderDocumentPost, ProviderPost, ProviderResponse, ProviderServiceData } from '@shared/models/provider';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -65,7 +65,12 @@ export class ProviderService {
   }
 
   createProviderService(data:ProviderServiceData, id: number) {
-    return this.http.post(`/providers/${id}/services`, data);
+    return this.http.post(
+      `/providers/${id}/services`, 
+      data, 
+      undefined,
+      true, 
+      LoadingMessage.CREATING_PROVIDER_SERVICE);
   }
 
   editProviderService(data:ProviderServiceData, idProvider:number, idService:number) {
@@ -79,7 +84,37 @@ export class ProviderService {
   getConcept(id:number){
     return this.http.get(`/concepts/${id}`);
   }
+  
   getConcepts():Observable<SelectOption[]>{
     return this.http.get('/concepts');
+  }
+
+  getProviderDocuments(id:number) {
+    return this.http.get(`/providers/${id}/documents`);
+  }
+
+  createProviderDocument(data: ProviderDocumentPost) {
+    return this.http.post(
+      '/entity-document-items',
+      data, 
+      undefined, 
+      true, 
+      LoadingMessage.CREATING_PROVIDER_DOCUMENT);
+  }
+
+  editProviderDocument(data:EditProviderDocumentPost, id:number) {
+    return this.http.put(`/entity-document-items/${id}`, data);
+  }
+
+  deleteProviderDocument(id:number) {
+    return this.http.delete(`/entity-document-items/${id}`);
+  }
+
+  getDocumentTypes() {
+    return this.http.get('/document-types');
+  }
+
+  getDocumentType(id:number) {
+    return this.http.get(`/document-types/${id}`);
   }
 }

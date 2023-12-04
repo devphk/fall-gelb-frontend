@@ -6,6 +6,7 @@ import { ProviderService } from './provider.service';
 import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
 import { Router } from '@angular/router';
 import { ViewProviderComponent } from '../components/view-provider/view-provider.component';
+import { ProviderModalComponent } from '../components/provider-modal/provider-modal.component';
 
 @Component({
   selector: 'app-providers',
@@ -58,7 +59,10 @@ export class ProvidersComponent implements OnInit {
           const providerToInput: ProviderDataTabla = {
             id: provider.id,
             name: provider.entity.name,
-            phone: provider.entity.phone,
+            phone: {
+              value: provider.entity.phone,
+              mask: '(0000)-000-0000'
+            },
             address: provider.entity.address,
             special_tax_payer: provider.special_tax_payer,
             iva_retention: provider.iva_retention,
@@ -128,7 +132,7 @@ export class ProvidersComponent implements OnInit {
 
     this.dialogService
       .openDialog(
-        ViewProviderComponent,
+        ProviderModalComponent,
         ``, '1000px', 'auto', this.viewSelected
       )
       .afterClosed()

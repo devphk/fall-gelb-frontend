@@ -36,7 +36,10 @@ interface Entity {
 export interface ProviderDataTabla {
   id: number;
   name: string;
-  phone: string;
+  phone: {
+    value: string,
+    mask: string
+  };
   email: string;
   active: boolean;
   address: string;
@@ -80,4 +83,55 @@ export interface ProviderServiceData {
   currency_id: number;
   validity_date: string | null;
   iva: boolean;
+}
+
+export interface ProviderDocumentPost {
+  resource_id: number;
+  resource: string;
+  document_type_id: number;
+  admission_date?: string;
+  file: string;
+  document_number?: string;
+}
+
+export interface DocumentType {
+  id: number;
+  name: string;
+  expired_days: number;
+}
+
+export interface ProviderDocuments {
+  id: number;
+  name: string;
+  file_types: string[];
+  required_document_number: boolean;
+  expired_days: number;
+  created_at: string;
+  updated_at: string;
+  entity_document_item: Entitydocumentitem;
+  file:string;
+  document_number?: any;
+  admission_date?: any;
+  documentID?: number;
+}
+
+export interface Entitydocumentitem {
+  id: number;
+  resource_id: number;
+  resource: string;
+  document_type_id: number;
+  admission_date?: any;
+  expired_date: string;
+  file: string;
+  document_number?: any;
+  created_at: string;
+  updated_at: string;
+  created_by: number;
+}
+
+export interface EditProviderDocumentPost {
+  document_type_id?: number;
+  document_number?: string | null;
+  admission_date?:string | null;
+  file: string;
 }

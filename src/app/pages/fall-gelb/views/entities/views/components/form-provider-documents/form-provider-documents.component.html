@@ -1,0 +1,63 @@
+<div>
+    <form [formGroup]="providerDocumentForm">
+      <div
+        mat-dialog-content
+        fxLayout="column"
+        fxLayoutGap="20px"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="start center"
+      >
+
+        <app-phk-select
+            formControlName="documentType"
+            label="Tipo de Documento"
+            fxFlex.gt-md="calc(33% - 20px)"
+            fxFlex.lt-md="calc(100%)"
+            class="w-100"
+        >
+            <mat-option 
+                *ngFor="let doc of documentTypes"
+                [value]="doc.id">{{doc.name}}</mat-option>
+        </app-phk-select>
+
+        <app-phk-input
+            formControlName="documentNumber"
+            label="Numero de Documento"
+            fxFlex.gt-md="calc(33% - 20px)"
+            [type]="'number'"
+            fxFlex.lt-md="calc(100%)"
+            class="w-100"
+            *ngIf="docNumberRequired"
+            [errorMessage]="providerDocumentForm.get('documentNumber')?.errors?.['required'] ? 'El Número de Documento es requerido' : null"
+        ></app-phk-input>
+
+        <app-phk-date-picker
+            formControlName="creationDate"
+            fxFlex.gt-md="calc(33% - 20px)"
+            fxFlex.lt-md="calc(100%)"
+            class="w-100"
+            label="Fecha de Expedición"
+            *ngIf="expire"
+        ></app-phk-date-picker>
+
+        <app-phk-file-input
+            [(inputFile)]="file"
+            fxFlex.gt-md="calc(33% - 20px)"
+            fxFlex.lt-md="calc(100%)"
+            class="w-100"   
+        ></app-phk-file-input>
+
+        <button (click)="showForm()">showForm</button>
+
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="saveNewProvider()"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+  
