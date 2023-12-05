@@ -18,3 +18,4 @@ export * from './units';
 export * from './user-roles';
 export * from './user';
 export * from './warehouse';
+export * from './concept';

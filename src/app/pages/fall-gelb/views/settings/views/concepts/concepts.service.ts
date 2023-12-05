@@ -4,7 +4,8 @@ import { CargoType,
          ConceptType, 
          Customtype, 
          TransportType, 
-         RetentionConcept } from '@shared/models';
+         RetentionConcept, 
+         Concept} from '@shared/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,12 +15,8 @@ export class ConceptsService {
 
   constructor(private http: HttpService) { }
 
-  getConcepts() {
+  getConcepts(): Observable<Concept[]> {
     return this.http.get('/concepts');
-  }
-
-  createConcept() {
-    
   }
 
   getCargoTypes(): Observable<CargoType[]> {

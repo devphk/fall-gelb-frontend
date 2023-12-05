@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, 
+         OnInit } from '@angular/core';
 import { ConceptsService } from './concepts.service';
-import { DialogService, ToastService } from '@core/services';
+import { DialogService, 
+         ToastService } from '@core/services';
 import { FormConceptsComponent } from '../components';
-import { ConceptType } from '@shared/models/concept';
-import { RetentionConcept } from '@shared/models';
+import { RetentionConcept, 
+         ConceptType,
+         Concept } from '@shared/models';
 import { Observable,
          forkJoin } from 'rxjs';
 
@@ -14,28 +17,45 @@ import { Observable,
 })
 export class ConceptsComponent implements OnInit {
 
-  tableColumnsToDisplay: string[] = ['ID', 'Nombre'];
+  tableColumnsToDisplay: string[] = ['Id', 'Nombre'];
   tableColumnsTags: string[] = ['id', 'name'];
   tableData: any[] = [];
   itemsSelected: any[] = [];
   conceptTypes: ConceptType[] = [];
   retentionConcepts: RetentionConcept[] = [];
+  conceptList: Concept[] = [];
 
   constructor(private conceptService: ConceptsService,
               private dialogService: DialogService,
               private toastService: ToastService) { }
 
   ngOnInit(): void {
+    this.getConcepts();
+  }
+
+  getConcepts() {
+
+    this.tableData, this.conceptList = [];
 
     this.conceptService
         .getConcepts()
         .subscribe((response) => {
-          console.log("response ", response)
-        });
-  }
 
-  getConcepts() {
-    
+          this.conceptList = response;
+          this.conceptList.forEach((concept) => {
+
+            const tableRow = {
+              id: concept.id,
+              name: concept.name
+            };
+
+            this.tableData.push(tableRow);
+
+          });
+
+        }, (error) => {
+          this.toastService.showToaster('Error obteniendo conceptos');
+        });
   }
 
   getConceptTypes() {
@@ -86,9 +106,6 @@ export class ConceptsComponent implements OnInit {
         this.retentionConcepts = retentionConceptsResponse;
         this.conceptTypes = conceptTypesResponse;
 
-        console.log("this.retentionConcepts ", this.retentionConcepts)
-        console.log("this.conceptTypes ", this.conceptTypes)
-
         this.openModal(processType);
         
       }, (error) => {
@@ -104,10 +121,16 @@ export class ConceptsComponent implements OnInit {
 
   openModal(processType: string) {
 
+    let conceptData;
+    if (processType !== 'Add') {
+      conceptData = this.conceptList.find(concept => concept.id === this.itemsSelected[0].id);
+    }
+
     let dialogData = {
       retentionConcepts: this.retentionConcepts,
       conceptTypes: this.conceptTypes,
-      itemsSelected: this.itemsSelected
+      itemsSelected: this.itemsSelected,
+      conceptData
     }
 
     this.dialogService

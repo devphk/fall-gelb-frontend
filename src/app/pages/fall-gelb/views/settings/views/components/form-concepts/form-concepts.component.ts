@@ -58,6 +58,8 @@ export class FormConceptsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log("data ", this.data)
+
     this.conceptTypes = this.data.dialogData.conceptTypes;
     this.retentionConcepts = this.data.dialogData.retentionConcepts;
   }
