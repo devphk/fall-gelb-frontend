@@ -125,10 +125,9 @@ export class ProvidersComponent implements OnInit {
       });
   }
 
-  seeRegister( selected: ProviderDataTabla) {
+  seeRegister( selected: ProviderDataTabla ) {
     this.viewSelected.pop();
     this.viewSelected.push(selected);
-    console.log(selected);
 
     this.dialogService
       .openDialog(
