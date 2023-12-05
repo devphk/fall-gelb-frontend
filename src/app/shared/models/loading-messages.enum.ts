@@ -43,4 +43,8 @@ export enum LoadingMessage {
   DELETING_PAYMENT_TERM = 'Eliminando Termino de pago...',
   CREATING_CONTRAT_TYPE = 'Creando Tipo de Contrato...',
   DELETING_CONTRAT_TYPE = 'Eliminando Tipo de Contrato...',
+  CREATING_PROVIDER_SERVICE = 'Creando Servicio de Proveedor...',
+  DELETING_PROVIDER_SERVICE = 'Eliminando Servicio de Proveedor...',
+  CREATING_PROVIDER_DOCUMENT = 'Creando Documento de Proveedor...',
+  DELETING_PROVIDER_DOCUMENT = 'Eliminando Documento de Proveedor...'
 }

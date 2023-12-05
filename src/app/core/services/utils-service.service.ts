@@ -50,4 +50,19 @@ export class UtilsService {
       return '000.000.000';
     }
   }
+
+  //Convert File to Base64
+
+  async fileToBase64(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
 }

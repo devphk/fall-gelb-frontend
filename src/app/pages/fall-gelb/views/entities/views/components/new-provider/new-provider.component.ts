@@ -85,7 +85,7 @@ export class NewProviderComponent implements OnInit {
         [Validators.required, Validators.email]
       ),
       active: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].active : '',
+        this.data.dialogData ? this.data.dialogData[0].active : false,
         [Validators.required]
       ),
       address: this.fb.control(
@@ -110,7 +110,7 @@ export class NewProviderComponent implements OnInit {
       ),
 
       is_national: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].is_national : '',
+        this.data.dialogData ? this.data.dialogData[0].is_national : false,
         [Validators.required]
       ),
       provider_transport_type_id: this.fb.control(
@@ -125,7 +125,7 @@ export class NewProviderComponent implements OnInit {
     if (this.providerForm.valid) {
       const providerData = {
         name: this.providerForm.get('name')?.value,
-        phone: this.providerForm.get('phone')?.value,
+        phone: this.providerForm.get('phone.value')?.value,
         email: this.providerForm.get('email')?.value,
         active: this.providerForm.get('active')?.value,
         address: this.providerForm.get('address')?.value,
@@ -142,7 +142,7 @@ export class NewProviderComponent implements OnInit {
       if (this.data.title === 'Crear Proveedor') {
         this.providerService.createProvider(providerData).subscribe(
           (data) => {
-            this.toastService.showToaster('Proveedor Creada Correctamente!');
+            this.toastService.showToaster('Proveedor Creado Correctamente!');
             this.dialogRef.close(true);
           },
           (error) => this.toastService.showToaster(error.error.message, true)

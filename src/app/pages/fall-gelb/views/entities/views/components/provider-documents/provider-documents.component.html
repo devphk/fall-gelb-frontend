@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Documentos de Proveedor '{{selectedName}}'</h2>
+  
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Registrar Documento de Proveedor"
+        matTooltip="Registrar Documento de Proveedor"
+        (click)="processProvider('Add')"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+  
+      <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Editar Documento de Proveedor"
+        matTooltip="Editar Documento de Proveedor"
+        (click)="processProvider('Edit')"
+        [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+  
+      <!-- <button
+        class="crud-button"
+        mat-mini-fab
+        color="primary"
+        aria-label="Eliminar Documento de Proveedor"
+        matTooltip="Eliminar Documento de Proveedor"
+        (click)="deleteProvider()"
+        [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0"
+      >
+        <mat-icon>delete</mat-icon>
+      </button> -->
+  
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Actualizar Tabla"
+        matTooltip="Actualizar Tabla"
+        (click)="getProviderDocuments()"
+      >
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+  </div><br>
+  
+  <app-phk-table
+    *ngIf="tableData !== []"
+    [columnsTags]="tableColumnsTags"
+    [columnsToDisplay]="tableColumnsToDisplay"
+    [data]="tableData"
+    [showViewIcon]="true"
+    [(itemsSelected)]="itemsSelected"
+    (seeRegister)="seeRegister($event)"
+    class="document-table"
+  ></app-phk-table>

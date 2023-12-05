@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PhkTableModule } from '@shared/components/phk-table/phk-table.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ProvidersComponent } from './views/providers/providers.component';
 import { CustomersComponent } from './views/customers/customers.component';
 import { ShippingCompaniesComponent } from './views/shipping-companies/shipping-companies.component';
@@ -41,6 +42,11 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatInputModule } from '@angular/material/input';
 import { DocumentValidationsComponent } from './views/document-validations';
 import { FormDocumentValidationsComponent } from './views/components/form-document-validations/form-document-validations.component';
+import { ProviderModalComponent } from './views/components/provider-modal/provider-modal.component';
+import { ProviderDocumentsComponent } from './views/components/provider-documents/provider-documents.component';
+import { MatCardModule } from '@angular/material/card';
+import { FormProviderDocumentsComponent } from './views/components/form-provider-documents/form-provider-documents.component';
+import { PhkFileInputComponent } from '@shared/components/phk-file-input/phk-file-input.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +72,9 @@ import { FormDocumentValidationsComponent } from './views/components/form-docume
     NewEmployeeComponent,
     DocumentValidationsComponent,
     FormDocumentValidationsComponent,
+    ProviderModalComponent,
+    ProviderDocumentsComponent,
+    FormProviderDocumentsComponent,
   ],
   imports: [
     CommonModule,
@@ -87,6 +96,9 @@ import { FormDocumentValidationsComponent } from './views/components/form-docume
     PhkDatePickerModule,
     NgxMaterialTimepickerModule,
     MatInputModule,
+    MatTabsModule,
+    MatCardModule,
+    PhkFileInputComponent
   ],
 })
 export class EntitiesModule {}
