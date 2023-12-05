@@ -53,7 +53,6 @@ export class ProviderDocumentsComponent implements OnInit {
 
         response.forEach((provider: ProviderDocuments) => {
 
-          console.log('provider: ', provider);
           const originalDate = provider.updated_at;
           const convertedDate = new Date(originalDate);
 

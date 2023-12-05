@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DialogService, ToastService } from '@core/services';
 import { ProviderService } from '../../providers/provider.service';
-import { ProviderServicesDataTable } from '@shared/models/provider';
 import { FormProviderServicesComponent } from '../form-provider-services/form-provider-services.component';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../../../../../../../core/models/dialog';
+import { ProviderServices } from '@shared/models/provider';
 
 @Component({
   selector: 'app-view-provider',
@@ -50,10 +50,10 @@ export class ViewProviderComponent implements OnInit {
 
     this.providerService.getProviderServices(this.data.dialogData[0].id)
     .subscribe((response) => {
-        const tableData: ProviderServicesDataTable[] = [];
+        const tableData: ProviderServices[] = [];
 
-        response.forEach((provider: ProviderServicesDataTable) => {
-          const providerServiceToInput: ProviderServicesDataTable = {
+        response.forEach((provider: ProviderServices) => {
+          const providerServiceToInput: ProviderServices = {
             id:provider.id,
             amount: provider.amount,
             validity_date: provider.validity_date,
@@ -62,14 +62,17 @@ export class ViewProviderComponent implements OnInit {
             currency_id: provider.currency_id,
             iva: provider.iva,
             payment_term_id: provider.payment_term_id,
+            concept_name: provider.concept.name,
+            currency: provider.currency,
+            payment_term: provider.payment_term,
+            provider: provider.provider,
+            concept: provider.concept,
+            provider_id: provider.provider_id,
+            unit: provider.unit
           };
 
-          this.providerService.getConcept(provider.concept_id)
-            .subscribe((concept) => {
-              providerServiceToInput.concept_name = concept.name;
+          tableData.push(providerServiceToInput);
 
-              tableData.push(providerServiceToInput);
-            })
         });
 
         this.tableData = tableData;
