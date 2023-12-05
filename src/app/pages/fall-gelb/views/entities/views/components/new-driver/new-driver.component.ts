@@ -49,6 +49,10 @@ export class NewDriverComponent implements OnInit {
         this.data.dialogData ? this.data.dialogData[0].name : '',
         [Validators.required]
       ),
+      lastname: this.formBuild.control(
+        this.data.dialogData ? this.data.dialogData[0].name : '',
+        [Validators.required]
+      ),
       phone: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].phone : '',
         [Validators.required]
@@ -65,7 +69,7 @@ export class NewDriverComponent implements OnInit {
         [Validators.required]
       ),
       is_self_employed: this.formBuild.control(
-        this.data.dialogData ? this.data.dialogData[0].is_self_employed : ''
+        this.data.dialogData ? this.data.dialogData[0].is_self_employed : false
       ),
       provider_id: this.formBuild.control(
         this.data.dialogData ? this.data.dialogData[0].provider_id : undefined
@@ -78,6 +82,7 @@ export class NewDriverComponent implements OnInit {
       if (this.data.title === 'Crear Chofer') {
         const driver: DriverDataPost = {
           name: this.driverForm.get('name')?.value,
+          last_name: this.driverForm.get('lastname')?.value,
           phone: this.driverForm.get('phone')?.value,
           email: this.driverForm.get('email')?.value,
           active: this.driverForm.get('active')?.value,
@@ -96,6 +101,7 @@ export class NewDriverComponent implements OnInit {
       } else {
         const driverEdit = {
           name: this.driverForm.get('name')?.value,
+          last_name: this.driverForm.get('lastname')?.value,
           phone: this.driverForm.get('phone')?.value,
           email: this.driverForm.get('email')?.value,
           active: this.driverForm.get('active')?.value,

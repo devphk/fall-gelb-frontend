@@ -10,8 +10,8 @@ import { DriverDataTable, DriverResponse } from '@shared/models';
   styleUrls: ['./drivers.component.scss'],
 })
 export class DriversComponent implements OnInit {
-  tableColumnsToDisplay: string[] = ['ID', 'Nombre'];
-  tableColumnsTags: string[] = ['id', 'name'];
+  tableColumnsToDisplay: string[] = ['ID', 'Nombre', 'Apellido'];
+  tableColumnsTags: string[] = ['id', 'name', 'last_name'];
   tableData: any[] = [];
   itemsSelected: any[] = [];
 
@@ -22,10 +22,13 @@ export class DriversComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getdrivers();
+    this.getDrivers();
   }
 
-  getdrivers() {
+  getDrivers() {
+    
+    this.tableData = [];
+
     this.driverService.getDrivers().subscribe(
       (response) => {
         const tableData: DriverDataTable[] = [];
@@ -34,6 +37,7 @@ export class DriversComponent implements OnInit {
           const driverToInput: DriverDataTable = {
             id: driver.id,
             name: driver.entity.name,
+            last_name: driver.entity.last_name,
             phone: driver.entity.phone,
             email: driver.entity.email,
             active: driver.entity.active,
@@ -63,7 +67,7 @@ export class DriversComponent implements OnInit {
       .afterClosed()
       .subscribe((driver) => {
         if (driver) {
-          this.refreshDrivers();
+          this.getDrivers();
         }
       });
   }
@@ -80,32 +84,11 @@ export class DriversComponent implements OnInit {
           this.driverService.deleteDrivers(this.itemsSelected[0].id).subscribe(
             (data) => {
               this.toastService.showToaster('Chofer eliminado correctamente!');
-              this.refreshDrivers();
+              this.getDrivers();
             },
             (error) => this.toastService.showToaster(error.error.message, true)
           );
         }
       });
-  }
-
-  refreshDrivers() {
-    this.tableData = [];
-
-    this.driverService.getDrivers().subscribe((drivers) => {
-      drivers.forEach((driver) => {
-        const driverToInput = {
-          id: driver.id,
-          name: driver.entity.name,
-          phone: driver.entity.phone,
-          email: driver.entity.email,
-          active: driver.entity.active,
-          address: driver.entity.address,
-          is_self_employed: driver.is_self_employed,
-          provider_id: driver.provider_id,
-        };
-
-        this.tableData.push(driverToInput);
-      });
-    });
   }
 }

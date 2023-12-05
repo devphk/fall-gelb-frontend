@@ -1,5 +1,6 @@
 export interface DriverDataPost {
   name: string;
+  last_name:string;
   phone: string;
   email: string;
   active: boolean;
@@ -10,6 +11,7 @@ export interface DriverDataPost {
 export interface DriverDataTable {
   id: number;
   name: string;
+  last_name: string;
   phone: string;
   email: string;
   active: boolean;
@@ -29,6 +31,7 @@ export interface DriverResponse {
 interface Entity {
   id: number;
   name: string;
+  last_name:string;
   phone: string;
   email: string;
   active: boolean;
