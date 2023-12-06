@@ -147,7 +147,7 @@ export class ProviderDocumentsComponent implements OnInit {
   // }
 
   seeRegister(select:any) {
-    console.log(select)
+    window.open(select.entity_document_item.file, "_blank");
   }
 
 }
