@@ -176,13 +176,4 @@ export class FormProviderDocumentsComponent implements OnInit {
     }
   }
 
-  async showForm() {
-    console.log('Form: ', this.providerDocumentForm)
-    // console.log('File: ', this.file)
-    // if(this.file) {
-    //   let file = await this.utilsService.fileToBase64(this.file)
-    //   console.log('base64File: ', file);
-    // }
-  }
-
 }
