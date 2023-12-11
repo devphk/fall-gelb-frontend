@@ -22,10 +22,13 @@ export class DepartmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getdepartments();
+    this.getDepartments();
   }
 
-  getdepartments() {
+  getDepartments() {
+
+    this.tableData = [];
+
     this.departmentService.getDepartments().subscribe(
       (response) => {
         const tableData: DepartmentDataTable[] = [];
@@ -58,7 +61,7 @@ export class DepartmentComponent implements OnInit {
       .afterClosed()
       .subscribe((department) => {
         if (department) {
-          this.refreshDepartments();
+          this.getDepartments();
         }
       });
   }
@@ -79,7 +82,7 @@ export class DepartmentComponent implements OnInit {
                 this.toastService.showToaster(
                   'Departamento eliminado correctamente!'
                 );
-                this.refreshDepartments();
+                this.getDepartments();
               },
               (error) =>
                 this.toastService.showToaster(error.error.message, true)
@@ -88,19 +91,4 @@ export class DepartmentComponent implements OnInit {
       });
   }
 
-  refreshDepartments() {
-    this.tableData = [];
-
-    this.departmentService.getDepartments().subscribe((departments) => {
-      departments.forEach((department) => {
-        const departmentToInput = {
-          id: department.id,
-          name: department.name,
-          departament_id: department.departament_id,
-        };
-
-        this.tableData.push(departmentToInput);
-      });
-    });
-  }
 }
