@@ -38,7 +38,7 @@ export class NewProviderComponent implements OnInit {
   personTypeOptions: SelectOption[] = [];
 
   ngOnInit(): void {
-    console.log('DATA: ', this.data)
+    console.log('DATA: ', this.data);
     this.initializeForm();
 
     this.providerService.getProviderTypes().subscribe((providerTypes) => {
@@ -125,7 +125,7 @@ export class NewProviderComponent implements OnInit {
     if (this.providerForm.valid) {
       const providerData = {
         name: this.providerForm.get('name')?.value,
-        phone: this.providerForm.get('phone.value')?.value,
+        phone: this.providerForm.get('phone')?.value,
         email: this.providerForm.get('email')?.value,
         active: this.providerForm.get('active')?.value,
         address: this.providerForm.get('address')?.value,
