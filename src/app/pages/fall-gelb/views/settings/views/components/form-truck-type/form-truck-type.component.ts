@@ -6,10 +6,10 @@ import { TruckTypeService } from '../../truck-type/truck-type.service';
 
 @Component({
   selector: 'app-new-truck-type',
-  templateUrl: './new-truck-type.component.html',
-  styleUrls: ['./new-truck-type.component.scss']
+  templateUrl: './form-truck-type.component.html',
+  styleUrls: ['./form-truck-type.component.scss']
 })
-export class NewTruckTypeComponent implements OnInit {
+export class FormTruckTypeComponent implements OnInit {
 
   truckTypeForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
@@ -17,7 +17,7 @@ export class NewTruckTypeComponent implements OnInit {
   
   constructor( private fb:FormBuilder,
                private truckTypeService:TruckTypeService,
-               private dialogRef:MatDialogRef<NewTruckTypeComponent>,
+               private dialogRef:MatDialogRef<FormTruckTypeComponent>,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}
 

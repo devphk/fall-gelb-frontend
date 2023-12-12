@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewTruckTypeComponent } from '../components/new-truck-type/new-truck-type.component';
+import { FormTruckTypeComponent } from '../components/form-truck-type/form-truck-type.component';
 import { TruckTypeService } from './truck-type.service';
 import { truckType } from '@shared/models/truck-type';
 
@@ -54,7 +54,7 @@ export class TruckTypeComponent implements OnInit {
 
   processTruck(processType: string) {
     this.dialogService
-        .openDialog(NewTruckTypeComponent, 
+        .openDialog(FormTruckTypeComponent, 
                     processType === 'Add' ? 'Crear Tipo de Camión' : 'Editar Tipo de Camión', 
                     '800px', 
                     'auto',
