@@ -10,11 +10,11 @@ import Geocoder from 'leaflet-control-geocoder';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.js';
 
 @Component({
-  selector: 'app-new-customs',
-  templateUrl: './new-customs.component.html',
-  styleUrls: ['./new-customs.component.scss']
+  selector: 'app-form-customs',
+  templateUrl: './form-customs.component.html',
+  styleUrls: ['./form-customs.component.scss']
 })
-export class NewCustomsComponent implements OnInit{
+export class FormCustomsComponent implements OnInit{
 
   map!: L.Map;
   marker: L.Marker | null = null;
@@ -37,7 +37,7 @@ export class NewCustomsComponent implements OnInit{
   
   constructor( private fb:FormBuilder,
                private customsService:CustomsService,
-               private dialogRef:MatDialogRef<NewCustomsComponent>,
+               private dialogRef:MatDialogRef<FormCustomsComponent>,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewCustomsComponent } from '../components/new-customs/new-customs.component';
+import { FormCustomsComponent } from '../components/form-customs/form-customs.component';
 import { DialogService, ToastService } from '@core/services';
 import { CustomsService } from './customs.service';
 import { CustomsDataTable } from '@shared/models';
@@ -60,7 +60,7 @@ export class CustomsComponent implements OnInit {
 
   processCustoms(processType: string) {
     this.dialogService
-        .openDialog(NewCustomsComponent, 
+        .openDialog(FormCustomsComponent, 
                     processType === 'Add' ? 'Crear Aduana' : 'Editar Aduana', 
                     '800px', 
                     'auto',

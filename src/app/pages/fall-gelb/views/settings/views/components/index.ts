@@ -10,7 +10,7 @@ export * from './from-contract-type';
 export * from './from-payment-term';
 export * from './new-commodity-type';
 export * from './new-container-type';
-export * from './new-customs';
+export * from './form-customs';
 export * from './new-department';
 export * from './new-truck-type';
 export * from './new-units';
