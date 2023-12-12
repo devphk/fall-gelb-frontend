@@ -11,7 +11,7 @@ export * from './from-payment-term';
 export * from './form-commodity-type';
 export * from './form-container-type';
 export * from './form-customs';
-export * from './new-department';
+export * from './form-department';
 export * from './new-truck-type';
 export * from './new-units';
 export * from './form-warehouse';

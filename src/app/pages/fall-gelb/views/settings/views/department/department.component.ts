@@ -2,7 +2,7 @@ import { DepartmentDataTable } from '@shared/models';
 import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from './department.service';
 import { DialogService, ToastService } from '@core/services';
-import { NewDepartmentComponent } from '../components/new-department/new-department.component';
+import { FormDepartmentComponent } from '../components/form-department/form-department.component';
 
 @Component({
   selector: 'app-department',
@@ -52,7 +52,7 @@ export class DepartmentComponent implements OnInit {
   processDepartment(processType: string) {
     this.dialogService
       .openDialog(
-        NewDepartmentComponent,
+        FormDepartmentComponent,
         processType === 'Add' ? 'Crear Departamento' : 'Editar Departamento',
         '800px',
         'auto',

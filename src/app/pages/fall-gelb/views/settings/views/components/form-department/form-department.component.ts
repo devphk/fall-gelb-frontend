@@ -6,14 +6,14 @@ import { DepartmentService } from '../../department/department.service';
 import { SelectOption } from '@shared/models';
 
 @Component({
-  selector: 'app-new-department',
-  templateUrl: './new-department.component.html',
-  styleUrls: ['./new-department.component.scss'],
+  selector: 'app-form-department',
+  templateUrl: './form-department.component.html',
+  styleUrls: ['./form-department.component.scss'],
 })
-export class NewDepartmentComponent implements OnInit {
+export class FormDepartmentComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
-    private dialogRef: MatDialogRef<NewDepartmentComponent>,
+    private dialogRef: MatDialogRef<FormDepartmentComponent>,
     private departmentService: DepartmentService,
     private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) private data: any
