@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewCommodityTypeComponent } from '../components/new-commodity-type/new-commodity-type.component';
+import { FormCommodityTypeComponent } from '../components/form-commodity-type/form-commodity-type.component';
 import { CommodityTypeService } from './commodity-type.service';
 import { Commodities } from '@shared/models/commodities';
 
@@ -54,7 +54,7 @@ export class CommodityTypeComponent implements OnInit {
 
   processCommodities(processType: string) {
     this.dialogService
-        .openDialog(NewCommodityTypeComponent, 
+        .openDialog(FormCommodityTypeComponent, 
                     processType === 'Add' ? 'Crear Tipo de Mercancia' : 'Editar Tipo de Mercancia', 
                     '800px', 
                     'auto',

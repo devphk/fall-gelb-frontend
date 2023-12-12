@@ -5,11 +5,11 @@ import { ToastService } from '@core/services';
 import { CommodityTypeService } from '../../commodity-type/commodity-type.service';
 
 @Component({
-  selector: 'app-new-commodity-type',
-  templateUrl: './new-commodity-type.component.html',
-  styleUrls: ['./new-commodity-type.component.scss']
+  selector: 'app-form-commodity-type',
+  templateUrl: './form-commodity-type.component.html',
+  styleUrls: ['./form-commodity-type.component.scss']
 })
-export class NewCommodityTypeComponent implements OnInit {
+export class FormCommodityTypeComponent implements OnInit {
 
   commodityTypeForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
@@ -19,7 +19,7 @@ export class NewCommodityTypeComponent implements OnInit {
   
   constructor( private fb:FormBuilder,
                private commoditiesService:CommodityTypeService,
-               private dialogRef:MatDialogRef<NewCommodityTypeComponent>,
+               private dialogRef:MatDialogRef<FormCommodityTypeComponent>,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}
 

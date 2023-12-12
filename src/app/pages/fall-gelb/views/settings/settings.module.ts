@@ -32,7 +32,7 @@ import {
   FormCustomsComponent,
   NewTruckTypeComponent,
   FormContainerTypeComponent,
-  NewCommodityTypeComponent,
+  FormCommodityTypeComponent,
   FromPaymentTermComponent,
   NewDepartmentComponent,
   FormConfigsComponent,
@@ -72,7 +72,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    NewCommodityTypeComponent,
+    FormCommodityTypeComponent,
     FormWarehouseComponent,
     NewUnitsComponent,
     FormCustomsComponent,

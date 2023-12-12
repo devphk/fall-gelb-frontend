@@ -8,7 +8,7 @@ export * from './form-retention-concepts';
 export * from './form-user';
 export * from './from-contract-type';
 export * from './from-payment-term';
-export * from './new-commodity-type';
+export * from './form-commodity-type';
 export * from './form-container-type';
 export * from './form-customs';
 export * from './new-department';
