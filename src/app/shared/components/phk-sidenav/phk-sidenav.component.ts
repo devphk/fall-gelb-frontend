@@ -25,20 +25,20 @@ export class PhkSidenavComponent implements OnInit {
       icon: 'person',
       childrenLinks: [
         {
-          path: 'providers',
-          title: 'Proveedores',
+          path: 'drivers',
+          title: 'Choferes',
         },
         {
           path: 'customers',
           title: 'Clientes',
         },
         {
-          path: 'drivers',
-          title: 'Choferes',
-        },
-        {
           path: 'employees',
           title: 'Empleados',
+        },
+        {
+          path: 'providers',
+          title: 'Proveedores',
         },
         {
           path: 'document-validations',
@@ -52,52 +52,16 @@ export class PhkSidenavComponent implements OnInit {
       icon: 'settings',
       childrenLinks: [
         {
-          path: 'users',
-          title: 'Usuarios',
-        },
-        {
-          path: 'banks',
-          title: 'Banco',
-        },
-        {
-          path: 'bank-accounts',
-          title: 'Cuentas Bancarias',
-        },
-        {
-          path: 'currencies',
-          title: 'Monedas',
-        },
-        {
-          path: 'units',
-          title: 'Unidades',
-        },
-        {
-          path: 'container-type',
-          title: 'Tipos de Contenedor',
-        },
-        {
           path: 'customs',
           title: 'Aduanas',
-        },
-        {
-          path: 'truck-type',
-          title: 'Tipos de Camiones',
-        },
-        {
-          path: 'commodity-type',
-          title: 'Tipos de Mercancia',
         },
         {
           path: 'warehouse',
           title: 'Almacenes',
         },
         {
-          path: 'cargo-type-lcl',
-          title: 'Tipo de Carga LCL',
-        },
-        {
-          path: 'payment-terms',
-          title: 'Terminos de Pago',
+          path: 'banks',
+          title: 'Banco',
         },
         {
           path: 'retention-concepts',
@@ -108,17 +72,53 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Configuraciones',
         },
         {
-          path: 'currency-rates',
-          title: 'Tasas Monetarias',
+          path: 'bank-accounts',
+          title: 'Cuentas Bancarias',
         },
         {
           path: 'department',
           title: 'Departamentos',
         },
         {
-          path: 'contract-types',
-          title: 'Typo de Contratos',
+          path: 'currencies',
+          title: 'Monedas',
         },
+        {
+          path: 'currency-rates',
+          title: 'Tasas Monetarias',
+        },
+        {
+          path: 'payment-terms',
+          title: 'Terminos de Pago',
+        },
+        {
+          path: 'cargo-type-lcl',
+          title: 'Tipo de Carga LCL',
+        },
+        {
+          path: 'contract-types',
+          title: 'Tipo de Contratos',
+        },
+        {
+          path: 'truck-type',
+          title: 'Tipos de Camiones',
+        },
+        {
+          path: 'container-type',
+          title: 'Tipos de Contenedor',
+        },
+        {
+          path: 'commodity-type',
+          title: 'Tipos de Mercancia',
+        },
+        {
+          path: 'units',
+          title: 'Unidades',
+        },
+        {
+          path: 'users',
+          title: 'Usuarios',
+        }
       ],
     },
     {
