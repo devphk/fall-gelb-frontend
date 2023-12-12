@@ -12,6 +12,6 @@ export * from './form-commodity-type';
 export * from './form-container-type';
 export * from './form-customs';
 export * from './form-department';
-export * from './new-truck-type';
-export * from './new-units';
+export * from './form-truck-type';
+export * from './form-units';
 export * from './form-warehouse';

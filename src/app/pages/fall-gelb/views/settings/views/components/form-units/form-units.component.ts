@@ -5,18 +5,18 @@ import { ToastService } from '@core/services';
 import { UnitsService } from '../../units/units.service';
 
 @Component({
-  selector: 'app-new-units',
-  templateUrl: './new-units.component.html',
-  styleUrls: ['./new-units.component.scss']
+  selector: 'app-form-units',
+  templateUrl: './form-units.component.html',
+  styleUrls: ['./form-units.component.scss']
 })
-export class NewUnitsComponent implements OnInit {
+export class FormUnitsComponent implements OnInit {
 
   unitsForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
   })
   
   constructor( private fb:FormBuilder,
-               private dialogRef:MatDialogRef<NewUnitsComponent>,
+               private dialogRef:MatDialogRef<FormUnitsComponent>,
                private unitsService:UnitsService,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}

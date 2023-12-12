@@ -27,10 +27,9 @@ import {
   FormBankAccountComponent,
   FormCurrencyComponent,
   FormUserComponent,
-  NewUnitsComponent,
+  FormUnitsComponent,
   FormWarehouseComponent,
   FormCustomsComponent,
-  NewTruckTypeComponent,
   FormContainerTypeComponent,
   FormCommodityTypeComponent,
   FormPaymentTermComponent,
@@ -40,6 +39,7 @@ import {
   FormRetentionConceptsComponent,
   FormCurrencyRatesComponent,
   FormContractTypeComponent,
+  FormTruckTypeComponent
 } from './views/components';
 
 import {
@@ -74,9 +74,9 @@ const routes: Routes = [
   declarations: [
     FormCommodityTypeComponent,
     FormWarehouseComponent,
-    NewUnitsComponent,
+    FormUnitsComponent,
     FormCustomsComponent,
-    NewTruckTypeComponent,
+    FormTruckTypeComponent,
     FormContainerTypeComponent,
     SettingsComponent,
     CommodityTypeComponent,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewUnitsComponent } from '../components/new-units/new-units.component';
+import { FormUnitsComponent } from '../components/form-units/form-units.component';
 import { UnitsService } from './units.service';
 import { Units } from '@shared/models/units';
 
@@ -54,7 +54,7 @@ export class UnitsComponent implements OnInit {
 
   processUnit(processType: string) {
     this.dialogService
-        .openDialog(NewUnitsComponent, 
+        .openDialog(FormUnitsComponent, 
                     processType === 'Add' ? 'Crear Unidad' : 'Editar Unidad', 
                     '800px', 
                     'auto',
