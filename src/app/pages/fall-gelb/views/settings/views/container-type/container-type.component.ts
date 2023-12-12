@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewContainerTypeComponent } from '../components/new-container-type/new-container-type.component';
+import { FormContainerTypeComponent } from '../components/form-container-type/form-container-type.component';
 import { ContainerTypeService } from './container-type.service';
 import { ContainerType } from '@shared/models/container-type';
 
@@ -54,7 +54,7 @@ export class ContainerTypeComponent implements OnInit {
 
   processContainerType(processType: string) {
     this.dialogService
-        .openDialog(NewContainerTypeComponent, 
+        .openDialog(FormContainerTypeComponent, 
                     processType === 'Add' ? 'Crear Tipo de Contenedor' : 'Editar Tipo de Contenedor', 
                     '800px', 
                     'auto',

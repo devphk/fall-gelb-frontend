@@ -5,18 +5,18 @@ import { ContainerTypeService } from '../../container-type/container-type.servic
 import { ToastService } from '@core/services';
 
 @Component({
-  selector: 'app-new-container-type',
-  templateUrl: './new-container-type.component.html',
-  styleUrls: ['./new-container-type.component.scss']
+  selector: 'app-form-container-type',
+  templateUrl: './form-container-type.component.html',
+  styleUrls: ['./form-container-type.component.scss']
 })
-export class NewContainerTypeComponent implements OnInit {
+export class FormContainerTypeComponent implements OnInit {
 
   containerTypeForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
   })
   
   constructor( private fb:FormBuilder,
-               private dialogRef:MatDialogRef<NewContainerTypeComponent>,
+               private dialogRef:MatDialogRef<FormContainerTypeComponent>,
                private containerTypeService:ContainerTypeService,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}
