@@ -6,11 +6,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
 
 @Component({
-  selector: 'app-new-customer',
-  templateUrl: './new-customer.component.html',
-  styleUrls: ['./new-customer.component.scss'],
+  selector: 'app-form-customer',
+  templateUrl: './form-customer.component.html',
+  styleUrls: ['./form-customer.component.scss'],
 })
-export class NewCustomerComponent implements OnInit {
+export class FormCustomerComponent implements OnInit {
   customerForm: FormGroup = this.fb.group({
     name: this.fb.control(
       this.data.dialogData ? this.data.dialogData[0].name : '',
@@ -65,7 +65,7 @@ export class NewCustomerComponent implements OnInit {
     private customersService: CustomersService,
     @Inject(MAT_DIALOG_DATA) private data: any,
     private toastService: ToastService,
-    private dialogRef: MatDialogRef<NewCustomerComponent>
+    private dialogRef: MatDialogRef<FormCustomerComponent>
   ) {
     // -------Code to put two masks in one input (works but when you put the first number you have to
     // click the input again to be able to keep writing)---------

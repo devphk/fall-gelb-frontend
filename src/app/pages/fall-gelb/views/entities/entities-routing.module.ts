@@ -1,13 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {
-  AirConsolidatorsComponent,
-  AirlinesComponent,
   CustomersComponent,
   DriversComponent,
   ProvidersComponent,
-  ShippingCompaniesComponent,
-  TerrestrialsComponent,
 } from './views';
 import { EmployeesComponent } from './views/employees/employees.component';
 import { DocumentValidationsComponent } from './views/document-validations';
@@ -25,22 +21,6 @@ const routes: Routes = [
   {
     path: 'customers',
     component: CustomersComponent,
-  },
-  {
-    path: 'shipping-companies',
-    component: ShippingCompaniesComponent,
-  },
-  {
-    path: 'air-consolidators',
-    component: AirConsolidatorsComponent,
-  },
-  {
-    path: 'airlines',
-    component: AirlinesComponent,
-  },
-  {
-    path: 'terrestrials',
-    component: TerrestrialsComponent,
   },
   {
     path: 'drivers',

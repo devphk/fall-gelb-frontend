@@ -6,11 +6,11 @@ import { ToastService } from '@core/services';
 import { SelectOption } from '@shared/models';
 
 @Component({
-  selector: 'app-new-provider',
-  templateUrl: './new-provider.component.html',
-  styleUrls: ['./new-provider.component.scss'],
+  selector: 'app-form-provider',
+  templateUrl: './form-provider.component.html',
+  styleUrls: ['./form-provider.component.scss'],
 })
-export class NewProviderComponent implements OnInit {
+export class FormProviderComponent implements OnInit {
   nationaltrigger: boolean = true;
   yesNoOptions: string[] = ['Si', 'No'];
 
@@ -25,7 +25,7 @@ export class NewProviderComponent implements OnInit {
   }
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<NewProviderComponent>,
+    private dialogRef: MatDialogRef<FormProviderComponent>,
     private providerService: ProviderService,
     private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) private data: any
