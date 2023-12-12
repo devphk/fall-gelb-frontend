@@ -5,7 +5,7 @@ import {
   PaymenTermResponse,
   PaymenTermTable,
 } from '@shared/models/payment-term';
-import { FromPaymentTermComponent } from '../components';
+import { FormPaymentTermComponent } from '../components';
 
 @Component({
   selector: 'app-payment-term',
@@ -51,7 +51,7 @@ export class PaymentTermComponent implements OnInit {
   processPaymenTerm(processType: string) {
     this.dialogService
       .openDialog(
-        FromPaymentTermComponent,
+        FormPaymentTermComponent,
         processType === 'Add'
           ? 'Crear Terminos de Pago'
           : 'Editar Terminos de Pago',

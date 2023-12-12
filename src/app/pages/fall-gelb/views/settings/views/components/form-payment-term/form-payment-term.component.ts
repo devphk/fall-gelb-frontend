@@ -9,18 +9,18 @@ import {
 } from '@shared/models/payment-term';
 
 @Component({
-  selector: 'app-from-payment-term',
-  templateUrl: './from-payment-term.component.html',
-  styleUrls: ['./from-payment-term.component.scss'],
+  selector: 'app-form-payment-term',
+  templateUrl: './form-payment-term.component.html',
+  styleUrls: ['./form-payment-term.component.scss'],
 })
-export class FromPaymentTermComponent implements OnInit {
+export class FormPaymentTermComponent implements OnInit {
   paymentTermItemForm: FormGroup = new FormGroup({});
   paymentTermForm: FormGroup = new FormGroup({});
   isEditMode: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<FromPaymentTermComponent>,
+    private dialogRef: MatDialogRef<FormPaymentTermComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private toastService: ToastService,
     private paymentTermService: PaymentTermService
@@ -86,47 +86,50 @@ export class FromPaymentTermComponent implements OnInit {
   }
 
   savePaymentTerm() {
-    if (this.paymentTermForm.valid && this.getTotalPercent() === 100) {
-      if (this.data.title === 'Crear Terminos de Pago') {
-        const paymentTerm: PaymentTermPost = {
-          name: this.paymentTermForm.get('name')?.value,
-          items: this.paymentTermControls.getRawValue(),
-        };
-        this.paymentTermService.createPaymenTerm(paymentTerm).subscribe(
-          (data) => {
-            this.toastService.showToaster(
-              'Terminos de Pago Creado Correctamente!'
-            );
-            this.dialogRef.close(true);
-          },
-          (error) => this.toastService.showToaster(error.error.message, true)
-        );
-      } else {
-        const paymentTermEdit = {
-          name: this.paymentTermForm.get('name')?.value,
-          items: this.paymentTermControls.getRawValue(),
-        };
+    if (this.getTotalPercent() === 100) {
+      console.log('a');
+      // if (this.data.title === 'Crear Terminos de Pago') {
+      //   const paymentTerm: PaymentTermPost = {
+      //     name: this.paymentTermForm.get('name')?.value,
+      //     items: this.paymentTermControls.getRawValue(),
+      //   };
+      //   this.paymentTermService.createPaymenTerm(paymentTerm).subscribe(
+      //     (data) => {
+      //       this.toastService.showToaster(
+      //         'Terminos de Pago Creado Correctamente!'
+      //       );
+      //       this.dialogRef.close(true);
+      //     },
+      //     (error) => this.toastService.showToaster(error.error.message, true)
+      //   );
+      // } else {
+      //   const paymentTermEdit = {
+      //     name: this.paymentTermForm.get('name')?.value,
+      //     items: this.paymentTermControls.getRawValue(),
+      //   };
 
-        this.paymentTermService
-          .editPaymenTerm(paymentTermEdit, this.data.dialogData[0].id)
-          .subscribe(
-            (data) => {
-              this.toastService.showToaster(
-                'Terminos de Pago Editado Correctamente!'
-              );
-              this.dialogRef.close(true);
-            },
-            (error) => this.toastService.showToaster(error.error.message, true)
-          );
-      }
+      //   this.paymentTermService
+      //     .editPaymenTerm(paymentTermEdit, this.data.dialogData[0].id)
+      //     .subscribe(
+      //       (data) => {
+      //         this.toastService.showToaster(
+      //           'Terminos de Pago Editado Correctamente!'
+      //         );
+      //         this.dialogRef.close(true);
+      //       },
+      //       (error) => this.toastService.showToaster(error.error.message, true)
+      //     );
+      // }
     } else {
-      if (this.paymentTermForm.valid && this.getTotalPercent() < 100) {
+      if (this.getTotalPercent() < 100) {
         this.toastService.showToaster(
           'El porcentage no completa el 100%',
           true
         );
-      } else if (this.paymentTermForm.valid && this.getTotalPercent() > 100) {
+        console.log('El porcentage no completa el 100%');
+      } else if (this.getTotalPercent() > 100) {
         this.toastService.showToaster('El porcentage supera el 100%', true);
+        console.log('El porcentage supera el 100%');
       }
     }
   }
