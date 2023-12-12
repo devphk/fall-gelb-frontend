@@ -5,11 +5,11 @@ import { ToastService } from '@core/services';
 import { WarehouseService } from '../../warehouse/warehouse.service';
 
 @Component({
-  selector: 'app-new-warehouse',
-  templateUrl: './new-warehouse.component.html',
-  styleUrls: ['./new-warehouse.component.scss']
+  selector: 'app-form-warehouse',
+  templateUrl: './form-warehouse.component.html',
+  styleUrls: ['./form-warehouse.component.scss']
 })
-export class NewWarehouseComponent implements OnInit {
+export class FormWarehouseComponent implements OnInit {
 
   warehouseForm: FormGroup = this.fb.group({
     name: this.fb.control(this.data.dialogData ? this.data.dialogData[0].name : '', [Validators.required]),
@@ -18,7 +18,7 @@ export class NewWarehouseComponent implements OnInit {
   
   constructor( private fb:FormBuilder,
                private warehouseService:WarehouseService,
-               private dialogRef:MatDialogRef<NewWarehouseComponent>,
+               private dialogRef:MatDialogRef<FormWarehouseComponent>,
                @Inject(MAT_DIALOG_DATA) private data: any,
                private toastService:ToastService) {}
 

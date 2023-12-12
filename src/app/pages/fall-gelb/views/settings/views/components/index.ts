@@ -14,4 +14,4 @@ export * from './form-customs';
 export * from './new-department';
 export * from './new-truck-type';
 export * from './new-units';
-export * from './new-warehouse';
+export * from './form-warehouse';

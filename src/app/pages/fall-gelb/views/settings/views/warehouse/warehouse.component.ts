@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewWarehouseComponent } from '../components/new-warehouse/new-warehouse.component';
+import { FormWarehouseComponent } from '../components/form-warehouse/new-warehouse.component';
 import { WarehouseService } from './warehouse.service';
 import { Warehouse } from '@shared/models/warehouse';
 
@@ -57,7 +57,7 @@ export class WarehouseComponent implements OnInit {
 
   processWarehouse(processType: string) {
     this.dialogService
-        .openDialog(NewWarehouseComponent, 
+        .openDialog(FormWarehouseComponent, 
                     processType === 'Add' ? 'Crear Almacén' : 'Editar Almacén', 
                     '800px', 
                     'auto',
