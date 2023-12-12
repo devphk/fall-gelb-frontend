@@ -27,7 +27,7 @@ import {
   FormBankAccountComponent,
   FormCurrencyComponent,
   FormUserComponent,
-  NewUnitsComponent,
+  FormUnitsComponent,
   FormWarehouseComponent,
   FormCustomsComponent,
   FormContainerTypeComponent,
@@ -74,7 +74,7 @@ const routes: Routes = [
   declarations: [
     FormCommodityTypeComponent,
     FormWarehouseComponent,
-    NewUnitsComponent,
+    FormUnitsComponent,
     FormCustomsComponent,
     FormTruckTypeComponent,
     FormContainerTypeComponent,
