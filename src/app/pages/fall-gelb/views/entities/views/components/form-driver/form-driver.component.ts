@@ -2,19 +2,19 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
-import { DriverDataPost, DriverResponse, SelectOption } from '@shared/models';
+import { DriverDataPost, SelectOption } from '@shared/models';
 import { DriversService } from '../../drivers/drivers.service';
 import { ProviderService } from '../../providers/provider.service';
 
 @Component({
-  selector: 'app-new-driver',
-  templateUrl: './new-driver.component.html',
-  styleUrls: ['./new-driver.component.scss'],
+  selector: 'app-form-driver',
+  templateUrl: './form-driver.component.html',
+  styleUrls: ['./form-driver.component.scss'],
 })
-export class NewDriverComponent implements OnInit {
+export class FormDriverComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
-    private dialogRef: MatDialogRef<NewDriverComponent>,
+    private dialogRef: MatDialogRef<FormDriverComponent>,
     private driverService: DriversService,
     private providerService: ProviderService,
     private toastService: ToastService,

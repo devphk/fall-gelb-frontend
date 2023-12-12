@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { defaultTableColumnsToDisplay } from '@shared/models/table';
-import { NewProviderComponent } from '../components';
+import { FormProviderComponent } from '../components';
 import { ProviderService } from './provider.service';
 import { ProviderDataTabla, ProviderResponse } from '@shared/models/provider';
 import { Router } from '@angular/router';
@@ -40,7 +40,7 @@ export class ProvidersComponent implements OnInit {
     private dialogService: DialogService,
     private providerService: ProviderService,
     private toastService: ToastService,
-    private router:Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +48,6 @@ export class ProvidersComponent implements OnInit {
   }
 
   getProviders() {
-
     this.tableData = [];
 
     this.providerService.getProviders().subscribe(
@@ -61,7 +60,7 @@ export class ProvidersComponent implements OnInit {
             name: provider.entity.name,
             phone: {
               value: provider.entity.phone,
-              mask: '(0000)-000-0000'
+              mask: '(0000)-000-0000',
             },
             address: provider.entity.address,
             special_tax_payer: provider.special_tax_payer,
@@ -86,7 +85,7 @@ export class ProvidersComponent implements OnInit {
   processProvider(processType: string) {
     this.dialogService
       .openDialog(
-        NewProviderComponent,
+        FormProviderComponent,
         processType === 'Add' ? 'Crear Proveedor' : 'Editar Proveedor',
         '800px',
         'auto',
@@ -125,14 +124,17 @@ export class ProvidersComponent implements OnInit {
       });
   }
 
-  seeRegister( selected: ProviderDataTabla ) {
+  seeRegister(selected: ProviderDataTabla) {
     this.viewSelected.pop();
     this.viewSelected.push(selected);
 
     this.dialogService
       .openDialog(
         ProviderModalComponent,
-        ``, '1000px', 'auto', this.viewSelected
+        ``,
+        '1000px',
+        'auto',
+        this.viewSelected
       )
       .afterClosed()
       .subscribe((provider) => {

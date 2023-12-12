@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
-import { NewDriverComponent } from '../components/new-driver/new-driver.component';
 import { DriversService } from './drivers.service';
 import { DriverDataTable, DriverResponse } from '@shared/models';
+import { FormDriverComponent } from '../components';
 
 @Component({
   selector: 'app-drivers',
@@ -26,7 +26,6 @@ export class DriversComponent implements OnInit {
   }
 
   getDrivers() {
-    
     this.tableData = [];
 
     this.driverService.getDrivers().subscribe(
@@ -58,7 +57,7 @@ export class DriversComponent implements OnInit {
   processDriver(processType: string) {
     this.dialogService
       .openDialog(
-        NewDriverComponent,
+        FormDriverComponent,
         processType === 'Add' ? 'Crear Chofer' : 'Editar Chofer',
         '800px',
         'auto',
