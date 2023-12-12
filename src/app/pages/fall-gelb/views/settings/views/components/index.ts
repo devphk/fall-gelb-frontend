@@ -6,7 +6,7 @@ export * from './form-currency';
 export * from './form-currency-rates';
 export * from './form-retention-concepts';
 export * from './form-user';
-export * from './from-contract-type';
+export * from './form-contract-type';
 export * from './from-payment-term';
 export * from './form-commodity-type';
 export * from './form-container-type';

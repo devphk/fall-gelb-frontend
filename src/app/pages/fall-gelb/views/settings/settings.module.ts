@@ -39,7 +39,7 @@ import {
   FormCargoTypeLclComponent,
   FormRetentionConceptsComponent,
   FormCurrencyRatesComponent,
-  FromContractTypeComponent,
+  FormContractTypeComponent,
 } from './views/components';
 
 import {
@@ -106,7 +106,7 @@ const routes: Routes = [
     DepartmentComponent,
     FormDepartmentComponent,
     ContractTypeComponent,
-    FromContractTypeComponent,
+    FormContractTypeComponent,
   ],
   imports: [
     CommonModule,

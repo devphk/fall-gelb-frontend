@@ -5,14 +5,14 @@ import { ContractTypeService } from '../../contract-type/contract-type.service';
 import { ToastService } from '@core/services';
 
 @Component({
-  selector: 'app-from-contract-type',
-  templateUrl: './from-contract-type.component.html',
-  styleUrls: ['./from-contract-type.component.scss'],
+  selector: 'app-form-contract-type',
+  templateUrl: './form-contract-type.component.html',
+  styleUrls: ['./form-contract-type.component.scss'],
 })
-export class FromContractTypeComponent implements OnInit {
+export class FormContractTypeComponent implements OnInit {
   constructor(
     private formBuild: FormBuilder,
-    private dialogRef: MatDialogRef<FromContractTypeComponent>,
+    private dialogRef: MatDialogRef<FormContractTypeComponent>,
     private bankService: ContractTypeService,
     private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) private data: any

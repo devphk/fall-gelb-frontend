@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { ContractTypeService } from './contract-type.service';
-import { FromContractTypeComponent } from '../components';
+import { FormContractTypeComponent } from '../components';
 import { ContractType } from '@shared/models/contract-type';
 
 @Component({
@@ -49,7 +49,7 @@ export class ContractTypeComponent implements OnInit {
   processContractType(processType: string) {
     this.dialogService
       .openDialog(
-        FromContractTypeComponent,
+        FormContractTypeComponent,
         processType === 'Add'
           ? 'Crear Tipo de Contrato'
           : 'Editar Tipo de Contrato',
