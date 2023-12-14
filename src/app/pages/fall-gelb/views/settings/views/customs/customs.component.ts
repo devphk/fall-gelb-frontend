@@ -34,6 +34,9 @@ export class CustomsComponent implements OnInit {
   }
 
   getCustoms() {
+
+    this.tableData = [];
+
     this.customsService.getCustoms()
       .subscribe((response) => {
         const tableData: CustomsDataTable[] = [];
@@ -68,7 +71,7 @@ export class CustomsComponent implements OnInit {
         .afterClosed()
         .subscribe((custom) => {
           if(custom) {
-            this.refreshCustoms();
+            this.getCustoms();
           }
         });
   }
@@ -84,33 +87,11 @@ export class CustomsComponent implements OnInit {
         this.customsService.deleteCustom(this.itemsSelected[0].id)
         .subscribe((data) => {
           this.toastService.showToaster('Aduana eliminada correctamente!')
-          this.refreshCustoms();
+          this.getCustoms();
         },
           (error) => this.toastService.showToaster(error.error.message, true));
       }
     })
-  }
-
-  refreshCustoms() {
-    this.tableData = [];
-
-    this.customsService.getCustoms()
-        .subscribe((customs) => {
-          customs.forEach((custom) => {
-
-            const customToInput:CustomsDataTable = {
-              id: custom.id,
-              name: custom.name,
-              address: custom.address,
-              transport_types: custom.transport_types,
-              longitude: custom.longitude,
-              latitude:custom.latitude
-            };
-
-            this.tableData.push(customToInput);
-
-          });
-        })
   }
 
 }
