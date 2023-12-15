@@ -74,7 +74,7 @@ export class TruckTypeComponent implements OnInit {
     this.dialogService
     .openConfirmationDialog(
             'Eliminar Tipo de Camión',
-            `¿Desea eliminar tipo de camión '${this.itemsSelected[0].name}?'`)
+            `¿Desea eliminar tipo de camión '${this.itemsSelected[0].name}'?`)
     .afterClosed()
     .subscribe((response)=>{
       if (response) {
