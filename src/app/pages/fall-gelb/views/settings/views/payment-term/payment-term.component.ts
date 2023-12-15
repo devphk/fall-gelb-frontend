@@ -25,10 +25,13 @@ export class PaymentTermComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getpaymenTerms();
+    this.getPaymenTerms();
   }
 
-  getpaymenTerms() {
+  getPaymenTerms() {
+
+    this.tableData = [];
+
     this.paymenTermService.getPaymenTerms().subscribe(
       (response) => {
         const tableData: PaymenTermTable[] = [];
@@ -62,7 +65,7 @@ export class PaymentTermComponent implements OnInit {
       .afterClosed()
       .subscribe((paymenTerm) => {
         if (paymenTerm) {
-          this.refreshPaymenTerms();
+          this.getPaymenTerms();
         }
       });
   }
@@ -83,7 +86,7 @@ export class PaymentTermComponent implements OnInit {
                 this.toastService.showToaster(
                   'Terminos de Pago eliminado correctamente!'
                 );
-                this.refreshPaymenTerms();
+                this.getPaymenTerms();
               },
               (error) =>
                 this.toastService.showToaster(error.error.message, true)
@@ -92,18 +95,4 @@ export class PaymentTermComponent implements OnInit {
       });
   }
 
-  refreshPaymenTerms() {
-    this.tableData = [];
-
-    this.paymenTermService.getPaymenTerms().subscribe((paymenTerms) => {
-      paymenTerms.forEach((paymenTerm) => {
-        const paymenTermToInput = {
-          id: paymenTerm.id,
-          name: paymenTerm.name,
-        };
-
-        this.tableData.push(paymenTermToInput);
-      });
-    });
-  }
 }
