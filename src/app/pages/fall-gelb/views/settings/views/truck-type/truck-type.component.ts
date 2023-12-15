@@ -32,6 +32,9 @@ export class TruckTypeComponent implements OnInit {
   }
 
   getTruck() {
+
+    this.tableData = [];
+
     this.truckTypeService.getTruckType()
       .subscribe((response) => {
         const tableData: truckType[] = [];
@@ -62,7 +65,7 @@ export class TruckTypeComponent implements OnInit {
         .afterClosed()
         .subscribe((custom) => {
           if(custom) {
-            this.refreshTruck();
+            this.getTruck();
           }
         });
   }
@@ -78,30 +81,12 @@ export class TruckTypeComponent implements OnInit {
         this.truckTypeService.deleteTruckType(this.itemsSelected[0].id)
         .subscribe((data) => {
           this.toastService.showToaster('Tipo de Camión eliminado correctamente!')
-          this.refreshTruck();
+          this.getTruck();
         },
           (error) => this.toastService.showToaster(error.error.message, true));
       }
     })
 
-}
-
-refreshTruck() {
-  this.tableData = [];
-
-  this.truckTypeService.getTruckType()
-      .subscribe((trucks) => {
-        trucks.forEach((truck) => {
-
-          const truckToInput:truckType = {
-            id: truck.id,
-            name: truck.name
-          };
-
-          this.tableData.push(truckToInput);
-
-        });
-      })
 }
 
 }

@@ -43,8 +43,7 @@
         color="primary"
         aria-label="Actualizar Tabla"
         matTooltip="Actualizar Tabla"
-        (click)="refreshTruck()"
-        [disabled]="itemsSelected.length > 1 || itemsSelected.length === 0">
+        (click)="getTruck()">
   <mat-icon>refresh</mat-icon>
 </button>
 
