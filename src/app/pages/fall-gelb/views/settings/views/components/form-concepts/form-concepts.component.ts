@@ -84,6 +84,8 @@ export class FormConceptsComponent implements OnInit {
         return concept.id === this.data.dialogData.conceptData.concept_type_id
       });
 
+      this.changeConceptType(conceptType?.code);
+
       console.log("concept type ", conceptType)
 
       this.showConceptOptions(conceptType?.code, this.data.dialogData.conceptData);
@@ -100,7 +102,9 @@ export class FormConceptsComponent implements OnInit {
       case 'customs':
 
         this.editConceptForm = this.fb.group({
-          customType: this.fb.control(concept.concept_customs?.customs_id, Validators.required)
+          retentionConcept: this.fb.control('', Validators.required),
+          customType: this.fb.control(concept.concept_customs?.customs_id, Validators.required),
+          custom: this.fb.control(concept.concept_customs?.customs_id, Validators.required)
         });
         this.editingCustom = true;
         
@@ -109,6 +113,7 @@ export class FormConceptsComponent implements OnInit {
       case 'ground-freight':
 
         this.editConceptForm = this.fb.group({
+          retentionConcept: this.fb.control('', Validators.required),
           conceptOrigin: this.fb.control('', Validators.required),
           conceptDestination: this.fb.control('', Validators.required)
         });
@@ -119,6 +124,7 @@ export class FormConceptsComponent implements OnInit {
       case 'international-freight':
 
         this.editConceptForm = this.fb.group({
+          retentionConcept: this.fb.control('', Validators.required),
           conceptOrigin: this.fb.control('', Validators.required),
           conceptDestination: this.fb.control('', Validators.required),
           conceptTransportType: this.fb.control('', Validators.required)
@@ -132,7 +138,8 @@ export class FormConceptsComponent implements OnInit {
         this.editConceptForm = this.fb.group({
           customType: this.fb.control('', Validators.required),
           conceptCargoType: this.fb.control('', Validators.required),
-          conceptRegion: this.fb.control('', Validators.required)
+          conceptRegion: this.fb.control('', Validators.required),
+          retentionConcept: this.fb.control('', Validators.required)
         });
         this.editingStorage = true;
 
@@ -141,7 +148,8 @@ export class FormConceptsComponent implements OnInit {
       case 'other':
 
         this.editConceptForm = this.fb.group({
-          name: this.fb.control('', Validators.required)
+          name: this.fb.control('', Validators.required),
+          retentionConcept: this.fb.control('', Validators.required)
         });
         this.editingOther = true;
 
@@ -153,7 +161,7 @@ export class FormConceptsComponent implements OnInit {
 
   }
 
-  changeConceptType(conceptCode: string) {
+  changeConceptType(conceptCode: string | undefined) {
 
     switch (conceptCode) {
       case 'customs':
@@ -455,6 +463,110 @@ export class FormConceptsComponent implements OnInit {
 
     } else {
       this.conceptForm.markAllAsTouched();
+    }
+
+  }
+
+  updateConcept() {
+
+    if (this.editConceptForm.valid) {
+
+      let conceptId = this.data.dialogData.conceptData.id;
+      
+      if (this.editingCustom) {
+
+        let retentionConceptId = this.editConceptForm.get('retentionConcept')?.value;
+        let customId = this.editConceptForm.get('custom')?.value;
+        let customTypeId = this.editConceptForm.get('customType')?.value;
+
+        this.conceptService
+            .updateCustomConcept(conceptId,
+                                 retentionConceptId,
+                                 customId,
+                                 customTypeId)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto actualizado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error actualizando concepto", true);
+            });
+        
+      } else if (this.editingGroundFreight) {
+
+        let retentionConceptId = this.editConceptForm.get('retentionConcept')?.value;
+        let origin = this.editConceptForm.get('conceptOrigin')?.value;
+        let destination = this.editConceptForm.get('conceptDestination')?.value;
+
+        this.conceptService
+            .updateGroundFreightConcept(conceptId,
+                                        retentionConceptId,
+                                        origin,
+                                        destination)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto actualizado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error actualizando concepto", true);
+            });
+
+      } else if (this.editingInternationalFreight) {
+
+        let origin = this.editConceptForm.get('conceptOrigin')?.value;
+        let destination = this.editConceptForm.get('conceptDestination')?.value;
+        let transportType = this.editConceptForm.get('conceptTransportType')?.value;
+
+        this.conceptService
+            .updateInternationalFreightConcept(conceptId,
+                                               origin,
+                                               destination,
+                                               transportType)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto actualizado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error actualizando concepto", true);
+            });
+
+      } else if (this.editingStorage) {
+
+        let customTypeId = this.editConceptForm.get('customType')?.value;
+        let cargoType = this.editConceptForm.get('conceptCargoType')?.value;
+        let region = this.editConceptForm.get('conceptRegion')?.value;
+        let retentionConceptId = this.editConceptForm.get('retentionConcept')?.value;
+
+        this.conceptService
+            .updateStorageConcept(conceptId,
+                                  retentionConceptId,
+                                  customTypeId,
+                                  cargoType,
+                                  region)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto actualizado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error actualizando concepto", true);
+            });
+
+      } else if (this.editingOther) {
+
+        let name = this.editConceptForm.get('name')?.value;
+        let retentionConceptId = this.editConceptForm.get('retentionConcept')?.value;
+
+        this.conceptService
+            .updateConceptOther(conceptId,
+                                name,
+                                retentionConceptId)
+            .subscribe((response => {
+              this.toastService.showToaster("Concepto actualizado existosamente");
+              this.dialogRef.close(true);
+            }), (error) => {
+              this.toastService.showToaster("Error actualizando concepto", true);
+            });
+
+      }
+
+    } else {
+      this.editConceptForm.markAllAsTouched();
     }
 
   }

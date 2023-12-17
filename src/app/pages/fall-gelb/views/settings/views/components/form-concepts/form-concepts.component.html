@@ -274,17 +274,29 @@
     </button>
 </div>
 
-
-<div fxLayout="row wrap"
-     [formGroup]="editConceptForm"
-     fxLayoutGap="20px"
+<div [formGroup]="editConceptForm"
      *ngIf="isEdit">
 
-     <div *ngIf="editingCustom">
+     <div *ngIf="editingCustom"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
+
+        <app-phk-select formControlName="retentionConcept"
+                        [label]="'Concepto de retención'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('retentionConcept')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="retentionConcept.id" 
+                        *ngFor="let retentionConcept of retentionConceptOptions">
+                {{retentionConcept.name}}
+            </mat-option>
+        </app-phk-select>
 
         <app-phk-select formControlName="customType"
                         [label]="'Tipo de Aduana'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('customType')
                                                     ?.errors
@@ -295,9 +307,24 @@
             </mat-option>
         </app-phk-select>    
 
+        <app-phk-select formControlName="custom"
+                        [label]="'Aduana'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('custom')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="custom.id" 
+                        *ngFor="let custom of customsOptions">
+                {{custom.name}}
+            </mat-option>
+        </app-phk-select>        
+
      </div>
 
-     <div *ngIf="editingGroundFreight">
+     <div *ngIf="editingGroundFreight"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
 
         <app-phk-input formControlName="conceptOrigin"
                         [label]="'Origen'"
@@ -320,7 +347,9 @@
 
      </div>
 
-     <div *ngIf="editingInternationalFreight">
+     <div *ngIf="editingInternationalFreight"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
 
         <app-phk-input formControlName="conceptOrigin"
                         [label]="'Origen'"
@@ -356,11 +385,13 @@
 
      </div>
 
-     <div *ngIf="editingInternationalFreight">
+     <div *ngIf="editingInternationalFreight"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
 
         <app-phk-select formControlName="customType"
                         [label]="'Tipo de Aduana'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('customType')
                                                     ?.errors
@@ -372,11 +403,13 @@
         </app-phk-select>
      </div>
 
-     <div *ngIf="editingStorage">
+     <div *ngIf="editingStorage"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
 
         <app-phk-select formControlName="customType"
                         [label]="'Tipo de Aduana'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('customType')
                                                     ?.errors
@@ -387,9 +420,22 @@
             </mat-option>
         </app-phk-select>
 
+        <app-phk-select formControlName="retentionConcept"
+                        [label]="'Concepto de retención'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('retentionConcept')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="retentionConcept.id" 
+                        *ngFor="let retentionConcept of retentionConceptOptions">
+                {{retentionConcept.name}}
+            </mat-option>
+        </app-phk-select>
+
         <app-phk-select formControlName="conceptCargoType"
                         [label]="'Tipo de carga'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('conceptCargoType')
                                                     ?.errors
@@ -412,7 +458,9 @@
 
      </div>
 
-     <div *ngIf="editingOther">
+     <div *ngIf="editingOther"
+          fxLayout="row wrap"
+          fxLayoutGap="20px">
 
         <app-phk-input formControlName="name"
                         [label]="'Nombre del concepto'"
@@ -425,5 +473,15 @@
         </app-phk-input>
 
      </div>
-
+     
+     <button
+         class="w-100"
+         mat-flat-button
+         color="primary"
+         (click)="updateConcept()"
+     >
+         Guardar
+     </button>
+     
 </div>
+
