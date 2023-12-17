@@ -6,6 +6,7 @@ import { FormBuilder,
          Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CargoType, 
+         Concept, 
          ConceptType, 
          Custom, 
          Customtype, 
@@ -34,6 +35,8 @@ export class FormConceptsComponent implements OnInit {
     forPurchase: this.fb.control('', [Validators.required])
   });
 
+  editConceptForm!: FormGroup;
+
   // Options variables
 
   customTypesOptions: Customtype[] = [];
@@ -50,6 +53,15 @@ export class FormConceptsComponent implements OnInit {
   showStorageOptions: boolean = false;
   showOtherOptions: boolean = false;
 
+  // Edit variables
+
+  isEdit: boolean = false;
+  editingCustom: boolean = false;
+  editingGroundFreight: boolean = false;
+  editingInternationalFreight: boolean = false;
+  editingStorage: boolean = false;
+  editingOther: boolean = false;
+
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,
               private fb: FormBuilder,
               private conceptService: ConceptsService,
@@ -60,8 +72,85 @@ export class FormConceptsComponent implements OnInit {
 
     console.log("data ", this.data)
 
+    let title: string = this.data.title;
     this.conceptTypes = this.data.dialogData.conceptTypes;
     this.retentionConcepts = this.data.dialogData.retentionConcepts;
+
+    if (title.includes('Editar')) {
+
+      this.isEdit = true;
+
+      let conceptType = this.conceptTypes.find((concept) => {
+        return concept.id === this.data.dialogData.conceptData.concept_type_id
+      });
+
+      console.log("concept type ", conceptType)
+
+      this.showConceptOptions(conceptType?.code, this.data.dialogData.conceptData);
+      
+    }
+
+  }
+
+  showConceptOptions(conceptCode: string | undefined,
+                     concept: Concept) {
+
+    switch (conceptCode) {
+
+      case 'customs':
+
+        this.editConceptForm = this.fb.group({
+          customType: this.fb.control(concept.concept_customs?.customs_id, Validators.required)
+        });
+        this.editingCustom = true;
+        
+        break;
+
+      case 'ground-freight':
+
+        this.editConceptForm = this.fb.group({
+          conceptOrigin: this.fb.control('', Validators.required),
+          conceptDestination: this.fb.control('', Validators.required)
+        });
+        this.editingGroundFreight = true;
+
+        break;
+        
+      case 'international-freight':
+
+        this.editConceptForm = this.fb.group({
+          conceptOrigin: this.fb.control('', Validators.required),
+          conceptDestination: this.fb.control('', Validators.required),
+          conceptTransportType: this.fb.control('', Validators.required)
+        });
+        this.editingInternationalFreight = true;
+
+        break;
+        
+      case 'storage':
+
+        this.editConceptForm = this.fb.group({
+          customType: this.fb.control('', Validators.required),
+          conceptCargoType: this.fb.control('', Validators.required),
+          conceptRegion: this.fb.control('', Validators.required)
+        });
+        this.editingStorage = true;
+
+        break;        
+        
+      case 'other':
+
+        this.editConceptForm = this.fb.group({
+          name: this.fb.control('', Validators.required)
+        });
+        this.editingOther = true;
+
+        break;        
+
+      default:
+        break;
+    }
+
   }
 
   changeConceptType(conceptCode: string) {

@@ -19,6 +19,10 @@ export class ConceptsService {
     return this.http.get('/concepts');
   }
 
+  getConceptById(conceptId: number): Observable<Concept> {
+    return this.http.get(`/concepts/${conceptId}`);
+  }
+
   getCargoTypes(): Observable<CargoType[]> {
     return this.http.get('/cargo-types');
   }
@@ -146,6 +150,88 @@ export class ConceptsService {
     }
 
     return this.http.post('/concepts',
+                          body);
+
+  }
+
+  updateCustomConcept(concept_id: number,
+                      retentionConceptId: number,
+                      customId: number,
+                      customTypeId: number) {
+
+    const body = {
+      withholding_concept_id: retentionConceptId,
+      customs_id: customId,
+      customs_type_id: customTypeId
+    }
+
+    console.log("Body ", body);
+
+    return this.http.put(`/concepts/${concept_id}`,
+                          body);
+
+  }
+
+  updateGroundFreightConcept(concept_id: number,
+                             retentionConceptId: number,
+                             origin: string,
+                             destination: string) {
+
+    const body = {
+      withholding_concept_id: retentionConceptId,
+      origin,
+      destination
+    }
+
+    return this.http.post(`/concepts/${concept_id}`,
+                          body);
+
+  }
+
+  updateInternationalFreightConcept(concept_id: number,
+                                    origin: string,
+                                    destination: string,
+                                    transportTypeId: number) {
+
+    const body = {
+      origin,
+      destination,
+      transport_type_id: transportTypeId
+    }
+
+    return this.http.post(`/concepts/${concept_id}`,
+                          body);
+
+  }
+
+  updateStorageConcept(concept_id: number,
+                       retentionConceptId: number,
+                       customTypeId: number,
+                       cargoTypeId: number,
+                       region: string) {
+
+    const body = {
+      withholding_concept_id: retentionConceptId,
+      customs_type_id: customTypeId,
+      cargo_type_id: cargoTypeId,
+      region
+    }
+
+    return this.http.post(`/concepts/${concept_id}`,
+                          body);
+
+  }
+
+  updateConceptOther(concept_id: number,
+                     name: string,
+                     retentionConceptId: number) {
+
+    const body = {
+      name,
+      withholding_concept_id: retentionConceptId
+    }
+
+    return this.http.post(`/concepts/${concept_id}`,
                           body);
 
   }

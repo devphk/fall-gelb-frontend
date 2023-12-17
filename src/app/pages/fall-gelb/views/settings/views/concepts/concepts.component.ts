@@ -136,7 +136,7 @@ export class ConceptsComponent implements OnInit {
     this.dialogService
         .openDialog(
           FormConceptsComponent,
-          processType === 'Add' ? 'Crear Concepto' : 'Editar Concepto',
+          processType === 'Add' ? 'Crear Concepto' : `Editar Concepto: ${conceptData?.name}`,
           '800px',
           'auto',
           dialogData

@@ -1,7 +1,8 @@
 
 
 <div [formGroup]="conceptOptionForm"
-     fxLayout="column">
+     fxLayout="column"
+     *ngIf="!isEdit">
     
      <app-phk-select formControlName="conceptType"
                      [label]="'Tipo de concepto'"
@@ -23,7 +24,8 @@
 
 <div fxLayout="row wrap"
      [formGroup]="conceptForm"
-     fxLayoutGap="20px">
+     fxLayoutGap="20px"
+     *ngIf="!isEdit">
 
      <app-phk-select formControlName="forSale"
                      [label]="'¿De venta?'"
@@ -270,4 +272,158 @@
     >
         Guardar
     </button>
+</div>
+
+
+<div fxLayout="row wrap"
+     [formGroup]="editConceptForm"
+     fxLayoutGap="20px"
+     *ngIf="isEdit">
+
+     <div *ngIf="editingCustom">
+
+        <app-phk-select formControlName="customType"
+                        [label]="'Tipo de Aduana'"
+                        fxFlex="calc(33% - 40px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('customType')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="customType.id" 
+                        *ngFor="let customType of customTypesOptions">
+                {{customType.name}}
+            </mat-option>
+        </app-phk-select>    
+
+     </div>
+
+     <div *ngIf="editingGroundFreight">
+
+        <app-phk-input formControlName="conceptOrigin"
+                        [label]="'Origen'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('conceptOrigin')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Campo es requerido' : null">
+
+        </app-phk-input>
+
+        <app-phk-input formControlName="conceptDestination"
+                        [label]="'Destino'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('conceptDestination')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Campo es requerido' : null">
+        </app-phk-input>
+
+     </div>
+
+     <div *ngIf="editingInternationalFreight">
+
+        <app-phk-input formControlName="conceptOrigin"
+                        [label]="'Origen'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('conceptOrigin')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Campo es requerido' : null">
+
+        </app-phk-input>
+
+        <app-phk-input formControlName="conceptDestination"
+                        [label]="'Destino'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('conceptDestination')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Campo es requerido' : null">
+        </app-phk-input>
+
+        <app-phk-select formControlName="conceptTransportType"
+                        [label]="'Tipo de transporte'"
+                        fxFlex="calc(33% - 40px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('conceptTransportType')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="transportType.id" 
+                        *ngFor="let transportType of transportTypesOptions">
+                {{transportType.name}}
+            </mat-option>
+        </app-phk-select>
+
+     </div>
+
+     <div *ngIf="editingInternationalFreight">
+
+        <app-phk-select formControlName="customType"
+                        [label]="'Tipo de Aduana'"
+                        fxFlex="calc(33% - 40px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('customType')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="customType.id" 
+                        *ngFor="let customType of customTypesOptions">
+                {{customType.name}}
+            </mat-option>
+        </app-phk-select>
+     </div>
+
+     <div *ngIf="editingStorage">
+
+        <app-phk-select formControlName="customType"
+                        [label]="'Tipo de Aduana'"
+                        fxFlex="calc(33% - 40px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('customType')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="customType.id" 
+                        *ngFor="let customType of customTypesOptions">
+                {{customType.name}}
+            </mat-option>
+        </app-phk-select>
+
+        <app-phk-select formControlName="conceptCargoType"
+                        [label]="'Tipo de carga'"
+                        fxFlex="calc(33% - 40px)"
+                        [required]="true"
+                        [errorMessage]="conceptForm.get('conceptCargoType')
+                                                    ?.errors
+                                                    ?.['required'] ? 'Campo requerido' : null">
+            <mat-option [value]="cargoType.id" 
+                        *ngFor="let cargoType of cargoTypesOptions">
+                {{cargoType.name}}
+            </mat-option>
+        </app-phk-select>
+
+        <app-phk-input formControlName="conceptRegion"
+                        [label]="'Región del concepto'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('conceptRegion')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Campo es requerido' : null">
+
+        </app-phk-input>
+
+     </div>
+
+     <div *ngIf="editingOther">
+
+        <app-phk-input formControlName="name"
+                        [label]="'Nombre del concepto'"
+                        fxFlex="calc(33% - 20px)"
+                        [required]="true"
+                        [errorMessage]="conceptOptionForm.get('name')
+                                                        ?.errors
+                                                        ?.['required'] ? 'Nombre es requerido' : null">
+
+        </app-phk-input>
+
+     </div>
+
 </div>
