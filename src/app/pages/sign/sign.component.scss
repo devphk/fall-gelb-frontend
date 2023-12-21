@@ -18,10 +18,11 @@
 
   mat-card {
 
-    padding: 30px 15px 40px 15px !important;
-    width: 300px;
+    padding: 30px 35px 55px 35px !important;
+    width: 270px;
     border: 1px solid #dadce0;
     background: var(--bgSignInCard) !important;
+    border-radius: 5px;
 
     @media screen and (max-width: 667px) {
         width: 300px;
@@ -67,9 +68,30 @@
   color: white !important;
 }
 
+.enter-button {
+  background-color: #4285F4;
+  padding: 8px 15px 8px 15px;
+  border-radius: 3px;
+  border: 1px white;
+}
+
+.enter-button:hover {
+  background-color: #0061ac;
+  cursor: pointer;
+}
+
 
 // Footer styles
 
 .sign-in-footer {
   padding: 15px 20px;
+}
+
+.sign-in-company-name {
+  margin-bottom: 8px;
+  color: rgb(26,115,232) !important;
+}
+
+.lower-card {
+  margin-top: 15px;
 }

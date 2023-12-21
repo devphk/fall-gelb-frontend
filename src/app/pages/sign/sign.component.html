@@ -24,8 +24,9 @@
              fxLayoutAlign="center center">
 
             <mat-card class="mat-elevation-z0">
-                <h4 class="text-center m-0">Inicia sesión</h4>
-                <h5 class="text-center m-10">Utiliza tu cuenta Phoinike</h5>
+                <h4 class="text-center m-0 fw-800 sign-in-company-name">Phoinike</h4>
+                <h4 class="text-center m-0 fw-600">Acceder</h4>
+                <h5 class="text-center m-10 fw-500">Utiliza tu cuenta Phoinike</h5>
         
                 <form [formGroup]="signInForm" 
                       fxLayout="column"
@@ -70,11 +71,10 @@
                             <button (click)="submit()"
                                     *ngIf="!openSpinner"
                                     color="primary"
-                                    class="fs-08 enter-button"
-                                    mat-raised-button
+                                    class="fs-08 enter-button fw-600"
                                     type="submit">
                                     <span>
-                                        Entrar
+                                        Siguiente
                                     </span>
                             </button>
     
@@ -91,6 +91,18 @@
                 </form>
         
             </mat-card>
+            <div fxLayout="row"
+                 fxLayoutGap="70px"
+                 class="lower-card">
+                 <p class="fw-600 fs-8-5">Español (Latinoamerica)</p>
+                 <div fxLayout="row"
+                      fxLayputAlign="space-between"
+                      fxLayoutGap="25px">
+                    <p class="fw-600 fs-8-5">Ayuda</p>
+                    <p class="fw-600 fs-8-5">Privacidad</p>
+                    <p class="fw-600 fs-8-5">Condiciones</p>
+                 </div>
+            </div>
         </div>
 
     </div>

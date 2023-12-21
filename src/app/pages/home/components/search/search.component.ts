@@ -92,4 +92,8 @@ export class SearchComponent implements OnDestroy {
     this.logoutSubscription.unsubscribe();
   }
 
+  buttonTest(value:string) {
+    console.log('Button: ',value);
+  }
+
 }

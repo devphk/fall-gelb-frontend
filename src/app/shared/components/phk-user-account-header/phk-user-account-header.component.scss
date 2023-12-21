@@ -17,6 +17,12 @@
 
 }
 
+::ng-deep {
+  .tooltipClass {
+    padding: 5px;
+  }
+}
+
 // Header container
 
 .header-container {
@@ -52,7 +58,7 @@
   }
 
   .mat-mini-fab:hover {
-    background-color: rgba(232, 234, 237, 0.08) !important;
+    background-color: rgb(201, 201, 201) !important;
   }
 
 }
@@ -142,4 +148,13 @@ input {
 
 span {
     color: var(--textPrimaryColor);
+}
+
+.home-message {
+  margin-top: 15px;
+}
+
+.home-message:hover {
+  color: #4285F4;
+  cursor: pointer;
 }

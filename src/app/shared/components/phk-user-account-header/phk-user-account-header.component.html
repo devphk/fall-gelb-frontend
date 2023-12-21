@@ -21,6 +21,8 @@
      <div fxLayout="row"
           fxLayoutGap="10px"
           fxLayoutAlign="center center">
+
+          <p class="fw-500 fs-12 home-message">¡Cotiza con nosotros!</p>
           
          <app-phk-theme-toggle></app-phk-theme-toggle>
      
@@ -28,7 +30,9 @@
                  aria-label="Example icon button with a home icon"
                  cdkOverlayOrigin 
                  #trigger="cdkOverlayOrigin"
-                 (click)="toggleAppsList()">
+                 (click)="toggleAppsList()"
+                 matTooltip="Aplicaciones de Phoinike"
+                 matTooltipClass="tooltipClass">
              <mat-icon>apps</mat-icon>
          </button>
          <ng-template cdkConnectedOverlay
@@ -36,7 +40,7 @@
                          [cdkConnectedOverlayOpen]="homeService.toggleAppsList">
      
              <app-phk-apps-list [appsList]="appsList"
-                                 [clickingInOutsideButton]="clickingAppsButton"></app-phk-apps-list>
+                                [clickingInOutsideButton]="clickingAppsButton"></app-phk-apps-list>
      
          </ng-template>
      
@@ -45,7 +49,9 @@
                      cdkOverlayOrigin 
                      #trigger="cdkOverlayOrigin"
                      (click)="toggleUserAccount()"
-                     class="pointer material-shadow"></ngx-avatar>
+                     class="pointer material-shadow"
+                     matTooltip="Cuenta Phoinike"
+                     matTooltipClass="tooltipClass"></ngx-avatar>
      
          <ng-template cdkConnectedOverlay
                          [cdkConnectedOverlayOrigin]="trigger"
