@@ -23,6 +23,9 @@ export class FormEmployeeComponent implements OnInit {
   contractTypes: SelectOption[] = [];
   employeeStatuses: SelectOption[] = [];
   paymentFrequencies: SelectOption[] = [];
+  employeeType: SelectOption[] = [{id: 1, name:'Tipo de Empleado 1'}, {id: 2, name:'Tipo de Empleado 2'}];
+  branchOffices: SelectOption[] = [];
+  providerTypes: SelectOption[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +42,8 @@ export class FormEmployeeComponent implements OnInit {
     this.getContractTypes();
     this.getEmployeeStatuses();
     this.getPaymentFrequencies();
+    this.getBranchOffices();
+    this.getProviderTypes();
     console.log('dialogData: ', this.data.dialogData);
   }
 
@@ -111,6 +116,18 @@ export class FormEmployeeComponent implements OnInit {
         this.data.dialogData ? this.data.dialogData[0].payment_frequency : '',
         [Validators.required]
       ),
+      employeeType: this.fb.control(
+        this.data.dialogData ? this.data.dialogData[0].employee_type_id : '',
+        [Validators.required]
+      ),
+      branchOffice: this.fb.control(
+        this.data.dialogData ? this.data.dialogData[0].branch_office_id : '',
+        [Validators.required]
+      ),
+      providerType: this.fb.control(
+        this.data.dialogData ? this.data.dialogData[0].branch_office_id : '',
+        [Validators.required]
+      )
     });
   }
 
@@ -138,6 +155,20 @@ export class FormEmployeeComponent implements OnInit {
     });
   }
 
+  getBranchOffices() {
+    this.employeesService.getBranchOffices() 
+      .subscribe((resp) => {
+        this.branchOffices = resp;
+      })
+  }
+
+  getProviderTypes(){
+    this.employeesService.getProviderTypes()
+      .subscribe((resp) => {
+        this.providerTypes = resp;
+      })
+  }
+
   saveEmployee() {
     if (this.employeeForm.valid) {
       if (this.data.title === 'Crear Empleado') {
@@ -158,16 +189,19 @@ export class FormEmployeeComponent implements OnInit {
           employee_status_id: this.employeeForm.get('employeeStatus')?.value,
           payment_frequency_id:
             this.employeeForm.get('paymentFrecuency')?.value,
+          employee_type_id: this.employeeForm.get('employeeType')?.value,
+          branch_office_id: this.employeeForm.get('branchOffice')?.value,
+          provider_type_id: this.employeeForm.get('providerType')?.value
         };
         console.log('Employee: ', employee);
 
-        this.employeesService.createEmployee(employee).subscribe(
-          (data) => {
-            this.toastService.showToaster('Empleado Creado Correctamente!');
-            this.dialogRef.close(true);
-          },
-          (error) => console.error('ERROR! :', error)
-        );
+        // this.employeesService.createEmployee(employee).subscribe(
+        //   (data) => {
+        //     this.toastService.showToaster('Empleado Creado Correctamente!');
+        //     this.dialogRef.close(true);
+        //   },
+        //   (error) => console.error('ERROR! :', error)
+        // );
       } else {
         const employeeEdit = {
           name: this.employeeForm.get('name')?.value,
@@ -186,18 +220,21 @@ export class FormEmployeeComponent implements OnInit {
           employee_status_id: this.employeeForm.get('employeeStatus')?.value,
           payment_frequency_id:
             this.employeeForm.get('paymentFrecuency')?.value,
+          employee_type_id: this.employeeForm.get('employeeType')?.value,
+          branch_office_id: this.employeeForm.get('branchOffice')?.value,
+          provider_type_id: this.employeeForm.get('providerType')?.value
         };
         console.log('employeeEdit: ', employeeEdit);
 
-        this.employeesService
-          .editEmployee(this.data.dialogData[0].id, employeeEdit)
-          .subscribe(
-            (data) => {
-              this.toastService.showToaster('Empleado Editado Correctamente!');
-              this.dialogRef.close(true);
-            },
-            (error) => this.toastService.showToaster(error.error.message, true)
-          );
+        // this.employeesService
+        //   .editEmployee(this.data.dialogData[0].id, employeeEdit)
+        //   .subscribe(
+        //     (data) => {
+        //       this.toastService.showToaster('Empleado Editado Correctamente!');
+        //       this.dialogRef.close(true);
+        //     },
+        //     (error) => this.toastService.showToaster(error.error.message, true)
+        //   );
       }
     } else {
       this.employeeForm.markAllAsTouched();

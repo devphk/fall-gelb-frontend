@@ -138,6 +138,42 @@
                 </mat-option>
                             
             </app-phk-select>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione el tipo de empleado..." 
+                            formControlName="employeeType">
+
+                <mat-option *ngFor="let type of employeeType" 
+                            [value]="type.id">
+                            {{type.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione una sucursal..." 
+                            formControlName="branchOffice">
+
+                <mat-option *ngFor="let branch of branchOffices" 
+                            [value]="branch.id">
+                            {{branch.name}}
+                </mat-option>
+                            
+            </app-phk-select>
+
+            <app-phk-select fxFlex="calc(33% - 20px)"
+                            fxFlex.lt-md="calc(100%)" 
+                            label="Seleccione el tipo de proveedor..." 
+                            formControlName="providerType">
+
+                <mat-option *ngFor="let type of providerTypes" 
+                            [value]="type.id">
+                            {{type.name}}
+                </mat-option>
+                            
+            </app-phk-select>
             
         </div> 
     </form>

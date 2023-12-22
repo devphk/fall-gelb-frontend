@@ -42,4 +42,12 @@ export class EmployeesService {
   getPaymentFrequencies() {
     return this.http.get('/payment-frequencies');
   }
+
+  getBranchOffices(){
+    return this.http.get('/branch-offices');
+  }
+
+  getProviderTypes() {
+    return this.http.get('/provider-types');
+  }
 }

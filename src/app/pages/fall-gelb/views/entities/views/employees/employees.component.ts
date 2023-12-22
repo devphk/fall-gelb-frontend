@@ -60,6 +60,8 @@ export class EmployeesComponent implements OnInit {
             payment_frequency: employee.payment_frequency_id,
             contract_type: employee.contract_type_id,
             active: employee.entity.active,
+            employee_type_id: employee.employee_type_id,
+            branch_office_id: employee.branch_office_id
           };
           tableData.push(employeeToInput);
         });

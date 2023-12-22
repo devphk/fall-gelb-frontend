@@ -17,6 +17,8 @@ export interface Employee {
   currency: Currency;
   employee_status: Contracttype;
   payment_frequency: Paymentfrequency;
+  employee_type_id: number;
+  branch_office_id: number; 
 }
 
 export interface Paymentfrequency {
@@ -79,6 +81,8 @@ export interface EmployeeDataTable {
   payment_frequency: number;
   contract_type: number;
   active: boolean;
+  employee_type_id: number;
+  branch_office_id: number;
 }
 
 export interface EmployeePost {
