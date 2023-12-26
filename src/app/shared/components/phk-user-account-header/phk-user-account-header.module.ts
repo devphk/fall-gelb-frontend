@@ -13,9 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PhkUserAccountHeaderComponent } from './phk-user-account-header.component';
 
 @NgModule({
-  declarations: [
-    PhkUserAccountHeaderComponent
-  ],
+  declarations: [PhkUserAccountHeaderComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -27,10 +25,8 @@ import { PhkUserAccountHeaderComponent } from './phk-user-account-header.compone
     OverlayModule,
     PhkAppsListModule,
     PhkUserAccountPopupModule,
-    PhkThemeToggleModule
+    PhkThemeToggleModule,
   ],
-  exports: [
-    PhkUserAccountHeaderComponent
-  ]
+  exports: [PhkUserAccountHeaderComponent],
 })
-export class PhkUserAccountHeaderModule { }
+export class PhkUserAccountHeaderModule {}

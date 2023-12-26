@@ -1,24 +1,23 @@
-
-
 // ---------- Dark theme variables ---------------- //
 
 // Background variables
 
 $bgPrimary_dark: #111111;
-$bgSecondary_dark: #1B1B1B;
-$bgTerciary_dark: #3A3A3A;
+$bgSecondary_dark: #1b1b1b;
+$bgTerciary_dark: #3a3a3a;
 // $bgSearch_dark: #212226;
-$bgSearch_dark: #1C1C1EFF;
-$bgSidenavItem_dark: #3A3A3A;
+$bgSearch_dark: #1c1c1eff;
+$bgSidenavItem_dark: #3a3a3a;
 $bgSidenavItemHover_dark: #575757;
-$bgToolbar_dark: #3A3A3A;
-$bgUserAccountPopup_dark: #3A3A3A;
+$bgToolbar_dark: #3a3a3a;
+$bgUserAccountPopup_dark: #3a3a3a;
 $bgSearchBox_dark: #575757;
 
 // Text variables
 
-$textPrimary_dark: #FFFFFF;
-$textSecondary_dark: #9D9D9D;
+$textPrimary_dark: #ffffff;
+$textSecondary_dark: #9d9d9d;
+$textPrimaryHover_dark: #3a3a3a;
 
 // Icons variables
 
@@ -26,13 +25,13 @@ $colorPrimary_dark: #f4f4f4;
 
 // Border variables
 
-$borderPrimary_dark: #9D9D9D;
+$borderPrimary_dark: #9d9d9d;
 $borderSecondary_dark: #242424;
 $borderTerciary_dark: #353535;
 
 // Angular material variables
 
-$borderFormField_dark: #9D9D9D;
+$borderFormField_dark: #9d9d9d;
 $formFieldPrimaryLabel_dark: #f4f4f4;
 $signMatCardPrimary_dark: #20232b;
 
@@ -48,12 +47,13 @@ $bgSidenavItem_light: #ffffff;
 $bgSidenavItemHover_light: #eee;
 $bgToolbar_light: #0093e1;
 $bgUserAccountPopup_light: #f4f4f4;
-$bgSearchBox_light: #F1F3F4;
+$bgSearchBox_light: #f1f3f4;
 
 // Text variables
 
 $textPrimary_light: #2a2a2a;
 $textSecondary_light: #3e3e3e;
+$textPrimaryHover_light: #3e3e3e;
 
 // Icons variables
 
@@ -68,12 +68,11 @@ $borderTerciary_light: #dadada;
 // Angular material variables
 
 $borderFormField_light: #c7c7c7;
-$formFieldPrimaryLabel_light: rgba(0,0,0,.6);
+$formFieldPrimaryLabel_light: rgba(0, 0, 0, 0.6);
 $signMatCardPrimary_light: #ffffff;
 
 // mixin that enables css variables in light mode
 @mixin lighten() {
-
   // Background variables
 
   --bgPrimaryColor: #{$bgPrimary_light};
@@ -90,6 +89,7 @@ $signMatCardPrimary_light: #ffffff;
 
   --textPrimaryColor: #{$textPrimary_light};
   --textSecondaryColor: #{$textSecondary_light};
+  --textPrimaryHover: #{$textPrimaryHover_light};
 
   // Icons variables
 
@@ -106,12 +106,10 @@ $signMatCardPrimary_light: #ffffff;
   --borderFormFieldColor: #{$borderFormField_light};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
   --bgSignInCard: #{$signMatCardPrimary_light};
-
 }
 
 // mixin that enables css variables in dark mode
 @mixin darken() {
-
   // Background variables
 
   --bgPrimaryColor: #{$bgPrimary_dark};
@@ -127,6 +125,7 @@ $signMatCardPrimary_light: #ffffff;
   // Text variables
 
   --textPrimaryColor: #{$textPrimary_dark};
+  --textPrimaryHover: #{$textPrimaryHover_dark};
   --textSecondaryColor: #{$textSecondary_dark};
 
   // Icons variables
@@ -140,9 +139,8 @@ $signMatCardPrimary_light: #ffffff;
   --borderTerciaryColor: #{$borderTerciary_dark};
 
   // Angular material variables
-  
+
   --borderFormFieldColor: #{$borderFormField_dark};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
   --bgSignInCard: #{$signMatCardPrimary_dark};
-
 }

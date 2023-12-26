@@ -4,35 +4,33 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard-sidebar',
   templateUrl: './dashboard-sidebar.component.html',
-  styleUrls: ['./dashboard-sidebar.component.scss']
+  styleUrls: ['./dashboard-sidebar.component.scss'],
 })
 export class DashboardSidebarComponent implements OnInit {
-
-  sidebarItems: any [] = [
+  sidebarItems: any[] = [
     {
       itemTitle: 'Inicio',
-      itemIcon: 'home',
-      itemLink: 'home'
+      itemIcon: 'account_circle',
+      itemLink: 'home',
     },
     {
       itemTitle: 'Información personal',
-      itemIcon: 'person',
-      itemLink: 'personal-information'
+      itemIcon: 'badge',
+      itemLink: 'personal-information',
     },
     {
       itemTitle: 'Seguridad',
       itemIcon: 'lock',
-      itemLink: 'security'
-    }
-  ]
+      itemLink: 'security',
+    },
+  ];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   isActive(path: string): boolean {
-    return this.router.isActive("user-dashboard/" + path, true);
+    return this.router.isActive('user-dashboard/' + path, true);
   }
 
   navigate(path: string) {
