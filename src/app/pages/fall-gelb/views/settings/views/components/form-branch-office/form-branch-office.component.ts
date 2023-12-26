@@ -48,19 +48,17 @@ export class FormBranchOfficeComponent implements OnInit {
           address: this.branchOfficeForm.get('address')?.value, 
         }
   
-        // this.warehouseService.editWarehouse(editWarehouse, this.data.dialogData[0].id)
-        //   .subscribe((data) => {
-        //     this.toastService.showToaster("Almacén Editado Correctamente!")
-        //     this.dialogRef.close(true);
-        //   },
-        //              (error) => this.toastService.showToaster(error.error.message, true))
+        this.branchOfficeService.editBranchOffice(editBranchOffice, this.data.dialogData[0].id)
+          .subscribe((data) => {
+            this.toastService.showToaster("Sucursal Editada Correctamente!")
+            this.dialogRef.close(true);
+          },
+                     (error) => this.toastService.showToaster(error.error.message, true))
 
       }
 
     } else{
       this.branchOfficeForm.markAllAsTouched();
-      console.log('Invalido: ', this.branchOfficeForm)
-
     }
   }
 

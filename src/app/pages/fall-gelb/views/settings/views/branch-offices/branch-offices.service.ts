@@ -28,19 +28,4 @@ export class BranchOfficesService {
     return this.http.put(`/branch-offices/${id}`, data)
   }
 
-  // getWarehouses(): Observable<Warehouse[]> {
-  //   return this.http.get('/warehouses');
-  // }
-
-  // createWarehouse(data: any): Observable<Warehouse[]> {
-  //   return this.http.post('/warehouses', data, undefined, true, LoadingMessage.CREATING_WAREHOUSE);
-  // }
-
-  // deleteWarehouse(id:number) {
-  //   return this.http.delete(`/warehouses/${id}`, undefined, true, LoadingMessage.DELETING_WAREHOUSE);
-  // }
-
-  // editWarehouse(data: any, id:number) {
-  //   return this.http.put(`/warehouses/${id}`, data)
-  // }
 }

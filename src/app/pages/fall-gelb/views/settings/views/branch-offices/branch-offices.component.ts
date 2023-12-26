@@ -76,21 +76,21 @@ export class BranchOfficesComponent implements OnInit {
   }
 
   deleteWarehouse() {
-    // this.dialogService
-    // .openConfirmationDialog(
-    //         'Eliminar Almacén',
-    //         `¿Desea eliminar almacén '${this.itemsSelected[0].name}'?`)
-    // .afterClosed()
-    // .subscribe((response)=>{
-    //   if (response) {
-    //     this.warehouseService.deleteWarehouse(this.itemsSelected[0].id)
-    //     .subscribe((data) => {
-    //       this.toastService.showToaster('Almacén eliminado correctamente!')
-    //       this.refreshWarehouses();
-    //     },
-    //       (error) => this.toastService.showToaster(error.error.message, true));
-    //   }
-    // })
+    this.dialogService
+    .openConfirmationDialog(
+            'Eliminar Sucursal',
+            `¿Desea eliminar sucursal '${this.itemsSelected[0].name}'?`)
+    .afterClosed()
+    .subscribe((response)=>{
+      if (response) {
+        this.branchOfficesService.deleteBranchOffice(this.itemsSelected[0].id)
+        .subscribe((data) => {
+          this.toastService.showToaster('Sucursal eliminada correctamente!')
+          this.getBranchOffices();
+        },
+          (error) => this.toastService.showToaster(error.error.message, true));
+      }
+    })
   }
 
 }
