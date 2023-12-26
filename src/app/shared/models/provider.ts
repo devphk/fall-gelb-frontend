@@ -51,31 +51,6 @@ export interface ProviderDataTabla {
   provider_transport_type_id?: number;
 }
 
-// export interface ProviderServices {
-//   id: number;
-//   provider_id: number;
-//   concept_id: number;
-//   amount: number;
-//   unit_id: number;
-//   payment_term_id: number;
-//   currency_id: number;
-//   validity_date: string;
-//   iva: boolean;
-// }
-// export interface ProviderServicesDataTable {
-//   id: number;
-//   amount: number;
-//   validity_date: string;
-//   concept_id: number;
-//   concept_name?: string;
-//   unit_id?: number;
-//   currency_id?: number;
-//   iva?: boolean;
-//   payment_term_id?: number;
-//   concept_name_test?: string;
-
-// }
-
 export interface ProviderServiceData {
   concept_id: number;
   amount: number;
@@ -167,17 +142,6 @@ export interface Currency {
 export interface Unit {
   id: number;
   name: string;
-}
-
-export interface Concept {
-  id: number;
-  name: string;
-  concept_type_id: number;
-  for_sale: boolean;
-  for_purchase: boolean;
-  created_at: string;
-  updated_at: string;
-  retention_concept_id: number;
 }
 
 export interface Provider {
