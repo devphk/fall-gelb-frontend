@@ -84,6 +84,10 @@ export class PhkSidenavComponent implements OnInit {
           title: 'Monedas',
         },
         {
+          path: 'branch-offices',
+          title: 'Sucursales',
+        },
+        {
           path: 'currency-rates',
           title: 'Tasas Monetarias',
         },

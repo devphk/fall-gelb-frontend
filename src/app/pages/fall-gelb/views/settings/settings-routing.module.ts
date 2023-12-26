@@ -20,6 +20,7 @@ import {
 } from './views';
 import { SettingsComponent } from './settings.component';
 import { ConfigsComponent } from './views/configs/configs.component';
+import { BranchOfficesComponent } from './views/branch-offices/branch-offices.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'bank-accounts',
     component: BankAccountComponent,
+  },
+  {
+    path: 'branch-offices',
+    component: BranchOfficesComponent,
   },
   {
     path: 'currencies',

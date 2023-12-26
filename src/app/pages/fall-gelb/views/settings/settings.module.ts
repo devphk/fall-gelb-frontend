@@ -62,6 +62,8 @@ import {
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfigsComponent } from './views/configs/configs.component';
+import { BranchOfficesComponent } from './views/branch-offices/branch-offices.component';
+import { FormBranchOfficeComponent } from './views/components/form-branch-office/form-branch-office.component';
 
 const routes: Routes = [
   {
@@ -107,6 +109,8 @@ const routes: Routes = [
     FormDepartmentComponent,
     ContractTypeComponent,
     FormContractTypeComponent,
+    BranchOfficesComponent,
+    FormBranchOfficeComponent,
   ],
   imports: [
     CommonModule,

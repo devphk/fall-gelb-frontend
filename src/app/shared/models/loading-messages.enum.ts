@@ -46,5 +46,7 @@ export enum LoadingMessage {
   CREATING_PROVIDER_SERVICE = 'Creando Servicio de Proveedor...',
   DELETING_PROVIDER_SERVICE = 'Eliminando Servicio de Proveedor...',
   CREATING_PROVIDER_DOCUMENT = 'Creando Documento de Proveedor...',
-  DELETING_PROVIDER_DOCUMENT = 'Eliminando Documento de Proveedor...'
+  DELETING_PROVIDER_DOCUMENT = 'Eliminando Documento de Proveedor...',
+  CREATING_BRANCH_OFFICE = 'Creando Surcursal...',
+  DELETING_BRANCH_OFFICE = 'Eliminando Sucursal...'
 }
