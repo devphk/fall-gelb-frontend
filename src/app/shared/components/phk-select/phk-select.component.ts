@@ -48,13 +48,9 @@ export class PhkSelectComponent implements OnInit,
 
   @Output() optionSelected: EventEmitter<any> = new EventEmitter();
   @Output() extraField: EventEmitter<string> = new EventEmitter();
-<<<<<<< HEAD
   ngControl!: NgControl;
-=======
   @Input() errorMessage: string | null = null;
 
-  ngControl!: any;
->>>>>>> feat/CFG-015
   extraFieldInput: string = '';
 
   constructor(public injector: Injector) {

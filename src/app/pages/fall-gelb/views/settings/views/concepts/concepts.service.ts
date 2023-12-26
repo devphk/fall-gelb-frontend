@@ -63,8 +63,6 @@ export class ConceptsService {
       for_purchase: forPurchase
     }
 
-    console.log("Body ", body);
-
     return this.http.post('/concepts',
                           body);
 

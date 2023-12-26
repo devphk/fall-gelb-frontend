@@ -1,3 +1,5 @@
+import { Concept } from "./concept";
+
 export interface ProviderPost {
   name: string;
   phone: string;

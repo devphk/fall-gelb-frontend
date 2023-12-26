@@ -24,12 +24,12 @@
 
 <div fxLayout="row wrap"
      [formGroup]="conceptForm"
-     fxLayoutGap="20px"
      *ngIf="!isEdit">
 
      <app-phk-select formControlName="forSale"
                      [label]="'¿De venta?'"
-                     fxFlex="calc(33% - 20px)"
+                     fxFlex="calc(50%)"
+                     class="mr-20"
                      [required]="true"
                      [errorMessage]="conceptForm.get('forSale')
                                                 ?.errors
@@ -46,7 +46,7 @@
 
      <app-phk-select formControlName="forPurchase"
                      [label]="'¿De compra?'"
-                     fxFlex="calc(33% - 40px)"
+                     fxFlex="calc(50% - 20px)"
                      [required]="true"
                      [errorMessage]="conceptForm.get('forPurchase')
                                                 ?.errors
@@ -61,11 +61,12 @@
 
      <div *ngIf="showCustomOptions"
           fxLayout="row"
-          fxLayoutGap="20px">
+          class="w-100">
 
         <app-phk-select formControlName="retentionConcept"
                         [label]="'Concepto de retención'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('retentionConcept')
                                                     ?.errors
@@ -78,7 +79,8 @@
 
         <app-phk-select formControlName="custom"
                         [label]="'Aduana'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('custom')
                                                     ?.errors
@@ -104,12 +106,13 @@
      </div>
 
      <div *ngIf="showGroundFreightOptions"
-          fxLayout="row"
-          fxLayoutGap="20px">
+          fxLayout="row wrap"
+          class="w-100">
 
         <app-phk-select formControlName="retentionConcept"
                         [label]="'Concepto de retención'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('retentionConcept')
                                                     ?.errors
@@ -122,7 +125,8 @@
 
         <app-phk-input formControlName="conceptOrigin"
                         [label]="'Origen'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptOptionForm.get('conceptOrigin')
                                                         ?.errors
@@ -132,7 +136,7 @@
 
         <app-phk-input formControlName="conceptDestination"
                         [label]="'Destino'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33% - 40px)"
                         [required]="true"
                         [errorMessage]="conceptOptionForm.get('conceptDestination')
                                                         ?.errors
@@ -143,12 +147,13 @@
      </div>
 
      <div *ngIf="internationalFreightOptions"
-          fxLayout="row"
-          fxLayoutGap="20px">
+          fxLayout="row wrap"
+          class="w-100">
 
         <app-phk-select formControlName="retentionConcept"
                         [label]="'Concepto de retención'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('retentionConcept')
                                                     ?.errors
@@ -161,7 +166,8 @@
 
         <app-phk-select formControlName="conceptTransportType"
                         [label]="'Tipo de transporte'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('conceptTransportType')
                                                     ?.errors
@@ -174,7 +180,7 @@
 
         <app-phk-input formControlName="conceptOrigin"
                         [label]="'Origen'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33% - 40px)"
                         [required]="true"
                         [errorMessage]="conceptOptionForm.get('conceptOrigin')
                                                         ?.errors
@@ -184,7 +190,7 @@
 
         <app-phk-input formControlName="conceptDestination"
                         [label]="'Destino'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33% - 60px)"
                         [required]="true"
                         [errorMessage]="conceptOptionForm.get('conceptDestination')
                                                         ?.errors
@@ -196,11 +202,12 @@
 
      <div *ngIf="showStorageOptions"
           fxLayout="row"
-          fxLayoutGap="20px">
+          class="w-100">
 
         <app-phk-select formControlName="customType"
                         [label]="'Tipo de Aduana'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('customType')
                                                     ?.errors
@@ -213,7 +220,8 @@
 
         <app-phk-select formControlName="conceptCargoType"
                         [label]="'Tipo de carga'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('conceptCargoType')
                                                     ?.errors
@@ -226,7 +234,7 @@
 
         <app-phk-input formControlName="conceptRegion"
                         [label]="'Región del concepto'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33% - 40px)"
                         [required]="true"
                         [errorMessage]="conceptOptionForm.get('conceptRegion')
                                                         ?.errors
@@ -251,7 +259,7 @@
 
         <app-phk-select formControlName="retentionConcept"
                         [label]="'Concepto de retención'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('retentionConcept')
                                                     ?.errors
@@ -278,12 +286,12 @@
      *ngIf="isEdit">
 
      <div *ngIf="editingCustom"
-          fxLayout="row wrap"
-          fxLayoutGap="20px">
+          fxLayout="row wrap">
 
         <app-phk-select formControlName="retentionConcept"
                         [label]="'Concepto de retención'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('retentionConcept')
                                                     ?.errors
@@ -296,7 +304,8 @@
 
         <app-phk-select formControlName="customType"
                         [label]="'Tipo de Aduana'"
-                        fxFlex="calc(33% - 20px)"
+                        fxFlex="calc(33%)"
+                        class="mr-20"
                         [required]="true"
                         [errorMessage]="conceptForm.get('customType')
                                                     ?.errors
@@ -372,7 +381,7 @@
 
         <app-phk-select formControlName="conceptTransportType"
                         [label]="'Tipo de transporte'"
-                        fxFlex="calc(33% - 40px)"
+                        fxFlex="calc(33% - 20px)"
                         [required]="true"
                         [errorMessage]="conceptForm.get('conceptTransportType')
                                                     ?.errors
