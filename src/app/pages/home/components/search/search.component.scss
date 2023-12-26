@@ -140,7 +140,12 @@ span {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  max-width: 5%;
+  max-width: 5rem;
+}
+
+.footer-button:hover {
+  color: #4285F4;
+  cursor: pointer;
 }
 
 .home-message {
