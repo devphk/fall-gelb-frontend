@@ -14,9 +14,7 @@ import { PhkUserAccountHeaderComponent } from './phk-user-account-header.compone
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [
-    PhkUserAccountHeaderComponent
-  ],
+  declarations: [PhkUserAccountHeaderComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -29,10 +27,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     PhkAppsListModule,
     PhkUserAccountPopupModule,
     PhkThemeToggleModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
-  exports: [
-    PhkUserAccountHeaderComponent
-  ]
+  exports: [PhkUserAccountHeaderComponent],
 })
-export class PhkUserAccountHeaderModule { }
+export class PhkUserAccountHeaderModule {}

@@ -1,25 +1,18 @@
-
 <div class="h-100vh user-dashboard-container">
+  <app-phk-user-account-header
+    class="w-100"
+    [showSearch]="true"
+    [showLogo]="true"
+  >
+  </app-phk-user-account-header>
 
-     <app-phk-user-account-header class="w-100"
-                                  [showSearch]="true"
-                                  [showLogo]="true">
+  <div fxLayout="row" fxLayoutGap="20px" class="wrapper-info">
+    <app-dashboard-sidebar fxFlex="280px"></app-dashboard-sidebar>
 
-     </app-phk-user-account-header>
-
-    <div fxLayout="row"
-         fxLayoutGap="20px">
-
-        <app-dashboard-sidebar fxFlex="280px"></app-dashboard-sidebar>
-
-        <div fxFlex="calc(100% - 300px)">
-            <div class="center-content"
-                 ngClass.gt-md="w-50"
-                 ngClass.lt-md="w-100">
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-
+    <div class="container-box w-100 center-content">
+      <div class="container-info">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-
+  </div>
 </div>

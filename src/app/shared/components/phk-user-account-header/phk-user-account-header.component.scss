@@ -1,20 +1,17 @@
-
 // Global styles
 
 :host ::ng-deep {
+  .mat-mini-fab.mat-accent {
+    background-color: transparent;
+  }
 
-    .mat-mini-fab.mat-accent {
-        background-color: transparent;
-    }
+  .mat-mini-fab:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+  }
 
-    .mat-mini-fab:not([class*=mat-elevation-z]) {
-        box-shadow: none;
-    }
-
-    .mat-mini-fab:hover {
-        background-color: #f0f0f0;
-    }
-
+  .mat-mini-fab:hover {
+    background-color: #f0f0f0;
+  }
 }
 
 ::ng-deep {
@@ -26,12 +23,12 @@
 // Header container
 
 .header-container {
-    height: 70px;
-    margin: 0 20px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    flex-direction: row;
+  height: 64px;
+  margin: 0 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
 }
 
 // Search box styles
@@ -60,7 +57,6 @@
   .mat-mini-fab:hover {
     background-color: rgb(201, 201, 201) !important;
   }
-
 }
 
 // Global styles
@@ -115,7 +111,7 @@ h1 {
   background-color: var(--bgSearchBox);
   border-radius: 5px;
   .mat-icon {
-    color: #5F6368 !important;
+    color: #5f6368 !important;
   }
 }
 
@@ -140,14 +136,14 @@ input {
 // Footer styles
 
 .search-footer {
-    background-color: var(--bgSearchColor);
-    height: 55px;
-    width: 100%;
-    padding: 0 20px;
+  background-color: var(--bgSearchColor);
+  height: 55px;
+  width: 100%;
+  padding: 0 20px;
 }
 
 span {
-    color: var(--textPrimaryColor);
+  color: var(--textPrimaryColor);
 }
 
 .home-message {
@@ -155,6 +151,6 @@ span {
 }
 
 .home-message:hover {
-  color: #4285F4;
+  color: #4285f4;
   cursor: pointer;
 }

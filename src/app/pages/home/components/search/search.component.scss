@@ -21,7 +21,6 @@
   .mat-mini-fab:hover {
     background-color: rgba(232, 234, 237, 0.08) !important;
   }
-
 }
 
 // Global styles
@@ -36,7 +35,7 @@
 // Header styles
 
 .home-header-container {
-  height: 70px;
+  height: 64px;
   margin: 0 20px;
   display: flex;
   justify-content: end;
@@ -52,7 +51,7 @@
 .search-title {
   font-weight: bold;
   font-size: 5em;
-  color: #4285F4;
+  color: #4285f4;
   padding: 20px;
 }
 
@@ -100,31 +99,31 @@ input {
 // Footer styles
 
 .search-footer {
-    background-color: var(--bgSearchColor);
-    height: 55px;
-    width: 100%;
-    padding: 0 20px;
+  background-color: var(--bgSearchColor);
+  height: 55px;
+  width: 100%;
+  padding: 0 20px;
 }
 
 span {
-    color: var(--textPrimaryColor);
+  color: var(--textPrimaryColor);
 }
 
 .box {
-    background-color: var(--bgSearchColor);
-    max-height: 0px;
-    overflow-y: hidden;
-    transition: ease-in-out 400ms max-height;
+  background-color: var(--bgSearchColor);
+  max-height: 0px;
+  overflow-y: hidden;
+  transition: ease-in-out 400ms max-height;
 }
 
 .box.opened {
-    max-height: 100%;
-    transition: ease-in-out 800ms max-height;
+  max-height: 100%;
+  transition: ease-in-out 800ms max-height;
 }
 
 .content {
-    padding: 16px;
-}  
+  padding: 16px;
+}
 
 .apps-container img {
   max-width: 50%;
@@ -135,7 +134,7 @@ span {
   margin-top: 20px;
 }
 
-.app-button{
+.app-button {
   appearance: none;
   border: none;
   background-color: transparent;
@@ -144,7 +143,7 @@ span {
 }
 
 .footer-button:hover {
-  color: #4285F4;
+  color: #4285f4;
   cursor: pointer;
 }
 
@@ -153,6 +152,6 @@ span {
 }
 
 .home-message:hover {
-  color: #4285F4;
+  color: #4285f4;
   cursor: pointer;
 }
