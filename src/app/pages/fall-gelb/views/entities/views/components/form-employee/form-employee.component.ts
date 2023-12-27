@@ -8,7 +8,7 @@ import {
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
 import { EmployeesService } from '../../employees/employees.service';
-import { SelectOption } from '@shared/models';
+import { ProviderGet, SelectOption } from '@shared/models';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -25,7 +25,7 @@ export class FormEmployeeComponent implements OnInit {
   paymentFrequencies: SelectOption[] = [];
   employeeType: SelectOption[] = [];
   branchOffices: SelectOption[] = [];
-  providerTypes: SelectOption[] = [];
+  providers: ProviderGet[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -43,7 +43,7 @@ export class FormEmployeeComponent implements OnInit {
     this.getEmployeeStatuses();
     this.getPaymentFrequencies();
     this.getBranchOffices();
-    this.getProviderTypes();
+    this.getProviders();
     this.getEmployeeTypes();
     console.log('dialogData: ', this.data.dialogData);
   }
@@ -130,7 +130,7 @@ export class FormEmployeeComponent implements OnInit {
         [Validators.required]
       ),
       providerType: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].branch_office_id : null,
+        this.data.dialogData ? this.data.dialogData[0].provider.id : null,
         [Validators.required]
       )
     });
@@ -167,10 +167,11 @@ export class FormEmployeeComponent implements OnInit {
       })
   }
 
-  getProviderTypes() {
-    this.employeesService.getProviderTypes()
+  getProviders() {
+    this.employeesService.getProviders()
       .subscribe((resp) => {
-        this.providerTypes = resp;
+        this.providers = resp;
+        console.log('providers: ', this.providers);
       })
   }
 
@@ -204,7 +205,7 @@ export class FormEmployeeComponent implements OnInit {
             this.employeeForm.get('paymentFrecuency')?.value,
           employee_type_id: this.employeeForm.get('employeeType')?.value,
           branch_office_id: this.employeeForm.get('branchOffice')?.value,
-          provider_type_id: this.employeeForm.get('providerType')?.value
+          provider_id: this.employeeForm.get('providerType')?.value
         };
         console.log('Employee: ', employee);
 
@@ -236,7 +237,7 @@ export class FormEmployeeComponent implements OnInit {
             this.employeeForm.get('paymentFrecuency')?.value,
           employee_type_id: this.employeeForm.get('employeeType')?.value,
           branch_office_id: this.employeeForm.get('branchOffice')?.value,
-          provider_type_id: this.employeeForm.get('providerType')?.value
+          provider_id: this.employeeForm.get('providerType')?.value
         };
         console.log('employeeEdit: ', employeeEdit);
 

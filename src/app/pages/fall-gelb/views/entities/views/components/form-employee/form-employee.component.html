@@ -176,9 +176,9 @@
                             label="Seleccione el tipo de proveedor..." 
                             formControlName="providerType">
 
-                <mat-option *ngFor="let type of providerTypes" 
+                <mat-option *ngFor="let type of providers" 
                             [value]="type.id">
-                            {{type.name}}
+                            {{type.entity.name}}
                 </mat-option>
                             
             </app-phk-select>

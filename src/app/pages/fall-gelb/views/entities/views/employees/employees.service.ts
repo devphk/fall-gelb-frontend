@@ -47,8 +47,8 @@ export class EmployeesService {
     return this.http.get('/branch-offices');
   }
 
-  getProviderTypes() {
-    return this.http.get('/provider-types');
+  getProviders() {
+    return this.http.get('/providers');
   }
 
   getEmployeeTypes() {

@@ -24,7 +24,7 @@ export interface ProviderResponse {
   entity: Entity;
 }
 
-interface Entity {
+export interface Entity {
   id: number;
   name: string;
   phone: string;
@@ -155,4 +155,42 @@ export interface Provider {
   provider_type_id: number;
   is_national: boolean;
   provider_transport_type_id: number;
+}
+
+export interface ProviderGet {
+  id: number;
+  entity_id: number;
+  special_tax_payer: boolean;
+  iva_retention: number;
+  person_type_id: number;
+  provider_type_id: number;
+  is_national: boolean;
+  provider_transport_type_id?: number;
+  entity: Entity;
+  provider_type: Providertype;
+  person_type: Persontype;
+}
+
+export interface Persontype {
+  id: number;
+  name: string;
+  document_prefix: string;
+}
+
+export interface Providertype {
+  id: number;
+  name: string;
+  code: string;
+}
+
+export interface Entity {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  active: boolean;
+  address: string;
+  created_at: string;
+  updated_at: string;
+  last_name?: string;
 }

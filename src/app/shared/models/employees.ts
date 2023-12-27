@@ -11,17 +11,41 @@ export interface Employee {
   schedule_end_time: string;
   employee_status_id: number;
   payment_frequency_id: number;
+  employee_type_id: number;
+  branch_office_id: number;
+  bonus_amount: string;
+  provider_id: number;
+  bonus_payment_frequency_id?: any;
   entity: Entity;
   departament: Departament;
   contract_type: Contracttype;
   currency: Currency;
   employee_status: Contracttype;
   payment_frequency: Paymentfrequency;
-  employee_type_id: number;
-  branch_office_id: number; 
+  provider: Provider;
+  branch_office: Branchoffice;
 }
 
-export interface Paymentfrequency {
+export interface Branchoffice {
+  id: number;
+  name: string;
+  address: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Provider {
+  id: number;
+  entity_id: number;
+  special_tax_payer: boolean;
+  iva_retention: number;
+  person_type_id: number;
+  provider_type_id: number;
+  is_national: boolean;
+  provider_transport_type_id?: any;
+}
+
+ export interface Paymentfrequency {
   id: number;
   name: string;
   code: string;
@@ -35,7 +59,7 @@ export interface Currency {
   name: string;
   decimals: number;
   created_at?: any;
-  updated_at: string;
+  updated_at?: any;
 }
 
 export interface Contracttype {
@@ -53,13 +77,13 @@ export interface Departament {
 export interface Entity {
   id: number;
   name: string;
-  last_name: string;
   phone: string;
   email: string;
   active: boolean;
   address: string;
   created_at: string;
   updated_at: string;
+  last_name: string;
 }
 
 export interface EmployeeDataTable {
@@ -85,6 +109,7 @@ export interface EmployeeDataTable {
   active: boolean;
   employee_type_id: number;
   branch_office_id: number;
+  provider: Provider;
 }
 
 export interface EmployeePost {

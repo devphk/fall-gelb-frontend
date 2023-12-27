@@ -63,7 +63,8 @@ export class EmployeesComponent implements OnInit {
             contract_type: employee.contract_type_id,
             active: employee.entity.active,
             employee_type_id: employee.employee_type_id,
-            branch_office_id: employee.branch_office_id
+            branch_office_id: employee.branch_office_id,
+            provider: employee.provider
           };
           tableData.push(employeeToInput);
         });
