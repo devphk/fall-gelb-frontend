@@ -23,7 +23,7 @@ export class FormEmployeeComponent implements OnInit {
   contractTypes: SelectOption[] = [];
   employeeStatuses: SelectOption[] = [];
   paymentFrequencies: SelectOption[] = [];
-  employeeType: SelectOption[] = [{id: 1, name:'Tipo de Empleado 1'}, {id: 2, name:'Tipo de Empleado 2'}];
+  employeeType: SelectOption[] = [];
   branchOffices: SelectOption[] = [];
   providerTypes: SelectOption[] = [];
 
@@ -44,6 +44,7 @@ export class FormEmployeeComponent implements OnInit {
     this.getPaymentFrequencies();
     this.getBranchOffices();
     this.getProviderTypes();
+    this.getEmployeeTypes();
     console.log('dialogData: ', this.data.dialogData);
   }
 
@@ -63,6 +64,10 @@ export class FormEmployeeComponent implements OnInit {
     this.employeeForm = this.fb.group({
       name: this.fb.control(
         this.data.dialogData ? this.data.dialogData[0].name : '',
+        [Validators.required]
+      ),
+      lastName: this.fb.control(
+        this.data.dialogData ? this.data.dialogData[0].last_name : '',
         [Validators.required]
       ),
       phone: this.fb.control(
@@ -125,7 +130,7 @@ export class FormEmployeeComponent implements OnInit {
         [Validators.required]
       ),
       providerType: this.fb.control(
-        this.data.dialogData ? this.data.dialogData[0].branch_office_id : '',
+        this.data.dialogData ? this.data.dialogData[0].branch_office_id : null,
         [Validators.required]
       )
     });
@@ -162,10 +167,17 @@ export class FormEmployeeComponent implements OnInit {
       })
   }
 
-  getProviderTypes(){
+  getProviderTypes() {
     this.employeesService.getProviderTypes()
       .subscribe((resp) => {
         this.providerTypes = resp;
+      })
+  }
+
+  getEmployeeTypes() {
+    this.employeesService.getEmployeeTypes()
+      .subscribe((resp) => {
+        this.employeeType = resp;
       })
   }
 
@@ -174,6 +186,7 @@ export class FormEmployeeComponent implements OnInit {
       if (this.data.title === 'Crear Empleado') {
         const employee = {
           name: this.employeeForm.get('name')?.value,
+          last_name: this.employeeForm.get('lastName')?.value,
           phone: this.employeeForm.get('phone')?.value,
           email: this.employeeForm.get('email')?.value,
           active: this.employeeForm.get('isActive')?.value,
@@ -195,16 +208,17 @@ export class FormEmployeeComponent implements OnInit {
         };
         console.log('Employee: ', employee);
 
-        // this.employeesService.createEmployee(employee).subscribe(
-        //   (data) => {
-        //     this.toastService.showToaster('Empleado Creado Correctamente!');
-        //     this.dialogRef.close(true);
-        //   },
-        //   (error) => console.error('ERROR! :', error)
-        // );
+        this.employeesService.createEmployee(employee).subscribe(
+          (data) => {
+            this.toastService.showToaster('Empleado Creado Correctamente!');
+            this.dialogRef.close(true);
+          },
+          (error) => this.toastService.showToaster(error.error.message, true)
+        );
       } else {
         const employeeEdit = {
           name: this.employeeForm.get('name')?.value,
+          last_name: this.employeeForm.get('lastName')?.value,
           phone: this.employeeForm.get('phone')?.value,
           email: this.employeeForm.get('email')?.value,
           active: this.employeeForm.get('isActive')?.value,

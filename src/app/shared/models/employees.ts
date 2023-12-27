@@ -53,6 +53,7 @@ export interface Departament {
 export interface Entity {
   id: number;
   name: string;
+  last_name: string;
   phone: string;
   email: string;
   active: boolean;
@@ -64,6 +65,7 @@ export interface Entity {
 export interface EmployeeDataTable {
   id:number;
   name:string;
+  last_name:string;
   phone:{
     value:string;
     mask:string;

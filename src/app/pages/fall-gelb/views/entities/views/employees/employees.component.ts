@@ -14,11 +14,12 @@ export class EmployeesComponent implements OnInit {
   tableColumnsToDisplay: string[] = [
     'ID',
     'Nombre',
+    'Apellido',
     'Telefono',
     'Email',
     'Direccion',
   ];
-  tableColumnsTags: string[] = ['id', 'name', 'phone', 'email', 'address'];
+  tableColumnsTags: string[] = ['id', 'name', 'last_name', 'phone', 'email', 'address'];
   tableData: any[] = [];
   itemsSelected: any[] = [];
 
@@ -43,6 +44,7 @@ export class EmployeesComponent implements OnInit {
           const employeeToInput: EmployeeDataTable = {
             id: employee.id,
             name: employee.entity.name,
+            last_name: employee.entity.last_name,
             phone: {
               value: employee.entity.phone,
               mask: '(0000)-000-0000',

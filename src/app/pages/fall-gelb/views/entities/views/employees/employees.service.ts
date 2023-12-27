@@ -50,4 +50,8 @@ export class EmployeesService {
   getProviderTypes() {
     return this.http.get('/provider-types');
   }
+
+  getEmployeeTypes() {
+    return this.http.get('/employee-types');
+  }
 }
