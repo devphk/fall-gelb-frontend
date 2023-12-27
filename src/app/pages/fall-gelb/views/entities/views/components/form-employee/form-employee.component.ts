@@ -219,7 +219,7 @@ export class FormEmployeeComponent implements OnInit {
         const employeeEdit = {
           name: this.employeeForm.get('name')?.value,
           last_name: this.employeeForm.get('lastName')?.value,
-          phone: this.employeeForm.get('phone')?.value,
+          phone: this.employeeForm.get('phone')?.value.value,
           email: this.employeeForm.get('email')?.value,
           active: this.employeeForm.get('isActive')?.value,
           address: this.employeeForm.get('address')?.value,
@@ -240,15 +240,15 @@ export class FormEmployeeComponent implements OnInit {
         };
         console.log('employeeEdit: ', employeeEdit);
 
-        // this.employeesService
-        //   .editEmployee(this.data.dialogData[0].id, employeeEdit)
-        //   .subscribe(
-        //     (data) => {
-        //       this.toastService.showToaster('Empleado Editado Correctamente!');
-        //       this.dialogRef.close(true);
-        //     },
-        //     (error) => this.toastService.showToaster(error.error.message, true)
-        //   );
+        this.employeesService
+          .editEmployee(this.data.dialogData[0].id, employeeEdit)
+          .subscribe(
+            (data) => {
+              this.toastService.showToaster('Empleado Editado Correctamente!');
+              this.dialogRef.close(true);
+            },
+            (error) => this.toastService.showToaster(error.error.message, true)
+          );
       }
     } else {
       this.employeeForm.markAllAsTouched();
