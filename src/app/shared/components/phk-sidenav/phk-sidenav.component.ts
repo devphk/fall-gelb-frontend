@@ -1,8 +1,6 @@
 import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import {
   Location,
-  LocationStrategy,
-  PathLocationStrategy,
 } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -118,7 +116,11 @@ export class PhkSidenavComponent implements OnInit {
         {
           path: 'users',
           title: 'Usuarios',
-        }
+        },
+        {
+          path: 'concepts',
+          title: 'Conceptos',
+        },
       ],
     },
     {

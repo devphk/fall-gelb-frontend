@@ -9,15 +9,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { PhkSidenavModule } from 'src/app/shared/components/phk-sidenav/phk-sidenav.module';
 import { FallGelbComponent } from './fall-gelb.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { PhkThemeToggleModule, PhkUserAccountButtonsModule, PhkUserAccountPopupModule } from '@shared/components';
+import { PhkThemeToggleModule, 
+         PhkUserAccountButtonsModule, 
+         PhkUserAccountPopupModule } from '@shared/components';
 import { PhkAppsListModule } from '@shared/components/phk-apps-list/phk-apps-list.module';
 import { AvatarModule } from 'ngx-avatar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
 
 @NgModule({
-  declarations: [FallGelbComponent],
+  declarations: [
+    FallGelbComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,

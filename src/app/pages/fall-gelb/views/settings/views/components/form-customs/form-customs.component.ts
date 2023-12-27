@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomsService } from '../../customs/customs.service';
-import { Transporttype } from '@shared/models';
+import { TransportType } from '@shared/models';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '@core/services';
 import * as L from 'leaflet';
@@ -27,8 +27,8 @@ export class FormCustomsComponent implements OnInit{
     address: this.fb.control(this.data.dialogData ? this.data.dialogData[0].address : '',),
     transport_types: this.fb.control(""),
   })
-  transportType: Transporttype[] = [];
-  selectedTypes: Transporttype[] = [];
+  transportType: TransportType[] = [];
+  selectedTypes: TransportType[] = [];
 
 
   customForm: FormControl = new FormControl();

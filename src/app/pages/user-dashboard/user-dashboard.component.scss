@@ -1,16 +1,33 @@
-
 .user-dashboard-container {
-    background-color: var(--bgSearchColor);
-    overflow-y: scroll;
+  background-color: var(--bgSearchColor);
+  overflow-y: scroll;
 }
 
 // Header styles
 
 .header-container {
-  height: 70px;
+  height: 64px;
   margin: 0 20px;
   display: flex;
   justify-content: end;
   align-items: center;
   flex-direction: row;
+}
+
+.container-cards {
+  padding-right: 280px;
+}
+
+.container-info {
+  max-width: 840px;
+}
+
+.container-box {
+  max-width: 1120px;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.wrapper-info {
+  padding-top: 20px;
 }

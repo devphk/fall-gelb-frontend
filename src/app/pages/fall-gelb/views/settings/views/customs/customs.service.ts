@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
-import { Customs, LoadingMessage } from '@shared/models';
+import { Custom, 
+         LoadingMessage } from '@shared/models';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,11 +11,11 @@ export class CustomsService {
 
   constructor(private http:HttpService) { }
 
-  getCustoms(): Observable<Customs[]> {
+  getCustoms(): Observable<Custom[]> {
     return this.http.get('/customs');
   }
 
-  createCustom(data: any): Observable<Customs[]> {
+  createCustom(data: any): Observable<Custom[]> {
     return this.http.post('/customs', data, undefined, true, LoadingMessage.CREATING_CUSTOM);
   }
 

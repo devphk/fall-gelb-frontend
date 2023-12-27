@@ -11,11 +11,10 @@ import { PhkUserAccountPopupModule } from '@shared/components/phk-user-account-p
 import { PhkThemeToggleModule } from '@shared/components';
 import { MatIconModule } from '@angular/material/icon';
 import { PhkUserAccountHeaderComponent } from './phk-user-account-header.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  declarations: [
-    PhkUserAccountHeaderComponent
-  ],
+  declarations: [PhkUserAccountHeaderComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -27,10 +26,9 @@ import { PhkUserAccountHeaderComponent } from './phk-user-account-header.compone
     OverlayModule,
     PhkAppsListModule,
     PhkUserAccountPopupModule,
-    PhkThemeToggleModule
+    PhkThemeToggleModule,
+    MatTooltipModule,
   ],
-  exports: [
-    PhkUserAccountHeaderComponent
-  ]
+  exports: [PhkUserAccountHeaderComponent],
 })
-export class PhkUserAccountHeaderModule { }
+export class PhkUserAccountHeaderModule {}

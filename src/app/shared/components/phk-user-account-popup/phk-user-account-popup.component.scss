@@ -4,7 +4,7 @@
 :host ::ng-deep {
     
     .mat-expansion-panel {
-        background-color: var(--bgUserAccountPopup);
+        background-color: var(--bgPrimaryColor);
         border-radius: 15px;
     }
 
@@ -20,13 +20,13 @@
 
 .user-account-container {
     padding: 15px;
-    width: 320px;
+    width: 300px;
     background-color: var(--bgSecondaryColor);
-    border: 8px solid var(--borderTerciaryColor);
+    border: 1px solid var(--borderTerciaryColor);
     border-radius: 20px;
-    margin-right: -55px;
-    margin-top: 10px;
-
+    margin-right: -35px;
+    margin-top: 5%;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.35);
     h4 {
         color: var(--textPrimaryColor);
         font-weight: 600;
@@ -37,15 +37,16 @@
 
 .manage-account-button,
 .logout-button {
-    width: 100%;
-    padding: 10px;
+    width: 80%;
+    padding: 7px;
     background-color: transparent;
     border-radius: 25px;
-    color: #6d9bc3;
-    border: 2px solid #fafafa;
+    color: #4285F4;
+    border: 0.1px solid rgb(201, 201, 201);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 12px;
     i {
         color: #6d9bc3;
         font-size: 16px;

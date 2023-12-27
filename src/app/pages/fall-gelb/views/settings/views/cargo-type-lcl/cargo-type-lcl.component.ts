@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService, ToastService } from '@core/services';
 import { CargoTypeLclService } from './cargo-type-lcl.service';
-import { CargoTypeLCL } from '@shared/models/cargo-type-lcl';
+import { CargoTypeLCL } from '@shared/models/cargo';
 import { FormCargoTypeLclComponent } from '../components/form-cargo-type-lcl/form-cargo-type-lcl.component';
 
 @Component({

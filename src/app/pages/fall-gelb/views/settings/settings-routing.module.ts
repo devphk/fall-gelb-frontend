@@ -20,6 +20,7 @@ import {
 } from './views';
 import { SettingsComponent } from './settings.component';
 import { ConfigsComponent } from './views/configs/configs.component';
+import { ConceptsComponent } from './views/concepts';
 
 const routes: Routes = [
   {
@@ -88,16 +89,16 @@ const routes: Routes = [
     component: CurrencyRatesComponent,
   },
   {
-    path: 'currency-rates',
-    component: CurrencyRatesComponent,
-  },
-  {
     path: 'department',
     component: DepartmentComponent,
   },
   {
     path: 'contract-types',
-    component: ContractTypeComponent,
+    component: ContractTypeComponent
+  },
+  {
+    path: 'concepts',
+    component: ConceptsComponent,
   },
   {
     path: '**',

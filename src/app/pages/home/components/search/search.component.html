@@ -14,6 +14,8 @@
   <div *ngIf="!isLogged"
        class="home-header-container w-100">
 
+    <p class="fw-500 fs-12 home-message">¡Cotiza con nosotros!</p>
+
     <button mat-raised-button
             color="primary"
             (click)="signIn()">Ingresar</button>
@@ -30,10 +32,29 @@
                 <input type="text" 
                        placeholder="Busca en Phoinike"
                        (keydown.enter)="showInput()"
-                       [(ngModel)]="search" />
+                       [(ngModel)]="search"/>
                 <mat-icon class="mat-18">mic</mat-icon>
             </div>
         </div>
+
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             class="apps-container"
+             *ngIf="!show">
+          <button (click)="buttonTest('Truck')" class="app-button">
+            <img src="../../../../../assets/icons/Truck.png" alt="truck-icon">
+          </button>
+          <button (click)="buttonTest('CustomC')" class="app-button">
+            <img src="../../../../../assets/icons/Customs.png" alt="customs-icon">
+          </button>
+          <button (click)="buttonTest('Container')" class="app-button">
+            <img src="../../../../../assets/icons/Container.png" alt="container-icon">
+          </button>
+          <button (click)="buttonTest('Express')" class="app-button">
+            <img src="../../../../../assets/icons/Express.png" alt="express-icon">
+          </button>
+        </div>
+
 
         <div class="box" [class.opened]="show">
             <div class="content"
@@ -56,10 +77,19 @@
   <div
     fxLayout="row"
     fxLayoutAlign="space-between center"
-    class="search-footer"
+    class="search-footer fs-12"
   >
-    <span> Copyright © 2023 Phoinike Logistics, C.A. </span>
+    <div fxLayoutGap="10px">
+      <span class="footer-button"> Venezuela (Esp) </span>
+      <span class="footer-button"> Sobre Phoinike </span>
+      <span class="footer-button"> Servicios </span>
+      <span class="footer-button"> Como funciona nuestra app </span>
+    </div>
 
-    <span> V0.0.0 </span>
+    <div fxLayoutGap="10px">
+      <span class="footer-button"> Privacidad </span>
+      <span class="footer-button"> Condiciones </span>
+      <span class="footer-button"> Preferencias </span>
+    </div>
   </div>
 </div>

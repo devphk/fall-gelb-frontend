@@ -39,7 +39,8 @@ import {
   FormRetentionConceptsComponent,
   FormCurrencyRatesComponent,
   FormContractTypeComponent,
-  FormTruckTypeComponent
+  FormTruckTypeComponent,
+  FormConceptsComponent
 } from './views/components';
 
 import {
@@ -59,9 +60,10 @@ import {
   RetentionConceptComponent,
   CurrencyRatesComponent,
   ContractTypeComponent,
+  ConfigsComponent
 } from './views';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ConfigsComponent } from './views/configs/configs.component';
+import { ConceptsComponent } from './views/concepts';
 
 const routes: Routes = [
   {
@@ -107,6 +109,8 @@ const routes: Routes = [
     FormDepartmentComponent,
     ContractTypeComponent,
     FormContractTypeComponent,
+    ConceptsComponent,
+    FormConceptsComponent
   ],
   imports: [
     CommonModule,

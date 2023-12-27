@@ -1,4 +1,4 @@
-export interface Customs {
+export interface Custom {
   id: number;
   name: string;
   address: string;
@@ -6,7 +6,7 @@ export interface Customs {
   longitude: string;
   created_at: string;
   updated_at: string;
-  transport_types: Transporttype[];
+  transport_types: TransportType[];
 }
 
 export interface CustomsDataTable {
@@ -16,12 +16,6 @@ export interface CustomsDataTable {
   transport_types:TransportType[],
   latitude: string;
   longitude: string;
-}
-
-export interface Transporttype {
-  id: number;
-  name: string;
-  code: string;
 }
 
 export interface CustomsExport {
@@ -40,6 +34,12 @@ export interface customsInfo {
 
 export interface TransportType {
   id:   number;
+  name: string;
+  code: string;
+}
+
+export interface Customtype {
+  id: number;
   name: string;
   code: string;
 }

@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 // Angular Material styles settings
 
@@ -33,7 +33,7 @@ $phk-turquoise-palette: (
     A200: rgba(black, 0.87),
     A400: white,
     A700: white,
-  )
+  ),
 );
 $phk-accent-palette: (
   50: #f9f9fa,
@@ -65,7 +65,7 @@ $phk-accent-palette: (
     A200: rgba(black, 0.87),
     A400: rgba(black, 0.87),
     A700: white,
-  )
+  ),
 );
 $phk-warn-palette: (
   50: #ffebef,
@@ -89,18 +89,20 @@ $phk-warn-palette: (
     700: white,
     800: white,
     900: white,
-  )
+  ),
 );
 $phk-primary: mat.define-palette($phk-turquoise-palette, 700, 300, 900);
 $phk-accent: mat.define-palette($phk-accent-palette, 300, 100, 500);
 $phk-warn: mat.define-palette($phk-warn-palette, 700);
-$phk-theme: mat.define-light-theme((
-  color: (
-    primary: $phk-primary,
-    accent: $phk-accent,
-    warn: $phk-warn,
+$phk-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $phk-primary,
+      accent: $phk-accent,
+      warn: $phk-warn,
+    ),
   )
-));
+);
 @include mat.all-component-themes($phk-theme);
 
 // Dark and Light theme settings
@@ -114,21 +116,27 @@ body.light {
   @include lighten();
 }
 
-html, body { 
-  height: 100%; 
+html,
+body {
+  height: 100%;
 }
 
-body { 
-  margin: 0; 
-  // font-family: Roboto, "Helvetica Neue", sans-serif; 
-  font-family: 'Raleway', sans-serif;
+html {
+  font-size: 62.5%; /* 1rem = 10px*/
+}
+
+body {
+  font-size: 16px; /* 1rem = 10px*/
+  margin: 0;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 // Material global styles
 
 // Background of modal and font color
 
-.mat-dialog-container{
+.mat-dialog-container {
   background: var(--bgSignInCard) !important;
 }
 
@@ -149,8 +157,7 @@ mat-card {
 //------------------ Angular material global styles -----------------
 
 /* Form field Border */
-.mat-form-field-appearance-outline 
-.mat-form-field-outline {
+.mat-form-field-appearance-outline .mat-form-field-outline {
   color: var(--borderFormFieldColor);
 }
 /* Font color */
@@ -183,12 +190,12 @@ input.mat-input-element {
   color: #ffffff;
   font-size: 14px;
   button {
-      border: 1px solid #ffffff !important;
-      color: #ffffff !important;
-      margin-right: 10px !important;
-      padding: 0px 11px !important;
-      line-height: 27px !important;
-      font-size: 11px !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    margin-right: 10px !important;
+    padding: 0px 11px !important;
+    line-height: 27px !important;
+    font-size: 11px !important;
   }
 }
 
@@ -219,7 +226,7 @@ h4,
 h5,
 h6,
 span {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
   color: var(--textPrimaryColor);
 }
 
@@ -267,7 +274,6 @@ i {
 }
 
 //-------------------- Scroll style --------------------//
-
 
 .h-100vh {
   height: calc(100vh) !important;
@@ -325,6 +331,14 @@ i {
 
 // Global font-sizes
 
+.fs-8-5 {
+  font-size: 8.5px !important;
+}
+
+.fs-12 {
+  font-size: 12px !important;
+}
+
 .fs-15 {
   font-size: 15px !important;
 }
@@ -373,6 +387,10 @@ i {
   font-size: 0.5em !important;
 }
 
+.fw-500 {
+  font-weight: 500 !important;
+}
+
 .fw-600 {
   font-weight: 600 !important;
 }
@@ -388,7 +406,7 @@ i {
 }
 
 .lh-1-0 {
-  line-height: 1.0 !important;
+  line-height: 1 !important;
 }
 
 .lh-1-2 {
@@ -437,6 +455,10 @@ i {
 
 .mb-35 {
   margin-bottom: 35px !important;
+}
+
+.mr-20 {
+  margin-right: 20px !important;
 }
 
 .m-40 {
@@ -550,7 +572,9 @@ i {
 // Button styles
 
 .material-shadow {
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .simple-border-card {
@@ -596,7 +620,7 @@ i {
 .mat-horizontal-stepper-header .mat-step-icon span,
 .mat-raised-button span,
 .mat-primary .mat-icon,
-.mat-flat-button.mat-primary span{
+.mat-flat-button.mat-primary span {
   color: #fff !important;
 }
 
@@ -627,7 +651,9 @@ i {
   -webkit-transition-property: transform;
   transition-property: transform;
 }
-.grow:hover, .grow:focus, .grow:active {
+.grow:hover,
+.grow:focus,
+.grow:active {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
