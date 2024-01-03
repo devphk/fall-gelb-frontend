@@ -49,16 +49,18 @@
       ></app-phk-apps-list>
     </ng-template>
 
-    <ngx-avatar
-      src="assets/images/jobs.png"
-      size="30"
-      cdkOverlayOrigin
-      #trigger="cdkOverlayOrigin"
-      (click)="toggleUserAccount()"
-      class="pointer material-shadow"
-      matTooltip="Cuenta Phoinike"
-      matTooltipClass="tooltipClass"
-    ></ngx-avatar>
+    <div class="user-avatar">
+      <ngx-avatar
+        src="assets/images/jobs.png"
+        size="30"
+        cdkOverlayOrigin
+        #trigger="cdkOverlayOrigin"
+        (click)="toggleUserAccount()"
+        class="pointer material-shadow user-avatar"
+        matTooltip="Cuenta Phoinike"
+        matTooltipClass="tooltipClass"
+      ></ngx-avatar>
+    </div>
 
     <ng-template
       cdkConnectedOverlay

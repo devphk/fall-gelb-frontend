@@ -12,6 +12,7 @@ $bgSidenavItemHover_dark: #575757;
 $bgToolbar_dark: #3a3a3a;
 $bgUserAccountPopup_dark: #3a3a3a;
 $bgSearchBox_dark: #575757;
+$bgUserPopUp_dark: #282A2C;
 
 // Text variables
 
@@ -22,6 +23,7 @@ $textPrimaryHover_dark: #3a3a3a;
 // Icons variables
 
 $colorPrimary_dark: #f4f4f4;
+$googleHover_dark: #2F3034;
 
 // Border variables
 
@@ -34,6 +36,11 @@ $borderTerciary_dark: #353535;
 $borderFormField_dark: #9d9d9d;
 $formFieldPrimaryLabel_dark: #f4f4f4;
 $signMatCardPrimary_dark: #20232b;
+
+// Button variable
+
+$userPopUpButton_dark: #1B1B1B;
+$userPopUpButtonHover_dark: #37393B;
 
 // ---------- Light theme variables ---------------- //
 
@@ -48,6 +55,7 @@ $bgSidenavItemHover_light: #eee;
 $bgToolbar_light: #0093e1;
 $bgUserAccountPopup_light: #f4f4f4;
 $bgSearchBox_light: #f1f3f4;
+$bgUserPopUp_light: #e9eef6;
 
 // Text variables
 
@@ -58,6 +66,7 @@ $textPrimaryHover_light: #3e3e3e;
 // Icons variables
 
 $colorPrimary_light: #2a2a2a;
+$googleHover_light: #dadada;
 
 // Border variables
 
@@ -70,6 +79,12 @@ $borderTerciary_light: #E9EEF6;
 $borderFormField_light: #c7c7c7;
 $formFieldPrimaryLabel_light: rgba(0, 0, 0, 0.6);
 $signMatCardPrimary_light: #ffffff;
+
+// Button variable 
+
+$userPopUpButton_light: #F8FAFD;
+$userPopUpButtonHover_light: #DCE1E8;
+
 
 // mixin that enables css variables in light mode
 @mixin lighten() {
@@ -84,6 +99,7 @@ $signMatCardPrimary_light: #ffffff;
   --bgToolbar: #{$bgToolbar_light};
   --bgUserAccountPopup: #{$bgUserAccountPopup_light};
   --bgSearchBox: #{$bgSearchBox_light};
+  --bgUserPopUp: #{$bgUserPopUp_light};
 
   // Text variables
 
@@ -94,6 +110,7 @@ $signMatCardPrimary_light: #ffffff;
   // Icons variables
 
   --iconColor: #{$colorPrimary_light};
+  --googleHoverColor: #{$googleHover_light};
 
   // Border variables
 
@@ -106,6 +123,10 @@ $signMatCardPrimary_light: #ffffff;
   --borderFormFieldColor: #{$borderFormField_light};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
   --bgSignInCard: #{$signMatCardPrimary_light};
+
+  //Button variable
+  --userPopUpButtonColor: #{$userPopUpButton_light};
+  --userPopUpButtonColorHover: #{$userPopUpButtonHover_light};
 }
 
 // mixin that enables css variables in dark mode
@@ -121,6 +142,7 @@ $signMatCardPrimary_light: #ffffff;
   --bgToolbar: #{$bgToolbar_dark};
   --bgUserAccountPopup: #{$bgUserAccountPopup_dark};
   --bgSearchBox: #{$bgSearchBox_dark};
+  --bgUserPopUp: #{$bgUserPopUp_dark};
 
   // Text variables
 
@@ -131,6 +153,7 @@ $signMatCardPrimary_light: #ffffff;
   // Icons variables
 
   --iconColor: #{$colorPrimary_dark};
+  --googleHoverColor: #{$googleHover_dark};
 
   // Border variables
 
@@ -143,4 +166,8 @@ $signMatCardPrimary_light: #ffffff;
   --borderFormFieldColor: #{$borderFormField_dark};
   --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
   --bgSignInCard: #{$signMatCardPrimary_dark};
+
+  //Button variable
+  --userPopUpButtonColor: #{$userPopUpButton_dark};
+  --userPopUpButtonColorHover: #{$userPopUpButtonHover_dark};
 }

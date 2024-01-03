@@ -9,7 +9,7 @@
   .search-input,
   input {
     cursor: pointer;
-    color: rgba(70, 70, 70, 0.966) !important;
+    color: rgba(126, 126, 126, 0.479) !important;
   }
 
   .mat-mini-fab {
@@ -71,11 +71,15 @@ h1 {
 
 #searchBox {
   border-radius: 55px;
-  padding: 4px 8px;
+  padding: 4px 10px;
   display: flex;
   align-items: center;
-  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
-  border: 1px rgb(167, 167, 167) solid;
+  // box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15);
+  border: 1px rgba(167, 167, 167, 0.521) solid;
+}
+
+#searchBox input {
+  padding: 12px 75px; 
 }
 
 input {
@@ -154,4 +158,16 @@ span {
 .home-message:hover {
   color: #4285f4;
   cursor: pointer;
+}
+
+@media (min-width: 700px) and (max-width: 1300px) {
+  .search-title {
+    margin-top: -150px !important;
+  }
+}
+
+@media (min-width: 2500px) {
+  .search-title {
+    margin-top: -350px !important;
+  }
 }

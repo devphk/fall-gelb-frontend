@@ -30,7 +30,6 @@
             <div id="searchBox">
                 <mat-icon class="mat-25" (click)="showInput()">search</mat-icon>
                 <input type="text" 
-                       placeholder="Busca en Phoinike"
                        (keydown.enter)="showInput()"
                        [(ngModel)]="search"/>
                 <mat-icon class="mat-18">mic</mat-icon>
@@ -54,6 +53,8 @@
             <img src="../../../../../assets/icons/Express.png" alt="express-icon">
           </button>
         </div>
+
+        <div class="h-100"></div>
 
 
         <div class="box" [class.opened]="show">

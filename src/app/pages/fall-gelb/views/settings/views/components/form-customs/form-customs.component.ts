@@ -142,9 +142,18 @@ export class FormCustomsComponent implements OnInit{
           placeholder: 'Ingresa una Dirección...',
           errorMessage: 'No encontrado'
         }).on('markgeocode', (e:any) => {
+
+            if(this.marker) {
+              this.map.removeLayer(this.marker);
+            }
+
             this.map.setView(e.geocode.center, 11)
             this.latitudeForm = e.geocode.properties.lat;          
             this.longitudeForm = e.geocode.properties.lon; 
+
+            const newLatLng = new LatLng(this.latitudeForm, this.longitudeForm)
+
+            this.marker = L.marker(newLatLng).addTo(this.map);
 
             if(this.geocoderMarker) {
               this.map.removeLayer(this.geocoderMarker)

@@ -1,18 +1,18 @@
 <div class="user-account-container"
      fxLayout="column"
-     fxLayoutAlign="center center"
+     fxLayoutAlign="center center space-between"
      fxLayoutGap="10px"
      [@fadeInFast]>
 
-    <p class="primary-color fw-600 fs-12">
+    <p class="user-email primary-color fw-600 fs-15 mb-35">
         abinassar@gmail.com
     </p>
 
     <ngx-avatar src="assets/images/jobs.png"
-                size="60"
-                class="pointer"></ngx-avatar>
+                size="80"
+                class="pointer mb-35"></ngx-avatar>
 
-    <h2 class="primary-color fw-600">
+    <h2 class="primary-color fw-400 fs-25 mt-m20">
         ¡Hola, Gianfranco!
     </h2>
 
@@ -21,15 +21,15 @@
       Gestiona tu cuenta Phoinike
     </button>
 
-    <button class="logout-button"
+    <!-- <button class="logout-button"
             fxLayout="row"
             fxLayoutAlign="center center"
             fxLayoutGap="20px"
             (click)="logout()">
       <i class="material-icons">logout</i>
       Cerrar sesión
-    </button>
-  <mat-expansion-panel class="w-100">
+    </button> -->
+  <!-- <mat-expansion-panel class="w-100 mt-20">
 
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -55,10 +55,64 @@
             <p class="m-0 primary-color"> 
                 abinassar@phoinike.com
             </p>
+            
+
+        </div>
+
+    </div>
+
+    <div class="account"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="10px">
+
+        <ngx-avatar src="assets/images/jobs.png"
+                    size="25"
+                    class="pointer"></ngx-avatar>
+
+        <div fxLayout="column">
+
+            <h4>
+                Cuenta personal
+            </h4>
+
+            <p class="m-0 primary-color"> 
+                abinassar@gmail.com
+            </p>
+            
 
         </div>
 
     </div>
     
-  </mat-expansion-panel>
+  </mat-expansion-panel> -->
+
+  <div fxLayout="row"
+       fxLayoutAlign="center center"
+       class="user-popup-buttons">
+    <div class="add-account-tab fw-600 pointer"
+         fxLayout="row"
+         fxLayoutGap="1rem">
+      <i class="material-icons">add_circle</i>
+      <p>Agregar Cuenta</p>
+    </div>
+
+    <div class="logout-tab fw-600 pointer"
+         fxLayout="row"
+         fxLayoutGap="1rem"
+         (click)="logout()">
+      <i class="material-icons">logout</i>
+      <p>Salir</p>
+    </div>
+  </div>
+
+  <div fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutFGap="55px">
+    <p class="popup-footer fs-12">Politica de Privacidad</p>
+    <p class="popup-footer fs-12">Terminos de Servicio</p>
+  </div>
+
+  <mat-expansion-panel> </mat-expansion-panel>
+
 </div>

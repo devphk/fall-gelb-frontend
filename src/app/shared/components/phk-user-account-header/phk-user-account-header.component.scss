@@ -55,7 +55,7 @@
   }
 
   .mat-mini-fab:hover {
-    background-color: rgb(201, 201, 201) !important;
+    background-color: var(--googleHoverColor) !important;
   }
 }
 
@@ -153,4 +153,13 @@ span {
 .home-message:hover {
   color: #4285f4;
   cursor: pointer;
+}
+
+.user-avatar {
+  border-radius: 5rem 5rem 5rem 5rem;
+}
+
+.user-avatar:hover {
+  border-radius: 5rem 5rem 5rem 5rem;
+  box-shadow: 0 0 1rem #adadad
 }
