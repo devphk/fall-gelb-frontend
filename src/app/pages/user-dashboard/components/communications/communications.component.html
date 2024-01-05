@@ -58,7 +58,7 @@
                 </mat-card>
             </div>
 
-            <div>
+            <div class="card-footer">
                 <p>Más información</p>
             </div>
         </mat-card-content>
@@ -138,7 +138,7 @@
                 </mat-card>
             </div>
             
-            <div>
+            <div class="card-footer">
                 <p>Seleccionar otro analista</p>
             </div>
 
@@ -172,10 +172,10 @@
 
         <mat-card-content fxLayout="column"
                           fxLayoutAlign="space-between"
-                          class="h-80">
+                          class="h-75">
 
                 <div>
-                    <p>NOTIFICACIONES ACTIVAS</p>
+                    <p class="fw-800 ml-10">NOTIFICACIONES ACTIVAS</p>
     
                     <mat-card fxLayout="row"
                               fxLayoutAlign="space-between"
@@ -210,7 +210,7 @@
                     </mat-card>
                 </div>
 
-                <div>
+                <div class="card-footer">
                     <p>Personalizar notificaciones</p>
                 </div>
 
@@ -236,59 +236,69 @@
 
         </mat-card-header>
 
-        <mat-card-content>
+        <mat-card-content fxLayout="column"
+                          fxLayoutAlign="space-between"
+                          class="h-80">
 
-            <mat-card fxLayout="row"
-                      fxLayoutAlign="space-between"
-                      class="mat-elevation-z0 mini-cards">
-
+            <div>
+                <mat-card fxLayout="row"
+                          fxLayoutAlign="space-between"
+                          class="mat-elevation-z0 mini-cards">
+    
+                        <div fxLayout="column">
+    
+                            <div fxLayout="row">
+                                <img src="../../../../../assets/icons/Communications/accountCarpet.svg">
+                                <p class="fw-600 test">GERENTES</p>
+                            </div>
+        
+                            <div fxLayout="column"
+                                 class="mt-20">
+                                <p>MARIELA PAEZ</p>
+                                <p>JOSE RODRIGUEZ</p>
+                            </div>
+    
+                        </div>
+    
+                </mat-card>
+                
+                <mat-card fxLayout="row"
+                          fxLayoutAlign="space-between"
+                          class="mat-elevation-z0 mini-cards">
                     <div fxLayout="column">
-
+    
                         <div fxLayout="row">
-                            <img src="../../../../../assets/icons/Communications/accountCarpet.svg">
-                            <p class="fw-600 test">GERENTES</p>
+                            <img src="../../../../../assets/icons/Communications/accountSimCard.svg">
+                            <p class="fw-600 test">ANALISTAS DE COMEX</p>
                         </div>
     
                         <div fxLayout="column"
                              class="mt-20">
                             <p>MARIELA PAEZ</p>
-                            <p>JOSE RODRIGUEZ</p>
                         </div>
-
                     </div>
+    
+                </mat-card>
+    
+                <mat-card fxLayout="row"
+                          fxLayoutAlign="space-between"
+                          class="mat-elevation-z0 mini-cards">
+    
+                          <div fxLayout="row">
+                            <img src="../../../../../assets/icons/Communications/accountDouble.svg">
+                            <p class="fw-600 test">TODO EL EQUIPO DE TRABAJO</p>
+                        </div>
+                </mat-card>
+            </div>
 
-            </mat-card>
-            
-            <mat-card fxLayout="row"
-                      fxLayoutAlign="space-between"
-                      class="mat-elevation-z0 mini-cards">
-                <div fxLayout="column">
+            <div class="card-footer">
+                <p>Gestionar datos y seguridad.</p>
+            </div>
 
-                    <div fxLayout="row">
-                        <img src="../../../../../assets/icons/Communications/accountSimCard.svg">
-                        <p class="fw-600 test">ANALISTAS DE COMEX</p>
-                    </div>
-
-                    <div fxLayout="column"
-                         class="mt-20">
-                        <p>MARIELA PAEZ</p>
-                    </div>
-                </div>
-
-            </mat-card>
-            <mat-card fxLayout="row"
-                      fxLayoutAlign="space-between"
-                      class="mat-elevation-z0 mini-cards">
-
-                      <div fxLayout="row">
-                        <img src="../../../../../assets/icons/Communications/accountDouble.svg">
-                        <p class="fw-600 test">TODO EL EQUIPO DE TRABAJO</p>
-                    </div>
-            </mat-card>
-
-            <p>Gestionar datos y seguridad.</p>
     </mat-card-content>
     </mat-card>
+
+    <div fxFlex="calc(50% - 20px)"></div>
     
 </div>
 
