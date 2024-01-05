@@ -1,11 +1,12 @@
 // Global styles
 
 h2 {
-  font-size: 2em;
+  font-size: 2.8rem;
 }
 
 .user-setting-title {
-  margin: 15px 0 5px 0;
+  margin: 1.87rem 0;
+  font-weight: 500;
 }
 
 .cards-container {
@@ -19,4 +20,10 @@ h2 {
 
 .home-container {
   width: 100%;
+}
+
+.general-info {
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 0.9rem;
 }

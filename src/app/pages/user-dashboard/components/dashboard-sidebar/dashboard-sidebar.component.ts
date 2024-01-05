@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,27 +9,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-sidebar.component.scss'],
 })
 export class DashboardSidebarComponent implements OnInit {
-  sidebarItems: any[] = [
-    {
-      itemTitle: 'Inicio',
-      itemIcon: 'account_circle',
-      itemLink: 'home',
-    },
-    {
-      itemTitle: 'Información personal',
-      itemIcon: 'badge',
-      itemLink: 'personal-information',
-    },
-    {
-      itemTitle: 'Seguridad',
-      itemIcon: 'lock',
-      itemLink: 'security',
-    },
-  ];
+  sidebarItems: any[] = [];
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sidebarItems = [
+      {
+        itemTitle: 'Inicio',
+        itemIconUrl: '../../../../../assets/icons/account_circle.svg',
+        itemLink: 'home',
+      },
+      {
+        itemTitle: 'Información personal',
+        itemIconUrl: '../../../../../assets/icons/badge.svg',
+        itemLink: 'personal-information',
+      },
+      {
+        itemTitle: 'Seguridad',
+        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemLink: 'security',
+      },
+    ];
+  }
 
   isActive(path: string): boolean {
     return this.router.isActive('user-dashboard/' + path, true);

@@ -41,6 +41,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AvatarModule,
     MatCardModule,
     MatDividerModule,
+    MatIconModule,
   ],
 })
 export class UserDashboardModule {}

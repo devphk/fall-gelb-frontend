@@ -9,10 +9,13 @@
     fxLayoutAlign="start center"
     fxLayoutGap="15px"
   >
-    <i class="material-icons">{{ menuItem.itemIcon }}</i>
-    <span>
-      {{ menuItem.itemTitle }}
-    </span>
+    <div class="content-info">
+      <img src="{{ menuItem.itemIconUrl }}" alt="" />
+
+      <span>
+        {{ menuItem.itemTitle }}
+      </span>
+    </div>
   </div>
 
   <mat-divider></mat-divider>
@@ -24,7 +27,9 @@
     fxLayoutGap="15px"
     (click)="navigateToFallGelb()"
   >
-    <i class="material-icons">business_center</i>
-    <span> sistema fallgelb </span>
+    <div class="content-info">
+      <img src="../../../../../assets/icons/corporate_fare.svg" alt="" />
+      <span> sistema fallgelb </span>
+    </div>
   </div>
 </div>
