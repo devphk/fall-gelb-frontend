@@ -1,0 +1,66 @@
+.text-align {
+    text-align: center;
+}
+
+.comercial-list {
+    margin-left: 1rem;
+    width: 100%;
+}
+
+// .container {
+//     mat-card {
+//         background-color: white !important;
+//         padding: 2rem 1rem 2rem 1rem;
+//         border-radius: 0.8rem;
+//     }
+
+//     .apps-logo {
+//         mat-card {
+//             padding: 0rem;
+//         }
+//     }
+
+//     .apps-logo:hover {
+//         background-color: #dadada !important;
+//     }
+// }
+
+.container-card {
+
+    background-color: white !important; 
+    border-radius: 0.8rem;
+    padding: 3rem 1rem 3rem 1rem;
+
+    mat-card {
+        background-color: #dadada1f !important;
+        margin-bottom: 1rem;
+        border: none;
+    }
+
+    mat-card:hover {
+        background-color: #dadada !important;
+        cursor: pointer;
+    }
+
+
+    mat-card p {
+        margin-bottom: 0rem;
+    }
+}
+
+.operations-team {
+    margin-right: -0rem !important;
+}
+
+.mini-cards img{
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
+.mini-cards p {
+    margin-left: 1rem;
+}
+
+.footer {
+    height: 10rem;
+}

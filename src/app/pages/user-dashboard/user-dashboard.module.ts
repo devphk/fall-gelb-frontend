@@ -24,6 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-header/phk-user-account-header.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { CommunicationsComponent } from './components/communications/communications.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MatDividerModule } from '@angular/material/divider';
     HomeComponent,
     UserDashboardComponent,
     DashboardSidebarComponent,
+    CommunicationsComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AvatarModule,
     MatCardModule,
     MatDividerModule,
+    MatIconModule
   ],
 })
 export class UserDashboardModule {}

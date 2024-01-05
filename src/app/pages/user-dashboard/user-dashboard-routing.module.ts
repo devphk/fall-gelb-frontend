@@ -5,6 +5,7 @@ import { HomeComponent,
          PersonalInformationComponent, 
          SecurityComponent } from './components';
 import { UserDashboardComponent } from './user-dashboard.component';
+import { CommunicationsComponent } from './components/communications/communications.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'security',
         component: SecurityComponent
+      },
+      {
+        path: 'communications',
+        component: CommunicationsComponent
       },
       {
         path: '**',
