@@ -5,23 +5,14 @@ span {
 
 .nav-item {
   margin: auto;
-  padding: 10px 10px 10px 10px;
   border-radius: 0 25px 25px 0;
-  margin-bottom: 10px;
   cursor: pointer;
   i {
     margin-right: 5px;
   }
   transition: all 150ms ease-in;
-  font-weight: 500;
-}
-
-.nav-item:hover:not(.active) {
-  background-color: #eee;
-  i,
-  span {
-    color: #3c4858;
-  }
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
 .active {
@@ -30,5 +21,15 @@ span {
   span,
   i {
     color: var(--textPrimaryHover);
+  }
+}
+
+.content-info {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 16px 10px 24px;
+
+  img {
+    padding-right: 16px;
   }
 }
