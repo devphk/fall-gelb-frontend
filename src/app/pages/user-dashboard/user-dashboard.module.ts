@@ -25,6 +25,7 @@ import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { ComexComponent } from './components/comex/comex.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CommunicationsComponent } from './components/communications/communicati
     UserDashboardComponent,
     DashboardSidebarComponent,
     CommunicationsComponent,
+    ComexComponent,
   ],
   imports: [
     CommonModule,
