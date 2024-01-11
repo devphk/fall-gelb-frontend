@@ -13,6 +13,8 @@ $bgToolbar_dark: #3a3a3a;
 $bgUserAccountPopup_dark: #3a3a3a;
 $bgSearchBox_dark: #575757;
 $bgUserPopUp_dark: #282A2C;
+$bgCardDashboard_dark: #2A2B2F;
+$bgCardDashboardHover_dark: #111111;
 
 // Text variables
 
@@ -56,6 +58,8 @@ $bgToolbar_light: #0093e1;
 $bgUserAccountPopup_light: #f4f4f4;
 $bgSearchBox_light: #f1f3f4;
 $bgUserPopUp_light: #e9eef6;
+$bgCardDashboard_light: #ffff;
+$bgCardDashboardHover_light: #dadada;
 
 // Text variables
 
@@ -100,6 +104,8 @@ $userPopUpButtonHover_light: #DCE1E8;
   --bgUserAccountPopup: #{$bgUserAccountPopup_light};
   --bgSearchBox: #{$bgSearchBox_light};
   --bgUserPopUp: #{$bgUserPopUp_light};
+  --bgCardDashboard: #{$bgCardDashboard_light};
+  --bgCardDashboardHover: #{$bgCardDashboardHover_light};
 
   // Text variables
 
@@ -143,6 +149,9 @@ $userPopUpButtonHover_light: #DCE1E8;
   --bgUserAccountPopup: #{$bgUserAccountPopup_dark};
   --bgSearchBox: #{$bgSearchBox_dark};
   --bgUserPopUp: #{$bgUserPopUp_dark};
+  --bgCardDashboard: #{$bgCardDashboard_dark};
+  --bgCardDashboardHover: #{$bgCardDashboardHover_dark};
+
 
   // Text variables
 
