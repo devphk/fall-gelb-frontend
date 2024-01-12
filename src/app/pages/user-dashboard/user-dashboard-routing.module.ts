@@ -6,6 +6,7 @@ import { HomeComponent,
          SecurityComponent } from './components';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: 'communications',
         component: CommunicationsComponent
       },
+      {
+        path: 'communications-two',
+        component: CommunicationsTwoComponent
+      },      
       {
         path: '**',
         redirectTo: 'home',
