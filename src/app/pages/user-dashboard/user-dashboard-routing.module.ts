@@ -7,6 +7,7 @@ import { HomeComponent,
 import { UserDashboardComponent } from './user-dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
 import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
+import { ComexComponent } from './components/comex/comex.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,11 @@ const routes: Routes = [
       {
         path: 'communications-two',
         component: CommunicationsTwoComponent
-      },      
+      }, 
+      {     
+        path: 'comex',
+        component: ComexComponent
+      },
       {
         path: '**',
         redirectTo: 'home',

@@ -28,6 +28,7 @@ import { CommunicationsComponent } from './components/communications/communicati
 import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { ComexComponent } from './components/comex/comex.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatSelectModule } from '@angular/material/select';
     DashboardSidebarComponent,
     CommunicationsComponent,
     CommunicationsTwoComponent,
+    ComexComponent,
   ],
   imports: [
     CommonModule,
