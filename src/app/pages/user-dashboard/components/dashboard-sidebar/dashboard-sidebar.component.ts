@@ -30,6 +30,16 @@ export class DashboardSidebarComponent implements OnInit {
         itemIconUrl: '../../../../../assets/icons/lock.svg',
         itemLink: 'security',
       },
+      {
+        itemTitle: 'Comunicaciones',
+        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemLink: 'communications',
+      },
+      {
+        itemTitle: 'Comunicaciones 2',
+        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemLink: 'communications-two',
+      },
     ];
   }
 

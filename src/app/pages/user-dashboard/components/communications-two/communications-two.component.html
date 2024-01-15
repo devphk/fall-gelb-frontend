@@ -1,0 +1,238 @@
+
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="20px">
+
+    <img src="assets/icons/communications-two/tinker.svg"
+         width="100px">
+
+    <div fxLayout="column"
+         fxLayoutAlign="center center">
+
+        <h2 class="bold fw-800">
+            Gestiona tus comunicaciones
+        </h2>
+    
+        <p>
+            Personaliza la forma en la cual deseas que nos comuniquemos contigo o con los trabajadores de tu empresa, configura notificaciones vía telefónica o
+    electrónica.
+    
+        </p>
+    
+        <a class="link">Más información</a>
+
+    </div>
+
+    <div fxLayout="column"
+         fxLayoutAlign="center center">
+        
+        <h2 class="bold fw-800">
+            Expedientes
+        </h2>
+
+        <p>
+            Accede y controla todos los expedientes y operaciones que has realizado con Phoinike
+        </p>
+
+    </div>
+
+</div>
+
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="10px"
+     class="p-20 options-container">
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-header-primary"
+              fxFlex="170px">
+
+            PRODUCTOS
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-header-option">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-select-option"
+              fxFlex="170px"
+              fxLayout="row"
+              fxLayoutAlign="space-between center">
+
+              <mat-checkbox color="primary"></mat-checkbox>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center center">
+                <img src="assets/icons/communications-two/trucks.svg"
+                     width="15px"
+                     class="mr-5 icon-select">
+
+                <div class="mt-2">
+                    TRUCKS  
+                </div>
+              </div>
+
+              <img src="assets/icons/communications-two/select-arrow.svg">
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-select-option"
+              fxFlex="170px"
+              fxLayout="row"
+              fxLayoutAlign="space-between center">
+
+              <mat-checkbox color="primary"></mat-checkbox>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center center">
+                <img src="assets/icons/communications-two/customs.svg"
+                     width="15px"
+                     class="mr-5 icon-select">
+
+                <div class="mt-2">
+                    CUSTOMS  
+                </div>
+              </div>
+
+              <img src="assets/icons/communications-two/select-arrow.svg">
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-select-option"
+              fxFlex="170px"
+              fxLayout="row"
+              fxLayoutAlign="space-between center">
+
+              <mat-checkbox color="primary"></mat-checkbox>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center center">
+                <img src="assets/icons/communications-two/express.svg"
+                     width="15px"
+                     class="mr-5 icon-select">
+
+                <div class="mt-2">
+                    EXPRESS  
+                </div>
+              </div>
+
+              <img src="assets/icons/communications-two/select-arrow.svg">
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-select-option"
+              fxFlex="170px"
+              fxLayout="row"
+              fxLayoutAlign="space-between center">
+
+              <mat-checkbox color="primary"></mat-checkbox>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center center">
+                <img src="assets/icons/communications-two/containers.svg"
+                     width="15px"
+                     class="mr-5 icon-select">
+
+                <div class="mt-2">
+                    CONTAINERS  
+                </div>
+              </div>
+
+              <img src="assets/icons/communications-two/select-arrow.svg">
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div class="table-select-option"
+              fxFlex="170px"
+              fxLayout="row"
+              fxLayoutAlign="space-between center">
+
+              <mat-checkbox color="primary"></mat-checkbox>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center center">
+
+                <div class="mt-2">
+                    TODOS  
+                </div>
+              </div>
+
+              <img src="assets/icons/communications-two/select-arrow.svg">
+
+         </div>
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+</div>

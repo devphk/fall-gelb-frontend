@@ -27,9 +27,11 @@
 
 .container-card {
 
-    background-color: white !important; 
+    background-color: var(--bgCardDashboard) !important; 
     border-radius: 0.8rem;
     padding: 3rem 1rem 3rem 1rem;
+    color: var(--textPrimaryColor) !important;
+    border-color: var(--borderSecondaryColor);
 
     mat-card {
         background-color: #dadada1f !important;
@@ -38,13 +40,17 @@
     }
 
     mat-card:hover {
-        background-color: #dadada !important;
+        background-color: var(--bgCardDashboardHover) !important;
         cursor: pointer;
     }
 
 
     mat-card p {
         margin-bottom: 0rem;
+    }
+
+    mat-card-subtitle {
+        color: #acacac !important;
     }
 }
 
@@ -70,4 +76,8 @@
 
 .footer {
     height: 10rem;
+}
+
+.subtitle {
+    color: #acacac !important;
 }

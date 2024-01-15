@@ -25,6 +25,10 @@ import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { ComexComponent } from './components/comex/comex.component';
 
 
 @NgModule({
@@ -35,6 +39,8 @@ import { CommunicationsComponent } from './components/communications/communicati
     UserDashboardComponent,
     DashboardSidebarComponent,
     CommunicationsComponent,
+    CommunicationsTwoComponent,
+    ComexComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +50,9 @@ import { CommunicationsComponent } from './components/communications/communicati
     AvatarModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
+    MatSelectModule
   ],
 })
 export class UserDashboardModule {}
