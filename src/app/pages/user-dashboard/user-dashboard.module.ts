@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { DashboardSidebarComponent } from './components';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
+  PhkTableModule,
   PhkThemeToggleModule,
   PhkUserAccountPopupModule,
 } from '@shared/components';
@@ -26,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommunicationsComponent } from './components/communications/communications.component';
 import { ComexComponent } from './components/comex/comex.component';
+import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { ComexComponent } from './components/comex/comex.component';
     DashboardSidebarComponent,
     CommunicationsComponent,
     ComexComponent,
+    DigitalFileComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { ComexComponent } from './components/comex/comex.component';
     AvatarModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    PhkTableModule
   ],
 })
 export class UserDashboardModule {}

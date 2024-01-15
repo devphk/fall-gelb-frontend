@@ -7,6 +7,7 @@ import { HomeComponent,
 import { UserDashboardComponent } from './user-dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
 import { ComexComponent } from './components/comex/comex.component';
+import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path: 'comex',
         component: ComexComponent
+      },
+      {
+        path: 'digital-file',
+        component: DigitalFileComponent
       },
       {
         path: '**',

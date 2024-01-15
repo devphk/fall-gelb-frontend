@@ -1,0 +1,125 @@
+<div fxLayout="column"
+     fxLayoutAlign="center center">
+    <h2 class="fw-600">ARCHIVO DIGITAL</h2>
+    
+    <p class="text-align" class="subtitle">
+        Verifica el estado de tus documentos, recaudos y expedientes consulta tus soportes de pago, reportes fotográficos y 
+        documentación legal requerida.
+    </p>
+
+    <div class="card-footer">
+        <p>Mas información.</p>
+    </div>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="space-between">
+    <div fxLayout="column"
+         fxLayoutAlign="start center">
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="apps-card">
+
+                <div fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="1.5rem">
+                    <img src="../../../../../assets/icons/Truck.svg">
+                    <p>TRUCKS</p>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutGap=".5rem">
+                    <p>45</p>
+                    <p>EXPEDIENTES</p>
+                </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="apps-card">
+
+                <div fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="1.5rem">
+                    <img src="../../../../../assets/icons/Customs.svg">
+                    <p>CUSTOMS</p>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutGap=".5rem">
+                    <p>142</p>
+                    <p>EXPEDIENTES</p>
+                </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="apps-card">
+
+                <div fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="1.5rem">
+                    <img src="../../../../../assets/icons/Express.svg">
+                    <p>EXPRESS</p>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutGap=".5rem">
+                    <p>114</p>
+                    <p>EXPEDIENTES</p>
+                </div>
+        </div>
+        <div fxLayout="row"
+             fxLayoutAlign="space-between center"
+             class="apps-card">
+             
+                <div fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="1.5rem">
+                    <img src="../../../../../assets/icons/Container.svg">
+                    <p>CONTAINER</p>
+                </div>
+                <div fxLayout="row"
+                     fxLayoutGap=".5rem">
+                    <p>24</p>
+                    <p>EXPEDIENTES</p>
+                </div>
+                
+        </div>
+
+        <hr class="w-80">
+
+        <div class="card-footer">
+            <p>Visualizar todos mis expedientes.</p>
+        </div>        
+    </div>
+
+    <div>
+        <div class="image-container">
+            <img src="../../../../../assets/icons/digital-file/file_calendar_lens.svg">
+        </div>
+    </div>
+</div>
+
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     class="mt-50">
+    <h2 class="fw-600">SOPORTE DE PAGO</h2>
+    
+    <p class="text-align" class="subtitle">
+        Visualiza y accede a todas tus facturas, recibos, comprobantes de pago, notas de crédito, entre otros. 
+    </p>
+
+    <app-phk-table [columnsTags]="tableColumnsTags"
+                   [columnsToDisplay]="tableColumnsToDisplay"
+                   [data]="tableData"
+                   class="table"></app-phk-table>
+
+
+    <div class="card-footer">
+        <p>Visualizar todos mis expedientes.</p>
+    </div> 
+
+
+    <div class="footer">
+
+    </div>
+
+</div>
+
+
