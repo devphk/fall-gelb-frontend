@@ -6,6 +6,7 @@ import { HomeComponent,
          SecurityComponent } from './components';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
 import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
         component: CommunicationsComponent
       },
       {
+        path: 'communications-two',
+        component: CommunicationsTwoComponent
+      }, 
+      {     
         path: 'comex',
         component: ComexComponent
       },

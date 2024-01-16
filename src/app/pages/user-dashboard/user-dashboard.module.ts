@@ -26,6 +26,9 @@ import { PhkUserAccountHeaderModule } from '@shared/components/phk-user-account-
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommunicationsComponent } from './components/communications/communications.component';
+import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 
@@ -38,6 +41,7 @@ import { DigitalFileComponent } from './components/digital-file/digital-file.com
     UserDashboardComponent,
     DashboardSidebarComponent,
     CommunicationsComponent,
+    CommunicationsTwoComponent,
     ComexComponent,
     DigitalFileComponent,
   ],
@@ -49,6 +53,8 @@ import { DigitalFileComponent } from './components/digital-file/digital-file.com
     AvatarModule,
     MatCardModule,
     MatDividerModule,
+    MatCheckboxModule,
+    MatSelectModule
     MatIconModule,
     PhkTableModule
   ],
