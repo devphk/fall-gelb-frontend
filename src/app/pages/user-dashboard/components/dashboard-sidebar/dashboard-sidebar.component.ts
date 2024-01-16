@@ -32,18 +32,23 @@ export class DashboardSidebarComponent implements OnInit {
       },
       {
         itemTitle: 'Comunicaciones',
-        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemIconUrl: '../../../../../assets/icons/communications.svg',
         itemLink: 'communications',
       },
       {
         itemTitle: 'Comunicaciones 2',
-        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemIconUrl: '../../../../../assets/icons/communications2.svg',
         itemLink: 'communications-two',
       },
       {
         itemTitle: 'Archivo Digital',
-        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemIconUrl: '../../../../../assets/icons/document.svg',
         itemLink: 'digital-file',
+      },
+      {
+        itemTitle: 'Reporte Fotografico',
+        itemIconUrl: '../../../../../assets/icons/camera.svg',
+        itemLink: 'photographic-reports',
       },
     ];
   }

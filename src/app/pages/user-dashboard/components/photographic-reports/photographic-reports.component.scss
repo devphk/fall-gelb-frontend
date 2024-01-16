@@ -1,0 +1,104 @@
+.link {
+  color: #0093e1;
+  margin-top: -15px;
+}
+  
+.options-container {
+  color: var(--iconColor)
+}
+
+.table-header-primary,
+.table-header-option,
+.table-select-option {
+    background-color: rgba($color: #0093e1, $alpha: 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: #eae9e9 2px solid;
+    text-align: center;
+    font-size: 10px;
+}
+
+.table-header-option {
+    border-radius: 10px 10px 0 0;
+    width: 11rem;
+}
+
+.table-select-option,
+.table-select-description {
+  background-color: rgba($color: #eae9e9, $alpha: 0.3);
+  width: 11rem;
+}
+
+// .table-select-option {
+//   margin-top: 20px;
+// }
+
+.table-select-description {
+  width: 11rem;
+  border-radius: 0px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: #eae9e9 2px solid;
+  text-align: center;
+  font-size: 10px;
+}
+
+.card-footer p {
+  color: #0093e1 !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin-top: 1rem !important;
+}
+
+.document-card {
+  padding: 2rem;
+  background-color: var(--bgSecondaryColor) !important;
+  margin-top: 1rem;
+  border-radius: .5rem;
+}
+
+.document-card:hover {
+  background-color: var(--bgCardDashboardHover) !important;
+}
+
+.document-card img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.document-card p {
+  margin-bottom: 0rem;
+  font-weight: 800;
+}
+
+:host::ng-deep {
+  mat-card {
+    width: 40rem !important;
+    border-radius: 3rem;
+    padding: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: var(--bgCardDashboard) !important;
+    border-color: var(--borderTerciaryColor) !important;
+    color: var(--textPrimaryColor) !important;
+  }
+
+  mat-card-subtitle {
+    width: 30rem !important;
+    text-align: inherit;
+    color: var(--textSecondaryColor) !important;
+  }
+
+  mat-card-title {
+    width: 20rem !important;
+  }
+}
+
+.footer {
+  height: 4rem;
+}
+
+.cards-container {
+  margin-top: 4rem !important;
+}

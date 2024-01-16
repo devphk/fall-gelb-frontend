@@ -1,0 +1,210 @@
+<div fxLayout="column"
+     fxLayoutAlign="center center">
+    <h2 class="fw-600">REPORTE FOTOGRAFICO</h2>
+    
+    <p class="text-align" class="subtitle">
+        Accede a material audiovisual (Imágenes y videos) de cada uno de tus expedientes y operaciones.
+    </p>
+
+    <div fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    class="p-20 options-container">
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-header-option">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-select-description">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-select-description">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-select-description">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-select-description">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+   <div fxLayout="row"
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+
+        <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+             class="table-select-description">
+
+           {{headerItem}}
+
+        </div>
+
+   </div>
+
+</div>
+    <hr class="w-100">
+    <div class="card-footer">
+        <p>Accede a todo el material fotográfico.</p>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutGap="2rem"
+         class="cards-container">
+        <mat-card fxFlex="calc(50% - 2rem)"
+                  fxLayout="column"
+                  fxLayoutAlign="space-between">
+            <mat-card-header>
+                <mat-card-title-group>
+                    <mat-card-title>DOCUMENTACION DE MI EMPRESA</mat-card-title>
+                    <mat-card-subtitle>
+                        Verifica que toda la documentación legal de tu 
+                        empresa este vigente y al día para evitar 
+                        retrasos y agilizar tu comer de forma rápida y 
+                        segura.
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="column">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between"
+                         class="document-card">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentSuccess.svg">
+                             <p>DOCUMENTOS VIGENTES</p>
+                         </div>
+                        <p>77</p>
+                    </div>
+                    <div fxLayout="row"
+                         class="document-card"
+                         fxLayoutAlign="space-between">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentSun.svg">
+                             <p>DOCUMENTOS POR VENCER</p>
+                         </div>
+                        <p>58</p>
+                    </div>
+                    <div fxLayout="row"
+                         class="document-card"
+                         fxLayoutAlign="space-between">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentCancel.svg">
+                             <p>DOCUMENTOS VENCIDOS</p>
+                         </div>
+                        <p>54</p>
+                    </div>
+                </div>
+                <hr class="w-100 mt-20">
+                <div class="card-footer">
+                    <p>Consignar y administrar documentos de mi empresa.</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex="calc(50% - 2rem)"
+                  fxLayout="column"
+                  fxLayoutAlign="space-between">
+            <mat-card-header>
+                <mat-card-title-group>
+                    <mat-card-title>RECAUDOS GNB (EXPORTACIÓN)</mat-card-title>
+                    <mat-card-subtitle>
+                        Gestiona todos los recaudos que la Guardia 
+                        Nacional Bolivariana (GNB) solicita para la 
+                        exportación de mercancías.
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="column">
+                    <div fxLayout="row"
+                         fxLayoutAlign="space-between"
+                         class="document-card">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentSuccess.svg">
+                             <p>DOCUMENTOS VIGENTES</p>
+                         </div>
+                        <p>77</p>
+                    </div>
+                    <div fxLayout="row"
+                         class="document-card"
+                         fxLayoutAlign="space-between">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentSun.svg">
+                             <p>DOCUMENTOS POR VENCER</p>
+                         </div>
+                        <p>58</p>
+                    </div>
+                    <div fxLayout="row"
+                         class="document-card"
+                         fxLayoutAlign="space-between">
+                         <div fxLayout="row"
+                              fxLayoutGap="1rem">
+                             <img src="../../../../../assets/icons/photographic-reports/documentCancel.svg">
+                             <p>DOCUMENTOS VENCIDOS</p>
+                         </div>
+                        <p>54</p>
+                    </div>
+                </div>
+                <hr class="w-100 mt-20">
+                <div class="card-footer">
+                    <p>Consignar y administrar documentos de mi empresa.</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
+
+<div class="footer"></div>

@@ -31,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
+import { PhotographicReportsComponent } from './components/photographic-reports/photographic-reports.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { DigitalFileComponent } from './components/digital-file/digital-file.com
     CommunicationsTwoComponent,
     ComexComponent,
     DigitalFileComponent,
+    PhotographicReportsComponent,
   ],
   imports: [
     CommonModule,
