@@ -105,11 +105,92 @@
         Visualiza y accede a todas tus facturas, recibos, comprobantes de pago, notas de crédito, entre otros. 
     </p>
 
-    <app-phk-table [columnsTags]="tableColumnsTags"
-                   [columnsToDisplay]="tableColumnsToDisplay"
-                   [data]="tableData"
-                   class="table"></app-phk-table>
+    <div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="10px"
+     class="p-20 options-container">
 
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-header-option">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+
+         <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+              class="table-select-description">
+
+            {{headerItem}}
+
+         </div>
+
+    </div>
+
+</div>
+
+    <hr class="w-90">
 
     <div class="card-footer">
         <p>Visualizar todos mis expedientes.</p>

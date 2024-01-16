@@ -40,6 +40,11 @@ export class DashboardSidebarComponent implements OnInit {
         itemIconUrl: '../../../../../assets/icons/lock.svg',
         itemLink: 'communications-two',
       },
+      {
+        itemTitle: 'Archivo Digital',
+        itemIconUrl: '../../../../../assets/icons/lock.svg',
+        itemLink: 'digital-file',
+      },
     ];
   }
 

@@ -54,7 +54,7 @@ import { DigitalFileComponent } from './components/digital-file/digital-file.com
     MatCardModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
     MatIconModule,
     PhkTableModule
   ],
