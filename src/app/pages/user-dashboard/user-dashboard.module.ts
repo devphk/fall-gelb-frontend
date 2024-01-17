@@ -29,10 +29,8 @@ import { CommunicationsComponent } from './components/communications/communicati
 import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 import { PhotographicReportsComponent } from './components/photographic-reports/photographic-reports.component';
-
 
 @NgModule({
   declarations: [
@@ -43,7 +41,6 @@ import { PhotographicReportsComponent } from './components/photographic-reports/
     DashboardSidebarComponent,
     CommunicationsComponent,
     CommunicationsTwoComponent,
-    ComexComponent,
     DigitalFileComponent,
     PhotographicReportsComponent,
   ],
@@ -58,7 +55,7 @@ import { PhotographicReportsComponent } from './components/photographic-reports/
     MatCheckboxModule,
     MatSelectModule,
     MatIconModule,
-    PhkTableModule
+    PhkTableModule,
   ],
 })
 export class UserDashboardModule {}
