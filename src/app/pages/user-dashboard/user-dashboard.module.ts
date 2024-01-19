@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 import { PhotographicReportsComponent } from './components/photographic-reports/photographic-reports.component';
+import { PaymentsBalanceComponent } from './components/payments-balance/payments-balance.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { PhotographicReportsComponent } from './components/photographic-reports/
     ComexComponent,
     DigitalFileComponent,
     PhotographicReportsComponent,
+    PaymentsBalanceComponent,
   ],
   imports: [
     CommonModule,

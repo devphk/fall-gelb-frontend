@@ -1,0 +1,441 @@
+<div fxLayout="column"
+     fxLayoutAlign="center center">
+    <h2 class="fw-600">PAGOS Y BALANCE</h2>
+    
+    <p class="text-align" class="subtitle">
+        Verifica el estado de cuenta, recarga saldo, paga servicios, facturas, anticipos, multas y cualquier transacción o arancel que aplique a 
+        su empresa
+    </p>
+
+    <div class="card-footer">
+        <p>Mas información.</p>
+    </div>
+</div>
+
+<div fxLayout="row"
+     fxLayoutAlign="space-between"
+     fxLayoutGap="4rem"
+     class="mt-50">
+
+    <mat-card fxFlex="calc(50% - 4rem)">
+        <mat-card-title-group>
+            <mat-card-title>ESTADO DE CUENTAS</mat-card-title>
+            <mat-card-subtitle>Consulta saldo, deuda, montos pagados y dinero disponible.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div fxLayout="column"
+                fxLayoutAlign="start center">
+                <div fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="apps-card">
+
+                        <div fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="1.5rem">
+                            <img src="../../../../../assets/icons/Truck.svg">
+                            <p>TRUCKS</p>
+                        </div>
+                        <div fxLayout="row"
+                            fxLayoutGap=".5rem">
+                            <p>USD</p>
+                            <p>30,000.00</p>
+                        </div>
+                </div>
+                <div fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="apps-card">
+
+                        <div fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="1.5rem">
+                            <img src="../../../../../assets/icons/Customs.svg">
+                            <p>CUSTOMS</p>
+                        </div>
+                        <div fxLayout="row"
+                            fxLayoutGap=".5rem">
+                            <p>USD</p>
+                            <p>20,000.00</p>
+                        </div>
+                </div>
+                <div fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="apps-card">
+
+                        <div fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="1.5rem">
+                            <img src="../../../../../assets/icons/Express.svg">
+                            <p>EXPRESS</p>
+                        </div>
+                        <div fxLayout="row"
+                            fxLayoutGap=".5rem">
+                            <p>USD</p>
+                            <p>10,000.00</p>
+                        </div>
+                </div>
+                <div fxLayout="row"
+                    fxLayoutAlign="space-between center"
+                    class="apps-card">
+                    
+                        <div fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="1.5rem">
+                            <img src="../../../../../assets/icons/Container.svg">
+                            <p>CONTAINER</p>
+                        </div>
+                        <div fxLayout="row"
+                            fxLayoutGap=".5rem">
+                            <p>USD</p>
+                            <p>40.000,00</p>
+                        </div>
+                        
+            </div>
+
+                <hr class="w-80">
+
+                <div class="card-footer">
+                    <p>Visualizar todos mis expedientes.</p>
+                </div>        
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <div fxFlex="calc(50% - 4rem)" fxLayout="column"
+         fxLayoutAlign="space-between">
+        <div class="image-container">
+            <img src="../../../../../assets/icons/payments-balance/bank.svg">
+        </div>
+        <div>
+            <div fxLayout="row"
+                 fxLayoutGap="3rem">
+                <div fxFlex="calc(45% - 3rem)" class="balance" fxLayoutAlign="center center">SALDO:</div>
+                <div fxFlex="calc(55% - 3rem)" class="balance-amount" fxLayoutAlign="center center">USD 155,000.00</div>
+            </div>
+            <div fxLayout="row"
+                 fxLayoutGap="3rem">
+                <div fxFlex="calc(45% - 3rem)" class="balance" fxLayoutAlign="center center">DISPONIBLE:</div>
+                <div fxFlex="calc(55% - 3rem)" class="balance-amount" fxLayoutAlign="center center">USD 55,000.00</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div fxLayout="row wrap"
+     fxLayoutGap="2rem"
+     class="mt-50">
+
+    <mat-card fxFlex="calc(50% - 2rem)">
+        <mat-card-title-group>
+            <mat-card-title>COMPRAS</mat-card-title>
+            <mat-card-subtitle>Visualizar el historial de compras y facturas.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div fxFlex="calc(50% - 2rem)">
+   
+           <div fxLayout="column"
+                   fxLayoutAlign="center center">
+           
+               <div fxLayout="column"
+                   fxLayoutAlign="center center"
+                   fxLayoutGap="5px"
+                   class="p-20 options-container">
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-header-option">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+           </div>
+           
+               <hr class="w-90">
+           
+               <div class="card-footer">
+                   <p>Ver todo el historial.</p>
+               </div> 
+           </div>
+       </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="calc(50% - 2rem)">
+        <mat-card-title-group>
+            <mat-card-title>METODOS DE PAGO</mat-card-title>
+            <mat-card-subtitle>Realiza pagos en multiples monedas desde cualquier lugar del mundo.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content fxLayout="column"
+                          fxLayoutAlign="space-between">
+            
+            <div fxLayout="column"
+                    class="bank-container">
+                <p fxLayoutAlign="center center">PAGOS EN DOLARES</p>
+                <div>
+                    <img src="../../../../../assets/icons/payments-balance/DollarPay.svg" alt="">
+                </div>
+            </div>
+            <div fxLayout="column"
+                    class="bank-container2">
+                <p fxLayoutAlign="center center">PAGOS EN BOLIVARES</p>
+                <div>
+                    <img src="../../../../../assets/icons/payments-balance/BsPay.svg" alt="">
+                </div>
+            </div>
+            <hr class="w-100 mt-20">
+            <div class="card-footer"
+                    fxLayoutAlign="center center">
+                <p>Recargar saldo</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="calc(50% - 2rem)">
+        <mat-card-title-group>
+            <mat-card-title>GESTOR DE PAGOS</mat-card-title>
+            <mat-card-subtitle>Seleccione el servicio que desea pagar</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div fxLayout="column"
+                fxLayoutAlign="start center">
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutGap="2rem"
+                     class="apps-card">
+
+                    <img src="../../../../../assets/icons/Truck.svg">
+                    <p>TRUCKS</p>
+
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutGap="2rem"
+                     class="apps-card">
+
+                    <img src="../../../../../assets/icons/Customs.svg">
+                    <p>CUSTOMS</p>
+
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutGap="2rem"
+                     class="apps-card">
+
+                    <img src="../../../../../assets/icons/Express.svg">
+                    <p>EXPRESS</p>
+
+                </div>
+                <div fxLayout="row"
+                     fxLayoutAlign="center center"
+                     fxLayoutGap="2rem"
+                     class="apps-card">
+                    
+                    <img src="../../../../../assets/icons/Container.svg">
+                    <p>CONTAINER</p>
+                        
+                </div>
+
+                <hr class="w-80">
+
+                <div class="card-footer">
+                    <p>Visualizar todos mis expedientes.</p>
+                </div>        
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="calc(50% - 2rem)">
+        <mat-card-title-group>
+            <mat-card-title>REGISTRAR UN PAGO</mat-card-title>
+            <mat-card-subtitle>
+                Registra el comprobante de pago o realiza pago mediante 
+                algunos de nuestros métodos digitales.
+            </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content fxLayout="column"
+                          fxLayoutGap="10rem"
+                          fxLayoutAlign="space-between center">
+           <div fxFlex="calc(60% - 10rem)" 
+                class="image-container">
+                <img src="../../../../../assets/icons/payments-balance/money.svg" alt="">
+           </div>
+           <div fxFlex="calc(30% - 10rem)"
+                class="payment-button-container">
+                <p fxLayoutAlign="center center">REGISTRAR PAGO</p>
+           </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>
+
+<div>
+    <div fxLayout="column"
+                   fxLayoutAlign="center center">
+           
+               <div fxLayout="column"
+                   fxLayoutAlign="center center"
+                   fxLayoutGap="5px"
+                   class="p-20 options-container">
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-header-option">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+               <div fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="5px">
+           
+                       <div *ngFor="let headerItem of tableHeaderItems; let i=index"
+                           class="table-select-description">
+           
+                       {{headerItem}}
+           
+                       </div>
+           
+               </div>
+           
+           </div>
+           
+               <hr class="w-90">
+           
+               <div class="card-footer">
+                   <p>Ver todo el historial.</p>
+               </div> 
+           </div>
+</div>
+
+<div class="footer"></div>
+
+
+

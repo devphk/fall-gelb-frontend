@@ -50,6 +50,11 @@ export class DashboardSidebarComponent implements OnInit {
         itemIconUrl: '../../../../../assets/icons/camera.svg',
         itemLink: 'photographic-reports',
       },
+      {
+        itemTitle: 'Pagos y Balance',
+        itemIconUrl: '../../../../../assets/icons/creditCard.svg',
+        itemLink: 'payments-balance',
+      },
     ];
   }
 

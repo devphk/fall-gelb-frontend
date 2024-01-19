@@ -10,6 +10,7 @@ import { CommunicationsTwoComponent } from './components/communications-two/comm
 import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 import { PhotographicReportsComponent } from './components/photographic-reports/photographic-reports.component';
+import { PaymentsBalanceComponent } from './components/payments-balance/payments-balance.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'photographic-reports',
         component: PhotographicReportsComponent
+      },
+      {
+        path: 'payments-balance',
+        component: PaymentsBalanceComponent
       },
       {
         path: '**',
