@@ -106,12 +106,13 @@ h1 {
 
 #searchBox {
   padding: 11px 13px;
+  margin-left: 8rem;
   display: flex;
   align-items: center;
   background-color: var(--bgSearchBox);
-  border-radius: 5px;
+  border-radius: 1.5rem;
   .mat-icon {
-    color: #5f6368 !important;
+    color: #3FC0F0 !important;
   }
 }
 

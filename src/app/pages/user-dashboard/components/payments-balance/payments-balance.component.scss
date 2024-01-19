@@ -4,6 +4,7 @@
         padding: 4rem;
         padding-right: 2rem; 
         padding-left: 2rem;
+        border-radius: 3rem;
         background-color: var(--bgCardDashboard) !important;
         border-color: var(--borderSecondaryColor) !important;
         color: var(--textPrimaryColor) !important;
@@ -58,34 +59,34 @@
 .link {
     color: #0093e1;
     margin-top: -15px;
-  }
-  
-  .options-container {
+}
+
+.options-container {
     color: var(--iconColor)
-  }
-  
-  .table-header-primary,
-  .table-header-option,
-  .table-select-option {
-      background-color: rgba($color: #0093e1, $alpha: 0.1);
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-      border: #eae9e9 2px solid;
-      text-align: center;
-      font-size: 10px;
-  }
-  
-  .table-header-option {
-      border-radius: 10px 10px 0 0;
-      width: 4rem;
-  }
-  
-  .table-select-option,
-  .table-select-description {
+}
+
+.table-header-primary,
+.table-header-option,
+.table-select-option {
+    background-color: rgba($color: #0093e1, $alpha: 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: #eae9e9 2px solid;
+    text-align: center;
+    font-size: 10px;
+}
+
+.table-header-option {
+    border-radius: 10px 10px 0 0;
+    width: 4rem;
+}
+
+.table-select-option,
+.table-select-description {
     background-color: rgba($color: #eae9e9, $alpha: 0.3);
     width: 4rem;
-  }
+}
   
   // .table-select-option {
   //   margin-top: 20px;
@@ -184,4 +185,52 @@
 
 .footer {
     height: 10rem;
+}
+
+//----------------------------------- TABLE TWO
+
+.link2 {
+    color: #0093e1;
+    margin-top: -15px;
+}
+
+.options-container2 {
+    color: var(--iconColor)
+}
+
+.table-header-primary2,
+.table-header-option2,
+.table-select-option2 {
+    background-color: rgba($color: #0093e1, $alpha: 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: #eae9e9 2px solid;
+    text-align: center;
+    font-size: 10px;
+}
+
+.table-header-option2 {
+    border-radius: 10px 10px 0 0;
+    width: 15rem;
+}
+
+.table-select-option2,
+.table-select-description2 {
+    background-color: rgba($color: #eae9e9, $alpha: 0.3);
+    width: 15rem;
+}
+
+.table-select-description2 {
+    width: 15rem;
+    border-radius: 0px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: #eae9e9 2px solid;
+    text-align: center;
+    font-size: 10px;
+    }
+
+.payment-method-card {
+    margin-right: 0rem !important;
 }
