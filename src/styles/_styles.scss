@@ -598,6 +598,9 @@ i {
 .pb-50 {
   padding-bottom: 50px !important;
 }
+.pl-20 {
+  padding-left: 20px !important;
+}
 
 // Asimetric padding styles
 
@@ -627,6 +630,10 @@ i {
   text-align: center;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-start {
   text-align: start;
 }
@@ -654,6 +661,7 @@ i {
   border: 1px solid #dadce0;
   background: var(--bgSignInCard);
   border-radius: 5px;
+  min-height: 423px;
 }
 
 .stroked-button {

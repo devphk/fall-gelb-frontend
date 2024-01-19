@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, 
-         Routes } from '@angular/router';
-import { HomeComponent,
-         PersonalInformationComponent, 
-         SecurityComponent } from './components';
+import { RouterModule, Routes } from '@angular/router';
+import {
+  HomeComponent,
+  PersonalInformationComponent,
+  SecurityComponent,
+} from './components';
 import { UserDashboardComponent } from './user-dashboard.component';
 import { CommunicationsComponent } from './components/communications/communications.component';
 import { CommunicationsTwoComponent } from './components/communications-two/communications-two.component';
-import { ComexComponent } from './components/comex/comex.component';
 import { DigitalFileComponent } from './components/digital-file/digital-file.component';
 import { PhotographicReportsComponent } from './components/photographic-reports/photographic-reports.component';
 import { PaymentsBalanceComponent } from './components/payments-balance/payments-balance.component';
 
 const routes: Routes = [
   {
-      path: '',
-      redirectTo: '',
-      pathMatch: 'full'
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
   },
   {
     path: '',
@@ -24,35 +24,31 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
       },
       {
         path: 'personal-information',
-        component: PersonalInformationComponent
+        component: PersonalInformationComponent,
       },
       {
         path: 'security',
-        component: SecurityComponent
+        component: SecurityComponent,
       },
       {
         path: 'communications',
-        component: CommunicationsComponent
+        component: CommunicationsComponent,
       },
       {
         path: 'communications-two',
-        component: CommunicationsTwoComponent
-      }, 
-      {     
-        path: 'comex',
-        component: ComexComponent
+        component: CommunicationsTwoComponent,
       },
       {
         path: 'digital-file',
-        component: DigitalFileComponent
+        component: DigitalFileComponent,
       },
       {
         path: 'photographic-reports',
-        component: PhotographicReportsComponent
+        component: PhotographicReportsComponent,
       },
       {
         path: 'payments-balance',
@@ -61,20 +57,19 @@ const routes: Routes = [
       {
         path: '**',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
-    ]
+    ],
   },
   {
     path: '**',
     component: UserDashboardComponent,
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserDashboardRoutingModule { }
+export class UserDashboardRoutingModule {}
